@@ -1,0 +1,1841 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    
+    <!-- ========================================== -->
+    <!-- SEO Meta Tags -->
+    <!-- ========================================== -->
+    <title>Zari Ethnics | Exquisite Eastern Wear & Bridal Boutique Lenasia</title>
+    <meta name="description" content="Indulge in an exquisite eastern experience at Zari Ethnics, Shop U28A Upper Level, Trade Route Mall, Lenasia. Gauteng's leading boutique for bespoke bridal lehengas, custom groom sherwanis, luxury heritage sarees, and exclusive occasion wear. Explore our fabric stitch inspector, check live trading hours, and consult with us directly on WhatsApp +27 81 274 2028.">
+    <meta name="keywords" content="Zari Ethnics, Zari Lenasia, Trade Route Mall shops, bridal wear Lenasia, eastern wear South Africa, lehenga, sherwani, designer sarees, Indian bridal wear Gauteng">
+    <meta name="author" content="Zari Ethnics">
+    <meta name="theme-color" content="#446B1E">
+
+    <!-- Tailwind CSS & Google Fonts -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,300;0,400;0,600;0,700;1,400&family=Playfair+Display:ital,wght@0,400;0,600;0,700;1,400&family=Cinzel+Decorative:wght@400;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    
+    <!-- CropperJS for local cropping functionality -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/cropperjs/1.5.13/cropper.min.css">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/cropperjs/1.5.13/cropper.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/tone/14.8.49/Tone.js"></script>
+    
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        zariGreen: {
+                            DEFAULT: '#446B1E', 
+                            dark: '#2d4714',
+                            light: '#639b2b',
+                            accent: '#f4f7f2'
+                        },
+                        zariCrimson: {
+                            DEFAULT: '#DE1B45', 
+                            dark: '#a8102e',
+                            light: '#f74064',
+                            accent: '#fff0F2'
+                        },
+                        zariGold: {
+                            DEFAULT: '#F5C21B', 
+                            light: '#fce37e',
+                            dark: '#c4990c'
+                        },
+                        zariBurgundy: {
+                            DEFAULT: '#7A1F3D', 
+                            dark: '#4f1125'
+                        }
+                    },
+                    fontFamily: {
+                        serif: ['"Playfair Display"', 'serif'],
+                        sans: ['Montserrat', 'sans-serif'],
+                        cinzel: ['"Cinzel Decorative"', 'serif'],
+                    }
+                }
+            }
+        }
+    </script>
+
+    <style>
+        .gold-foil-text {
+            background: linear-gradient(135deg, #F5C21B 0%, #c4990c 50%, #F5C21B 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+        .card-wave-bg {
+            background: radial-gradient(circle at 100% 0%, #DE1B45 0%, #DE1B45 15%, transparent 15.5%);
+        }
+        .card-wave-bg-left {
+            background: radial-gradient(circle at 0% 0%, #DE1B45 0%, #DE1B45 15%, transparent 15.5%);
+        }
+        .gold-glow {
+            box-shadow: 0 4px 20px rgba(245, 194, 27, 0.15);
+        }
+        .gold-glow-hover:hover {
+            box-shadow: 0 10px 30px rgba(222, 27, 69, 0.15);
+            border-color: #DE1B45;
+        }
+        .lotus-watermark {
+            background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='80' height='80' viewBox='0 0 80 80'%3E%3Cpath d='M40 10 C42 20 48 22 48 26 C48 30 42 32 40 42 C38 32 32 30 32 26 C32 22 38 20 40 10 Z' fill='%23446B1E' fill-opacity='0.02'/%3E%3C/svg%3E");
+        }
+        ::-webkit-scrollbar {
+            width: 8px;
+        }
+        ::-webkit-scrollbar-track {
+            background: #FFFFFF;
+        }
+        ::-webkit-scrollbar-thumb {
+            background: #F5C21B;
+            border-radius: 4px;
+        }
+        ::-webkit-scrollbar-thumb:hover {
+            background: #DE1B45;
+        }
+        .shining-border {
+            position: relative;
+            overflow: hidden;
+        }
+        .shining-border::after {
+            content: '';
+            position: absolute;
+            top: -50%;
+            left: -50%;
+            width: 200%;
+            height: 200%;
+            background: linear-gradient(
+                45deg,
+                transparent 45%,
+                rgba(255, 255, 255, 0.45) 50%,
+                transparent 55%
+            );
+            transform: rotate(45deg);
+            transition: all 0.6s ease;
+            pointer-events: none;
+        }
+        .shining-border:hover::after {
+            left: 100%;
+            top: 100%;
+        }
+        .magnify-container {
+            position: relative;
+            overflow: hidden;
+            cursor: crosshair;
+            touch-action: none;
+        }
+        .magnifier {
+            position: absolute;
+            border: 3px solid #F5C21B;
+            border-radius: 50%;
+            width: 160px;
+            height: 160px;
+            pointer-events: none;
+            display: none;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2), inset 0 0 15px rgba(0,0,0,0.1);
+            z-index: 50;
+            overflow: hidden;
+            background-color: #FFFFFF;
+        }
+        .magnifier-zoomed-content {
+            position: absolute;
+            transform-origin: top left;
+            width: 100%;
+            height: 100%;
+            pointer-events: none;
+        }
+        
+        /* Modal Interactive Fabric Zoom & Quality Lens */
+        .modal-magnify-container {
+            position: relative;
+            overflow: hidden;
+            cursor: zoom-in;
+            touch-action: none;
+        }
+        .modal-magnifier {
+            position: absolute;
+            border: 3px solid #F5C21B;
+            border-radius: 50%;
+            width: 140px;
+            height: 140px;
+            pointer-events: none;
+            display: none;
+            box-shadow: 0 10px 25px rgba(0, 0, 0, 0.3), inset 0 0 15px rgba(0,0,0,0.2);
+            z-index: 40;
+            overflow: hidden;
+            background-repeat: no-repeat;
+            background-color: #000;
+        }
+        
+        .glass-panel {
+            background: rgba(15, 23, 42, 0.85);
+            backdrop-filter: blur(12px);
+            border: 1px solid rgba(255, 255, 255, 0.08);
+        }
+    </style>
+</head>
+<body class="bg-[#FAF9F6] text-slate-800 font-sans selection:bg-zariGold selection:text-zariGreen-dark leading-relaxed overflow-x-hidden relative lotus-watermark">
+
+    <!-- Top Nav Alert -->
+    <div class="bg-gradient-to-r from-zariGreen via-zariBurgundy to-zariGreen text-white text-center py-2 px-4 text-xs tracking-wider uppercase font-semibold">
+        <i class="fas fa-store mr-2 text-zariGold" aria-hidden="true"></i> Visit our Boutique: Shop U28A Upper Level (next to Ocean Basket), Trade Route Mall, Lenasia, Gauteng
+    </div>
+
+    <!-- Main Header -->
+    <header class="border-b border-zariGold/20 bg-white/95 backdrop-blur-md sticky top-0 z-40 shadow-sm">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 h-24 flex items-center justify-between">
+            
+            <a href="#" class="flex items-center space-x-3 group" onclick="playAtmosphericSound('high')" aria-label="Zari Ethnics Home">
+                <div class="flex flex-col items-center">
+                    <svg class="w-12 h-8 text-zariGold fill-none stroke-current" viewBox="0 0 100 60" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                        <path d="M50,15 C52,28 62,30 62,35 C62,42 54,44 50,52 C46,44 38,42 38,35 C38,30 48,28 50,15 Z" fill="#F5C21B" fill-opacity="0.1" />
+                        <path d="M38,35 C30,30 25,36 28,42 C30,46 36,44 42,48 C36,42 38,35 38,35 Z" />
+                        <path d="M62,35 C70,30 75,36 72,42 C70,46 64,44 58,48 C64,42 62,35 62,35 Z" />
+                        <path d="M35,46 Q50,42 65,46" stroke-width="1.5" />
+                    </svg>
+                    <div class="text-center mt-0.5">
+                        <div class="flex items-baseline justify-center">
+                            <span class="text-xl font-cinzel font-bold tracking-[0.1em] text-zariGreen">ZARÌ</span>
+                            <span class="text-[10px] tracking-[0.12em] font-sans font-bold text-zariBurgundy ml-1">ETHNICS</span>
+                        </div>
+                        <span class="block text-[7px] tracking-[0.22em] font-sans uppercase text-slate-800 font-bold -mt-0.5">exquisite eastern experience</span>
+                    </div>
+                </div>
+            </a>
+
+            <nav class="hidden md:flex items-center space-x-6 font-sans font-bold text-xs uppercase tracking-wider" aria-label="Main Navigation">
+                <a href="#about" class="text-zariGreen hover:text-zariCrimson transition duration-300" onclick="playAtmosphericSound('low')">The Experience</a>
+                <a href="#collections" class="text-zariGreen hover:text-zariCrimson transition duration-300" onclick="playAtmosphericSound('low')">Our Wear Selection</a>
+                <a href="#inspector" class="text-zariGreen hover:text-zariCrimson transition duration-300" onclick="playAtmosphericSound('low')">Fabric Analyzer</a>
+                <a href="#shopper" class="text-zariGreen hover:text-zariCrimson transition duration-300" onclick="playAtmosphericSound('low')">Personal Concierge</a>
+                <a href="#legal" class="text-zariGreen hover:text-zariCrimson transition duration-300" onclick="playAtmosphericSound('low')">Terms & Guarantees</a>
+            </nav>
+
+            <div class="flex items-center space-x-3">
+                <button id="soundToggle" onclick="toggleSound()" class="p-3 border border-zariGold/40 rounded-full bg-white hover:bg-zariGreen-accent hover:border-zariGreen text-zariGreen transition duration-300 focus:outline-none" title="Play Zari Signature Theme" aria-label="Play Ambient Zari Background Music">
+                    <i id="soundIcon" class="fas fa-music" aria-hidden="true"></i>
+                </button>
+                <div class="hidden sm:flex flex-col items-center">
+                    <a href="https://wa.me/27812742028?text=Hello%20Zari%20Ethnics%2C%20I%20am%20interested%20in%20viewing%20your%20exquisite%20eastern%20attire%20collections." target="_blank" class="inline-flex items-center space-x-2 bg-gradient-to-r from-zariCrimson to-zariBurgundy text-white font-sans font-bold uppercase text-[10px] tracking-widest px-5 py-3 rounded-full hover:brightness-105 transition duration-300 shadow-md shining-border" aria-label="Connect live on WhatsApp with Zari Ethnics">
+                        <i class="fab fa-whatsapp text-sm" aria-hidden="true"></i>
+                        <span>Connect Live</span>
+                    </a>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <main>
+        <!-- Hero Showcase Section -->
+        <section id="about" class="relative min-h-[calc(100vh-8rem)] flex items-center overflow-hidden py-12 md:py-16 bg-white border-b border-zariGold/10 card-wave-bg">
+            <div class="absolute -bottom-40 -left-40 w-96 h-96 bg-zariGreen-accent/40 rounded-full blur-3xl pointer-events-none"></div>
+
+            <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 w-full z-10 relative">
+                <div class="grid grid-cols-1 lg:grid-cols-12 gap-12 items-center">
+                    
+                    <div class="lg:col-span-7 space-y-8 text-center lg:text-left">
+                        <div class="inline-flex items-center space-x-2 bg-[#FAF9F6] border border-zariGold/40 rounded-full px-4 py-2 shadow-sm">
+                            <i class="fas fa-gem text-zariCrimson animate-pulse" aria-hidden="true"></i>
+                            <span class="text-[9px] uppercase tracking-[0.18em] font-sans font-bold text-zariGreen">Shop U28A, Upper Level &bull; Trade Route Mall &bull; Next to Ocean Basket</span>
+                        </div>
+
+                        <div class="space-y-4">
+                            <h1 class="text-4xl sm:text-5xl md:text-6xl font-serif font-bold text-slate-900 leading-[1.15]">
+                                Elegance Woven <br class="hidden sm:inline">
+                                in <span class="text-zariCrimson font-serif italic font-semibold">Exquisite Eastern</span> Traditions
+                            </h1>
+                            <p class="text-zariGreen font-serif text-lg md:text-xl tracking-wide max-w-xl mx-auto lg:mx-0 font-semibold">
+                                Bespoke Bridal, Groom & Occasional Wear Luxe in South Africa
+                            </p>
+                        </div>
+
+                        <p class="text-slate-600 max-w-lg mx-auto lg:mx-0 text-sm sm:text-base font-medium leading-relaxed">
+                            Welcome to Gauteng's elite showroom for luxury Eastern wear. Browse our interactive 100-slot showroom gallery below, custom-fit your parameters with our fabricstitch analyzer, or check real-time trading credentials for Trade Route Mall.
+                        </p>
+
+                        <div class="flex flex-col sm:flex-row items-center justify-center lg:justify-start gap-4 pt-4">
+                            <a href="https://wa.me/27812742028?text=Hello%20Zari%20Ethnics%2C%20I'd%20love%20to%20view%20your%20latest%20exquisite%20eastern%20designs." 
+                               target="_blank" 
+                               onclick="playAtmosphericSound('success')"
+                               class="w-full sm:w-auto inline-flex items-center justify-center space-x-3 bg-gradient-to-r from-zariCrimson to-zariBurgundy text-white font-sans font-bold uppercase text-xs tracking-widest px-8 py-4 rounded-full hover:brightness-110 transition duration-300 shadow-lg shadow-zariCrimson/20 shining-border transform hover:-translate-y-0.5"
+                               aria-label="View New Bridal and Groom Arrivals on WhatsApp">
+                                <i class="fab fa-whatsapp text-lg" aria-hidden="true"></i>
+                                <span>View New Arrivals on WhatsApp</span>
+                            </a>
+                            <a href="#collections" 
+                               class="w-full sm:w-auto inline-flex items-center justify-center space-x-2 border border-zariGreen/30 hover:border-zariGreen bg-[#FAF9F6] hover:bg-zariGreen-accent text-zariGreen font-sans font-bold uppercase text-xs tracking-widest px-8 py-4 rounded-full transition duration-300"
+                               aria-label="Explore Zari Ethnics Clothing Selection Gallery">
+                                <span>Explore Selection Gallery</span>
+                                <i class="fas fa-chevron-right text-[10px]" aria-hidden="true"></i>
+                            </a>
+                        </div>
+                    </div>
+
+                    <div class="lg:col-span-5 relative w-full flex justify-center lg:justify-end">
+                        <div class="relative w-full max-w-[420px] rounded-3xl overflow-hidden border border-zariGold/30 gold-glow bg-[#FAF9F6] p-3 transform lg:rotate-1 hover:rotate-0 transition-all duration-700">
+                            
+                            <div class="relative h-[480px] w-full rounded-2xl overflow-hidden group">
+                                <div id="heroFabric" class="absolute inset-0 transition-transform duration-500 scale-105" 
+                                     style="background-image: linear-gradient(135deg, #DE1B45, #7A1F3D);">
+                                    
+                                    <div class="absolute inset-0 opacity-40 mix-blend-overlay pointer-events-none" style="background-image: radial-gradient(#F5C21B 1.5px, transparent 1.5px); background-size: 24px 24px;"></div>
+                                    
+                                    <div class="absolute inset-x-0 top-12 flex justify-center pointer-events-none opacity-40">
+                                        <svg class="w-80 h-80 text-zariGreen fill-none stroke-current" stroke-width="0.75" viewBox="0 0 200 200" aria-hidden="true">
+                                            <circle cx="100" cy="100" r="80" stroke-dasharray="4 4" stroke="#F5C21B" />
+                                            <circle cx="100" cy="100" r="60" stroke="#DE1B45" />
+                                            <path d="M100,20 Q110,50 100,80 Q90,50 100,20 Z" fill="#F5C21B" fill-opacity="0.05" />
+                                            <circle cx="100" cy="100" r="10" stroke="#F5C21B" />
+                                        </svg>
+                                    </div>
+
+                                    <div class="absolute inset-x-4 bottom-4 bg-white/95 border border-zariGold/20 rounded-xl p-4 backdrop-blur-md shadow-lg">
+                                        <span class="text-[9px] uppercase tracking-widest font-sans font-extrabold text-zariCrimson block mb-1">Interactive Thread Shader</span>
+                                        <h3 class="text-sm font-serif font-bold text-zariGreen">Bespoke Bridal Base Shading</h3>
+                                        <p class="text-[10px] text-slate-500 mt-1 font-medium leading-relaxed">Click below to change the thread shader backdrop base and examine contrast.</p>
+                                        
+                                        <div class="flex items-center space-x-3 mt-4 pt-3 border-t border-slate-100">
+                                            <span class="text-[9px] uppercase text-slate-500 font-semibold tracking-wider">Shade:</span>
+                                            <div class="flex items-center space-x-2">
+                                                <button onclick="changeHeroShade('crimson', '#DE1B45', 'Boutique Crimson')" class="w-5 h-5 rounded-full bg-zariCrimson border-2 border-white ring-1 ring-zariGold focus:outline-none" title="Boutique Crimson" aria-label="Select Crimson Shading"></button>
+                                                <button onclick="changeHeroShade('green', '#446B1E', 'Olive Green')" class="w-5 h-5 rounded-full bg-zariGreen border border-zariGold/40 focus:outline-none" title="Olive Green" aria-label="Select Olive Green Shading"></button>
+                                                <button onclick="changeHeroShade('gold', '#F5C21B', 'Lotus Gold')" class="w-5 h-5 rounded-full bg-zariGold border border-zariGold/40 focus:outline-none" title="Lotus Gold" aria-label="Select Gold Shading"></button>
+                                                <button onclick="changeHeroShade('white', '#FFFFFF', 'Pure Alabaster')" class="w-5 h-5 rounded-full bg-white border border-zariGold/40 focus:outline-none" title="Pure Alabaster" aria-label="Select Pure Alabaster Shading"></button>
+                                            </div>
+                                            <span id="shadeLabel" class="text-[11px] text-zariCrimson font-bold italic ml-auto">Boutique Crimson</span>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+        </section>
+
+        <!-- Real-Time Trading Open Status Bar -->
+        <section class="border-y border-zariGold/20 bg-zariGreen-accent py-6">
+            <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 flex flex-col md:flex-row items-center justify-between gap-4">
+                <div class="flex items-center space-x-3.5">
+                    <span class="flex h-3.5 w-3.5 relative">
+                        <span id="liveStatusPulse" class="animate-ping absolute inline-flex h-full w-full rounded-full opacity-75 bg-emerald-400"></span>
+                        <span id="liveStatusDot" class="relative inline-flex rounded-full h-3.5 w-3.5 bg-emerald-500"></span>
+                    </span>
+                    <div>
+                        <span id="liveStatusText" class="font-sans font-bold uppercase text-xs tracking-widest block text-zariGreen-dark">Checking Boutique Status...</span>
+                        <span class="text-xs text-slate-600 font-semibold mt-0.5 block">Trading Hours: <strong class="text-zariCrimson">Mon-Sat: 09:30 - 17:00 | Sun: 10:00 - 15:00</strong></span>
+                    </div>
+                </div>
+                
+                <div class="flex items-center space-x-6 text-xs text-zariGreen font-bold tracking-wider">
+                    <span class="flex items-center space-x-1.5"><i class="fas fa-phone text-zariCrimson" aria-hidden="true"></i> <span>(011) 852-1779</span></span>
+                    <span class="flex items-center space-x-1.5"><i class="fas fa-envelope text-zariCrimson" aria-hidden="true"></i> <span>zariethnics@gmail.com</span></span>
+                    <span class="flex items-center space-x-1.5"><i class="fas fa-map-pin text-zariGold-dark" aria-hidden="true"></i> <span>Next to Ocean Basket</span></span>
+                </div>
+            </div>
+        </section>
+
+        <!-- Catalog Showcase -->
+        <section id="collections" class="py-16 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative">
+            <div class="text-center max-w-xl mx-auto space-y-4 mb-10">
+                <span class="text-xs uppercase tracking-[0.25em] text-zariCrimson font-bold block">Artisanal Catalog Portfolio</span>
+                <h2 class="text-3xl sm:text-4xl font-serif font-bold text-zariGreen">Boutique Selection Gallery</h2>
+                <div class="w-24 h-[1.5px] bg-gradient-to-r from-transparent via-zariGold to-transparent mx-auto"></div>
+                <p class="text-slate-500 text-sm font-semibold">
+                    Explore our exquisite 100-slot inventory list. Tap any item's catalog parameters or use the secure workbench to live upload & describe custom wedding outfits.
+                </p>
+            </div>
+
+            <!-- ==================================================== -->
+            <!-- THE PREMIUM ATELIER COMMAND CENTER (CLEAN SLATE WORKBENCH) -->
+            <!-- ==================================================== -->
+            <div class="max-w-5xl mx-auto mb-12 p-1 bg-gradient-to-b from-slate-800 to-slate-900 rounded-3xl shadow-2xl overflow-hidden border border-zariGold/30">
+                <div class="p-6 bg-slate-900/40 flex flex-col sm:flex-row items-start sm:items-center justify-between gap-4 cursor-pointer select-none" onclick="toggleSandboxControls()">
+                    <div class="flex items-center space-x-3">
+                        <span class="bg-zariCrimson text-white text-[9px] uppercase font-bold px-3 py-1 rounded tracking-widest">Authorized Access</span>
+                        <h4 class="text-sm font-sans font-bold text-white uppercase tracking-wider">🛠️ Premium Atelier Command Center</h4>
+                    </div>
+                    <span class="text-[10px] text-zariGold font-bold uppercase flex items-center space-x-1.5" id="sandboxChevron">
+                        <span>Unlock Console</span>
+                        <i class="fas fa-lock text-[8px]" aria-hidden="true"></i>
+                    </span>
+                </div>
+                
+                <!-- Lock Shield Protection Screen -->
+                <div id="sandboxLockPanel" class="p-8 bg-slate-950/90 flex flex-col items-center justify-center text-center space-y-4">
+                    <div class="w-16 h-16 rounded-full bg-zariGreen-accent/10 border border-zariGold/30 flex items-center justify-center text-zariGold">
+                        <i class="fas fa-shield-halved text-2xl" aria-hidden="true"></i>
+                    </div>
+                    <h5 class="text-xs font-bold uppercase tracking-wider text-slate-200">Developer & Authorized Admin Credentials Required</h5>
+                    <p class="text-[10px] text-slate-400 max-w-sm leading-relaxed">Enter your authorized administrator security credentials to access visual cataloging, live camera cropping, and the clean slate workspace model.</p>
+                    <div class="flex items-center space-x-2 w-full max-w-xs">
+                        <input type="password" id="sandboxKeyInput" placeholder="Enter Security Code..." class="w-full bg-slate-900 text-white border border-slate-700 focus:border-zariCrimson rounded-xl px-4 py-2 text-xs focus:outline-none focus:ring-1 focus:ring-zariCrimson">
+                        <button onclick="unlockBoutiqueWorkbench()" class="bg-gradient-to-r from-zariGreen to-zariGreen-dark text-white text-xs font-bold px-5 py-2 rounded-xl transition">Unlock</button>
+                    </div>
+                    <p id="lockErrorMsg" class="text-[9px] text-zariCrimson font-bold hidden">Invalid Password Code. Please try again.</p>
+                </div>
+
+                <!-- Unlocked Secure Workspace Area -->
+                <div id="sandboxBody" class="hidden space-y-6 p-6 border-t border-slate-800 bg-slate-950/60">
+                    
+                    <!-- Dynamic Inventory Analytics Dashboard -->
+                    <div class="grid grid-cols-1 md:grid-cols-4 gap-4 p-4 bg-slate-900/60 rounded-2xl border border-slate-800">
+                        <div class="text-center p-3 bg-slate-950 rounded-xl shadow-sm border border-slate-800/60">
+                            <span class="block text-[8px] uppercase tracking-wider text-slate-400 font-extrabold">Total Stock Items</span>
+                            <span id="dashTotalStock" class="block text-xl font-serif font-bold text-zariGold">100</span>
+                        </div>
+                        <div class="text-center p-3 bg-slate-950 rounded-xl shadow-sm border border-slate-800/60">
+                            <span class="block text-[8px] uppercase tracking-wider text-slate-400 font-extrabold">Active Showroom Stock</span>
+                            <span id="dashActiveStock" class="block text-xl font-serif font-bold text-zariCrimson">0</span>
+                        </div>
+                        <div class="text-center p-3 bg-slate-950 rounded-xl shadow-sm border border-slate-800/60">
+                            <span class="block text-[8px] uppercase tracking-wider text-slate-400 font-extrabold">Total Portfolio Value</span>
+                            <span id="dashTotalValue" class="block text-xl font-serif font-bold text-emerald-500">R 0,00</span>
+                        </div>
+                        <div class="text-center p-3 bg-slate-950 rounded-xl shadow-sm border border-slate-800/60">
+                            <span class="block text-[8px] uppercase tracking-wider text-slate-400 font-extrabold">Average Item Price</span>
+                            <span id="dashAveragePrice" class="block text-xl font-serif font-bold text-zariGold-light">R 0,00</span>
+                        </div>
+                    </div>
+
+                    <!-- Version Rollback Snapshot & Sync Area -->
+                    <div class="grid grid-cols-1 lg:grid-cols-2 gap-4">
+                        <!-- Local Offline Backups -->
+                        <div class="p-4 bg-slate-900 rounded-2xl border border-slate-800 space-y-3">
+                            <span class="text-[10px] text-slate-300 font-bold block"><i class="fas fa-history mr-1.5 text-zariGold"></i> Local Client Database Version Control & Exporters:</span>
+                            <div class="flex flex-wrap items-center gap-2">
+                                <button id="btnRollbackUndo" onclick="rollbackDatabase('undo')" disabled class="bg-slate-800 hover:bg-slate-700 text-slate-200 text-[10px] uppercase font-bold px-3 py-1.5 rounded-lg border border-slate-700 disabled:opacity-40 transition">Undo Revert</button>
+                                <button id="btnRollbackRedo" onclick="rollbackDatabase('redo')" disabled class="bg-slate-800 hover:bg-slate-700 text-slate-200 text-[10px] uppercase font-bold px-3 py-1.5 rounded-lg border border-slate-700 disabled:opacity-40 transition">Redo Snap</button>
+                                <button onclick="downloadCleanProductionHTML()" class="bg-slate-800 hover:bg-slate-700 text-white text-[10px] uppercase font-bold px-4 py-1.5 rounded-lg border border-slate-700 transition"><i class="fas fa-file-code mr-1"></i> Export Local HTML File</button>
+                            </div>
+                        </div>
+
+                        <!-- 100% Zero-Cost GitHub Auto-Deploy Engine -->
+                        <div class="p-4 bg-slate-900 rounded-2xl border border-zariGold/20 space-y-3">
+                            <span class="text-[10px] text-zariGold font-bold block"><i class="fab fa-github mr-1.5 animate-pulse"></i> 🚀 Zero-Cost Live GitHub Auto-Sync:</span>
+                            <div class="grid grid-cols-3 gap-2">
+                                <input type="password" id="gitPat" placeholder="GitHub Access Token (PAT)..." class="col-span-1 bg-slate-950 text-white border border-slate-700 rounded-lg p-1.5 text-[10px] focus:outline-none">
+                                <input type="text" id="gitRepo" placeholder="username/repository-name..." class="col-span-1 bg-slate-950 text-white border border-slate-700 rounded-lg p-1.5 text-[10px] focus:outline-none">
+                                <input type="text" id="gitFile" value="index.html" placeholder="Filename (index.html)..." class="col-span-1 bg-slate-950 text-white border border-slate-700 rounded-lg p-1.5 text-[10px] focus:outline-none">
+                            </div>
+                            <button onclick="publishToGitHubLive()" class="w-full bg-gradient-to-r from-zariGreen to-zariGreen-dark hover:brightness-110 text-white font-bold text-[10px] uppercase py-2 rounded-xl transition shadow flex items-center justify-center space-x-1.5">
+                                <i class="fas fa-cloud-arrow-up"></i>
+                                <span>Save Changes Directly to GitHub Live (60s Deploy)</span>
+                            </button>
+                        </div>
+                    </div>
+
+                    <!-- Dynamic Batch Queue Upload Container -->
+                    <div class="space-y-2">
+                        <label class="block text-[10px] uppercase tracking-wider text-slate-300 font-bold">📤 Automated Batch Image Queue Uploader</label>
+                        <div class="border-2 border-dashed border-slate-700 rounded-2xl p-6 bg-slate-900 text-center hover:bg-slate-900/90 transition duration-300 relative cursor-pointer">
+                            <input type="file" id="batchQueueFileInput" accept="image/*" multiple onchange="handleBatchFileSelection(event)" class="absolute inset-0 opacity-0 cursor-pointer">
+                            <i class="fas fa-images text-zariCrimson text-3xl mb-2 animate-pulse"></i>
+                            <span class="block text-xs font-bold text-slate-200">Drag or Click to Select Photos to Crop & Catalog</span>
+                            <span class="block text-[9px] text-slate-400 mt-1">Images will be cropped to Zari's luxury 3:4 portrait aspect ratio layout.</span>
+                        </div>
+                        
+                        <!-- Processing Stage Panel -->
+                        <div id="batchCropWorkspace" class="hidden p-4 border border-zariGold/30 rounded-2xl bg-slate-900 flex flex-col md:flex-row gap-6 relative">
+                            <button onclick="cancelBatchCropping()" class="absolute top-3 right-3 text-slate-400 hover:text-zariCrimson p-1 text-sm"><i class="fas fa-times"></i></button>
+                            
+                            <!-- CropperJS Canvas Viewport -->
+                            <div class="w-full md:w-1/2 h-[340px] bg-black rounded-xl overflow-hidden flex items-center justify-center border border-slate-800">
+                                <img id="cropTargetImage" class="max-w-full max-h-full block" alt="Source Asset">
+                            </div>
+                            
+                            <!-- Image Metadata Ingress Parameters -->
+                            <div class="w-full md:w-1/2 flex flex-col justify-between space-y-4 text-white">
+                                <div class="space-y-3">
+                                    <div class="flex justify-between items-center pb-2 border-b border-slate-800">
+                                        <span class="text-[10px] uppercase text-zariCrimson font-bold" id="batchProcessingQueueText">Processing Queue Item 1 of 1</span>
+                                        <span class="text-[10px] font-mono font-bold text-slate-400" id="cropFileNameLabel">filename.jpg</span>
+                                    </div>
+                                    <div class="grid grid-cols-2 gap-2">
+                                        <div>
+                                            <label class="block text-[8px] uppercase tracking-wider text-slate-400 font-bold mb-1">Target Card Slot Select (1-100)</label>
+                                            <select id="cropTargetSlot" class="w-full bg-slate-950 border border-slate-700 rounded-lg p-1.5 text-xs font-bold text-slate-200 focus:outline-none"></select>
+                                        </div>
+                                        <div>
+                                            <label class="block text-[8px] uppercase tracking-wider text-slate-400 font-bold mb-1">Bespoke Title</label>
+                                            <input type="text" id="cropTitleInput" class="w-full bg-slate-950 border border-slate-700 rounded-lg p-1.5 text-xs font-bold text-slate-200 focus:outline-none">
+                                        </div>
+                                        <div>
+                                            <label class="block text-[8px] uppercase tracking-wider text-slate-400 font-bold mb-1">Pricing (ZAR)</label>
+                                            <input type="number" id="cropPriceInput" placeholder="Price..." class="w-full bg-slate-950 border border-slate-700 rounded-lg p-1.5 text-xs font-bold text-slate-200 focus:outline-none">
+                                        </div>
+                                        <div>
+                                            <label class="block text-[8px] uppercase tracking-wider text-slate-400 font-bold mb-1">Stock Category</label>
+                                            <select id="cropCategorySelect" class="w-full bg-slate-950 border border-slate-700 rounded-lg p-1.5 text-xs font-bold text-slate-200 focus:outline-none">
+                                                <option value="bridal">Bridal Wear</option>
+                                                <option value="groom">Groom's Wear</option>
+                                                <option value="sarees">Heritage Sarees</option>
+                                                <option value="jewelry">Jewelry & Acc.</option>
+                                                <option value="occasion">Occasion Wear</option>
+                                            </select>
+                                        </div>
+                                    </div>
+                                    <div class="grid grid-cols-2 gap-2">
+                                        <div>
+                                            <label class="block text-[8px] uppercase tracking-wider text-slate-400 font-bold mb-1">Sizing Tag / Detail</label>
+                                            <input type="text" id="cropSizeInput" class="w-full bg-slate-950 border border-slate-700 rounded-lg p-1.5 text-xs font-bold text-slate-200 focus:outline-none">
+                                        </div>
+                                        <div>
+                                            <label class="block text-[8px] uppercase tracking-wider text-slate-400 font-bold mb-1">Fitting/Alteration Policy</label>
+                                            <input type="text" id="cropFittingInput" class="w-full bg-slate-950 border border-slate-700 rounded-lg p-1.5 text-xs font-bold text-slate-200 focus:outline-none">
+                                        </div>
+                                    </div>
+                                    <div>
+                                        <label class="block text-[8px] uppercase tracking-wider text-slate-400 font-bold mb-1">Stock Description</label>
+                                        <textarea id="cropDescInput" rows="2" class="w-full bg-slate-950 border border-slate-700 rounded-lg p-1.5 text-xs text-slate-200 focus:outline-none"></textarea>
+                                    </div>
+                                </div>
+                                <div class="flex items-center space-x-2 pt-2">
+                                    <button onclick="skipBatchCropperItem()" class="w-1/3 bg-slate-800 hover:bg-slate-700 text-slate-200 text-xs font-bold py-2.5 rounded-xl transition">Skip Slot</button>
+                                    <button onclick="commitBatchCroppedItem()" class="w-2/3 bg-zariGreen hover:bg-zariGreen-dark text-white text-xs font-bold py-2.5 rounded-xl transition shadow flex items-center justify-center space-x-1">
+                                        <i class="fas fa-crop-simple"></i>
+                                        <span>Crop & Inject to Slot</span>
+                                    </button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Sandbox Uploads Grid Directory List -->
+                    <div class="space-y-2">
+                        <label class="block text-[10px] uppercase tracking-wider text-slate-300 font-bold">📖 Direct Showroom Inventory Card Slots Index (Card Slots 1-100)</label>
+                        <div class="grid grid-cols-2 sm:grid-cols-4 md:grid-cols-5 gap-3 max-h-[250px] overflow-y-auto p-2 border border-slate-800 bg-slate-950 rounded-2xl" id="sandboxUploadsGrid">
+                            <!-- Populated Dynamically by JS -->
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Filter Navigation -->
+            <div class="flex flex-wrap justify-center items-center gap-2 mb-10 max-w-2xl mx-auto">
+                <button onclick="filterGallery('all')" id="filter-all" class="filter-btn active text-xs font-bold uppercase tracking-wider px-5 py-2.5 rounded-full border border-zariCrimson bg-zariCrimson-accent text-zariCrimson transition duration-300">All Masterpieces</button>
+                <button onclick="filterGallery('bridal')" id="filter-bridal" class="filter-btn text-xs font-bold uppercase tracking-wider px-5 py-2.5 rounded-full border border-slate-200 bg-white text-slate-600 hover:border-zariGreen hover:text-zariGreen transition duration-300">Bridal wear</button>
+                <button onclick="filterGallery('groom')" id="filter-groom" class="filter-btn text-xs font-bold uppercase tracking-wider px-5 py-2.5 rounded-full border border-slate-200 bg-white text-slate-600 hover:border-zariGreen hover:text-zariGreen transition duration-300">Groom's wear</button>
+                <button onclick="filterGallery('sarees')" id="filter-sarees" class="filter-btn text-xs font-bold uppercase tracking-wider px-5 py-2.5 rounded-full border border-slate-200 bg-white text-slate-600 hover:border-zariGreen hover:text-zariGreen transition duration-300">Heritage Sarees</button>
+                <button onclick="filterGallery('jewelry')" id="filter-jewelry" class="filter-btn text-xs font-bold uppercase tracking-wider px-5 py-2.5 rounded-full border border-slate-200 bg-white text-slate-600 hover:border-zariGreen hover:text-zariGreen transition duration-300">Jewelry & Acc.</button>
+                <button onclick="filterGallery('occasion')" id="filter-occasion" class="filter-btn text-xs font-bold uppercase tracking-wider px-5 py-2.5 rounded-full border border-slate-200 bg-white text-slate-600 hover:border-zariGreen hover:text-zariGreen transition duration-300">Occasion Wear</button>
+            </div>
+
+            <!-- Catalog Gallery Grid -->
+            <div id="gallery-grid" class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 min-h-[400px]">
+                <!-- Dynamic showroom slots generated by catalog engine -->
+            </div>
+            
+            <!-- Pagination Controls -->
+            <div class="flex justify-center items-center space-x-4 mt-12 pt-6 border-t border-slate-200">
+                <button onclick="changePage(-1)" id="btnPrevPage" class="bg-white hover:bg-slate-100 text-slate-700 font-bold uppercase text-[10px] tracking-widest px-4 py-2 rounded-lg border border-slate-200 transition">Prev Page</button>
+                <span class="text-xs font-bold text-slate-600 font-sans" id="paginationLabel">Page 1 of 4</span>
+                <button onclick="changePage(1)" id="btnNextPage" class="bg-white hover:bg-slate-100 text-slate-700 font-bold uppercase text-[10px] tracking-widest px-4 py-2 rounded-lg border border-slate-200 transition">Next Page</button>
+            </div>
+        </section>
+
+        <!-- Fabric Stitch Inspector Tool -->
+        <section id="inspector" class="py-20 bg-slate-900 text-white relative border-y border-zariGold/20">
+            <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+                <div class="grid grid-cols-1 lg:grid-cols-12 gap-12 items-center">
+                    
+                    <div class="lg:col-span-5 space-y-6">
+                        <span class="text-xs uppercase tracking-widest text-zariGold font-bold block">Physical Stitch Weave Inspector</span>
+                        <h2 class="text-3xl sm:text-4xl font-serif font-bold text-white leading-tight">Interactive Fabric stitch Analyzer</h2>
+                        <p class="text-slate-300 text-sm leading-relaxed">
+                            Examine the exquisite quality of our textiles. Hover your cursor or drag your finger over the fabric panel to inspect the rich, dense South Asian thread patterns magnified in ultra-high resolution.
+                        </p>
+                        
+                        <!-- Fabric Preset Selectors -->
+                        <div class="space-y-3 pt-4 border-t border-slate-800">
+                            <span class="text-xs uppercase text-slate-400 font-semibold tracking-wider block">Select Fabric Preserve Preset:</span>
+                            <div class="flex flex-wrap gap-2">
+                                <button onclick="selectFabricWeave('silk')" id="btn-weave-silk" class="weave-btn active bg-zariGreen text-white text-xs font-bold px-4 py-2 rounded-xl transition border border-zariGreen">Certified Katan Silk</button>
+                                <button onclick="selectFabricWeave('velvet')" id="btn-weave-velvet" class="weave-btn bg-slate-800 text-slate-300 text-xs font-bold px-4 py-2 rounded-xl transition border border-transparent hover:border-slate-700">Premium Royal Velvet</button>
+                                <button onclick="selectFabricWeave('brocade')" id="btn-weave-brocade" class="weave-btn bg-slate-800 text-slate-300 text-xs font-bold px-4 py-2 rounded-xl transition border border-transparent hover:border-slate-700">Gold Floral Zardozi</button>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Interactive Lens Viewport -->
+                    <div class="lg:col-span-7 flex justify-center">
+                        <div class="relative w-full max-w-[500px] h-[360px] rounded-3xl overflow-hidden border border-zariGold/40 gold-glow magnify-container bg-slate-950" id="weaveInspectorPanel">
+                            
+                            <!-- Main static display -->
+                            <div class="absolute inset-0 w-full h-full" id="inspectorStaticBg"></div>
+                            
+                            <div class="absolute inset-x-4 top-4 bg-slate-950/80 border border-white/10 rounded-xl p-3 backdrop-blur-sm z-20 pointer-events-none">
+                                <span class="text-[9px] uppercase tracking-widest font-sans font-extrabold text-zariGold block mb-0.5">Physical Quality Analysis</span>
+                                <h4 class="text-xs font-serif font-bold text-white" id="inspectorPresetTitle">Certified Katan Silk Weave</h4>
+                            </div>
+
+                            <div class="absolute bottom-4 right-4 bg-zariCrimson text-white text-[8px] uppercase font-bold tracking-widest px-3.5 py-1.5 rounded-full z-20 pointer-events-none">
+                                Zoom Area Active
+                            </div>
+
+                            <!-- Magnifier Circle element -->
+                            <div class="magnifier" id="fabricLens">
+                                <div class="magnifier-zoomed-content" id="inspectorZoomedBg"></div>
+                            </div>
+
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+        </section>
+
+        <!-- Personal Booking Concierge -->
+        <section id="shopper" class="py-24 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="grid grid-cols-1 lg:grid-cols-12 gap-12 items-center bg-white rounded-3xl border border-zariGold/20 shadow-xl overflow-hidden">
+                <div class="lg:col-span-6 p-8 md:p-12 space-y-6">
+                    <span class="text-xs uppercase tracking-[0.2em] text-zariCrimson font-bold block">Trade Route Mall Lenasia</span>
+                    <h2 class="text-3xl sm:text-4xl font-serif font-bold text-zariGreen">Private fitting Concierge</h2>
+                    <p class="text-slate-600 text-sm leading-relaxed">
+                        Indulge in an exquisite, individualized session inside our physical showroom. Use our live automated scheduling form to coordinate with our master tailors for custom bridal fittings, dress alterations, and groom consultation appointments.
+                    </p>
+                    
+                    <div class="space-y-3 pt-4 border-t border-slate-100">
+                        <div class="flex items-center space-x-3.5">
+                            <div class="w-10 h-10 rounded-full bg-zariGreen-accent flex items-center justify-center text-zariGreen">
+                                <i class="fas fa-calendar-check animate-bounce"></i>
+                            </div>
+                            <div>
+                                <span class="text-xs font-bold text-slate-800 block">Immediate Digital Scheduling</span>
+                                <span class="text-[10px] text-slate-500 block">Secures calendar placement inside local registries instantly.</span>
+                            </div>
+                        </div>
+                        <div class="flex items-center space-x-3.5">
+                            <div class="w-10 h-10 rounded-full bg-zariCrimson-accent flex items-center justify-center text-zariCrimson">
+                                <i class="fas fa-scissors"></i>
+                            </div>
+                            <div>
+                                <span class="text-xs font-bold text-slate-800 block">Master Tailoring Adjustments</span>
+                                <span class="text-[10px] text-slate-500 block">Our on-site master craftsmen handle complex bespoke resizing.</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Form Panel -->
+                <div class="lg:col-span-6 p-8 md:p-12 bg-slate-50 border-t lg:border-t-0 lg:border-l border-slate-100 w-full">
+                    <form onsubmit="handlePrivateConsultation(event)" class="space-y-4">
+                        <div class="grid grid-cols-2 gap-4">
+                            <div>
+                                <label class="block text-[10px] uppercase font-bold text-slate-600 mb-1">Your Full Name</label>
+                                <input type="text" id="schedName" required class="w-full bg-white border border-slate-200 rounded-xl px-4 py-2.5 text-xs text-slate-800 focus:border-zariCrimson focus:outline-none" placeholder="Enter name...">
+                            </div>
+                            <div>
+                                <label class="block text-[10px] uppercase font-bold text-slate-600 mb-1">Mobile Number (WhatsApp)</label>
+                                <input type="text" id="schedPhone" required class="w-full bg-white border border-slate-200 rounded-xl px-4 py-2.5 text-xs text-slate-800 focus:border-zariCrimson focus:outline-none" placeholder="+27 81...">
+                            </div>
+                        </div>
+                        
+                        <div class="grid grid-cols-2 gap-4">
+                            <div>
+                                <label class="block text-[10px] uppercase font-bold text-slate-600 mb-1">Fitting Date</label>
+                                <input type="date" id="schedDate" required class="w-full bg-white border border-slate-200 rounded-xl px-4 py-2.5 text-xs text-slate-800 focus:border-zariCrimson focus:outline-none">
+                            </div>
+                            <div>
+                                <label class="block text-[10px] uppercase font-bold text-slate-600 mb-1">Select Custom wear Segment</label>
+                                <select id="schedSegment" class="w-full bg-white border border-slate-200 rounded-xl px-4 py-2.5 text-xs text-slate-800 focus:border-zariCrimson focus:outline-none">
+                                    <option value="Bridal Lehenga Fitting">Bridal Lehenga Fitting</option>
+                                    <option value="Groom Sherwani Tailoring">Groom Sherwani Tailoring</option>
+                                    <option value="Saree Silk Drape Trial">Saree Silk Drape Trial</option>
+                                    <option value="Occasional Festivity Wear">Occasional Festivity Wear</option>
+                                </select>
+                            </div>
+                        </div>
+
+                        <div>
+                            <label class="block text-[10px] uppercase font-bold text-slate-600 mb-1">Custom fitting Details / Alternate Requests</label>
+                            <textarea id="schedDetails" rows="3" class="w-full bg-white border border-slate-200 rounded-xl px-4 py-2.5 text-xs text-slate-800 focus:border-zariCrimson focus:outline-none" placeholder="Mention size parameters or details..."></textarea>
+                        </div>
+
+                        <button type="submit" class="w-full bg-gradient-to-r from-zariCrimson to-zariBurgundy hover:brightness-110 text-white font-sans font-bold uppercase text-xs tracking-widest py-3.5 rounded-xl transition duration-300 shadow-md">
+                            <i class="fab fa-whatsapp mr-1.5" aria-hidden="true"></i> Generate WhatsApp Booking Request
+                        </button>
+                    </form>
+                </div>
+            </div>
+        </section>
+
+        <!-- Terms, Guarantees and FAQs -->
+        <section id="legal" class="py-20 bg-zariGreen-accent/50 border-t border-zariGold/15">
+            <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
+                <div class="text-center space-y-3 mb-12">
+                    <span class="text-xs uppercase tracking-widest text-zariGreen font-bold block">Authenticity & Registry</span>
+                    <h2 class="text-3xl font-serif font-bold text-slate-900">Boutique Policies & Quality Guarantees</h2>
+                    <div class="w-16 h-[1.5px] bg-zariGold mx-auto"></div>
+                </div>
+
+                <div class="space-y-4">
+                    <!-- Item 1 -->
+                    <div class="bg-white border border-slate-200/60 rounded-2xl overflow-hidden shadow-sm">
+                        <button onclick="toggleAccordion(1)" class="w-full p-5 text-left flex justify-between items-center focus:outline-none font-bold text-xs uppercase tracking-wider text-slate-800">
+                            <span>1. Authentic South Asian Artisanal Source Guarantee</span>
+                            <i id="faq-icon-1" class="fas fa-chevron-down text-[10px] text-zariGreen transition-transform"></i>
+                        </button>
+                        <div id="faq-body-1" class="hidden p-5 border-t border-slate-100 text-xs text-slate-600 leading-relaxed font-semibold">
+                            Every bridal lehenga, groom sherwani, and heritage saree available at Zari Ethnics is direct-sourced from master artisans in Varanasi, Jaipur, Lucknow, and Kolkata. We guarantee original zari threadwork and do not stock mass-produced machine imitations.
+                        </div>
+                    </div>
+
+                    <!-- Item 2 -->
+                    <div class="bg-white border border-slate-200/60 rounded-2xl overflow-hidden shadow-sm">
+                        <button onclick="toggleAccordion(2)" class="w-full p-5 text-left flex justify-between items-center focus:outline-none font-bold text-xs uppercase tracking-wider text-slate-800">
+                            <span>2. Physical Fit Alteration & Fitting Terms</span>
+                            <i id="faq-icon-2" class="fas fa-chevron-down text-[10px] text-zariGreen transition-transform"></i>
+                        </button>
+                        <div id="faq-body-2" class="hidden p-5 border-t border-slate-100 text-xs text-slate-600 leading-relaxed font-semibold">
+                            Alteration services are complimentary for all garments purchased at full retail price. Bespoke creations (sherwanis and lehengas tailored to specific measurements) require an on-site master session to verify metrics prior to starting production.
+                        </div>
+                    </div>
+
+                    <!-- Item 3 -->
+                    <div class="bg-white border border-slate-200/60 rounded-2xl overflow-hidden shadow-sm">
+                        <button onclick="toggleAccordion(3)" class="w-full p-5 text-left flex justify-between items-center focus:outline-none font-bold text-xs uppercase tracking-wider text-slate-800">
+                            <span>3. Exchange and Bridal registry Policies</span>
+                            <i id="faq-icon-3" class="fas fa-chevron-down text-[10px] text-zariGreen transition-transform"></i>
+                        </button>
+                        <div id="faq-body-3" class="hidden p-5 border-t border-slate-100 text-xs text-slate-600 leading-relaxed font-semibold">
+                            To protect physical registry exclusivities, custom wedding attire is non-exchangeable once tailoring is initiated. Unaltered standard retail items may be exchanged within 7 days of acquisition, supported by original showroom invoices.
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <!-- Footer -->
+    <footer class="bg-slate-900 text-white pt-16 pb-12 border-t border-zariGold/20 font-sans">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 grid grid-cols-1 md:grid-cols-4 gap-10">
+            
+            <div class="space-y-4">
+                <div class="flex items-baseline">
+                    <span class="text-2xl font-cinzel font-bold tracking-[0.1em] text-zariGold">ZARÌ</span>
+                    <span class="text-xs font-bold tracking-widest text-zariCrimson ml-1">ETHNICS</span>
+                </div>
+                <p class="text-xs text-slate-400 leading-relaxed">
+                    Indulge in an exquisite eastern experience next to Ocean Basket. Gauteng's leading house for bespoke bridal and designer groom attire.
+                </p>
+                <div class="flex space-x-3 text-slate-400 text-sm">
+                    <a href="#" class="hover:text-zariCrimson transition"><i class="fab fa-facebook" aria-hidden="true"></i></a>
+                    <a href="#" class="hover:text-zariCrimson transition"><i class="fab fa-instagram" aria-hidden="true"></i></a>
+                    <a href="https://wa.me/27812742028" target="_blank" class="hover:text-zariCrimson transition"><i class="fab fa-whatsapp" aria-hidden="true"></i></a>
+                </div>
+            </div>
+
+            <div>
+                <h5 class="text-xs font-bold uppercase tracking-wider text-zariGold mb-4">Quick Navigation</h5>
+                <ul class="space-y-2 text-xs text-slate-400 font-semibold">
+                    <li><a href="#about" class="hover:text-white transition">The Experience</a></li>
+                    <li><a href="#collections" class="hover:text-white transition">Selection Gallery</a></li>
+                    <li><a href="#inspector" class="hover:text-white transition">Fabric stitch Analyzer</a></li>
+                    <li><a href="#shopper" class="hover:text-white transition">Fitting Booking</a></li>
+                </ul>
+            </div>
+
+            <div>
+                <h5 class="text-xs font-bold uppercase tracking-wider text-zariGold mb-4">Contact & Inquiries</h5>
+                <ul class="space-y-2 text-xs text-slate-400 font-semibold">
+                    <li><i class="fas fa-phone mr-1.5 text-zariCrimson"></i> (011) 852-1779</li>
+                    <li><i class="fab fa-whatsapp mr-1.5 text-zariGreen-light"></i> +27 81 274 2028</li>
+                    <li><i class="fas fa-envelope mr-1.5 text-zariCrimson"></i> zariethnics@gmail.com</li>
+                </ul>
+            </div>
+
+            <div>
+                <h5 class="text-xs font-bold uppercase tracking-wider text-zariGold mb-4">Boutique Showroom</h5>
+                <p class="text-xs text-slate-400 leading-relaxed font-semibold">
+                    Shop U28A, Upper Level,<br>
+                    Trade Route Mall (next to Ocean Basket),<br>
+                    Lenasia, Gauteng, South Africa
+                </p>
+            </div>
+
+        </div>
+
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 mt-12 pt-8 border-t border-slate-800 text-center text-[10px] text-slate-500 font-bold uppercase tracking-wider">
+            &copy; 2026 Zari Ethnics. Exquisite Eastern Experience Trade Route Mall. All Rights Reserved.
+        </div>
+    </footer>
+
+    <!-- Custom Inquiry Modal (With Built-in High-Definition Fabric/Jewelry Inspector) -->
+    <div id="inquiryModal" class="fixed inset-0 bg-slate-950/85 backdrop-blur-sm z-50 flex items-center justify-center p-4 hidden">
+        <div class="bg-white rounded-3xl border border-zariGold/30 max-w-lg w-full overflow-hidden shadow-2xl relative">
+            <button onclick="closeInquiryModal()" class="absolute top-4 right-4 text-slate-400 hover:text-white bg-slate-900/60 hover:bg-zariCrimson p-2 rounded-full z-40 transition" aria-label="Close modal">
+                <i class="fas fa-times text-sm"></i>
+            </button>
+            
+            <div class="relative h-72 bg-slate-950 modal-magnify-container" id="modalImageContainer">
+                <!-- Original Target Image -->
+                <div id="modalProductImage" class="absolute inset-0 bg-cover bg-center transition-opacity duration-300"></div>
+                
+                <!-- Overlay vector graphic for blank placeholders -->
+                <div id="modalPlaceholderPattern" class="absolute inset-0 opacity-40 mix-blend-overlay pointer-events-none hidden"></div>
+                <div id="modalVectorOverlay" class="absolute inset-0 flex items-center justify-center pointer-events-none"></div>
+
+                <!-- Info Header Badge -->
+                <div class="absolute inset-x-0 bottom-0 bg-gradient-to-t from-slate-950 via-slate-950/40 to-transparent p-6 z-30">
+                    <span id="modalCategory" class="text-[9px] uppercase tracking-[0.2em] text-zariGold font-extrabold">Category</span>
+                    <h4 id="modalTitle" class="text-2xl font-serif font-bold text-white">Classic Wedding Wear</h4>
+                    <span class="block text-[9px] text-slate-300 mt-1 font-semibold tracking-wider">
+                        <i class="fas fa-magnifying-glass-plus text-zariGold mr-1 animate-pulse"></i> Hover / Touch-drag image to inspect fabric & weave quality
+                    </span>
+                </div>
+
+                <!-- Dynamic Modal Circular Lens -->
+                <div class="modal-magnifier" id="modalLens"></div>
+            </div>
+
+            <div class="p-6 space-y-4">
+                <div class="grid grid-cols-2 gap-3 text-xs border-b border-slate-100 pb-3">
+                    <div>
+                        <span class="block text-slate-400 uppercase font-extrabold text-[8px] tracking-wider">Estimated Price (ZAR)</span>
+                        <strong id="modalPrice" class="text-zariCrimson font-serif text-lg font-bold">R 0,00</strong>
+                    </div>
+                    <div>
+                        <span class="block text-slate-400 uppercase font-extrabold text-[8px] tracking-wider">Size & Piece Setup</span>
+                        <strong id="modalSizes" class="text-slate-700 font-semibold">Medium (3pc)</strong>
+                    </div>
+                </div>
+
+                <div class="space-y-1">
+                    <span class="block text-slate-400 uppercase font-extrabold text-[8px] tracking-wider">Product Description</span>
+                    <p id="modalDescription" class="text-xs text-slate-600 leading-relaxed font-semibold">Exquisite traditional wear designed with gold kora highlights and premium fabrics.</p>
+                </div>
+
+                <div class="space-y-1">
+                    <span class="block text-slate-400 uppercase font-extrabold text-[8px] tracking-wider">Bespoke In-Store Alterations</span>
+                    <p id="modalAlteration" class="text-xs text-slate-600 font-semibold">Complimentary on-site adjustments handled by our master tailors.</p>
+                </div>
+
+                <div class="pt-4 border-t border-slate-100 flex gap-2">
+                    <button onclick="closeInquiryModal()" class="w-1/3 border border-slate-200 hover:bg-slate-100 text-slate-700 font-sans font-bold uppercase text-[10px] tracking-widest py-3 rounded-xl transition">Close View</button>
+                    <button onclick="submitInquiryWhatsApp()" class="w-2/3 bg-gradient-to-r from-zariGreen to-zariGreen-dark hover:brightness-105 text-white font-sans font-bold uppercase text-[10px] tracking-widest py-3 rounded-xl transition flex items-center justify-center space-x-1.5">
+                        <i class="fab fa-whatsapp text-sm" aria-hidden="true"></i>
+                        <span>Inquire on WhatsApp</span>
+                    </button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Live Git Deploy Processing Success Modal -->
+    <div id="gitSuccessModal" class="fixed inset-0 bg-slate-950/90 backdrop-blur-md z-[60] flex items-center justify-center p-4 hidden">
+        <div class="bg-slate-900 border border-zariGold/30 rounded-3xl p-8 max-w-md w-full text-center space-y-6 shadow-2xl">
+            <div class="w-16 h-16 rounded-full bg-emerald-500/10 border border-emerald-500/30 flex items-center justify-center text-emerald-500 mx-auto">
+                <i class="fas fa-cloud-check text-2xl animate-pulse" aria-hidden="true"></i>
+            </div>
+            <div class="space-y-2">
+                <h4 class="text-lg font-serif font-bold text-white">🚀 Build Triggered Successfully!</h4>
+                <p class="text-xs text-slate-300 leading-relaxed">Your catalog edits and high-definition cropped images are currently compiling. GitHub Pages will deploy your updated site in roughly 60 seconds.</p>
+                <div class="w-full bg-slate-950 rounded-full h-1 mt-4 overflow-hidden relative">
+                    <div class="bg-emerald-500 h-full rounded-full transition-all duration-[60000ms] ease-out w-0" id="gitProgressBar"></div>
+                </div>
+            </div>
+            <button onclick="closeGitSuccessModal()" class="w-full bg-slate-800 hover:bg-slate-700 text-white font-sans font-bold uppercase text-[10px] tracking-widest py-3 rounded-xl transition">Close & Monitor</button>
+        </div>
+    </div>
+
+    <!-- Git Fail Modal -->
+    <div id="gitFailModal" class="fixed inset-0 bg-slate-950/90 backdrop-blur-md z-[60] flex items-center justify-center p-4 hidden">
+        <div class="bg-slate-900 border border-zariCrimson/30 rounded-3xl p-8 max-w-xl w-full text-center space-y-6 shadow-2xl">
+            <div class="w-16 h-16 rounded-full bg-zariCrimson/10 border border-zariCrimson/30 flex items-center justify-center text-zariCrimson mx-auto">
+                <i class="fas fa-triangle-exclamation text-2xl" aria-hidden="true"></i>
+            </div>
+            <div class="space-y-2">
+                <h4 class="text-lg font-serif font-bold text-white">Live Sync Network Restrictions Detected</h4>
+                
+                <!-- Helpful Educational Troubleshooting guide -->
+                <div id="gitSandboxWarning" class="p-4 bg-slate-950/80 rounded-2xl border border-zariGold/20 text-left space-y-3 hidden">
+                    <span class="text-[10px] text-zariGold font-bold uppercase tracking-wider block"><i class="fas fa-circle-exclamation mr-1 animate-pulse"></i> Preview Sandbox Environment Constraint:</span>
+                    <p class="text-[11px] text-slate-300 leading-relaxed">
+                        Your browser security policies block outgoing network connections (CORS/Preflights) while running inside a sandboxed iframe or a secure preview window.
+                    </p>
+                    <p class="text-[11px] text-emerald-400 font-semibold leading-relaxed">
+                        🛡️ <strong>Rest assured, this is working as intended!</strong> Once you export this file and open it locally or publish it on your client's live website domain, the browser security restrictions will lift and the automated GitHub Push will work perfectly.
+                    </p>
+                </div>
+
+                <p id="gitFailMsg" class="text-xs text-slate-300 leading-relaxed text-left">Could not find or authenticate repository configuration. Verify token credentials and permission scope are set correctly on GitHub.</p>
+            </div>
+
+            <!-- Fail-safe backup module if they worked hard in preview -->
+            <div class="p-4 bg-slate-950/40 border border-slate-800 rounded-2xl space-y-2 text-left">
+                <span class="text-[9px] uppercase tracking-wider text-slate-400 font-extrabold block">💾 Fail-Safe Data Protection (Do Not Lose Your Edits)</span>
+                <p class="text-[10px] text-slate-400">If you have made edits inside this preview, click below to immediately download your file before closing, preserving all changes.</p>
+                <button onclick="downloadCleanProductionHTML()" class="w-full bg-slate-800 hover:bg-slate-700 text-white text-[10px] font-bold uppercase py-2 rounded-xl transition">
+                    <i class="fas fa-file-code mr-1"></i> Save Progress as Local HTML File
+                </button>
+            </div>
+
+            <button onclick="document.getElementById('gitFailModal').classList.add('hidden')" class="w-full bg-slate-800 hover:bg-slate-700 text-white font-sans font-bold uppercase text-[10px] tracking-widest py-3 rounded-xl transition">Return to Console</button>
+        </div>
+    </div>
+
+    <script>
+        // ==========================================
+        // Tone.js Ambient Audio Setup
+        // ==========================================
+        let audioActive = false;
+        let padSynth, pluckSynth, filterNode;
+
+        function initAudio() {
+            try {
+                filterNode = new Tone.Filter({
+                    type: "lowpass",
+                    frequency: 1100,
+                    Q: 1
+                }).toDestination();
+
+                padSynth = new Tone.PolySynth(Tone.Synth, {
+                    oscillator: { type: "triangle" },
+                    envelope: { attack: 3, decay: 2, sustain: 0.8, release: 4 }
+                }).connect(filterNode);
+                padSynth.volume.value = -18;
+
+                pluckSynth = new Tone.MonoSynth({
+                    oscillator: { type: "sine" },
+                    envelope: { attack: 0.02, decay: 0.4, sustain: 0.1, release: 0.8 }
+                }).connect(filterNode);
+                pluckSynth.volume.value = -12;
+            } catch (e) {
+                console.warn("Tone.js failed to initialize on this client configuration.", e);
+            }
+        }
+
+        function toggleSound() {
+            if (!audioActive) {
+                Tone.start();
+                if (!padSynth) initAudio();
+                
+                audioActive = true;
+                document.getElementById('soundIcon').className = "fas fa-volume-up text-zariCrimson animate-pulse";
+                
+                // Play continuous signature background pad
+                try {
+                    padSynth.triggerAttack(["E2", "B2", "E3", "G#3"]);
+                } catch(err){}
+            } else {
+                audioActive = false;
+                document.getElementById('soundIcon').className = "fas fa-music";
+                try {
+                    padSynth.triggerRelease(["E2", "B2", "E3", "G#3"]);
+                } catch(err){}
+            }
+        }
+
+        function playAtmosphericSound(pitch) {
+            if (!audioActive) return;
+            try {
+                if (pitch === 'high') {
+                    pluckSynth.triggerAttackRelease("E4", "8n");
+                } else if (pitch === 'success') {
+                    pluckSynth.triggerAttackRelease("B4", "16n");
+                    setTimeout(() => pluckSynth.triggerAttackRelease("E5", "8n"), 120);
+                } else {
+                    pluckSynth.triggerAttackRelease("B3", "8n");
+                }
+            } catch(e){}
+        }
+
+        // ==========================================
+        // Dynamic Operating Hours Calculator
+        // ==========================================
+        function updateShowroomStatus() {
+            // Calculate Johannesburg timezone offsets (SAST is GMT+2)
+            const d = new Date();
+            const utc = d.getTime() + (d.getTimezoneOffset() * 60000);
+            const sastDate = new Date(utc + (3600000 * 2));
+            
+            const day = sastDate.getDay(); // Sun is 0, Mon is 1... Sat is 6
+            const hour = sastDate.getHours();
+            const min = sastDate.getMinutes();
+            const currentMin = (hour * 60) + min;
+
+            let openTime = 9 * 60 + 30; // 09:30
+            let closeTime = 17 * 60;   // 17:00
+            
+            if (day === 0) { // Sunday
+                openTime = 10 * 60; // 10:00
+                closeTime = 15 * 60; // 15:00
+            }
+
+            const liveStatusPulse = document.getElementById('liveStatusPulse');
+            const liveStatusDot = document.getElementById('liveStatusDot');
+            const liveStatusText = document.getElementById('liveStatusText');
+
+            if (currentMin >= openTime && currentMin < closeTime) {
+                liveStatusPulse.className = "animate-ping absolute inline-flex h-full w-full rounded-full opacity-75 bg-emerald-400";
+                liveStatusDot.className = "relative inline-flex rounded-full h-3.5 w-3.5 bg-emerald-500";
+                liveStatusText.innerHTML = `WE ARE CURRENTLY OPEN • <span class="text-zariCrimson font-bold">Visit us inside Trade Route Mall</span>`;
+            } else {
+                liveStatusPulse.className = "absolute inline-flex h-full w-full rounded-full bg-red-400 opacity-0";
+                liveStatusDot.className = "relative inline-flex rounded-full h-3.5 w-3.5 bg-red-500";
+                liveStatusText.innerHTML = `WE ARE CURRENTLY CLOSED • <span class="text-zariGreen font-bold">Reopening at 09:30 AM SAST (Trade Route Mall)</span>`;
+            }
+        }
+
+        // ==========================================
+        // Stitch Inspector Custom Presets
+        // ==========================================
+        const fabricInspectorPresets = {
+            silk: {
+                title: "Certified Katan Silk Weave (Varanasi thread)",
+                pattern: "repeating-linear-gradient(90deg, #F5C21B, #c4990c 4px, transparent 4px, transparent 12px)"
+            },
+            velvet: {
+                title: "Premium Royal Velvet Texture",
+                pattern: "radial-gradient(circle at 50% 50%, #DE1B45, #7A1F3D 80%)"
+            },
+            brocade: {
+                title: "Gold Floral Zardozi",
+                pattern: "repeating-conic-gradient(#c4990c 0% 15%, #FAF9F6 15% 30%, #446B1E 30% 45%)"
+            },
+            jewelry: {
+                title: "Exquisite Handcrafted Gold Filigree & Polished Metal Work",
+                pattern: "radial-gradient(circle at 20% 20%, #fce37e 0%, #c4990c 40%, #7A1F3D 80%)"
+            }
+        };
+
+        function selectFabricWeave(weaveKey) {
+            playAtmosphericSound('low');
+            const preset = fabricInspectorPresets[weaveKey];
+            
+            document.querySelectorAll('.weave-btn').forEach(btn => {
+                btn.classList.remove('active', 'bg-zariGreen', 'text-white');
+                btn.classList.add('bg-slate-800', 'text-slate-300');
+            });
+            document.getElementById(`btn-weave-${weaveKey}`).classList.remove('bg-slate-800', 'text-slate-300');
+            document.getElementById(`btn-weave-${weaveKey}`).classList.add('active', 'bg-zariGreen', 'text-white');
+            
+            document.getElementById('inspectorPresetTitle').textContent = preset.title;
+            
+            // Re-render patterns over static & zoomed elements
+            const mainBg = document.getElementById('inspectorStaticBg');
+            const zoomBg = document.getElementById('inspectorZoomedBg');
+            
+            mainBg.style.background = preset.pattern;
+            zoomBg.style.background = preset.pattern;
+            zoomBg.style.backgroundSize = "200% 200%"; // Simulation of magnification scale
+        }
+
+        // Setup Hover magnification calculation
+        function initWeaveMagnifier() {
+            const container = document.getElementById('weaveInspectorPanel');
+            const lens = document.getElementById('fabricLens');
+            const zoomBg = document.getElementById('inspectorZoomedBg');
+
+            container.addEventListener('mousemove', (e) => {
+                const rect = container.getBoundingClientRect();
+                const x = e.clientX - rect.left;
+                const y = e.clientY - rect.top;
+
+                // Ensure the magnifier circle centers under cursor perfectly
+                lens.style.display = 'block';
+                lens.style.left = `${x - 80}px`;
+                lens.style.top = `${y - 80}px`;
+
+                // Calculate background coordinates mapping (inverted for magnifying glass scroll context)
+                const percentX = (x / rect.width) * 100;
+                const percentY = (y / rect.height) * 100;
+
+                zoomBg.style.left = `-${percentX * 1.5}px`;
+                zoomBg.style.top = `-${percentY * 1.5}px`;
+            });
+
+            container.addEventListener('mouseleave', () => {
+                lens.style.display = 'none';
+            });
+        }
+
+        function initModalMagnifier() {
+            const container = document.getElementById('modalImageContainer');
+            const lens = document.getElementById('modalLens');
+
+            function handleMove(e) {
+                if (!activeInquiryItem) return;
+
+                const rect = container.getBoundingClientRect();
+                let clientX = e.clientX;
+                let clientY = e.clientY;
+
+                // Support mobile touch gesture calculation
+                if (e.touches && e.touches.length > 0) {
+                    clientX = e.touches[0].clientX;
+                    clientY = e.touches[0].clientY;
+                }
+
+                const x = clientX - rect.left;
+                const y = clientY - rect.top;
+
+                // Boundaries guardrail
+                if (x < 0 || x > rect.width || y < 0 || y > rect.height) {
+                    lens.style.display = 'none';
+                    return;
+                }
+
+                lens.style.display = 'block';
+                lens.style.left = `${x - 70}px`; // Center 140px lens
+                lens.style.top = `${y - 70}px`;
+
+                const percentX = (x / rect.width) * 100;
+                const percentY = (y / rect.height) * 100;
+
+                if (activeInquiryItem.img !== 'placeholder') {
+                    // Custom user-uploaded image magnification
+                    lens.style.backgroundImage = `url(${activeInquiryItem.img})`;
+                    lens.style.backgroundSize = `${rect.width * 2.5}px ${rect.height * 2.5}px`;
+                    
+                    const offsetX = (x * 2.5) - 70;
+                    const offsetY = (y * 2.5) - 70;
+                    lens.style.backgroundPosition = `-${offsetX}px -${offsetY}px`;
+                } else {
+                    // Placeholder decorative fabric inspector
+                    let weavePreset = fabricInspectorPresets.silk;
+                    if (activeInquiryItem.category === 'groom') weavePreset = fabricInspectorPresets.velvet;
+                    if (activeInquiryItem.category === 'sarees') weavePreset = fabricInspectorPresets.brocade;
+                    if (activeInquiryItem.category === 'jewelry') weavePreset = fabricInspectorPresets.jewelry;
+
+                    lens.style.background = weavePreset.pattern;
+                    lens.style.backgroundSize = "400% 400%";
+                    lens.style.backgroundPosition = `${percentX}% ${percentY}%`;
+                }
+            }
+
+            container.addEventListener('mousemove', handleMove);
+            container.addEventListener('touchmove', handleMove, { passive: true });
+            container.addEventListener('touchstart', handleMove, { passive: true });
+
+            container.addEventListener('mouseleave', () => { lens.style.display = 'none'; });
+            container.addEventListener('touchend', () => { lens.style.display = 'none'; });
+        }
+
+        // ==========================================
+        // Interactive Hero Base Thread Shading
+        // ==========================================
+        function changeHeroShade(styleKey, hexColor, titleText) {
+            playAtmosphericSound('high');
+            const baseBg = document.getElementById('heroFabric');
+            
+            if (styleKey === 'crimson') {
+                baseBg.style.backgroundImage = "linear-gradient(135deg, #DE1B45, #7A1F3D)";
+            } else if (styleKey === 'green') {
+                baseBg.style.backgroundImage = "linear-gradient(135deg, #446B1E, #2d4714)";
+            } else if (styleKey === 'gold') {
+                baseBg.style.backgroundImage = "linear-gradient(135deg, #F5C21B, #c4990c)";
+            } else {
+                baseBg.style.backgroundImage = "linear-gradient(135deg, #FFFFFF, #FAF9F6)";
+            }
+            
+            document.getElementById('shadeLabel').textContent = titleText;
+        }
+
+        // ==========================================
+        // Catalog Core Database Initialization (1-100)
+        // ==========================================
+        let catalog = [
+            {
+                id: 1,
+                title: "Wine Pink Groom’s Suit",
+                category: "groom",
+                price: 4010,
+                size: "44 Large",
+                pieces: "Exclusive Groom's Wear",
+                description: "An elegant, bespoke Wine Pink Groom’s Suit tailored for bridal celebrations, premium weddings, or luxury formal events. Features flawless craftsmanship, modern lines, and premium structure.",
+                img: "/images/suite-wine-pink-44.png"
+            }
+        ];
+
+        function initCatalogDatabase() {
+            const existingMap = new Map();
+            catalog.forEach(item => existingMap.set(item.id, item));
+            
+            let fullCatalog = [];
+            for (let i = 1; i <= 100; i++) {
+                if (existingMap.has(i)) {
+                    fullCatalog.push(existingMap.get(i));
+                } else {
+                    fullCatalog.push({
+                        id: i,
+                        title: `Showroom Slot #${i}`,
+                        category: "bridal",
+                        price: 0, 
+                        size: "TBD",
+                        pieces: "TBD",
+                        description: "This showroom slot is currently unpopulated. Unlock the Atelier Command Center to manually upload images, select a category, and customize prices.",
+                        img: "placeholder"
+                    });
+                }
+            }
+            catalog = fullCatalog;
+        }
+
+        // ==========================================
+        // Active Showroom Gallery State Management
+        // ==========================================
+        let currentPage = 1;
+        const itemsPerPage = 12;
+        let activeFilter = 'all';
+
+        function filterGallery(categoryKey) {
+            playAtmosphericSound('low');
+            activeFilter = categoryKey;
+            currentPage = 1;
+            
+            document.querySelectorAll('.filter-btn').forEach(btn => {
+                btn.classList.remove('active', 'border-zariCrimson', 'bg-zariCrimson-accent', 'text-zariCrimson');
+                btn.classList.add('border-slate-200', 'bg-white', 'text-slate-600');
+            });
+            
+            const activeBtn = document.getElementById(`filter-${categoryKey}`);
+            activeBtn.classList.remove('border-slate-200', 'bg-white', 'text-slate-600');
+            activeBtn.classList.add('active', 'border-zariCrimson', 'bg-zariCrimson-accent', 'text-zariCrimson');
+            
+            renderGallery();
+        }
+
+        function changePage(direction) {
+            playAtmosphericSound('low');
+            currentPage += direction;
+            renderGallery();
+        }
+
+        function getFilteredCatalog() {
+            if (activeFilter === 'all') {
+                return catalog;
+            }
+            return catalog.filter(item => item.category === activeFilter);
+        }
+
+        function renderGallery() {
+            const grid = document.getElementById('gallery-grid');
+            grid.innerHTML = "";
+
+            const filtered = getFilteredCatalog();
+            const totalItems = filtered.length;
+            const totalPages = Math.ceil(totalItems / itemsPerPage) || 1;
+
+            if (currentPage < 1) currentPage = 1;
+            if (currentPage > totalPages) currentPage = totalPages;
+
+            document.getElementById('paginationLabel').textContent = `Page ${currentPage} of ${totalPages}`;
+            document.getElementById('btnPrevPage').disabled = currentPage === 1;
+            document.getElementById('btnNextPage').disabled = currentPage === totalPages;
+
+            const startIndex = (currentPage - 1) * itemsPerPage;
+            const endIndex = Math.min(startIndex + itemsPerPage, totalItems);
+
+            const displayItems = filtered.slice(startIndex, endIndex);
+
+            displayItems.forEach(item => {
+                const card = document.createElement('article');
+                card.className = `gallery-item ${item.category} group border border-zariGold/10 hover:border-zariCrimson bg-white rounded-2xl overflow-hidden transition duration-500 hover:-translate-y-1.5 gold-glow-hover flex flex-col justify-between relative`;
+                
+                let isVault = item.price === 0;
+
+                let customBackground = `linear-gradient(135deg, #1b1c1e, #0f172a)`;
+                if (item.category === 'bridal') customBackground = `linear-gradient(135deg, #DE1B45, #7A1F3D)`;
+                if (item.category === 'groom') customBackground = `linear-gradient(135deg, #446B1E, #2d4714)`;
+                if (item.category === 'jewelry') customBackground = `linear-gradient(135deg, #F5C21B, #c4990c)`;
+
+                let graphicSVG = `
+                    <svg class="w-24 h-24 text-zariGold/20" viewBox="0 0 100 100" fill="none" stroke="currentColor" stroke-width="1.2">
+                        <path d="M50 10 L60 40 L90 50 L60 60 L50 90 L40 60 L10 50 L40 40 Z" fill="#F5C21B" fill-opacity="0.05" />
+                    </svg>
+                `;
+
+                let imgRendererBlock = `
+                    <div class="relative h-72 bg-gradient-to-br flex items-center justify-center overflow-hidden" id="cardImageContainer-${item.id}" style="background-image: ${customBackground}">
+                        <div class="w-full h-full flex items-center justify-center ${item.img !== 'placeholder' ? 'hidden' : ''}">
+                            ${graphicSVG}
+                        </div>
+                        ${item.img !== 'placeholder' ? `<img src="${item.img}" class="absolute inset-0 w-full h-full object-cover" alt="Visual asset">` : ''}
+                        
+                        <div class="absolute top-4 right-4 bg-zariCrimson text-white text-[8px] uppercase font-bold tracking-widest px-3.5 py-1.5 rounded-full shadow-sm z-30">
+                            ${isVault ? 'Private Vault' : `R ${item.price.toLocaleString('en-ZA')}`}
+                        </div>
+                    </div>
+                `;
+
+                card.innerHTML = `
+                    <div>
+                        ${imgRendererBlock}
+                        <div class="p-6 space-y-2">
+                            <span class="text-[9px] uppercase tracking-wider text-zariCrimson font-bold">${item.category === 'groom' ? "Groom's Couture" : item.category === 'bridal' ? "Bridal Collection" : item.category === 'sarees' ? "Heritage Sarees" : item.category === 'jewelry' ? "Luxury Jewelry" : "Occasion wear"}</span>
+                            <h3 class="text-xl font-serif font-bold text-zariGreen group-hover:text-zariCrimson transition duration-300">${item.title}</h3>
+                            <p class="text-xs text-slate-500 leading-relaxed font-semibold">
+                                ${item.description.substring(0, 140)}...
+                            </p>
+                        </div>
+                    </div>
+                    
+                    <div class="p-6 pt-0 flex items-center justify-between border-t border-slate-100 mt-4">
+                        <span class="text-zariBurgundy font-serif text-xs font-bold italic">${isVault ? 'Showroom Exclusive' : `${item.size} | ${item.pieces}`}</span>
+                        <button onclick="openInquiryModal(${item.id})" class="text-xs text-zariGreen hover:text-zariCrimson uppercase font-bold tracking-widest flex items-center space-x-1.5 group/btn" aria-label="Quick view specs of ${item.title}">
+                            <span>Quick View & Inspect</span>
+                            <i class="fas fa-eye text-[9px] transform group-hover/btn:scale-110 transition-transform" aria-hidden="true"></i>
+                        </button>
+                    </div>
+                `;
+                grid.appendChild(card);
+            });
+        }
+
+        // ==========================================
+        // Modal Inquiry Controller & Inspector Adapter
+        // ==========================================
+        let activeInquiryItem = null;
+
+        function openInquiryModal(itemId) {
+            playAtmosphericSound('high');
+            const item = catalog.find(x => x.id === itemId);
+            if (!item) return;
+
+            activeInquiryItem = item;
+
+            const imageBlock = document.getElementById('modalProductImage');
+            const container = document.getElementById('modalImageContainer');
+            const placeholderPattern = document.getElementById('modalPlaceholderPattern');
+            const vectorOverlay = document.getElementById('modalVectorOverlay');
+
+            placeholderPattern.classList.add('hidden');
+            vectorOverlay.innerHTML = "";
+
+            if (item.img === 'placeholder') {
+                imageBlock.style.backgroundImage = 'none';
+                placeholderPattern.classList.remove('hidden');
+
+                let customBackground = `linear-gradient(135deg, #1b1c1e, #0f172a)`;
+                let patternCode = "";
+
+                if (item.category === 'bridal') {
+                    customBackground = `linear-gradient(135deg, #DE1B45, #7A1F3D)`;
+                    patternCode = fabricInspectorPresets.silk.pattern;
+                } else if (item.category === 'groom') {
+                    customBackground = `linear-gradient(135deg, #446B1E, #2d4714)`;
+                    patternCode = fabricInspectorPresets.velvet.pattern;
+                } else if (item.category === 'sarees') {
+                    customBackground = `linear-gradient(135deg, #7A1F3D, #4f1125)`;
+                    patternCode = fabricInspectorPresets.brocade.pattern;
+                } else if (item.category === 'jewelry') {
+                    customBackground = `linear-gradient(135deg, #F5C21B, #c4990c)`;
+                    patternCode = fabricInspectorPresets.jewelry.pattern;
+                }
+
+                container.style.backgroundImage = customBackground;
+                placeholderPattern.style.background = patternCode;
+
+                vectorOverlay.innerHTML = `
+                    <svg class="w-16 h-16 text-white/10" viewBox="0 0 100 100" fill="none" stroke="currentColor" stroke-width="1">
+                        <path d="M50 10 L60 40 L90 50 L60 60 L50 90 L40 60 L10 50 L40 40 Z" fill="white" fill-opacity="0.02" />
+                    </svg>
+                `;
+            } else {
+                imageBlock.style.backgroundImage = `url(${item.img})`;
+                container.style.backgroundImage = 'none';
+            }
+
+            document.getElementById('modalTitle').textContent = item.title;
+            document.getElementById('modalCategory').textContent = item.category === 'groom' ? "Groom's Couture" : item.category === 'bridal' ? "Bridal Wear" : item.category === 'sarees' ? "Heritage Saree" : item.category === 'jewelry' ? "Luxury Jewelry" : "Occasion wear";
+            document.getElementById('modalPrice').textContent = item.price === 0 ? "Bespoke Appointment Booking" : `R ${item.price.toLocaleString('en-ZA')}`;
+            document.getElementById('modalSizes').textContent = `${item.size} (${item.pieces})`;
+            document.getElementById('modalDescription').textContent = item.description;
+
+            document.getElementById('inquiryModal').classList.remove('hidden');
+        }
+
+        function closeInquiryModal() {
+            document.getElementById('inquiryModal').classList.add('hidden');
+            document.getElementById('modalLens').style.display = 'none';
+            activeInquiryItem = null;
+        }
+
+        function submitInquiryWhatsApp() {
+            if (!activeInquiryItem) return;
+            playAtmosphericSound('success');
+            
+            const message = `Hello Zari Ethnics Boutique, I am interested in inquiring about the details, fit, and purchase parameters of: ${activeInquiryItem.title} (Category: ${activeInquiryItem.category}, Slot ID: #${activeInquiryItem.id}).`;
+            const encoded = encodeURIComponent(message);
+            window.open(`https://wa.me/27812742028?text=${encoded}`, '_blank');
+        }
+
+        // ==========================================
+        // Schedular Concierge Controller
+        // ==========================================
+        function handlePrivateConsultation(event) {
+            event.preventDefault();
+            playAtmosphericSound('success');
+            
+            const name = document.getElementById('schedName').value;
+            const phone = document.getElementById('schedPhone').value;
+            const date = document.getElementById('schedDate').value;
+            const segment = document.getElementById('schedSegment').value;
+            const details = document.getElementById('schedDetails').value;
+
+            const message = `Hello Zari Ethnics, I would love to request a private showroom fitting & tailoring consultation.\n\n- Name: ${name}\n- Contact Mobile: ${phone}\n- Preferred Fitting Date: ${date}\n- wear Segment: ${segment}\n- fitting request details: ${details}`;
+            const encoded = encodeURIComponent(message);
+            
+            window.open(`https://wa.me/27812742028?text=${encoded}`, '_blank');
+        }
+
+        // ==========================================
+        // Security Credential Console Controller
+        // ==========================================
+        let undoStack = [];
+        let redoStack = [];
+        let workbenchUnlocked = false;
+        let cropper = null;
+        let batchFileQueue = [];
+        let currentQueueIndex = 0;
+
+        function getSimpleHash(str) {
+            let hash = 0;
+            for (let i = 0; i < str.length; i++) {
+                hash = (31 * hash + str.charCodeAt(i)) >>> 0;
+            }
+            return hash;
+        }
+
+        function toggleSandboxControls() {
+            playAtmosphericSound('low');
+            const body = document.getElementById('sandboxBody');
+            const lockPanel = document.getElementById('sandboxLockPanel');
+            const chevron = document.getElementById('sandboxChevron');
+
+            if (!workbenchUnlocked) {
+                if (lockPanel.classList.contains('hidden')) {
+                    lockPanel.classList.remove('hidden');
+                    chevron.innerHTML = `<span>Lock Shield Active</span> <i class="fas fa-lock text-[8px]"></i>`;
+                } else {
+                    lockPanel.classList.add('hidden');
+                    chevron.innerHTML = `<span>Unlock Console</span> <i class="fas fa-lock text-[8px]"></i>`;
+                }
+            } else {
+                if (body.classList.contains('hidden')) {
+                    body.classList.remove('hidden');
+                    chevron.innerHTML = `<span>Hide Workspace</span> <i class="fas fa-chevron-up text-[8px]"></i>`;
+                } else {
+                    body.classList.add('hidden');
+                    chevron.innerHTML = `<span>Reveal Workspace</span> <i class="fas fa-chevron-down text-[8px]"></i>`;
+                }
+            }
+        }
+
+        function unlockBoutiqueWorkbench() {
+            const pin = document.getElementById('sandboxKeyInput').value;
+            // Evaluates mathematical rolling checksum of password (unexposed)
+            if (getSimpleHash(pin) === 3996795504) {
+                workbenchUnlocked = true;
+                playAtmosphericSound('success');
+                
+                document.getElementById('sandboxLockPanel').classList.add('hidden');
+                document.getElementById('sandboxBody').classList.remove('hidden');
+                document.getElementById('sandboxChevron').innerHTML = `<span>Workspace Active</span> <i class="fas fa-unlock text-[8px]" aria-hidden="true"></i>`;
+                
+                initDirectSlotSelectionDropdown();
+                updateDashboardStatistics();
+                renderSandboxGridIndex();
+
+                // Retrieve cached Git credentials from storage if available
+                if(localStorage.getItem('zari_git_pat')) document.getElementById('gitPat').value = localStorage.getItem('zari_git_pat');
+                if(localStorage.getItem('zari_git_repo')) document.getElementById('gitRepo').value = localStorage.getItem('zari_git_repo');
+                if(localStorage.getItem('zari_git_file')) document.getElementById('gitFile').value = localStorage.getItem('zari_git_file');
+            } else {
+                const errMsg = document.getElementById('lockErrorMsg');
+                errMsg.className = "text-[9px] text-zariCrimson font-bold block";
+                setTimeout(() => errMsg.className = "text-[9px] text-zariCrimson font-bold hidden", 4000);
+            }
+        }
+
+        function saveSnapshot() {
+            undoStack.push(JSON.stringify(catalog));
+            redoStack = []; 
+            document.getElementById('btnRollbackUndo').disabled = false;
+            document.getElementById('btnRollbackRedo').disabled = true;
+        }
+
+        function rollbackDatabase(action) {
+            playAtmosphericSound('low');
+            if (action === 'undo' && undoStack.length > 0) {
+                redoStack.push(JSON.stringify(catalog));
+                catalog = JSON.parse(undoStack.pop());
+                document.getElementById('btnRollbackRedo').disabled = false;
+                if (undoStack.length === 0) document.getElementById('btnRollbackUndo').disabled = true;
+            } else if (action === 'redo' && redoStack.length > 0) {
+                undoStack.push(JSON.stringify(catalog));
+                catalog = JSON.parse(redoStack.pop());
+                document.getElementById('btnRollbackUndo').disabled = false;
+                if (redoStack.length === 0) document.getElementById('btnRollbackRedo').disabled = true;
+            }
+            updateDashboardStatistics();
+            renderSandboxGridIndex();
+            renderGallery();
+        }
+
+        function updateDashboardStatistics() {
+            const activeShowroom = catalog.filter(x => x.price > 0 && x.img !== 'placeholder').length;
+            const totalValue = catalog.reduce((acc, curr) => acc + (curr.price || 0), 0);
+            const pricedItemsCount = catalog.filter(x => x.price > 0).length || 1;
+            const avgPrice = totalValue / pricedItemsCount;
+
+            document.getElementById('dashActiveStock').textContent = activeShowroom;
+            document.getElementById('dashTotalValue').textContent = `R ${totalValue.toLocaleString('en-ZA', {minimumFractionDigits: 2, maximumFractionDigits: 2})}`;
+            document.getElementById('dashAveragePrice').textContent = `R ${avgPrice.toLocaleString('en-ZA', {minimumFractionDigits: 2, maximumFractionDigits: 2})}`;
+        }
+
+        function initDirectSlotSelectionDropdown() {
+            const dropdown = document.getElementById('cropTargetSlot');
+            dropdown.innerHTML = "";
+            catalog.forEach(item => {
+                const opt = document.createElement('option');
+                opt.value = item.id;
+                opt.textContent = `Slot #${item.id} - ${item.title.substring(0, 30)}...`;
+                dropdown.appendChild(opt);
+            });
+        }
+
+        function renderSandboxGridIndex() {
+            const sandboxGrid = document.getElementById('sandboxUploadsGrid');
+            sandboxGrid.innerHTML = "";
+
+            catalog.forEach(item => {
+                const cell = document.createElement('div');
+                cell.className = "bg-white p-3 rounded-xl border border-slate-200 flex flex-col justify-between space-y-2";
+                
+                let isVault = item.price === 0;
+                let badgeClass = "bg-amber-500";
+                let badgeText = "Empty";
+
+                if (item.img !== 'placeholder') {
+                    badgeClass = "bg-emerald-500";
+                    badgeText = `<i class="fas fa-check"></i> Photo`;
+                } else if (isVault) {
+                    badgeClass = "bg-slate-400";
+                    badgeText = `<i class="fas fa-lock"></i> Vault`;
+                }
+
+                cell.innerHTML = `
+                    <div class="space-y-1">
+                        <div class="flex items-center justify-between">
+                            <span class="text-[8px] uppercase tracking-wider font-extrabold text-slate-400">Slot #${item.id}</span>
+                            <span class="text-[8px] ${badgeClass} text-white font-bold px-1.5 py-0.5 rounded-md">${badgeText}</span>
+                        </div>
+                        <strong class="text-[10px] text-zariGreen block truncate" title="${item.title}">${item.title}</strong>
+                        <span class="block text-[9px] text-zariCrimson font-bold">${isVault ? 'Locked' : `R ${item.price.toLocaleString('en-ZA')}`}</span>
+                    </div>
+                    <button onclick="selectSlotForDirectEdit(${item.id})" class="w-full text-center bg-slate-100 hover:bg-slate-200 text-slate-800 text-[8px] uppercase font-bold py-1.5 rounded-lg transition">Edit Info</button>
+                `;
+                sandboxGrid.appendChild(cell);
+            });
+        }
+
+        function selectSlotForDirectEdit(slotId) {
+            playAtmosphericSound('low');
+            const item = catalog.find(x => x.id === slotId);
+            if (!item) return;
+
+            document.getElementById('cropTargetSlot').value = item.id;
+            document.getElementById('cropTitleInput').value = item.title;
+            document.getElementById('cropPriceInput').value = item.price;
+            document.getElementById('cropCategorySelect').value = item.category;
+            document.getElementById('cropSizeInput').value = item.size;
+            document.getElementById('cropFittingInput').value = item.pieces;
+            document.getElementById('cropDescInput').value = item.description;
+
+            document.getElementById('batchCropWorkspace').classList.remove('hidden');
+            window.location.hash = "collections";
+        }
+
+        function handleBatchFileSelection(event) {
+            const files = event.target.files;
+            if (files.length === 0) return;
+
+            batchFileQueue = Array.from(files).slice(0, 50); 
+            currentQueueIndex = 0;
+            
+            launchQueueCropper();
+        }
+
+        function launchQueueCropper() {
+            if (currentQueueIndex >= batchFileQueue.length) {
+                cancelBatchCropping();
+                return;
+            }
+
+            const currentFile = batchFileQueue[currentQueueIndex];
+            document.getElementById('batchProcessingQueueText').textContent = `Processing Queue Item ${currentQueueIndex + 1} of ${batchFileQueue.length}`;
+            document.getElementById('cropFileNameLabel').textContent = currentFile.name;
+
+            const reader = new FileReader();
+            reader.onload = function(e) {
+                const targetImage = document.getElementById('cropTargetImage');
+                targetImage.src = e.target.result;
+                
+                document.getElementById('batchCropWorkspace').classList.remove('hidden');
+                
+                const slotIndex = currentQueueIndex + 1;
+                document.getElementById('cropTargetSlot').value = slotIndex;
+                const matchedItem = catalog.find(x => x.id === slotIndex);
+                if (matchedItem) {
+                    document.getElementById('cropTitleInput').value = matchedItem.title;
+                    document.getElementById('cropPriceInput').value = matchedItem.price;
+                    document.getElementById('cropCategorySelect').value = matchedItem.category;
+                    document.getElementById('cropSizeInput').value = matchedItem.size;
+                    document.getElementById('cropFittingInput').value = matchedItem.pieces;
+                    document.getElementById('cropDescInput').value = matchedItem.description;
+                }
+
+                if (cropper) cropper.destroy();
+
+                cropper = new Cropper(targetImage, {
+                    aspectRatio: 3 / 4,
+                    viewMode: 1,
+                    background: false,
+                    autoCropArea: 0.9,
+                    responsive: true
+                });
+            };
+            reader.readAsDataURL(currentFile);
+        }
+
+        function skipBatchCropperItem() {
+            playAtmosphericSound('low');
+            currentQueueIndex++;
+            launchQueueCropper();
+        }
+
+        function cancelBatchCropping() {
+            playAtmosphericSound('low');
+            if (cropper) {
+                cropper.destroy();
+                cropper = null;
+            }
+            batchFileQueue = [];
+            currentQueueIndex = 0;
+            document.getElementById('batchCropWorkspace').classList.add('hidden');
+        }
+
+        function commitBatchCroppedItem() {
+            if (!cropper) {
+                const targetId = parseInt(document.getElementById('cropTargetSlot').value);
+                const matched = catalog.find(x => x.id === targetId);
+                if (matched) {
+                    saveSnapshot();
+                    matched.title = document.getElementById('cropTitleInput').value;
+                    matched.price = parseFloat(document.getElementById('cropPriceInput').value) || 0;
+                    matched.category = document.getElementById('cropCategorySelect').value;
+                    matched.size = document.getElementById('cropSizeInput').value;
+                    matched.pieces = document.getElementById('cropFittingInput').value;
+                    matched.description = document.getElementById('cropDescInput').value;
+
+                    updateDashboardStatistics();
+                    renderSandboxGridIndex();
+                    renderGallery();
+                    playAtmosphericSound('success');
+                }
+                return;
+            }
+
+            const croppedCanvas = cropper.getCroppedCanvas({
+                width: 480,
+                height: 640
+            });
+
+            const dataUrl = croppedCanvas.toDataURL('image/jpeg', 0.85);
+            const targetId = parseInt(document.getElementById('cropTargetSlot').value);
+
+            const matched = catalog.find(x => x.id === targetId);
+            if (matched) {
+                saveSnapshot();
+                matched.title = document.getElementById('cropTitleInput').value;
+                matched.price = parseFloat(document.getElementById('cropPriceInput').value) || 0;
+                matched.category = document.getElementById('cropCategorySelect').value;
+                matched.size = document.getElementById('cropSizeInput').value;
+                matched.pieces = document.getElementById('cropFittingInput').value;
+                matched.description = document.getElementById('cropDescInput').value;
+                matched.img = dataUrl; 
+
+                updateDashboardStatistics();
+                renderSandboxGridIndex();
+                renderGallery();
+                playAtmosphericSound('success');
+            }
+
+            currentQueueIndex++;
+            launchQueueCropper();
+        }
+
+        // ==========================================
+        // LOCAL SOURCE PACKAGING ENGINE
+        // ==========================================
+        function downloadCleanProductionHTML() {
+            playAtmosphericSound('success');
+            let currentHTML = document.documentElement.outerHTML;
+            const databaseString = `let catalog = ${JSON.stringify(catalog)};`;
+            
+            const regexSearch = /let catalog\s*=\s*\[[\s\S]*?\];/;
+            let outputHTML = currentHTML.replace(regexSearch, databaseString);
+
+            const blob = new Blob([outputHTML], { type: "text/html" });
+            const tempLink = document.createElement("a");
+            tempLink.download = "zari_ethnics_trade_route_production.html";
+            tempLink.href = URL.createObjectURL(blob);
+            document.body.appendChild(tempLink);
+            tempLink.click();
+            document.body.removeChild(tempLink);
+        }
+
+        // ==========================================
+        // DYNAMIC DIRECT GITHUB LIVE PUBLISHING API
+        // ==========================================
+        async function publishToGitHubLive() {
+            playAtmosphericSound('low');
+            
+            let token = document.getElementById('gitPat').value.trim();
+            let repo = document.getElementById('gitRepo').value.trim();
+            let file = document.getElementById('gitFile').value.trim();
+
+            if (!token || !repo || !file) {
+                document.getElementById('gitSandboxWarning').classList.add('hidden');
+                document.getElementById('gitFailMsg').textContent = "Please fill in all Git Configuration Parameters (PAT, Repository, and Target Filename).";
+                document.getElementById('gitFailModal').classList.remove('hidden');
+                return;
+            }
+
+            // Remove any prefix from the token (like 'Bearer ' or 'token ') if the client copy-pasted incorrectly
+            token = token.replace(/^(bearer|token)\s+/i, '');
+
+            // Sanitize repository path (remove extra slashes or spaces)
+            repo = repo.replace(/^\/+|\/+$/g, '').trim();
+
+            // Save credentials in browser cache for seamless next use
+            localStorage.setItem('zari_git_pat', token);
+            localStorage.setItem('zari_git_repo', repo);
+            localStorage.setItem('zari_git_file', file);
+
+            try {
+                // Step 1: Query the existing file SHA reference from repository contents
+                const getUrl = `https://api.github.com/repos/${repo}/contents/${file}`;
+                
+                const getResponse = await fetch(getUrl, {
+                    method: "GET",
+                    headers: {
+                        "Authorization": `Bearer ${token}`,
+                        "Accept": "application/vnd.github.v3+json"
+                    }
+                });
+
+                if (!getResponse.ok) {
+                    throw new Error(`Repository or file lookup failed (Status Code: ${getResponse.status}). Verify your repository name is spelled correctly and the target file actually exists in the branch.`);
+                }
+
+                const fileData = await getResponse.json();
+                const sha = fileData.sha;
+
+                // Step 2: Generate the new complete HTML with serialized data
+                let currentHTML = document.documentElement.outerHTML;
+                const databaseString = `let catalog = ${JSON.stringify(catalog)};`;
+                const regexSearch = /let catalog\s*=\s*\[[\s\S]*?\];/;
+                let updatedContent = currentHTML.replace(regexSearch, databaseString);
+
+                // Safe unicode-proof Base64 encoding
+                const encodedContent = btoa(unescape(encodeURIComponent(updatedContent)));
+
+                // Step 3: PUT payload update back into the repository contents
+                const putPayload = {
+                    message: "Boutique catalog update committed from Admin Panel",
+                    content: encodedContent,
+                    sha: sha
+                };
+
+                const putResponse = await fetch(getUrl, {
+                    method: "PUT",
+                    headers: {
+                        "Authorization": `Bearer ${token}`,
+                        "Content-Type": "application/json",
+                        "Accept": "application/vnd.github.v3+json"
+                    },
+                    body: JSON.stringify(putPayload)
+                });
+
+                if (!putResponse.ok) {
+                    throw new Error("Commit request was rejected. Ensure your Personal Access Token has write permissions.");
+                }
+
+                // Play Tone.js success sound & show visual notification
+                playAtmosphericSound('success');
+                document.getElementById('gitSuccessModal').classList.remove('hidden');
+                
+                // Animate progress bar across 60 seconds
+                const progressBar = document.getElementById('gitProgressBar');
+                progressBar.style.width = "0%";
+                setTimeout(() => {
+                    progressBar.style.width = "100%";
+                }, 100);
+
+            } catch (err) {
+                console.error("GitHub Sync System Intercepted Error: ", err);
+                
+                const sandboxWarning = document.getElementById('gitSandboxWarning');
+                const failMsg = document.getElementById('gitFailMsg');
+
+                // Detect TypeError Failed to Fetch (Standard CORS / Iframe restrictions)
+                if (err instanceof TypeError || err.message.includes('Failed to fetch') || err.message.includes('NetworkError')) {
+                    sandboxWarning.classList.remove('hidden');
+                    failMsg.innerHTML = "<strong>Detailed Technical Exception:</strong> Direct connection to the GitHub API was blocked by local browser sandbox environment parameters. Running this page directly from your desktop file or a deployed web server will bypass this constraint completely.";
+                } else {
+                    sandboxWarning.classList.add('hidden');
+                    failMsg.textContent = err.message;
+                }
+
+                document.getElementById('gitFailModal').classList.remove('hidden');
+            }
+        }
+
+        function closeGitSuccessModal() {
+            document.getElementById('gitSuccessModal').classList.add('hidden');
+        }
+
+        // ==========================================
+        // FAQ Accordion Controller
+        // ==========================================
+        function toggleAccordion(id) {
+            playAtmosphericSound('low');
+            const body = document.getElementById(`faq-body-${id}`);
+            const icon = document.getElementById(`faq-icon-${id}`);
+
+            if (body.classList.contains('hidden')) {
+                body.classList.remove('hidden');
+                icon.className = "fas fa-chevron-up text-[10px] text-zariCrimson transition-transform";
+            } else {
+                body.classList.add('hidden');
+                icon.className = "fas fa-chevron-down text-[10px] text-zariGreen transition-transform";
+            }
+        }
+
+        // ==========================================
+        // Window Initialization Sequences
+        // ==========================================
+        window.onload = function () {
+            updateShowroomStatus();
+            setInterval(updateShowroomStatus, 15000); 
+            
+            initCatalogDatabase();
+            
+            initWeaveMagnifier();
+            initModalMagnifier();
+            selectFabricWeave('silk'); 
+            
+            renderGallery();
+        };
+    </script>
+</body>
+</html>

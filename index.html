@@ -1,3 +1,12 @@
+<!-- ========================================== -->
+<!-- INTELLECTUAL PROPERTY & SECURITY NOTICE    -->
+<!-- Copyright (c) 2026 Zari Ethnics &          -->
+<!-- MrKolapie Pty Ltd™. All Rights Reserved.   -->
+<!-- Unauthorized copying, cloning, or source   -->
+<!-- extraction of these scripts, design systems-->
+<!-- or vectors is strictly prohibited.         -->
+<!-- ========================================== -->
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -722,10 +731,17 @@
                 <p class="text-xs text-slate-400 leading-relaxed">
                     Indulge in an exquisite eastern experience next to Ocean Basket. Gauteng's leading house for bespoke bridal and designer groom attire.
                 </p>
-                <div class="flex space-x-3 text-slate-400 text-sm">
-                    <a href="#" class="hover:text-zariCrimson transition"><i class="fab fa-facebook" aria-hidden="true"></i></a>
-                    <a href="#" class="hover:text-zariCrimson transition"><i class="fab fa-instagram" aria-hidden="true"></i></a>
-                    <a href="https://wa.me/27812742028" target="_blank" class="hover:text-zariCrimson transition"><i class="fab fa-whatsapp" aria-hidden="true"></i></a>
+                <!-- Fully Clickable Social Media Links with Scale Transitions -->
+                <div class="flex space-x-3.5 text-slate-400 text-lg pt-2">
+                    <a href="https://www.facebook.com/zariethnics/" target="_blank" rel="noopener noreferrer" class="hover:text-zariCrimson transition duration-300 transform hover:scale-110" title="Zari Ethnics Facebook Official Page">
+                        <i class="fab fa-facebook-f" aria-hidden="true"></i>
+                    </a>
+                    <a href="https://www.instagram.com/zariethnics/" target="_blank" rel="noopener noreferrer" class="hover:text-zariCrimson transition duration-300 transform hover:scale-110" title="Zari Ethnics Instagram Official Feed">
+                        <i class="fab fa-instagram" aria-hidden="true"></i>
+                    </a>
+                    <a href="https://wa.me/27812742028" target="_blank" rel="noopener noreferrer" class="hover:text-zariCrimson transition duration-300 transform hover:scale-110" title="Zari Ethnics WhatsApp Digital Concierge">
+                        <i class="fab fa-whatsapp" aria-hidden="true"></i>
+                    </a>
                 </div>
             </div>
 
@@ -742,6 +758,7 @@
             <div>
                 <h5 class="text-xs font-bold uppercase tracking-wider text-zariGold mb-4">Legal Compliance</h5>
                 <ul class="space-y-2 text-xs text-slate-400 font-semibold">
+                    <!-- URL Encoded Paths Prevent 404 Whitescreen Errors on Server Builds -->
                     <li><a href="./Legal%20%26%20POPIA%20Compliance%20Suite%20Zari.md" target="_blank" class="hover:text-white transition"><i class="fas fa-shield-halved mr-1 text-zariCrimson"></i> POPIA Privacy Policy</a></li>
                     <li><a href="./Legal%20%26%20POPIA%20Compliance%20Suite%20Zari.md" target="_blank" class="hover:text-white transition"><i class="fas fa-rotate-left mr-1 text-zariCrimson"></i> Refund & Exchanges</a></li>
                     <li><a href="./handover_policy_manifest.md" target="_blank" class="hover:text-white transition"><i class="fas fa-file-contract mr-1 text-zariCrimson"></i> Support Manifest</a></li>
@@ -1148,6 +1165,7 @@
 
         // ==========================================
         // DATABASE INGRESS ARRAY (HARDCODED CLIENT CATALOG 1-28)
+        // All pathways configured cleanly for repository root serves.
         // ==========================================
         let catalog = [
             {

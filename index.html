@@ -358,6 +358,14 @@
                 <p class="text-slate-500 text-sm font-semibold">
                     Explore our exquisite showroom inventory. Tap any item's catalog parameters or use the secure workbench to live upload & describe custom wedding outfits.
                 </p>
+                
+                <!-- Professional AI Representation Disclaimer on Product Cards -->
+                <div class="mt-4 p-3 bg-slate-50 border border-slate-200/80 rounded-2xl max-w-lg mx-auto text-left flex items-start space-x-2">
+                    <i class="fas fa-info-circle text-zariGold text-sm mt-0.5" aria-hidden="true"></i>
+                    <p class="text-[9.5px] text-slate-500 leading-relaxed font-semibold">
+                        All images are high-fidelity conceptual representations styled with advanced AI modeling and digital imagery. Physical items are meticulously crafted by hand, so actual shapes, sizing fitments, and fabric color tones may show organic variations from the digital models.
+                    </p>
+                </div>
             </div>
 
             <!-- ==================================================== -->
@@ -439,78 +447,105 @@
                         </div>
                     </div>
 
-                    <!-- Dynamic Batch Queue Upload Container -->
-                    <div class="space-y-2">
-                        <label class="block text-[10px] uppercase tracking-wider text-slate-300 font-bold">📤 Automated Batch Image Queue Uploader</label>
-                        <div class="border-2 border-dashed border-slate-700 rounded-2xl p-6 bg-slate-900 text-center hover:bg-slate-900/90 transition duration-300 relative cursor-pointer">
-                            <input type="file" id="batchQueueFileInput" accept="image/*" multiple onchange="handleBatchFileSelection(event)" class="absolute inset-0 opacity-0 cursor-pointer">
-                            <i class="fas fa-images text-zariCrimson text-3xl mb-2 animate-pulse"></i>
-                            <span class="block text-xs font-bold text-slate-200">Drag or Click to Select Photos to Crop & Catalog</span>
-                            <span class="block text-[9px] text-slate-400 mt-1">Images will be cropped to Zari's luxury 3:4 portrait aspect ratio layout.</span>
-                        </div>
+                    <!-- Dynamic Batch Queue Upload Container with Mobile-Camera Hook -->
+                    <div class="space-y-3">
+                        <label class="block text-[10px] uppercase tracking-wider text-slate-300 font-bold">📤 Automated Phone Camera Capture & Metadata Editor</label>
                         
-                        <!-- Processing Stage Panel -->
-                        <div id="batchCropWorkspace" class="hidden p-4 border border-zariGold/30 rounded-2xl bg-slate-900 flex flex-col md:flex-row gap-6 relative">
-                            <button onclick="cancelBatchCropping()" class="absolute top-3 right-3 text-slate-400 hover:text-zariCrimson p-1 text-sm"><i class="fas fa-times"></i></button>
-                            
-                            <!-- CropperJS Canvas Viewport -->
-                            <div class="w-full md:w-1/2 h-[340px] bg-black rounded-xl overflow-hidden flex items-center justify-center border border-slate-800">
-                                <img id="cropTargetImage" class="max-w-full max-h-full block" alt="Source Asset">
+                        <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+                            <!-- Left: Upload Trigger Actions -->
+                            <div class="border-2 border-dashed border-slate-700 rounded-2xl p-6 bg-slate-900/60 text-center flex flex-col justify-center items-center relative">
+                                <div class="flex flex-wrap gap-3 justify-center z-10">
+                                    <!-- Mobile Direct Camera Input -->
+                                    <label class="cursor-pointer bg-gradient-to-r from-zariCrimson to-zariBurgundy hover:brightness-105 text-white text-[11px] font-sans font-bold uppercase tracking-widest px-4 py-3 rounded-xl shadow-md transition duration-300 inline-flex items-center space-x-2">
+                                        <i class="fas fa-camera text-sm"></i>
+                                        <span>📷 Snap with Phone Camera</span>
+                                        <input type="file" id="cameraFileInput" accept="image/*" capture="environment" onchange="handleSingleFileSelection(event)" class="hidden">
+                                    </label>
+                                    
+                                    <!-- Files Chooser -->
+                                    <label class="cursor-pointer bg-slate-800 hover:bg-slate-700 text-slate-200 text-[11px] font-sans font-bold uppercase tracking-widest px-4 py-3 rounded-xl border border-slate-700 transition duration-300 inline-flex items-center space-x-2">
+                                        <i class="fas fa-image text-sm"></i>
+                                        <span>📁 Choose from Gallery</span>
+                                        <input type="file" id="galleryFileInput" accept="image/*" onchange="handleSingleFileSelection(event)" class="hidden">
+                                    </label>
+                                </div>
+                                <span class="block text-[9px] text-slate-400 mt-3">Images will automatically lock into Zari's luxury 3:4 portrait aspect ratio via CropperJS viewport.</span>
                             </div>
-                            
-                            <!-- Image Metadata Ingress Parameters -->
-                            <div class="w-full md:w-1/2 flex flex-col justify-between space-y-4 text-white">
-                                <div class="space-y-3">
-                                    <div class="flex justify-between items-center pb-2 border-b border-slate-800">
-                                        <span class="text-[10px] uppercase text-zariCrimson font-bold" id="batchProcessingQueueText">Processing Queue Item 1 of 1</span>
-                                        <span class="text-[10px] font-mono font-bold text-slate-400" id="cropFileNameLabel">filename.jpg</span>
+
+                            <!-- Right: Immediate Dynamic Workspace Console -->
+                            <div class="p-4 border border-slate-800 rounded-2xl bg-slate-900/40 flex items-center justify-center text-center text-xs text-slate-400" id="cropperPlaceholder">
+                                <p><i class="fas fa-crop-simple text-zariGold text-xl block mb-2 animate-pulse"></i> Snap a model photo or select an existing asset to launch the Cropper workspace and enter custom product data.</p>
+                            </div>
+
+                            <!-- Hidden Core Stage Workspace Panel (Replaces placeholder when active) -->
+                            <div id="batchCropWorkspace" class="hidden col-span-1 md:col-span-2 p-4 border border-zariGold/30 rounded-2xl bg-slate-900 flex flex-col md:flex-row gap-6 relative">
+                                <button onclick="cancelBatchCropping()" class="absolute top-3 right-3 text-slate-400 hover:text-zariCrimson p-1 text-sm" aria-label="Cancel editing"><i class="fas fa-times"></i></button>
+                                
+                                <!-- CropperJS Canvas Viewport -->
+                                <div class="w-full md:w-1/2 h-[340px] bg-black rounded-xl overflow-hidden flex items-center justify-center border border-slate-800">
+                                    <img id="cropTargetImage" class="max-w-full max-h-full block" alt="Source Asset">
+                                </div>
+                                
+                                <!-- Image Metadata Ingress Parameters -->
+                                <div class="w-full md:w-1/2 flex flex-col justify-between space-y-4 text-white">
+                                    <div class="space-y-3">
+                                        <div class="flex justify-between items-center pb-2 border-b border-slate-800">
+                                            <span class="text-[10px] uppercase text-zariGold font-bold" id="batchProcessingQueueText">Interactive Design Workbench</span>
+                                            <span class="text-[10px] font-mono font-bold text-slate-400" id="cropFileNameLabel">captured_media.png</span>
+                                        </div>
+                                        
+                                        <!-- Primary Slot Selection Form -->
+                                        <div class="grid grid-cols-2 gap-2">
+                                            <div>
+                                                <label class="block text-[8px] uppercase tracking-wider text-slate-400 font-bold mb-1">Target Card Slot Select (1-100)</label>
+                                                <select id="cropTargetSlot" onchange="loadSelectedSlotDataToForm()" class="w-full bg-slate-950 border border-slate-700 rounded-lg p-1.5 text-xs font-bold text-slate-200 focus:outline-none"></select>
+                                            </div>
+                                            <div>
+                                                <label class="block text-[8px] uppercase tracking-wider text-slate-400 font-bold mb-1">Bespoke Title</label>
+                                                <input type="text" id="cropTitleInput" placeholder="e.g., 2-Piece Red & Gold Sherwani" class="w-full bg-slate-950 border border-slate-700 rounded-lg p-1.5 text-xs font-bold text-slate-200 focus:outline-none">
+                                            </div>
+                                            <div>
+                                                <label class="block text-[8px] uppercase tracking-wider text-slate-400 font-bold mb-1">Pricing (ZAR)</label>
+                                                <input type="number" id="cropPriceInput" placeholder="e.g., 6700" class="w-full bg-slate-950 border border-slate-700 rounded-lg p-1.5 text-xs font-bold text-slate-200 focus:outline-none">
+                                            </div>
+                                            <div>
+                                                <label class="block text-[8px] uppercase tracking-wider text-slate-400 font-bold mb-1">Stock Category</label>
+                                                <select id="cropCategorySelect" class="w-full bg-slate-950 border border-slate-700 rounded-lg p-1.5 text-xs font-bold text-slate-200 focus:outline-none">
+                                                    <option value="bridal">Bridal Wear</option>
+                                                    <option value="groom">Groom's Wear</option>
+                                                    <option value="jewellery">Jewelry & Acc.</option>
+                                                    <option value="occasion">Occasion Wear</option>
+                                                </select>
+                                            </div>
+                                        </div>
+                                        
+                                        <div class="grid grid-cols-2 gap-2">
+                                            <div>
+                                                <label class="block text-[8px] uppercase tracking-wider text-slate-400 font-bold mb-1">Sizing Tag (Size/Colour)</label>
+                                                <input type="text" id="cropSizeInput" placeholder="e.g., Large / Available in Red & Gold" class="w-full bg-slate-950 border border-slate-700 rounded-lg p-1.5 text-xs font-bold text-slate-200 focus:outline-none">
+                                            </div>
+                                            <div>
+                                                <label class="block text-[8px] uppercase tracking-wider text-slate-400 font-bold mb-1">Piece Configuration Details</label>
+                                                <input type="text" id="cropFittingInput" placeholder="e.g., Sherwani & Trousers Set" class="w-full bg-slate-950 border border-slate-700 rounded-lg p-1.5 text-xs font-bold text-slate-200 focus:outline-none">
+                                            </div>
+                                        </div>
+                                        
+                                        <div>
+                                            <label class="block text-[8px] uppercase tracking-wider text-slate-400 font-bold mb-1">Google SEO-Optimized Product Description</label>
+                                            <textarea id="cropDescInput" rows="3" placeholder="Zari Ethnics at Trade Route Mall brings premium ethnic fashion to Johannesburg..." class="w-full bg-slate-950 border border-slate-700 rounded-lg p-1.5 text-xs text-slate-200 focus:outline-none"></textarea>
+                                        </div>
                                     </div>
-                                    <div class="grid grid-cols-2 gap-2">
-                                        <div>
-                                            <label class="block text-[8px] uppercase tracking-wider text-slate-400 font-bold mb-1">Target Card Slot Select (1-100)</label>
-                                            <select id="cropTargetSlot" class="w-full bg-slate-950 border border-slate-700 rounded-lg p-1.5 text-xs font-bold text-slate-200 focus:outline-none"></select>
-                                        </div>
-                                        <div>
-                                            <label class="block text-[8px] uppercase tracking-wider text-slate-400 font-bold mb-1">Bespoke Title</label>
-                                            <input type="text" id="cropTitleInput" class="w-full bg-slate-950 border border-slate-700 rounded-lg p-1.5 text-xs font-bold text-slate-200 focus:outline-none">
-                                        </div>
-                                        <div>
-                                            <label class="block text-[8px] uppercase tracking-wider text-slate-400 font-bold mb-1">Pricing (ZAR)</label>
-                                            <input type="number" id="cropPriceInput" placeholder="Price..." class="w-full bg-slate-950 border border-slate-700 rounded-lg p-1.5 text-xs font-bold text-slate-200 focus:outline-none">
-                                        </div>
-                                        <div>
-                                            <label class="block text-[8px] uppercase tracking-wider text-slate-400 font-bold mb-1">Stock Category</label>
-                                            <select id="cropCategorySelect" class="w-full bg-slate-950 border border-slate-700 rounded-lg p-1.5 text-xs font-bold text-slate-200 focus:outline-none">
-                                                <option value="bridal">Bridal Wear</option>
-                                                <option value="groom">Groom's Wear</option>
-                                                <option value="jewellery">Jewelry & Acc.</option>
-                                                <option value="occasion">Occasion Wear</option>
-                                            </select>
-                                        </div>
-                                    </div>
-                                    <div class="grid grid-cols-2 gap-2">
-                                        <div>
-                                            <label class="block text-[8px] uppercase tracking-wider text-slate-400 font-bold mb-1">Sizing Tag / Detail</label>
-                                            <input type="text" id="cropSizeInput" class="w-full bg-slate-950 border border-slate-700 rounded-lg p-1.5 text-xs font-bold text-slate-200 focus:outline-none">
-                                        </div>
-                                        <div>
-                                            <label class="block text-[8px] uppercase tracking-wider text-slate-400 font-bold mb-1">Fitting/Alteration Policy</label>
-                                            <input type="text" id="cropFittingInput" class="w-full bg-slate-950 border border-slate-700 rounded-lg p-1.5 text-xs font-bold text-slate-200 focus:outline-none">
-                                        </div>
-                                    </div>
-                                    <div>
-                                        <label class="block text-[8px] uppercase tracking-wider text-slate-400 font-bold mb-1">Stock Description</label>
-                                        <textarea id="cropDescInput" rows="2" class="w-full bg-slate-950 border border-slate-700 rounded-lg p-1.5 text-xs text-slate-200 focus:outline-none"></textarea>
+                                    
+                                    <div class="flex items-center space-x-2 pt-2">
+                                        <button onclick="cancelBatchCropping()" class="w-1/3 bg-slate-800 hover:bg-slate-700 text-slate-200 text-xs font-bold py-2.5 rounded-xl transition">Cancel Edit</button>
+                                        <button onclick="commitBatchCroppedItem()" class="w-2/3 bg-zariGreen hover:bg-zariGreen-dark text-white text-xs font-bold py-2.5 rounded-xl transition shadow flex items-center justify-center space-x-1.5">
+                                            <i class="fas fa-check-double"></i>
+                                            <span>Inject and Update Showroom Live</span>
+                                        </button>
                                     </div>
                                 </div>
-                                <div class="flex items-center space-x-2 pt-2">
-                                    <button onclick="skipBatchCropperItem()" class="w-1/3 bg-slate-800 hover:bg-slate-700 text-slate-200 text-xs font-bold py-2.5 rounded-xl transition">Skip Slot</button>
-                                    <button onclick="commitBatchCroppedItem()" class="w-2/3 bg-zariGreen hover:bg-zariGreen-dark text-white text-xs font-bold py-2.5 rounded-xl transition shadow flex items-center justify-center space-x-1">
-                                        <i class="fas fa-crop-simple"></i>
-                                        <span>Crop & Inject to Slot</span>
-                                    </button>
-                                </div>
                             </div>
+
                         </div>
                     </div>
 
@@ -817,21 +852,32 @@
                 <div class="modal-magnifier" id="modalLens"></div>
             </div>
 
-            <div class="p-6 space-y-4">
+            <div class="p-6 space-y-4 max-h-[calc(100vh-22rem)] overflow-y-auto">
                 <div class="grid grid-cols-2 gap-3 text-xs border-b border-slate-100 pb-3">
                     <div>
                         <span class="block text-slate-400 uppercase font-extrabold text-[8px] tracking-wider">Estimated Price (ZAR)</span>
-                        <strong id="modalPrice" class="text-zariCrimson font-serif text-lg font-bold">R 0,00</strong>
+                        <strong id="modalPrice" class="text-zariCrimson font-serif text-lg font-bold">Price on Request</strong>
                     </div>
                     <div>
                         <span class="block text-slate-400 uppercase font-extrabold text-[8px] tracking-wider">Size & Piece Setup</span>
-                        <strong id="modalSizes" class="text-slate-700 font-semibold">Medium (3pc)</strong>
+                        <strong id="modalSizes" class="text-slate-700 font-semibold">Bespoke Setup</strong>
                     </div>
                 </div>
 
                 <div class="space-y-1">
                     <span class="block text-slate-400 uppercase font-extrabold text-[8px] tracking-wider">Product Description</span>
                     <p id="modalDescription" class="text-xs text-slate-600 leading-relaxed font-semibold">Exquisite traditional wear designed with gold kora highlights and premium fabrics.</p>
+                </div>
+
+                <!-- Premium Top Tier Representative Disclaimer Alert Box -->
+                <div class="p-3 bg-slate-50 border border-slate-200/80 rounded-2xl space-y-1">
+                    <div class="flex items-center space-x-2 text-zariBurgundy">
+                        <i class="fas fa-circle-info text-zariGold text-[11px]" aria-hidden="true"></i>
+                        <span class="text-[8.5px] uppercase tracking-wider font-extrabold font-sans">Artisanal Design Concept Decree</span>
+                    </div>
+                    <p class="text-[9.5px] text-slate-500 leading-relaxed font-semibold">
+                        All images are high-fidelity conceptual representations styled with advanced AI modeling and digital imagery. Physical items are meticulously crafted by hand, so actual shapes, sizing fitments, and fabric color tones may show organic variations from the digital models.
+                    </p>
                 </div>
 
                 <div class="space-y-1">
@@ -890,7 +936,7 @@
                 <p id="gitFailMsg" class="text-xs text-slate-300 leading-relaxed text-left">Could not find or authenticate repository configuration. Verify token credentials and permission scope are set correctly on GitHub.</p>
             </div>
 
-            <!-- Fail-safe backup module if they worked hard in preview -->
+            <!-- Fail-safe data backup module -->
             <div class="p-4 bg-slate-950/40 border border-slate-800 rounded-2xl space-y-2 text-left">
                 <span class="text-[9px] uppercase tracking-wider text-slate-400 font-extrabold block">💾 Fail-Safe Data Protection (Do Not Lose Your Edits)</span>
                 <p class="text-[10px] text-slate-400">If you have made edits inside this preview, click below to immediately download your file before closing, preserving all changes.</p>
@@ -973,12 +1019,11 @@
         // Dynamic Operating Hours Calculator
         // ==========================================
         function updateShowroomStatus() {
-            // Calculate Johannesburg timezone offsets (SAST is GMT+2)
             const d = new Date();
             const utc = d.getTime() + (d.getTimezoneOffset() * 60000);
             const sastDate = new Date(utc + (3600000 * 2));
             
-            const day = sastDate.getDay(); // Sun is 0, Mon is 1... Sat is 6
+            const day = sastDate.getDay(); 
             const hour = sastDate.getHours();
             const min = sastDate.getMinutes();
             const currentMin = (hour * 60) + min;
@@ -1041,13 +1086,12 @@
             
             document.getElementById('inspectorPresetTitle').textContent = preset.title;
             
-            // Re-render patterns over static & zoomed elements
             const mainBg = document.getElementById('inspectorStaticBg');
             const zoomBg = document.getElementById('inspectorZoomedBg');
             
             mainBg.style.background = preset.pattern;
             zoomBg.style.background = preset.pattern;
-            zoomBg.style.backgroundSize = "200% 200%"; // Simulation of magnification scale
+            zoomBg.style.backgroundSize = "200% 200%"; 
         }
 
         // Setup Hover magnification calculation
@@ -1061,12 +1105,10 @@
                 const x = e.clientX - rect.left;
                 const y = e.clientY - rect.top;
 
-                // Ensure the magnifier circle centers under cursor perfectly
                 lens.style.display = 'block';
                 lens.style.left = `${x - 80}px`;
                 lens.style.top = `${y - 80}px`;
 
-                // Calculate background coordinates mapping (inverted for magnifying glass scroll context)
                 const percentX = (x / rect.width) * 100;
                 const percentY = (y / rect.height) * 100;
 
@@ -1091,7 +1133,6 @@
                 let clientX = e.clientX;
                 let clientY = e.clientY;
 
-                // Support mobile touch gesture calculation
                 if (e.touches && e.touches.length > 0) {
                     clientX = e.touches[0].clientX;
                     clientY = e.touches[0].clientY;
@@ -1100,21 +1141,19 @@
                 const x = clientX - rect.left;
                 const y = clientY - rect.top;
 
-                // Boundaries guardrail
                 if (x < 0 || x > rect.width || y < 0 || y > rect.height) {
                     lens.style.display = 'none';
                     return;
                 }
 
                 lens.style.display = 'block';
-                lens.style.left = `${x - 70}px`; // Center 140px lens
+                lens.style.left = `${x - 70}px`; 
                 lens.style.top = `${y - 70}px`;
 
                 const percentX = (x / rect.width) * 100;
                 const percentY = (y / rect.height) * 100;
 
                 if (activeInquiryItem.img !== 'placeholder') {
-                    // Custom user-uploaded image magnification
                     lens.style.backgroundImage = `url(${activeInquiryItem.img})`;
                     lens.style.backgroundSize = `${rect.width * 2.5}px ${rect.height * 2.5}px`;
                     
@@ -1122,7 +1161,6 @@
                     const offsetY = (y * 2.5) - 70;
                     lens.style.backgroundPosition = `-${offsetX}px -${offsetY}px`;
                 } else {
-                    // Placeholder decorative fabric inspector
                     let weavePreset = fabricInspectorPresets.silk;
                     if (activeInquiryItem.category === 'groom') weavePreset = fabricInspectorPresets.velvet;
                     if (activeInquiryItem.category === 'sarees') weavePreset = fabricInspectorPresets.brocade;
@@ -1163,8 +1201,6 @@
         }
 
         // ==========================================
-        // DATABASE INGRESS ARRAY (HARDCODED CLIENT CATALOG 1-28)
-        // All pathways configured to support the high-fidelity PNG model set.
         // ==========================================
         let catalog = [
             {
@@ -1364,7 +1400,7 @@
                 price: 6720,
                 size: "Large / Available in Navy Blue & Gold",
                 pieces: "Sherwani & Trousers Set",
-                description: "2‑Piece Navy Blue & Gold Sherwani Set – A premium groom’s couture outfit showcasing our AI Model wearing high‑density gold threads woven over fine luxury backing panels. This large‑fit Sherwani (Size 40) features rich navy blue fabric with intricate gold embroidery, detailed cuffs, and elegant pocket edging, paired with matching trousers for a complete ceremonial look.",
+                description: "2‑Piece Navy Blue & Gold Sherwani Set – A premium groom’s couture outfit showcasing our AI Model wearing high-density gold threads woven over fine luxury backing panels. This large-fit Sherwani (Size 40) features rich navy blue fabric with intricate gold embroidery, detailed cuffs, and elegant pocket edging, paired with matching trousers for a complete ceremonial look.",
                 img: "20.png"
             },
             {
@@ -1553,7 +1589,7 @@
                         ${item.img !== 'placeholder' ? `<img src="${item.img}" onerror="this.src='https://placehold.co/480x640/7A1F3D/ffffff?text=Zari+Wear';" class="absolute inset-0 w-full h-full object-cover" alt="Zari Ethnics Wear Asset">` : ''}
                         
                         <div class="absolute top-4 right-4 bg-zariCrimson text-white text-[8px] uppercase font-bold tracking-widest px-3.5 py-1.5 rounded-full shadow-sm z-30">
-                            ${isVault ? 'WhatsApp Estimate' : `R ${item.price.toLocaleString('en-ZA')}`}
+                            ${isVault ? 'Price on Request' : `R ${item.price.toLocaleString('en-ZA')}`}
                         </div>
                     </div>
                 `;
@@ -1567,6 +1603,12 @@
                             <p class="text-xs text-slate-500 leading-relaxed font-semibold">
                                 ${item.description.substring(0, 140)}...
                             </p>
+                            
+                            <!-- Delicate Professional AI Representation Disclaimer on Product Cards -->
+                            <div class="pt-2 flex items-start space-x-1 border-t border-slate-100 text-[8.5px] text-slate-400 font-semibold leading-relaxed">
+                                <i class="fas fa-circle-info text-zariCrimson/80 mt-0.5" aria-hidden="true"></i>
+                                <span>Digital reference only. Actual physical garment sizing, fabric tone, and weave detail may vary slightly.</span>
+                            </div>
                         </div>
                     </div>
                     
@@ -1640,7 +1682,7 @@
             const actionText = document.getElementById('modalActionText');
             
             if (item.price === 0) {
-                priceLabel.textContent = "WhatsApp Price Estimate";
+                priceLabel.textContent = "Price on Request";
                 actionText.textContent = "Inquire on WhatsApp";
             } else {
                 priceLabel.textContent = `R ${item.price.toLocaleString('en-ZA')}`;
@@ -1688,14 +1730,12 @@
         }
 
         // ==========================================
-        // Security Credential Console Controller
         // ==========================================
         let undoStack = [];
         let redoStack = [];
         let workbenchUnlocked = false;
         let cropper = null;
-        let batchFileQueue = [];
-        let currentQueueIndex = 0;
+        let currentCustomImageBase64 = null;
 
         function getSimpleHash(str) {
             let hash = 0;
@@ -1732,7 +1772,6 @@
 
         function unlockBoutiqueWorkbench() {
             const pin = document.getElementById('sandboxKeyInput').value;
-            // Evaluates mathematical rolling checksum of password (Jagdishdesai)
             if (getSimpleHash(pin) === 3996795504) {
                 workbenchUnlocked = true;
                 playAtmosphericSound('success');
@@ -1745,7 +1784,6 @@
                 updateDashboardStatistics();
                 renderSandboxGridIndex();
 
-                // Retrieve cached Git credentials from storage if available
                 if(localStorage.getItem('zari_git_pat')) document.getElementById('gitPat').value = localStorage.getItem('zari_git_pat');
                 if(localStorage.getItem('zari_git_repo')) document.getElementById('gitRepo').value = localStorage.getItem('zari_git_repo');
                 if(localStorage.getItem('zari_git_file')) document.getElementById('gitFile').value = localStorage.getItem('zari_git_file');
@@ -1798,9 +1836,22 @@
             catalog.forEach(item => {
                 const opt = document.createElement('option');
                 opt.value = item.id;
-                opt.textContent = `Slot #${item.id} - ${item.title.substring(0, 30)}...`;
+                opt.textContent = `Slot #${item.id} - ${item.title.substring(0, 35)}...`;
                 dropdown.appendChild(opt);
             });
+        }
+
+        function loadSelectedSlotDataToForm() {
+            const targetId = parseInt(document.getElementById('cropTargetSlot').value);
+            const matchedItem = catalog.find(x => x.id === targetId);
+            if (matchedItem) {
+                document.getElementById('cropTitleInput').value = matchedItem.title === `Showroom Slot #${targetId}` ? "" : matchedItem.title;
+                document.getElementById('cropPriceInput').value = matchedItem.price === 0 ? "" : matchedItem.price;
+                document.getElementById('cropCategorySelect').value = matchedItem.category;
+                document.getElementById('cropSizeInput').value = matchedItem.size === "TBD" ? "" : matchedItem.size;
+                document.getElementById('cropFittingInput').value = matchedItem.pieces === "TBD" ? "" : matchedItem.pieces;
+                document.getElementById('cropDescInput').value = matchedItem.description.includes("unpopulated") ? "" : matchedItem.description;
+            }
         }
 
         function renderSandboxGridIndex() {
@@ -1844,55 +1895,48 @@
             if (!item) return;
 
             document.getElementById('cropTargetSlot').value = item.id;
-            document.getElementById('cropTitleInput').value = item.title;
-            document.getElementById('cropPriceInput').value = item.price;
-            document.getElementById('cropCategorySelect').value = item.category;
-            document.getElementById('cropSizeInput').value = item.size;
-            document.getElementById('cropFittingInput').value = item.pieces;
-            document.getElementById('cropDescInput').value = item.description;
+            loadSelectedSlotDataToForm();
 
+            document.getElementById('cropperPlaceholder').classList.add('hidden');
             document.getElementById('batchCropWorkspace').classList.remove('hidden');
+
+            const targetImage = document.getElementById('cropTargetImage');
+            
+            if (item.img !== 'placeholder') {
+                targetImage.src = item.img;
+                if (cropper) cropper.destroy();
+                setTimeout(() => {
+                    cropper = new Cropper(targetImage, {
+                        aspectRatio: 3 / 4,
+                        viewMode: 1,
+                        background: false,
+                        autoCropArea: 0.9,
+                        responsive: true
+                    });
+                }, 100);
+            } else {
+                targetImage.src = "data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='480' height='640' viewBox='0 0 480 640'%3E%3Crect width='100%25' height='100%25' fill='%230f172a'/%3E%3Ctext x='50%25' y='50%25' dominant-baseline='middle' text-anchor='middle' font-family='sans-serif' font-size='16' fill='%23c4990c'%3ESnap Photo or Upload to Crop%3C/text%3E%3C/svg%3E";
+                if (cropper) {
+                    cropper.destroy();
+                    cropper = null;
+                }
+            }
+
             window.location.hash = "collections";
         }
 
-        function handleBatchFileSelection(event) {
-            const files = event.target.files;
-            if (files.length === 0) return;
+        function handleSingleFileSelection(event) {
+            const file = event.target.files[0];
+            if (!file) return;
 
-            batchFileQueue = Array.from(files).slice(0, 50); 
-            currentQueueIndex = 0;
-            
-            launchQueueCropper();
-        }
-
-        function launchQueueCropper() {
-            if (currentQueueIndex >= batchFileQueue.length) {
-                cancelBatchCropping();
-                return;
-            }
-
-            const currentFile = batchFileQueue[currentQueueIndex];
-            document.getElementById('batchProcessingQueueText').textContent = `Processing Queue Item ${currentQueueIndex + 1} of ${batchFileQueue.length}`;
-            document.getElementById('cropFileNameLabel').textContent = currentFile.name;
+            document.getElementById('cropperPlaceholder').classList.add('hidden');
+            document.getElementById('batchCropWorkspace').classList.remove('hidden');
+            document.getElementById('cropFileNameLabel').textContent = file.name;
 
             const reader = new FileReader();
             reader.onload = function(e) {
                 const targetImage = document.getElementById('cropTargetImage');
                 targetImage.src = e.target.result;
-                
-                document.getElementById('batchCropWorkspace').classList.remove('hidden');
-                
-                const slotIndex = currentQueueIndex + 1;
-                document.getElementById('cropTargetSlot').value = slotIndex;
-                const matchedItem = catalog.find(x => x.id === slotIndex);
-                if (matchedItem) {
-                    document.getElementById('cropTitleInput').value = matchedItem.title;
-                    document.getElementById('cropPriceInput').value = matchedItem.price;
-                    document.getElementById('cropCategorySelect').value = matchedItem.category;
-                    document.getElementById('cropSizeInput').value = matchedItem.size;
-                    document.getElementById('cropFittingInput').value = matchedItem.pieces;
-                    document.getElementById('cropDescInput').value = matchedItem.description;
-                }
 
                 if (cropper) cropper.destroy();
 
@@ -1904,13 +1948,7 @@
                     responsive: true
                 });
             };
-            reader.readAsDataURL(currentFile);
-        }
-
-        function skipBatchCropperItem() {
-            playAtmosphericSound('low');
-            currentQueueIndex++;
-            launchQueueCropper();
+            reader.readAsDataURL(file);
         }
 
         function cancelBatchCropping() {
@@ -1919,59 +1957,39 @@
                 cropper.destroy();
                 cropper = null;
             }
-            batchFileQueue = [];
-            currentQueueIndex = 0;
             document.getElementById('batchCropWorkspace').classList.add('hidden');
+            document.getElementById('cropperPlaceholder').classList.remove('hidden');
         }
 
         function commitBatchCroppedItem() {
-            if (!cropper) {
-                const targetId = parseInt(document.getElementById('cropTargetSlot').value);
-                const matched = catalog.find(x => x.id === targetId);
-                if (matched) {
-                    saveSnapshot();
-                    matched.title = document.getElementById('cropTitleInput').value;
-                    matched.price = parseFloat(document.getElementById('cropPriceInput').value) || 0;
-                    matched.category = document.getElementById('cropCategorySelect').value;
-                    matched.size = document.getElementById('cropSizeInput').value;
-                    matched.pieces = document.getElementById('cropFittingInput').value;
-                    matched.description = document.getElementById('cropDescInput').value;
-
-                    updateDashboardStatistics();
-                    renderSandboxGridIndex();
-                    renderGallery();
-                    playAtmosphericSound('success');
-                }
-                return;
-            }
-
-            const croppedCanvas = cropper.getCroppedCanvas({
-                width: 480,
-                height: 640
-            });
-
-            const dataUrl = croppedCanvas.toDataURL('image/jpeg', 0.85);
             const targetId = parseInt(document.getElementById('cropTargetSlot').value);
-
             const matched = catalog.find(x => x.id === targetId);
-            if (matched) {
-                saveSnapshot();
-                matched.title = document.getElementById('cropTitleInput').value;
-                matched.price = parseFloat(document.getElementById('cropPriceInput').value) || 0;
-                matched.category = document.getElementById('cropCategorySelect').value;
-                matched.size = document.getElementById('cropSizeInput').value;
-                matched.pieces = document.getElementById('cropFittingInput').value;
-                matched.description = document.getElementById('cropDescInput').value;
-                matched.img = dataUrl; 
+            if (!matched) return;
 
-                updateDashboardStatistics();
-                renderSandboxGridIndex();
-                renderGallery();
-                playAtmosphericSound('success');
+            saveSnapshot();
+
+            matched.title = document.getElementById('cropTitleInput').value.trim() || `Showroom Slot #${targetId}`;
+            matched.price = parseFloat(document.getElementById('cropPriceInput').value) || 0;
+            matched.category = document.getElementById('cropCategorySelect').value;
+            matched.size = document.getElementById('cropSizeInput').value.trim() || "Bespoke Setup";
+            matched.pieces = document.getElementById('cropFittingInput').value.trim() || "Tailored Set";
+            matched.description = document.getElementById('cropDescInput').value.trim() || "Exquisite traditional wear customized to high-end standards.";
+
+            if (cropper) {
+                const croppedCanvas = cropper.getCroppedCanvas({
+                    width: 480,
+                    height: 640
+                });
+                matched.img = croppedCanvas.toDataURL('image/png', 0.85); 
             }
 
-            currentQueueIndex++;
-            launchQueueCropper();
+            // Immediately re-render screen view
+            updateDashboardStatistics();
+            renderSandboxGridIndex();
+            renderGallery();
+            
+            playAtmosphericSound('success');
+            cancelBatchCropping();
         }
 
         // ==========================================

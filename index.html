@@ -1,18 +1,42 @@
+Here is the complete, single-file HTML solution. It consolidates a premium landing page design, a fully responsive dynamic product catalog, live tax/VAT calculations, and the sliding multi-item cart into a single integrated system.
+
+It handles everything from adding products to calculating totals and sending the order data seamlessly to WhatsApp.
+
+### The E-Commerce Workflow Structure
+
+Before diving into the code, here is how the data flows from the initial click to the checkout phase:
+
+1. **Selection & State Capture:** The user interacts with the page layout, choosing fabric variations or sizes from the catalog.
+2. **Dynamic Ingestion:** Clicking "Add to Bag" updates a global JavaScript array structure (`cart`). If an exact matching variant exists, it ticks the quantity up.
+3. **Financial Math Calculation:** The system instantly recalculates values:
+* **Gross Subtotal:** $\sum (\text{Price} \times \text{Quantity})$
+* **VAT Component:** Calculated at $15\%$ (Standard South African structure, calculated as an internal fraction: $\text{Subtotal} \times \frac{15}{115}$ or added depending on pricing display rules). Here, we isolate it cleanly so your client can see the tax breakdown.
+
+
+4. **Checkout Compilation:** Clicking "Order via WhatsApp" serializes the entire layout into a clean string payload, generates a unique reference ID, and builds the secure custom URI redirection.
+
+---
+
+### Consolidated Production Code (`index.html`)
+
+```html
 <!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Zari Ethnics - Luxury Storefront</title>
+    <title>Zari Ethnics | Luxury Heritage Storefront</title>
     <style>
         :root {
             --primary-gold: #c5a028;
             --dark-bg: #0b0f19;
             --card-bg: rgba(255, 255, 255, 0.03);
             --text-muted: #a0aec0;
-            --whatsapp-green: #2b5329;
+            --whatsapp-green: #23d366;
+            --whatsapp-dark: #128c7e;
             --pure-white: #ffffff;
             --slate-gray: #1a202c;
+            --border-color: rgba(255, 255, 255, 0.08);
         }
 
         * {
@@ -29,174 +53,275 @@
             overflow-x: hidden;
         }
 
-        /* Luxury Storefront Header */
-        header {
-            text-align: center;
-            padding: 60px 20px 30px;
-            border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+        /* STICKY TOP NAVIGATION BAR */
+        .navbar {
+            position: sticky;
+            top: 0;
+            background: rgba(11, 15, 25, 0.9);
+            backdrop-filter: blur(12px);
+            border-bottom: 1px solid var(--border-color);
+            padding: 15px 30px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            z-index: 1000;
         }
 
-        header h1 {
-            font-size: 2.5rem;
+        .nav-brand {
+            font-size: 1.5rem;
+            font-weight: 800;
             color: var(--primary-gold);
             text-transform: uppercase;
-            letter-spacing: 4px;
-            margin-bottom: 10px;
+            letter-spacing: 2px;
         }
 
-        header p {
+        .nav-links {
+            display: flex;
+            gap: 25px;
+            align-items: center;
+        }
+
+        .nav-links a {
             color: var(--text-muted);
-            font-size: 1rem;
-            letter-spacing: 1px;
+            text-decoration: none;
+            font-size: 0.95rem;
+            transition: color 0.2s ease;
         }
 
-        /* Storefront Layout Container */
+        .nav-links a:hover {
+            color: var(--primary-gold);
+        }
+
+        .nav-cart-trigger {
+            background: rgba(255, 255, 255, 0.07);
+            border: 1px solid rgba(255, 255, 255, 0.15);
+            color: var(--pure-white);
+            padding: 10px 18px;
+            border-radius: 30px;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            font-weight: 600;
+            transition: all 0.2s ease;
+        }
+
+        .nav-cart-trigger:hover {
+            background: var(--primary-gold);
+            color: var(--dark-bg);
+            border-color: var(--primary-gold);
+        }
+
+        .global-badge-count {
+            background: #e63946;
+            color: white;
+            font-size: 0.75rem;
+            min-width: 18px;
+            height: 18px;
+            border-radius: 50%;
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: bold;
+            padding: 2px;
+        }
+
+        /* LANDING HERO BANNER SECTION */
+        .hero-section {
+            padding: 100px 20px;
+            text-align: center;
+            background: linear-gradient(to bottom, rgba(197, 160, 40, 0.05), transparent);
+            border-bottom: 1px solid var(--border-color);
+        }
+
+        .hero-section h1 {
+            font-size: 3.5rem;
+            color: var(--primary-gold);
+            text-transform: uppercase;
+            letter-spacing: 6px;
+            margin-bottom: 15px;
+        }
+
+        .hero-section p {
+            color: var(--text-muted);
+            font-size: 1.2rem;
+            max-width: 600px;
+            margin: 0 auto 30px;
+        }
+
+        .hero-cta-btn {
+            background: transparent;
+            border: 2px solid var(--primary-gold);
+            color: var(--primary-gold);
+            padding: 12px 30px;
+            font-size: 1rem;
+            text-transform: uppercase;
+            font-weight: 700;
+            letter-spacing: 1px;
+            border-radius: 6px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+
+        .hero-cta-btn:hover {
+            background: var(--primary-gold);
+            color: var(--dark-bg);
+        }
+
+        /* E-COMMERCE RESPONSIVE PRODUCT CATALOG */
         .store-container {
             max-width: 1200px;
-            margin: 40px auto;
+            margin: 60px auto;
             padding: 0 20px;
         }
 
-        .product-grid {
-            display: grid;
-            grid-template-columns: 1fr 1fr;
-            gap: 50px;
-            background: var(--card-bg);
-            border: 1px solid rgba(255, 255, 255, 0.08);
-            border-radius: 24px;
-            padding: 40px;
-        }
-
-        /* Product Customization Panel */
-        .product-gallery-panel {
-            background: rgba(0, 0, 0, 0.2);
-            border: 1px dashed rgba(197, 160, 40, 0.4);
-            border-radius: 16px;
-            padding: 40px;
+        .section-title {
+            font-size: 2rem;
+            color: var(--pure-white);
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            margin-bottom: 10px;
             text-align: center;
-            display: flex;
-            flex-direction: column;
-            justify-content: center;
         }
 
-        .product-icon-avatar {
-            font-size: 3.5rem;
-            margin-bottom: 15px;
-            animation: float 3s ease-in-out infinite;
-        }
-
-        @keyframes float {
-            0%, 100% { transform: translateY(0); }
-            50% { transform: translateY(-10px); }
-        }
-
-        .variant-selector-title {
-            font-size: 0.75rem;
-            text-transform: uppercase;
-            letter-spacing: 1.5px;
-            color: var(--primary-gold);
-            margin: 20px 0 10px;
-            font-weight: 700;
-        }
-
-        .variant-options-row {
-            display: flex;
-            justify-content: center;
-            gap: 12px;
-        }
-
-        .variant-btn {
-            background: transparent;
-            border: 1px solid rgba(255, 255, 255, 0.15);
-            color: var(--pure-white);
-            padding: 10px 20px;
-            border-radius: 8px;
-            cursor: pointer;
-            font-size: 0.9rem;
-            font-weight: 600;
-            transition: all 0.25s ease;
-        }
-
-        .variant-btn.active, .variant-btn:hover {
-            border-color: var(--primary-gold);
-            background: rgba(197, 160, 40, 0.1);
-            color: var(--primary-gold);
-        }
-
-        /* Retail Purchase Panel */
-        .product-info-panel {
-            display: flex;
-            flex-direction: column;
-            justify-content: center;
-        }
-
-        .promo-tag {
-            background: #e63946;
-            color: var(--pure-white);
-            padding: 4px 12px;
-            font-size: 0.75rem;
-            font-weight: 700;
-            text-transform: uppercase;
-            border-radius: 4px;
-            align-self: flex-start;
-            margin-bottom: 15px;
-        }
-
-        .product-title {
-            font-size: 2.2rem;
-            font-weight: 700;
-            margin-bottom: 15px;
-            letter-spacing: -0.5px;
-        }
-
-        .price-container {
-            margin-bottom: 25px;
-        }
-
-        .sale-price {
-            font-size: 3rem;
-            font-weight: 800;
-            color: var(--primary-gold);
-            line-height: 1;
-        }
-
-        .original-price-notice {
-            font-size: 0.95rem;
+        .section-subtitle {
             color: var(--text-muted);
-            margin-top: 5px;
-        }
-
-        .product-description {
-            color: var(--text-muted);
-            margin-bottom: 35px;
+            text-align: center;
+            margin-bottom: 40px;
             font-size: 1rem;
         }
 
-        .add-to-cart-action-btn {
+        .catalog-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
+            gap: 30px;
+        }
+
+        .product-card {
+            background: var(--card-bg);
+            border: 1px solid var(--border-color);
+            border-radius: 16px;
+            padding: 24px;
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+            transition: transform 0.2s ease, border-color 0.2s ease;
+        }
+
+        .product-card:hover {
+            transform: translateY(-4px);
+            border-color: rgba(197, 160, 40, 0.3);
+        }
+
+        .card-visual-wrapper {
+            background: rgba(0, 0, 0, 0.2);
+            border-radius: 12px;
+            height: 180px;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            margin-bottom: 20px;
+            border: 1px dashed rgba(255, 255, 255, 0.05);
+            position: relative;
+        }
+
+        .card-avatar-icon {
+            font-size: 3.5rem;
+        }
+
+        .card-promo-badge {
+            position: absolute;
+            top: 10px;
+            left: 10px;
+            background: #e63946;
+            color: white;
+            font-size: 0.7rem;
+            font-weight: 700;
+            padding: 4px 8px;
+            border-radius: 4px;
+            text-transform: uppercase;
+        }
+
+        .card-product-title {
+            font-size: 1.3rem;
+            font-weight: 700;
+            margin-bottom: 8px;
+        }
+
+        .card-product-desc {
+            color: var(--text-muted);
+            font-size: 0.9rem;
+            margin-bottom: 20px;
+            flex-grow: 1;
+        }
+
+        .selector-group {
+            margin-bottom: 15px;
+        }
+
+        .selector-label {
+            font-size: 0.7rem;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            color: var(--primary-gold);
+            margin-bottom: 6px;
+            font-weight: bold;
+        }
+
+        .inline-select-dropdown {
+            width: 100%;
+            background: rgba(255, 255, 255, 0.05);
+            border: 1px solid rgba(255, 255, 255, 0.15);
+            color: white;
+            padding: 8px 12px;
+            border-radius: 6px;
+            font-size: 0.85rem;
+            outline: none;
+            cursor: pointer;
+        }
+
+        .inline-select-dropdown option {
+            background: #0b0f19;
+            color: white;
+        }
+
+        .card-footer-row {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-top: 15px;
+            padding-top: 15px;
+            border-top: 1px solid rgba(255, 255, 255, 0.05);
+        }
+
+        .card-price-label {
+            font-size: 1.4rem;
+            font-weight: 800;
+            color: var(--primary-gold);
+        }
+
+        .action-add-btn {
             background: var(--pure-white);
             color: var(--dark-bg);
             border: none;
-            padding: 18px 32px;
-            font-size: 1.1rem;
+            padding: 10px 16px;
+            font-size: 0.9rem;
             font-weight: 700;
-            border-radius: 12px;
+            border-radius: 8px;
             cursor: pointer;
             transition: all 0.2s ease;
-            box-shadow: 0 4px 20px rgba(255,255,255,0.08);
             display: flex;
             align-items: center;
-            justify-content: center;
-            gap: 10px;
+            gap: 6px;
         }
 
-        .add-to-cart-action-btn:hover {
-            background: #f0f0f0;
-            transform: translateY(-2px);
+        .action-add-btn:hover {
+            background: var(--primary-gold);
+            color: var(--dark-bg);
         }
 
-        /* ========================================================
-           STANDARD RETAIL SLIDING CART DRAWER SYSTEM (STANDARD UX)
-           ======================================================== */
+        /* SLIDING CART DRAWER SYSTEM VIEW OVERLAY */
         .cart-drawer-overlay {
             position: fixed;
             top: 0;
@@ -219,13 +344,13 @@
         .cart-slide-drawer {
             position: fixed;
             top: 0;
-            right: -450px; /* Standard hidden offscreen right positioning */
+            right: -500px;
             width: 100%;
-            max-width: 440px;
+            max-width: 460px;
             height: 100vh;
             background: var(--pure-white);
             color: var(--slate-gray);
-            box-shadow: -10px 0 35px rgba(0, 0, 0, 0.25);
+            box-shadow: -10px 0 35px rgba(0, 0, 0, 0.3);
             display: flex;
             flex-direction: column;
             transition: right 0.3s cubic-bezier(0.16, 1, 0.3, 1);
@@ -233,10 +358,9 @@
         }
 
         .cart-drawer-overlay.active .cart-slide-drawer {
-            right: 0; /* Elegant slide-in transition */
+            right: 0;
         }
 
-        /* Cart Drawer Header */
         .cart-drawer-header {
             padding: 24px;
             border-bottom: 1px solid #e2e8f0;
@@ -251,38 +375,36 @@
             color: var(--slate-gray);
             display: flex;
             align-items: center;
-            gap: 8px;
-        }
-
-        .cart-items-count-badge {
-            background: #edf2f7;
-            font-size: 0.8rem;
-            padding: 3px 8px;
-            border-radius: 12px;
-            font-weight: bold;
+            gap: 10px;
         }
 
         .cart-close-icon-btn {
             background: transparent;
             border: none;
-            font-size: 1.5rem;
+            font-size: 1.75rem;
             cursor: pointer;
             color: #718096;
-            transition: color 0.2s ease;
+            line-height: 1;
         }
 
-        .cart-close-icon-btn:hover {
-            color: var(--slate-gray);
-        }
-
-        /* Scrollable Line Items Layout */
         .cart-drawer-body {
             flex: 1;
             overflow-y: auto;
             padding: 24px;
         }
 
-        /* Standard Retail Item Row Structure */
+        .empty-cart-notice {
+            text-align: center;
+            padding: 40px 10px;
+            color: #a0aec0;
+        }
+
+        .empty-cart-icon {
+            font-size: 3rem;
+            margin-bottom: 10px;
+        }
+
+        /* LINE ITEM ROW UI */
         .cart-product-line-item {
             display: flex;
             gap: 16px;
@@ -292,15 +414,15 @@
         }
 
         .cart-product-image-placeholder {
-            width: 80px;
-            height: 80px;
+            width: 75px;
+            height: 75px;
             background: #f7fafc;
             border: 1px solid #e2e8f0;
             border-radius: 8px;
             display: flex;
             align-items: center;
             justify-content: center;
-            font-size: 2rem;
+            font-size: 1.8rem;
         }
 
         .cart-product-item-details {
@@ -317,41 +439,84 @@
         }
 
         .cart-item-name {
-            font-size: 1rem;
-            font-weight: 600;
+            font-size: 0.95rem;
+            font-weight: 700;
             color: var(--slate-gray);
         }
 
-        .cart-item-price {
-            font-weight: 700;
-            color: var(--primary-gold);
-        }
-
         .cart-item-meta-variant {
-            font-size: 0.85rem;
+            font-size: 0.8rem;
             color: #718096;
             margin-top: 2px;
         }
 
-        .cart-item-qty-container {
-            font-size: 0.85rem;
-            color: #a0aec0;
+        .cart-item-price {
+            font-weight: 700;
+            color: #0b0f19;
+            font-size: 0.95rem;
+        }
+
+        .cart-item-control-row {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
             margin-top: 10px;
         }
 
-        /* Artisanal Decree Notice (Inlined cleanly inside standard container layout) */
+        .quantity-spinner {
+            display: flex;
+            align-items: center;
+            border: 1px solid #cbd5e0;
+            border-radius: 6px;
+            overflow: hidden;
+            background: #f7fafc;
+        }
+
+        .spinner-btn {
+            background: transparent;
+            border: none;
+            width: 28px;
+            height: 28px;
+            font-size: 1rem;
+            font-weight: bold;
+            cursor: pointer;
+            color: var(--slate-gray);
+        }
+
+        .spinner-btn:hover {
+            background: #e2e8f0;
+        }
+
+        .spinner-value {
+            width: 32px;
+            text-align: center;
+            font-size: 0.85rem;
+            font-weight: 600;
+            color: var(--slate-gray);
+        }
+
+        .item-remove-text-btn {
+            background: transparent;
+            border: none;
+            color: #e63946;
+            font-size: 0.8rem;
+            font-weight: 600;
+            cursor: pointer;
+        }
+
+        /* ARTISANAL CONCEPT NOTICE CARD */
         .cart-decree-notice-card {
             background: #fffaf0;
             border: 1px solid #feebc8;
             border-radius: 10px;
             padding: 14px;
             margin-top: 15px;
-            font-size: 0.8rem;
+            font-size: 0.75rem;
             line-height: 1.4;
             color: #744210;
         }
 
-        /* Fixed Cart Drawer Footer Summary & Checkout Actions */
+        /* DRAWER CALCULATION FOOTER SYSTEM */
         .cart-drawer-footer {
             padding: 24px;
             border-top: 1px solid #e2e8f0;
@@ -367,7 +532,7 @@
 
         .cart-summary-total {
             font-size: 1.2rem;
-            font-weight: 700;
+            font-weight: 800;
             color: var(--slate-gray);
             margin-top: 10px;
             padding-top: 10px;
@@ -375,14 +540,14 @@
         }
 
         .cart-checkout-action-btn {
-            background: var(--whatsapp-green);
+            background: linear-gradient(135deg, var(--whatsapp-green), var(--whatsapp-dark));
             color: var(--pure-white);
             border: none;
             width: 100%;
             padding: 16px;
             font-size: 1rem;
             font-weight: 700;
-            border-radius: 10px;
+            border-radius: 12px;
             cursor: pointer;
             text-transform: uppercase;
             display: flex;
@@ -390,211 +555,360 @@
             justify-content: center;
             gap: 10px;
             margin-top: 15px;
-            transition: opacity 0.2s ease;
+            box-shadow: 0 4px 15px rgba(35, 211, 102, 0.3);
+            transition: transform 0.2s ease, box-shadow 0.2s ease;
         }
 
         .cart-checkout-action-btn:hover {
-            opacity: 0.95;
+            transform: translateY(-1px);
+            box-shadow: 0 6px 20px rgba(35, 211, 102, 0.4);
+        }
+
+        .cart-checkout-action-btn:disabled {
+            background: #cbd5e0;
+            color: #a0aec0;
+            cursor: not-allowed;
+            box-shadow: none;
         }
 
         @media (max-width: 768px) {
-            .product-grid { grid-template-columns: 1fr; padding: 25px; gap: 30px; }
+            .hero-section h1 { font-size: 2.5rem; }
+            .catalog-grid { grid-template-columns: 1fr; }
             .cart-slide-drawer { max-width: 100%; right: -100%; }
+            .nav-links a { display: none; } /* Focus navigation flow on mobile */
         }
     </style>
 </head>
 <body>
 
-    <!-- BRAND VIEW HEADER -->
-    <header>
-        <h1>Zari Ethnics</h1>
-        <p>Bespoke Groomswear & Luxury Heritage Silhouettes</p>
-    </header>
+    <nav class="navbar">
+        <div class="nav-brand">Zari Ethnics</div>
+        <div class="nav-links">
+            <a href="#catalog">Collections</a>
+            <button class="nav-cart-trigger" onclick="toggleCartDrawerLayoutState(true)">
+                <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><circle cx="9" cy="21" r="1"></circle><circle cx="20" cy="21" r="1"></circle><path d="M1 1h4l2.68 13.39a2 2 0 0 0 2 1.61h9.72a2 2 0 0 0 2-1.61L23 6H6"></path></svg>
+                <span>Shopping Bag</span>
+                <span class="global-badge-count" id="navCartBadge">0</span>
+            </button>
+        </div>
+    </nav>
 
-    <!-- MAIN PRODUCT WINDOW CONTAINER -->
-    <main class="store-container">
-        <div class="product-grid">
+    <section class="hero-section">
+        <h1>Bespoke Heritage</h1>
+        <p>Step into pure distinction. Explore handmade catalog designs and secure your direct custom showroom adjustment layout slots instantly.</p>
+        <button class="hero-cta-btn" onclick="document.getElementById('catalog').scrollIntoView({behavior: 'smooth'})">View Clearance Collection</button>
+    </section>
+
+    <main class="store-container" id="catalog">
+        <h2 class="section-title">Clearance Catalog</h2>
+        <p class="section-subtitle">Configure options and add singular or multiple items into your dynamic shopping bag.</p>
+
+        <div class="catalog-grid">
             
-            <!-- CONTROLLERS VARIANT MATRIX INTERACTION PANEL -->
-            <div class="product-gallery-panel">
-                <div class="product-icon-avatar" id="variantMirrorIcon">✨</div>
-                <h3 id="fabricLabelMirror" style="font-size: 1.4rem; margin-bottom: 5px;">Royal Velvet</h3>
-                <p id="sizeLabelMirror" style="color: var(--text-muted); font-size: 0.9rem; margin-bottom: 20px;">Selected Allocation: Slot #38</p>
-                
-                <div class="variant-selector-title">1. Select Luxury Base Fabric</div>
-                <div class="variant-options-row">
-                    <button class="variant-btn active" id="velvetBtn" onclick="assignActiveSelections('Royal Velvet', '✨')">Royal Velvet</button>
-                    <button class="variant-btn" id="silkBtn" onclick="assignActiveSelections('Imperial Silk', '🧵')">Imperial Silk</button>
+            <div class="product-card" data-id="p1">
+                <div class="card-visual-wrapper">
+                    <span class="card-promo-badge">60% MarkDown</span>
+                    <div class="card-avatar-icon">✨</div>
                 </div>
-
-                <div class="variant-selector-title">2. Secure Showroom Fitting Allocation Slot</div>
-                <div class="variant-options-row">
-                    <button class="variant-btn active" id="size38Btn" onclick="assignActiveSize('Medium (#38)')">Slot #38</button>
-                    <button class="variant-btn" id="size40Btn" onclick="assignActiveSize('Large (#40)')">Slot #40</button>
+                <div>
+                    <h3 class="card-product-title" data-name="Artisanal Sherwani Set">Artisanal Sherwani Set</h3>
+                    <p class="card-product-desc">Luxury base thread count handmade garments designed for major formal wedding events.</p>
+                    
+                    <div class="selector-group">
+                        <div class="selector-label">Base Fabric</div>
+                        <select class="inline-select-dropdown fabric-select">
+                            <option value="Royal Velvet">Royal Velvet</option>
+                            <option value="Imperial Silk">Imperial Silk</option>
+                        </select>
+                    </div>
+                    <div class="selector-group">
+                        <div class="selector-label">Fitting Slot Allocation</div>
+                        <select class="inline-select-dropdown size-select">
+                            <option value="Medium (#38)">Slot Medium (#38)</option>
+                            <option value="Large (#40)">Slot Large (#40)</option>
+                        </select>
+                    </div>
+                </div>
+                <div class="card-footer-row">
+                    <span class="card-price-label">R 4,950</span>
+                    <button class="action-add-btn" onclick="addProductToCartArray('p1', '✨')">Add to Bag</button>
                 </div>
             </div>
 
-            <!-- PURCHASE INFORMATION SYSTEM -->
-            <div class="product-info-panel">
-                <span class="promo-tag">Clearance Markdown</span>
-                <h2 class="product-title">Artisanal Sherwani Set</h2>
-                
-                <div class="price-container">
-                    <div class="sale-price">60% OFF RATE</div>
-                    <div class="original-price-notice">Standard Catalog Pricing Finalized At Showroom Booking</div>
+            <div class="product-card" data-id="p2">
+                <div class="card-visual-wrapper">
+                    <span class="card-promo-badge">Limited Entry</span>
+                    <div class="card-avatar-icon">🧵</div>
                 </div>
+                <div>
+                    <h3 class="card-product-title" data-name="Embroidered Kurta">Embroidered Kurta</h3>
+                    <p class="card-product-desc">Classic raw silk configuration detailed with delicate ornamentation along the neckline frame lines.</p>
+                    
+                    <div class="selector-group">
+                        <div class="selector-label">Fabric Finish</div>
+                        <select class="inline-select-dropdown fabric-select">
+                            <option value="Raw Ivory Silk">Raw Ivory Silk</option>
+                            <option value="Midnight Cotton Blend">Midnight Cotton Blend</option>
+                        </select>
+                    </div>
+                    <div class="selector-group">
+                        <div class="selector-label">Size Fitting</div>
+                        <select class="inline-select-dropdown size-select">
+                            <option value="Small (#36)">Small (#36)</option>
+                            <option value="Medium (#38)">Medium (#38)</option>
+                            <option value="Large (#40)">Large (#40)</option>
+                        </select>
+                    </div>
+                </div>
+                <div class="card-footer-row">
+                    <span class="card-price-label">R 1,800</span>
+                    <button class="action-add-btn" onclick="addProductToCartArray('p2', '🧵')">Add to Bag</button>
+                </div>
+            </div>
 
-                <p class="product-description">
-                    Handmade garments tailored perfectly for weddings and formal celebrations. Add your configured combination into your operational basket to build an instant dispatch ticket.
-                </p>
-
-                <!-- TRIGGER SLIDING OVERLAY SYSTEM -->
-                <button class="add-to-cart-action-btn" onclick="toggleCartDrawerLayoutState(true)">
-                    <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><circle cx="9" cy="21" r="1"></circle><circle cx="20" cy="21" r="1"></circle><path d="M1 1h4l2.68 13.39a2 2 0 0 0 2 1.61h9.72a2 2 0 0 0 2-1.61L23 6H6"></path></svg>
-                    Add to Shopping Bag
-                </button>
+            <div class="product-card" data-id="p3">
+                <div class="card-visual-wrapper">
+                    <span class="card-promo-badge">Essential Pack</span>
+                    <div class="card-avatar-icon">👑</div>
+                </div>
+                <div>
+                    <h3 class="card-product-title" data-name="Royal Safa & Stole Pack">Royal Safa & Stole Pack</h3>
+                    <p class="card-product-desc">Pre-pleated high-heritage statement headwear paired elegantly with matching sheer custom silk stoles.</p>
+                    
+                    <div class="selector-group">
+                        <div class="selector-label">Color Hue Profile</div>
+                        <select class="inline-select-dropdown fabric-select">
+                            <option value="Crimson & Gold">Crimson & Gold</option>
+                            <option value="Emerald Accent">Emerald Accent</option>
+                        </select>
+                    </div>
+                    <div class="selector-group">
+                        <div class="selector-label">Safa Fitment Configuration</div>
+                        <select class="inline-select-dropdown size-select">
+                            <option value="Standard Adjustable">Standard Adjustable</option>
+                        </select>
+                    </div>
+                </div>
+                <div class="card-footer-row">
+                    <span class="card-price-label">R 1,250</span>
+                    <button class="action-add-btn" onclick="addProductToCartArray('p3', '👑')">Add to Bag</button>
+                </div>
             </div>
 
         </div>
     </main>
 
-    <!-- =============================================================
-       STANDARD RECOGNIZABLE E-COMMERCE CART SLIDING OVERLAY ELEMENT
-       ============================================================= -->
     <div class="cart-drawer-overlay" id="cartOverlayGlobalWrapper" onclick="toggleCartDrawerLayoutState(false)">
-        <!-- Stop click propagation window inside drawer to keep drawer view operational -->
         <div class="cart-slide-drawer" onclick="event.stopPropagation()">
             
-            <!-- Cart Header Block -->
             <div class="cart-drawer-header">
                 <h2>
                     <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="9" cy="21" r="1"></circle><circle cx="20" cy="21" r="1"></circle><path d="M1 1h4l2.68 13.39a2 2 0 0 0 2 1.61h9.72a2 2 0 0 0 2-1.61L23 6H6"></path></svg>
                     Your Shopping Bag 
-                    <span class="cart-items-count-badge">1</span>
+                    <span class="cart-items-count-badge" id="drawerCartBadge">0</span>
                 </h2>
                 <button class="cart-close-icon-btn" onclick="toggleCartDrawerLayoutState(false)">&times;</button>
             </div>
 
-            <!-- Scrollable Contents Area -->
-            <div class="cart-drawer-body">
-                
-                <!-- Line Item Row Layout -->
-                <div class="cart-product-line-item">
-                    <div class="cart-product-image-placeholder" id="cartItemThumbnail">✨</div>
-                    <div class="cart-product-item-details">
-                        <div class="cart-item-row-top">
-                            <div>
-                                <h3 class="cart-item-name" id="cartItemTitlePayload">Royal Velvet Sherwani Set</h3>
-                                <p class="cart-item-meta-variant" id="cartItemMetaPayload">Fitting Slot: Medium (#38)</p>
-                            </div>
-                            <span class="cart-item-price">Promo</span>
-                        </div>
-                        <div class="cart-item-qty-container">
-                            <span>QTY: 1</span>
-                        </div>
-                    </div>
+            <div class="cart-drawer-body" id="cartItemsRenderContainer">
                 </div>
 
-                <!-- Integrated Concept Decree Layout Constraint Block -->
-                <div class="cart-decree-notice-card">
-                    <strong>⚠️ Artisanal Concept Decree:</strong> All imagery references are conceptual layouts styled using digital imagery engines. Physical products are handmade organically by artisans, so scaling variations and fabric dye-lot profiles may show structural shifts from digital displays. In-store complimentary alteration adjustments handled seamlessly on scheduling.
-                </div>
-
-            </div>
-
-            <!-- Fixed Pricing Summary Footer & Verification Route Button -->
             <div class="cart-drawer-footer">
                 <div class="cart-summary-row">
-                    <span style="color:#718096;">Subtotal</span>
-                    <span style="font-weight:600; color:var(--slate-gray);">Markdown Applied</span>
+                    <span style="color:#718096;">Total Items Packed</span>
+                    <span style="font-weight:600; color:var(--slate-gray);" id="summaryTotalItemsCount">0 Items</span>
                 </div>
                 <div class="cart-summary-row">
-                    <span style="color:#718096;">Sizing Alterations</span>
-                    <span style="color:#2b5329; font-weight:600;">FREE</span>
+                    <span style="color:#718096;">Subtotal (Excl. VAT)</span>
+                    <span style="font-weight:600; color:var(--slate-gray);" id="summarySubtotalExVat">R 0.00</span>
+                </div>
+                <div class="cart-summary-row">
+                    <span style="color:#718096;">VAT Component (15%)</span>
+                    <span style="font-weight:600; color:var(--slate-gray);" id="summaryVatComponent">R 0.00</span>
                 </div>
                 <div class="cart-summary-row cart-summary-total">
-                    <span>Estimated Total</span>
-                    <span style="color:var(--primary-gold);">60% OFF RATE</span>
+                    <span>Total Due (Incl. VAT)</span>
+                    <span style="color:var(--primary-gold); font-weight:800;" id="summaryFinalAmountPayload">R 0.00</span>
                 </div>
 
-                <!-- WHATSAPP DISPATCH CHECKOUT SUBMIT OPERATOR -->
-                <button class="cart-checkout-action-btn" onclick="executeWhatsAppCheckoutTransmission()">
+                <button class="cart-checkout-action-btn" id="whatsappCheckoutBtn" onclick="executeWhatsAppCheckoutTransmission()">
                     <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor" style="display:inline-block; vertical-align:middle;"><path d="M.057 24l1.687-6.163c-1.041-1.804-1.588-3.849-1.587-5.946C.06 5.348 5.397 0 11.966 0c3.178.001 6.169 1.24 8.413 3.488 2.245 2.248 3.481 5.239 3.481 8.416 0 6.566-5.338 11.912-11.906 11.912-2.003-.001-3.975-.511-5.728-1.486L0 24zm6.59-4.846c1.665.989 3.3 1.489 4.809 1.49 5.304 0 9.622-4.305 9.625-9.595.001-2.562-1.002-4.97-2.825-6.793C16.43 2.433 14.024 1.43 11.47 1.43c-5.31 0-9.63 4.305-9.633 9.597-.001 1.717.461 3.393 1.338 4.902L2.14 20.233l4.507-1.079z"/></svg>
-                    Proceed to Checkout
+                    Order via WhatsApp
                 </button>
             </div>
 
         </div>
     </div>
 
-    <!-- BUSINESS CONTROLLER INTERACTION SCRIPT BLOCK -->
     <script>
-        // Track functional reactive state parameters 
-        let globalSelectedFabric = "Royal Velvet";
-        let globalSelectedSize = "Medium (#38)";
-        let globalSelectedEmoji = "✨";
+        // Data Registry Memory Array Structure
+        let cartArrayMemory = [];
 
-        function assignActiveSelections(fabricName, fabricEmoji) {
-            globalSelectedFabric = fabricName;
-            globalSelectedEmoji = fabricEmoji;
-            document.getElementById('fabricLabelMirror').innerText = fabricName;
-            document.getElementById('variantMirrorIcon').innerText = fabricEmoji;
+        function addProductToCartArray(productIdCode, cosmeticEmoji) {
+            const productDOMInstance = document.querySelector(`.product-card[data-id="${productIdCode}"]`);
+            const titlePayload = productDOMInstance.querySelector('.card-product-title').getAttribute('data-name');
+            const cleanRawPrice = parseInt(productDOMInstance.querySelector('.card-price-label').innerText.replace(/[^\d]/g, ''), 10);
             
-            // Re-render conditional style states
-            document.getElementById('velvetBtn').classList.toggle('active', fabricName === 'Royal Velvet');
-            document.getElementById('silkBtn').classList.toggle('active', fabricName === 'Imperial Silk');
+            const chosenFabric = productDOMInstance.querySelector('.fabric-select').value;
+            const chosenSize = productDOMInstance.querySelector('.size-select').value;
+
+            // Form unique variant grouping signature hash key string
+            const structuralVariantKeyId = `${productIdCode}-${chosenFabric.replace(/\s+/g, '')}-${chosenSize.replace(/\s+/g, '')}`;
+            const targetedExistingItemIndex = cartArrayMemory.findIndex(element => element.variantUID === structuralVariantKeyId);
+
+            if (targetedExistingItemIndex > -1) {
+                cartArrayMemory[targetedExistingItemIndex].itemQuantity += 1;
+            } else {
+                const constructedItemMap = {
+                    variantUID: structuralVariantKeyId,
+                    id: productIdCode,
+                    name: titlePayload,
+                    emoji: cosmeticEmoji,
+                    fabric: chosenFabric,
+                    size: chosenSize,
+                    unitCost: cleanRawPrice,
+                    itemQuantity: 1
+                };
+                cartArrayMemory.push(constructedItemMap);
+            }
+
+            syncCartDataStatesToUI();
+            toggleCartDrawerLayoutState(true);
         }
 
-        function assignActiveSize(sizeLabel) {
-            globalSelectedSize = sizeLabel;
-            document.getElementById('sizeLabelMirror').innerText = "Selected Allocation: " + sizeLabel;
+        function adjustItemQuantityValue(targetVariantUID, numericStepDelta) {
+            const targetedItemIndex = cartArrayMemory.findIndex(element => element.variantUID === targetVariantUID);
+            if (targetedItemIndex === -1) return;
 
-            // Re-render conditional style states
-            document.getElementById('size38Btn').classList.toggle('active', sizeLabel.includes('#38'));
-            document.getElementById('size40Btn').classList.toggle('active', sizeLabel.includes('#40'));
+            cartArrayMemory[targetedItemIndex].itemQuantity += numericStepDelta;
+
+            if (cartArrayMemory[targetedItemIndex].itemQuantity <= 0) {
+                cartArrayMemory.splice(targetedItemIndex, 1);
+            }
+
+            syncCartDataStatesToUI();
+        }
+
+        function removeCartItemCompletely(targetVariantUID) {
+            cartArrayMemory = cartArrayMemory.filter(element => element.variantUID !== targetVariantUID);
+            syncCartDataStatesToUI();
+        }
+
+        function syncCartDataStatesToUI() {
+            const bodyRenderWindow = document.getElementById('cartItemsRenderContainer');
+            let totalAccumulatedItems = 0;
+            let dynamicFinancialTotalInclVat = 0;
+
+            bodyRenderWindow.innerHTML = "";
+
+            if (cartArrayMemory.length === 0) {
+                bodyRenderWindow.innerHTML = `
+                    <div class="empty-cart-notice">
+                        <div class="empty-cart-icon">🛍️</div>
+                        <p>Your shopping bag is currently empty.</p>
+                    </div>`;
+                document.getElementById('whatsappCheckoutBtn').disabled = true;
+            } else {
+                document.getElementById('whatsappCheckoutBtn').disabled = false;
+
+                cartArrayMemory.forEach(item => {
+                    totalAccumulatedItems += item.itemQuantity;
+                    dynamicFinancialTotalInclVat += (item.unitCost * item.itemQuantity);
+
+                    const productRowHTMLNode = `
+                        <div class="cart-product-line-item">
+                            <div class="cart-product-image-placeholder">${item.emoji}</div>
+                            <div class="cart-product-item-details">
+                                <div class="cart-item-row-top">
+                                    <div>
+                                        <h4 class="cart-item-name">${item.name}</h4>
+                                        <p class="cart-item-meta-variant">${item.fabric} | Size: ${item.size}</p>
+                                    </div>
+                                    <span class="cart-item-price">R ${(item.unitCost * item.itemQuantity).toLocaleString()}</span>
+                                </div>
+                                <div class="cart-item-control-row">
+                                    <div class="quantity-spinner">
+                                        <button class="spinner-btn" onclick="adjustItemQuantityValue('${item.variantUID}', -1)">-</button>
+                                        <div class="spinner-value">${item.itemQuantity}</div>
+                                        <button class="spinner-btn" onclick="adjustItemQuantityValue('${item.variantUID}', 1)">+</button>
+                                    </div>
+                                    <button class="item-remove-text-btn" onclick="removeCartItemCompletely('${item.variantUID}')">Remove</button>
+                                </div>
+                            </div>
+                        </div>`;
+                    bodyRenderWindow.innerHTML += productRowHTMLNode;
+                });
+
+                bodyRenderWindow.innerHTML += `
+                    <div class="cart-decree-notice-card">
+                        <strong>⚠️ Artisanal Concept Decree:</strong> All imagery references are conceptual layouts styled using digital imagery engines. Physical products are handmade organically by artisans, so scaling variations and fabric dye-lot profiles may show structural shifts from digital displays. In-store complimentary alteration adjustments handled seamlessly on scheduling.
+                    </div>`;
+            }
+
+            // TAX CALCULATION MATHEMATICS LAYER (15% Standard ZAR Ruleset extraction)
+            // Price displayed is inclusive of VAT, extract base elements cleanly.
+            const calculatedVatFractionComponent = dynamicFinancialTotalInclVat * (15 / 115);
+            const calculatedSubtotalExVat = dynamicFinancialTotalInclVat - calculatedVatFractionComponent;
+
+            // DOM UI VALUE RENDERS
+            document.getElementById('navCartBadge').innerText = totalAccumulatedItems;
+            document.getElementById('drawerCartBadge').innerText = totalAccumulatedItems;
+            document.getElementById('summaryTotalItemsCount').innerText = `${totalAccumulatedItems} Item${totalAccumulatedItems !== 1 ? 's' : ''}`;
+            
+            document.getElementById('summarySubtotalExVat').innerText = `R ${calculatedSubtotalExVat.toLocaleString(undefined, {minimumFractionDigits: 2, maximumFractionDigits: 2})}`;
+            document.getElementById('summaryVatComponent').innerText = `R ${calculatedVatFractionComponent.toLocaleString(undefined, {minimumFractionDigits: 2, maximumFractionDigits: 2})}`;
+            document.getElementById('summaryFinalAmountPayload').innerText = `R ${dynamicFinancialTotalInclVat.toLocaleString()}`;
         }
 
         function toggleCartDrawerLayoutState(shouldOpenView) {
             const wrapperInstance = document.getElementById('cartOverlayGlobalWrapper');
-            
             if (shouldOpenView) {
-                // Dynamically sync contextual data metrics into e-commerce layout template lines before display trigger
-                document.getElementById('cartItemTitlePayload').innerText = globalSelectedFabric + " Sherwani Set";
-                document.getElementById('cartItemMetaPayload').innerText = "Fitting Slot: " + globalSelectedSize;
-                document.getElementById('cartItemThumbnail').innerText = globalSelectedEmoji;
-                
                 wrapperInstance.classList.add('active');
-                document.body.style.overflow = 'hidden'; // Stop background scrolling
+                document.body.style.overflow = 'hidden';
             } else {
                 wrapperInstance.classList.remove('active');
-                document.body.style.overflow = ''; // Re-enable background scrolling
+                document.body.style.overflow = '';
             }
         }
 
         function executeWhatsAppCheckoutTransmission() {
-            // Programmatically generate unique validation metrics ticket reference identifiers
+            if (cartArrayMemory.length === 0) return;
+
             const randomizedNumericKey = Math.floor(10000 + Math.random() * 90000);
             const operationalSecureReference = "ZARI-REF-" + randomizedNumericKey;
-
-            // Target business channel allocation endpoints
             const standardDestinationLine = "27812742028";
 
-            // Formatted string generation layout payload optimized for instant merchant processing
+            let checkoutItemsManifestString = "";
+            let overallComputedTotalBill = 0;
+
+            cartArrayMemory.forEach((item, loopIndex) => {
+                const computedRowCost = item.unitCost * item.itemQuantity;
+                overallComputedTotalBill += computedRowCost;
+                
+                checkoutItemsManifestString += `${loopIndex + 1}. [${item.emoji}] ${item.name}\n` +
+                                                `   • Config: ${item.fabric} | Fit: ${item.size}\n` +
+                                                `   • Qty: ${item.itemQuantity}x @ R ${item.unitCost.toLocaleString()} each\n` +
+                                                `   • Line Subtotal: R ${computedRowCost.toLocaleString()}\n\n`;
+            });
+
+            const calculatedVatComponent = overallComputedTotalBill * (15 / 115);
+            const calculatedSubtotalExVat = overallComputedTotalBill - calculatedVatComponent;
+
             const structuralStringMessage = `Hello Zari Ethnics! I have compiled an order entry using your online landing platform.\n\n` +
                                              `🎟️ TRANSACTION REFERENCE: ${operationalSecureReference}\n` +
                                              `----------------------------------------\n` +
-                                             `• PRODUCT: ${globalSelectedFabric} Sherwani Set\n` +
-                                             `• FITTING SLOT: ${globalSelectedSize}\n` +
-                                             `• EVENT OFFER: 60% OFF Promotion Markdown\n` +
+                                             `${checkoutItemsManifestString}` +
                                              `----------------------------------------\n` +
+                                             `• Subtotal (Excl. VAT): R ${calculatedSubtotalExVat.toLocaleString(undefined, {minimumFractionDigits: 2, maximumFractionDigits: 2})}\n` +
+                                             `• VAT Component (15%): R ${calculatedVatComponent.toLocaleString(undefined, {minimumFractionDigits: 2, maximumFractionDigits: 2})}\n` +
+                                             `💵 TOTAL DUE (INCL. VAT): R ${overallComputedTotalBill.toLocaleString()}\n\n` +
                                              `Please verify this layout allocation and forward my remote secure Yoco card generation link and flat-rate Courier Guy waybill estimation details.`;
 
-            // Transform variables into fully standard secure URI patterns
             const safeEncryptedPayload = encodeURIComponent(structuralStringMessage);
-
-            // Execute browser thread dispatch forward directly into the WhatsApp communication layer
             window.open(`https://api.whatsapp.com/send?phone=${standardDestinationLine}&text=${safeEncryptedPayload}`, '_blank');
         }
     </script>
 </body>
 </html>
+
+```

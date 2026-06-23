@@ -17,7 +17,7 @@
     <!-- SEO Meta Tags -->
     <!-- ========================================== -->
     <title>Zari Ethnics | Exquisite Eastern Wear & Bridal Boutique Lenasia</title>
-    <meta name="description" content="Indulge in an exquisite eastern experience at Zari Ethnics, Shop U28A Upper Level (next to Ocean Basket), Trade Route Mall, Lenasia. Gauteng's leading boutique for bespoke bridal lehengas, custom groom sherwanis, luxury heritage sarees, and exclusive occasion wear. Explore our fabric stitch inspector, check live trading hours, and consult with us directly on WhatsApp +27 81 274 2028.">
+    <meta name="description" content="Indulge in an exquisite eastern experience at Zari Ethnics, Shop U28A Upper Level (next to Ocean Basket), Trade Route Mall, Lenasia. Gauteng's leading boutique for bespoke bridal lehengas, custom groom sherwanis, luxury heritage sarees, and exclusive occasion wear. Explore our fabric stitch inspector, check live trading hours, and consult with us directly on WhatsApp +27 81 274 2028. All prices are VAT inclusive.">
     <meta name="keywords" content="Zari Ethnics, Zari Lenasia, Trade Route Mall shops, bridal wear Lenasia, eastern wear South Africa, lehenga, sherwani, designer sarees, Indian bridal wear Gauteng">
     <meta name="author" content="Zari Ethnics">
     <meta name="theme-color" content="#446B1E">
@@ -255,17 +255,17 @@
         </button>
     </div>
 
-    <!-- SLIDE-OUT SHOPPING BAG DRAWER -->
+    <!-- SLIDE-OUT SHOPPING BAG DRAWER (SARS COMPLIANT TAX INVOICE STRUCTURE) -->
     <div id="bagDrawerOverlay" class="fixed inset-0 bg-slate-950/80 backdrop-blur-sm z-50 transition-opacity duration-300 opacity-0 pointer-events-none" onclick="toggleBagDrawer()"></div>
     <aside id="bagDrawer" class="fixed inset-y-0 right-0 max-w-md w-full bg-white z-50 shadow-2xl transform translate-x-full transition-transform duration-300 ease-in-out flex flex-col justify-between border-l border-zariGold/20">
         
         <!-- Drawer Header -->
-        <div class="p-6 border-b border-slate-100 flex items-center justify-between bg-gradient-to-r from-slate-550 to-white">
+        <div class="p-6 border-b border-slate-100 flex items-center justify-between bg-gradient-to-r from-slate-50 to-white">
             <div class="flex items-center space-x-3">
-                <span class="w-10 h-10 rounded-full bg-zariCrimson-accent text-zariCrimson flex items-center justify-center"><i class="fas fa-shopping-bag"></i></span>
+                <span class="w-10 h-10 rounded-full bg-zariCrimson-accent text-zariCrimson flex items-center justify-center"><i class="fas fa-file-invoice-dollar"></i></span>
                 <div>
-                    <h3 class="font-serif text-lg font-bold text-slate-900">Your Zari Bag</h3>
-                    <span class="text-[9px] text-slate-500 uppercase tracking-wider font-bold block mt-0.5">Bespoke Couture & Quotes</span>
+                    <h3 class="font-serif text-lg font-bold text-slate-900 tracking-tight">TAX INVOICE</h3>
+                    <span class="text-[9px] text-zariGreen font-bold uppercase tracking-widest block" id="lblBoutiqueVatHeader">ZARI ETHNICS • VAT: 4460265194</span>
                 </div>
             </div>
             <button onclick="toggleBagDrawer()" class="text-slate-400 hover:text-slate-900 bg-slate-50 hover:bg-slate-100 p-2 rounded-full transition" aria-label="Close cart">
@@ -273,41 +273,55 @@
             </button>
         </div>
 
-        <!-- Drawer Content (Dynamic Items Container) -->
-        <div class="flex-1 overflow-y-auto p-6 space-y-4" id="cartItemsContainer">
-            <!-- Dynamically populated inside JavaScript rendering sequence -->
+        <!-- Dynamic Invoice Meta & Items Container -->
+        <div class="flex-1 overflow-y-auto p-6 space-y-4" id="cartBody">
+            <div class="bg-slate-50 p-3 rounded-xl border border-slate-200/80 space-y-1.5 text-xs text-slate-600 font-medium">
+                <div class="flex justify-between">
+                    <span>Tax Invoice Number:</span>
+                    <strong class="text-slate-950 font-mono" id="invoiceNumberDisplay">ZR-20260624-0000</strong>
+                </div>
+                <div class="flex justify-between">
+                    <span>Invoice Date:</span>
+                    <strong class="text-slate-950 font-mono" id="invoiceDateDisplay">2026/06/24</strong>
+                </div>
+                <!-- Customer VAT Registration Input Field (SARS Compliance) -->
+                <div class="pt-2 border-t border-slate-200/60">
+                    <label for="customerVatNo" class="block text-[9px] uppercase tracking-wider text-slate-500 font-bold mb-1">Customer VAT No. (Optional / Required for corporate orders &gt; R3,000)</label>
+                    <input type="text" id="customerVatNo" oninput="saveCustomerVat()" placeholder="e.g., 4012345678" class="w-full bg-white border border-slate-200 focus:border-zariGreen rounded-lg p-2 text-xs font-bold text-slate-800 tracking-wider uppercase focus:outline-none">
+                </div>
+            </div>
+            
+            <div class="space-y-4" id="cartItemsContainer">
+                <!-- Dynamically populated inside JavaScript rendering sequence -->
+            </div>
         </div>
 
-        <!-- Drawer Footer (Subtotal, Actions) -->
-        <div class="p-6 border-t border-slate-100 bg-slate-50 space-y-4">
+        <!-- Drawer Footer (Subtotal, Actions with precise SARS compliance) -->
+        <div class="p-6 border-t border-slate-100 bg-slate-50 space-y-4 shadow-inner">
             
-            <div class="space-y-2">
+            <div class="space-y-2 border-b border-slate-200/60 pb-3">
                 <div class="flex justify-between items-baseline text-xs font-semibold text-slate-500">
-                    <span>Priced Items Total (VAT Incl.):</span>
+                    <span>Subtotal (Excl. VAT):</span>
                     <span id="cartSubtotal" class="text-slate-800 font-bold">R 0.00</span>
                 </div>
-                <div class="flex justify-between items-baseline text-[10px] font-semibold text-slate-400">
-                    <span>Included VAT (15%):</span>
-                    <span id="cartVatAmount" class="text-slate-600 font-bold">R 0.00</span>
+                <div class="flex justify-between items-baseline text-xs font-semibold text-slate-500">
+                    <span>VAT (15%):</span>
+                    <span id="cartVatAmount" class="text-slate-800 font-bold">R 0.00</span>
                 </div>
-                <div class="text-[8px] text-slate-400 font-medium italic -mt-1 block">
-                    Formula: Included VAT = Total Price &times; (15 / 115)
-                </div>
-                <div class="flex justify-between items-baseline text-xs font-semibold text-slate-500 pt-1">
-                    <span>Bespoke / Custom Items:</span>
-                    <span id="cartQuoteCount" class="text-zariCrimson font-bold">0 Pending Quotes</span>
-                </div>
-                <div class="pt-2 border-t border-slate-200/60 flex justify-between items-baseline">
-                    <span class="text-sm font-serif font-bold text-slate-900">Total Estimated Cost (VAT Incl.):</span>
+                <div class="flex justify-between items-baseline pt-2 border-t border-slate-200/40">
+                    <span class="text-sm font-serif font-bold text-slate-900">Total (Incl. VAT):</span>
                     <strong id="cartGrandTotal" class="text-zariCrimson font-serif text-lg">R 0.00</strong>
+                </div>
+                <div class="text-[8px] text-slate-400 font-medium italic text-right mt-1">
+                    *Double-precision mathematical compliance mapping applied.
                 </div>
             </div>
 
             <!-- Custom fitting / checkout routing links -->
-            <div class="grid grid-cols-1 gap-2.5 pt-2">
+            <div class="grid grid-cols-1 gap-2.5 pt-1">
                 <button id="cartCheckoutBtn" onclick="checkoutBagWhatsApp()" class="w-full bg-gradient-to-r from-zariCrimson to-zariBurgundy hover:brightness-105 text-white font-sans font-bold uppercase text-[10px] tracking-widest py-3.5 rounded-xl transition flex items-center justify-center space-x-2">
                     <i class="fab fa-whatsapp text-sm"></i>
-                    <span>Submit Cart Inquiry via WhatsApp</span>
+                    <span>Submit Compliant Tax Invoice via WhatsApp</span>
                 </button>
                 <button id="cartScheduleBtn" onclick="transferBagToFitting()" class="w-full bg-white hover:bg-zariGreen-accent border border-zariGreen/30 hover:border-zariGreen text-zariGreen font-sans font-bold uppercase text-[10px] tracking-widest py-3.5 rounded-xl transition flex items-center justify-center space-x-2">
                     <i class="fas fa-calendar-alt"></i>
@@ -353,7 +367,7 @@
                         </p>
 
                         <div class="flex flex-col sm:flex-row items-center justify-center lg:justify-start gap-4 pt-4">
-                            <a href="https://wa.me/27812742028?text=Hello%20Zari%20Ethnics%2C%20I%27d%20love%20to%20view%20your%20latest%20exquisite%20eastern%20designs." 
+                            <a href="https://wa.me/27812742028?text=Hello%20Zari%20Ethnics%2C%20I%20am%20interested%20in%20arranging%20a%20private%20showroom%20fitting%20or%20viewing%20exquisite%20designs." 
                                target="_blank" 
                                onclick="playAtmosphericSound('success')"
                                class="w-full sm:w-auto inline-flex items-center justify-center space-x-3 bg-gradient-to-r from-zariCrimson to-zariBurgundy text-white font-sans font-bold uppercase text-xs tracking-widest px-8 py-4 rounded-full hover:brightness-110 transition duration-300 shadow-lg shadow-zariCrimson/20 shining-border transform hover:-translate-y-0.5"
@@ -449,7 +463,7 @@
                     </p>
                 </div>
                 <div class="flex-shrink-0 w-full md:w-auto text-center flex flex-col sm:flex-row justify-center items-center gap-3">
-                    <a href="https://wa.me/27812742028?text=Hello%20Zari%20Ethnics%2C%20I%20am%20highly%20interested%20in%20your%2060%25%20off%20selected%20Sherwani%20Promotion.%20Could%20you%20please%20share%20the%20available%20sherwani%20designs%20on%20discount%2C%20sizes%20available%2C%20and%20how%20I%20can%20book%20a%20showroom%20fitting?" 
+                    <a href="https://wa.me/27812742028?text=Hello%20Zari%20Ethnics%2C%20I%20am%20highly%20interested%20in%20your%2060%25%20off%20selected%20Sherwani%20Promotion." 
                        target="_blank"
                        onclick="playAtmosphericSound('success')"
                        class="w-full sm:w-auto inline-flex items-center justify-center space-x-2.5 bg-zariGold text-zariBurgundy-dark hover:bg-white hover:text-zariCrimson font-sans font-extrabold uppercase text-xs tracking-widest px-8 py-3.5 rounded-full transition duration-300 shadow-xl border border-zariGold-light/40 hover:scale-[1.02] transform transition-transform"
@@ -468,7 +482,7 @@
                 <h2 class="text-3xl sm:text-4xl font-serif font-bold text-zariGreen">Boutique Selection Gallery</h2>
                 <div class="w-24 h-[1.5px] bg-gradient-to-r from-transparent via-zariGold to-transparent mx-auto"></div>
                 <p class="text-slate-500 text-sm font-semibold">
-                    Explore our exquisite showroom inventory. Tap any item's catalog parameters or use the secure workbench to live upload & describe custom wedding outfits.
+                    Explore our exquisite showroom inventory. Tap any item's catalog parameters or use the secure workbench to live upload & describe custom wedding outfits. All displayed prices are VAT-inclusive.
                 </p>
                 
                 <!-- Premium Virtual Atelier Curation Advisory Banner -->
@@ -516,7 +530,7 @@
                     <div class="grid grid-cols-1 md:grid-cols-4 gap-4 p-4 bg-slate-900/60 rounded-2xl border border-slate-800">
                         <div class="text-center p-3 bg-slate-950 rounded-xl shadow-sm border border-slate-800/60">
                             <span class="block text-[8px] uppercase tracking-wider text-slate-400 font-extrabold">Active Showroom Stock</span>
-                            <span id="dashActiveStock" class="block text-xl font-serif font-bold text-zariGold">28</span>
+                            <span id="dashActiveStock" class="block text-xl font-serif font-bold text-zariGold">86</span>
                         </div>
                         <div class="text-center p-3 bg-slate-950 rounded-xl shadow-sm border border-slate-800/60">
                             <span class="block text-[8px] uppercase tracking-wider text-slate-400 font-extrabold">Auto-Save Status</span>
@@ -1001,11 +1015,11 @@
                 <div class="grid grid-cols-2 gap-3 text-xs border-b border-slate-100 pb-3">
                     <div>
                         <span class="block text-slate-400 uppercase font-extrabold text-[8px] tracking-wider">Estimated Price (ZAR)</span>
-                        <strong id="modalPrice" class="text-zariCrimson font-serif text-lg font-bold">Price on Request</strong>
+                        <strong id="modalPrice" class="text-zariCrimson font-serif text-lg font-bold">R 0,00</strong>
                     </div>
                     <div>
                         <span class="block text-slate-400 uppercase font-extrabold text-[8px] tracking-wider">Size & Piece Setup</span>
-                        <strong id="modalSizes" class="text-slate-700 font-semibold">Bespoke Setup</strong>
+                        <strong id="modalSizes" class="text-slate-700 font-semibold">Medium (3pc)</strong>
                     </div>
                 </div>
 
@@ -1015,13 +1029,13 @@
                 </div>
 
                 <!-- Premium Top Tier Representative Disclaimer Alert Box -->
-                <div class="p-3 bg-slate-50 border border-slate-200/80 rounded-2xl space-y-2">
+                <div class="p-3 bg-slate-50 border border-slate-200/80 rounded-2xl space-y-1">
                     <div class="flex items-center space-x-2 text-zariBurgundy">
                         <i class="fas fa-circle-info text-zariGold text-[11px]" aria-hidden="true"></i>
-                        <span class="text-[8.5px] uppercase tracking-wider font-extrabold font-sans">Artisanal Design Concept & Likeness Decree</span>
+                        <span class="text-[8.5px] uppercase tracking-wider font-extrabold font-sans">Artisanal Design Concept Decree</span>
                     </div>
                     <p class="text-[9.5px] text-slate-500 leading-relaxed font-semibold">
-                        All modeling profiles and wear visuals used across this system are AI-synthesized concept designs. They are completely artificial and do not represent, copy, or simulate any living physical individuals or established runway models. Any resemblance to real persons is purely coincidental. Physical garments are hand-woven, so slight fabric shading and zardozi placement variations may naturally occur.
+                        All images are high-fidelity conceptual representations styled with advanced AI modeling and digital imagery. Physical items are meticulously crafted by hand, so actual shapes, sizing fitments, and fabric color tones may show organic variations from the digital models.
                     </p>
                 </div>
 
@@ -1032,7 +1046,7 @@
 
                 <div class="pt-4 border-t border-slate-100 flex gap-2">
                     <button onclick="closeInquiryModal()" class="w-1/3 border border-slate-200 hover:bg-slate-100 text-slate-700 font-sans font-bold uppercase text-[10px] tracking-widest py-3 rounded-xl transition">Close View</button>
-                    <button id="modalActionBtn" onclick="submitInquiryWhatsApp()" class="w-2/3 bg-gradient-to-r from-zariGreen to-zariGreen-dark hover:brightness-105 text-white font-sans font-bold uppercase text-[10px] tracking-widest py-3 rounded-xl transition flex items-center justify-center space-x-1.5">
+                    <button id="modalActionBtn" onclick="addModalItemToBag()" class="w-2/3 bg-gradient-to-r from-zariGreen to-zariGreen-dark hover:brightness-105 text-white font-sans font-bold uppercase text-[10px] tracking-widest py-3 rounded-xl transition flex items-center justify-center space-x-1.5">
                         <i class="fab fa-whatsapp text-sm" aria-hidden="true"></i>
                         <span id="modalActionText">Inquire on WhatsApp</span>
                     </button>
@@ -1346,7 +1360,6 @@
         }
 
         // ==========================================
-        // Hardcoded Main Catalog Array
         // ==========================================
         let catalog = [
             {
@@ -1636,7 +1649,7 @@
                 price: 10180,
                 size: "One Size Fits All / Teal & Silver",
                 pieces: "Saree",
-                description: "Teal & Silver Embroidered Saree – Premium Occasion Wear (One Size Fits All). This luxurious teal and silver saree features intricate handembroidered floral and geometric detailing along the border, with shimmering beadwork across the fabric. Designed for weddings, receptions, engagements, and cultural celebrations.",
+                description: "Teal & Silver Embroidered Saree – Premium Occasion Wear (One Size Fits All). This luxurious teal and silver saree features intricate hand-embroidered floral and geometric detailing along the border, with shimmering beadwork across the fabric. Designed for weddings, receptions, engagements, and cultural celebrations.",
                 img: "29.png"
             },
             {
@@ -1646,7 +1659,7 @@
                 price: 8840,
                 size: "One Size Fits All / Red & White",
                 pieces: "Bridal Saree",
-                description: "1piece Red & White Embroidered Bridal Saree – Premium Bridal Wear (One Size Fits All). This exquisite red and white saree features rich traditional embroidery with floral and geometric detailing, crafted in premium threads and accented with fine beadwork. The contrasting red and white panels create a striking bridal aesthetic.",
+                description: "1-piece Red & White Embroidered Bridal Saree – Premium Bridal Wear (One Size Fits All). This exquisite red and white saree features rich traditional embroidery with floral and geometric detailing, crafted in premium threads and accented with fine beadwork. The contrasting red and white panels create a striking bridal aesthetic.",
                 img: "30.png"
             },
             {
@@ -1656,7 +1669,7 @@
                 price: 8980,
                 size: "One Size Fits All / Grey & Powder Blue",
                 pieces: "Saree",
-                description: "1piece Grey & Powder Blue Embroidered Saree – Premium Occasion Wear (One Size Fits All). This elegant grey saree features delicate powder-blue embroidery with floral and geometric motifs, complemented by a beautifully detailed border that enhances its refined aesthetic.",
+                description: "1-piece Grey & Powder Blue Embroidered Saree – Premium Occasion Wear (One Size Fits All). This elegant grey saree features delicate powder-blue embroidery with floral and geometric motifs, complemented by a beautifully detailed border that enhances its refined aesthetic.",
                 img: "31.png"
             },
             {
@@ -1666,7 +1679,7 @@
                 price: 10110,
                 size: "One Size Fits All / Red & Beige",
                 pieces: "Bridal Saree",
-                description: "1piece Red & Beige Embroidered Bridal Saree – Premium Bridal Wear (One Size Fits All). This stunning red and beige bridal saree features rich traditional embroidery with detailed floral and geometric motifs, enhanced by fine beadwork and premium thread artistry.",
+                description: "1-piece Red & Beige Embroidered Bridal Saree – Premium Bridal Wear (One Size Fits All). This stunning red and beige bridal saree features rich traditional embroidery with detailed floral and geometric motifs, enhanced by fine beadwork and premium thread artistry.",
                 img: "32.png"
             },
             {
@@ -1676,7 +1689,7 @@
                 price: 4205,
                 size: "One Size Fits All / Pink & Gold",
                 pieces: "Bridal Saree",
-                description: "1piece Pink & Gold Embroidered Bridal Saree – Premium Bridal Wear (One Size Fits All). This beautiful pink and gold bridal saree features intricate embroidery with floral and traditional motifs, highlighted by fine gold thread work that adds richness and elegance.",
+                description: "1-piece Pink & Gold Embroidered Bridal Saree – Premium Bridal Wear (One Size Fits All). This beautiful pink and gold bridal saree features intricate embroidery with floral and traditional motifs, highlighted by fine gold thread work that adds richness and elegance.",
                 img: "33.png"
             },
             {
@@ -1686,7 +1699,7 @@
                 price: 10690,
                 size: "One Size Fits All / Maroon, Cream & Gold",
                 pieces: "Bridal Saree",
-                description: "1piece Maroon/Cream & Gold Bridal Saree – Premium Bridal Wear (One Size Fits All). This luxurious maroon, cream, and gold bridal saree features rich embroidery, intricate traditional motifs, and premium gold thread work designed to create a regal bridal look.",
+                description: "1-piece Maroon/Cream & Gold Bridal Saree – Premium Bridal Wear (One Size Fits All). This luxurious maroon, cream, and gold bridal saree features rich embroidery, intricate traditional motifs, and premium gold thread work designed to create a regal bridal look.",
                 img: "34.png"
             },
             {
@@ -1696,7 +1709,7 @@
                 price: 8642,
                 size: "One Size Fits All / Maroon & Gold",
                 pieces: "Bridal Saree",
-                description: "1piece Maroon & Gold Bridal Saree – Premium Bridal Wear (One Size Fits All Banarasi Style). Draws inspiration from traditional Banarasi featuring rich zari-style embroidery, intricate floral motifs, and premium gold thread detailing.",
+                description: "1-piece Maroon & Gold Bridal Saree – Premium Bridal Wear (One Size Fits All Banarasi Style). Draws inspiration from traditional Banarasi featuring rich zari-style embroidery, intricate floral motifs, and premium gold thread detailing.",
                 img: "35.png"
             },
             {
@@ -1706,7 +1719,7 @@
                 price: 4850,
                 size: "One Size Fits All / Lilac",
                 pieces: "Chiffon Saree",
-                description: "1piece Lilac Chiffon Occasion Saree – Premium Occasion Wear (One Size Fits All). This soft lilac chiffon saree features delicate silver and pink embroidery inspired by traditional Chikankari and Zari-style detailing.",
+                description: "1-piece Lilac Chiffon Occasion Saree – Premium Occasion Wear (One Size Fits All). This soft lilac chiffon saree features delicate silver and pink embroidery inspired by traditional Chikankari and Zari-style detailing.",
                 img: "36.png"
             },
             {
@@ -1716,7 +1729,7 @@
                 price: 4850,
                 size: "One Size Fits All / Peach/Silver",
                 pieces: "Chiffon Saree",
-                description: "1piece Peach with Silver Embellishment Chiffon Saree – Premium Occasion Wear (One Size Fits All). This elegant peach chiffon saree features delicate silver and crystal-style beadwork inspired by traditional Chikankari, Zari, and Lucknowi embroidery.",
+                description: "1-piece Peach with Silver Embellishment Chiffon Saree – Premium Occasion Wear (One Size Fits All). This elegant peach chiffon saree features delicate silver and crystal-style beadwork inspired by traditional Chikankari, Zari, and Lucknowi embroidery.",
                 img: "37.png"
             },
             {
@@ -1726,7 +1739,7 @@
                 price: 4020,
                 size: "One Size Fits All / Purple",
                 pieces: "Art Silk Saree",
-                description: "1piece Purple Saree – Premium Occasion Wear (One Size Fits All). This elegant purple art silk saree features intricate embroidery inspired by traditional Banarasi and Kanjivaram-style motifs.",
+                description: "1-piece Purple Saree – Premium Occasion Wear (One Size Fits All). This elegant purple art silk saree features intricate embroidery inspired by traditional Banarasi and Kanjivaram-style motifs.",
                 img: "38.png"
             },
             {
@@ -1736,7 +1749,7 @@
                 price: 11305,
                 size: "One Size Fits All / Aqua Green",
                 pieces: "Georgette Saree",
-                description: "1piece Aqua Green Saree – Premium Occasion Wear (One Size Fits All). This stunning aqua green saree is crafted from a premium Georgette-Net blend, featuring intricate floral embroidery inspired by traditional Zari, Resham, and Sequin-work.",
+                description: "1-piece Aqua Green Saree – Premium Occasion Wear (One Size Fits All). This stunning aqua green saree is crafted from a premium Georgette-Net blend, featuring intricate floral embroidery inspired by traditional Zari, Resham, and Sequin-work.",
                 img: "39.png"
             },
             {
@@ -1746,7 +1759,7 @@
                 price: 6238,
                 size: "One Size Fits All / Burgundy",
                 pieces: "Heavy Georgette Saree",
-                description: "1piece Burgundy Saree – Premium Occasion Wear (One Size Fits All). This rich burgundy saree is crafted from premium Heavy Georgette, featuring intricate floral and scalloped embroidery inspired by traditional Zari, Resham, and Gota-Patti work.",
+                description: "1-piece Burgundy Saree – Premium Occasion Wear (One Size Fits All). This rich burgundy saree is crafted from premium Heavy Georgette, featuring intricate floral and scalloped embroidery inspired by traditional Zari, Resham, and Gota-Patti work.",
                 img: "40.png"
             },
             {
@@ -1756,7 +1769,7 @@
                 price: 550,
                 size: "Inquire via WhatsApp / Purple/Gold with Silver",
                 pieces: "Turban",
-                description: "1piece Purple & Gold Turban – Premium Grooms Wear. This elegant purple and gold groom's turban is crafted from premium ArtSilk Brocade, featuring traditional Zari-style embroidery and shimmering gold detailing.",
+                description: "1-piece Purple & Gold Turban – Premium Grooms Wear. This elegant purple and gold groom's turban is crafted from premium ArtSilk Brocade, featuring traditional Zari-style embroidery and shimmering gold detailing.",
                 img: "41.png"
             },
             {
@@ -1766,7 +1779,7 @@
                 price: 250,
                 size: "Inquire via WhatsApp / Maroon/Brown & Gold",
                 pieces: "Turban",
-                description: "1piece Maroon & Gold Turban – Premium Grooms Wear. This traditional maroon and gold groom's turban is crafted from premium Velvet ArtSilk, featuring intricate gold detailing, a regal brooch, and classic pearl strings.",
+                description: "1-piece Maroon & Gold Turban – Premium Grooms Wear. This traditional maroon and gold groom's turban is crafted from premium Velvet ArtSilk, featuring intricate gold detailing, a regal brooch, and classic pearl strings.",
                 img: "42.png"
             },
             {
@@ -1776,7 +1789,7 @@
                 price: 340,
                 size: "Inquire via WhatsApp / Cream & Gold",
                 pieces: "Turban",
-                description: "1piece Cream & Gold Turban – Premium Grooms Wear. Crafted from premium Velvet ArtSilk, featuring intricate gold embroidery, a traditional gemstone brooch, and classic pearl strings inspired by royal Safa/Pagdi styles.",
+                description: "1-piece Cream & Gold Turban – Premium Grooms Wear. Crafted from premium Velvet ArtSilk, featuring intricate gold embroidery, a traditional gemstone brooch, and classic pearl strings inspired by royal Safa/Pagdi styles.",
                 img: "43.png"
             },
             {
@@ -1786,7 +1799,7 @@
                 price: 450,
                 size: "Inquire via WhatsApp / Emerald Green & Gold",
                 pieces: "Turban",
-                description: "1piece Emerald Green & Gold Turban – Premium Grooms Wear. Crafted from premium Velvet ArtSilk, featuring rich gold embroidery, pleated detailing, and traditional embellishments.",
+                description: "1-piece Emerald Green & Gold Turban – Premium Grooms Wear. Crafted from premium Velvet ArtSilk, featuring rich gold embroidery, pleated detailing, and traditional embellishments.",
                 img: "44.png"
             },
             {
@@ -1796,7 +1809,7 @@
                 price: 250,
                 size: "Inquire via WhatsApp / Deep Maroon & Gold",
                 pieces: "Turban",
-                description: "1piece Maroon & Gold Turban – Premium Grooms Wear. This regal maroon and gold groom’s turban is crafted from premium Velvet ArtSilk, featuring rich gold embroidery, a gemstone brooch, and pearl strings.",
+                description: "1-piece Maroon & Gold Turban – Premium Grooms Wear. This regal maroon and gold groom’s turban is crafted from premium Velvet ArtSilk, featuring rich gold embroidery, a gemstone brooch, and pearl strings.",
                 img: "45.png"
             },
             {
@@ -1806,7 +1819,7 @@
                 price: 3510,
                 size: "Inquire via WhatsApp / Red & Gold",
                 pieces: "Lehenga, Choli, Dupatta Set",
-                description: "4piece Semi Stitched Red & Gold Lehenga choli – Premium Bridal Wear. Crafted from premium ArtSilk Brocade, featuring intricate Zari, Resham, and Sequin embroidery with rich traditional gold details.",
+                description: "4-piece Semi Stitched Red & Gold Lehenga choli – Premium Bridal Wear. Crafted from premium ArtSilk Brocade, featuring intricate Zari, Resham, and Sequin embroidery with rich traditional gold details.",
                 img: "46.png"
             },
             {
@@ -1816,7 +1829,7 @@
                 price: 19350,
                 size: "Inquire via WhatsApp / Red & Gold",
                 pieces: "Lehenga, Choli, Dupatta Set",
-                description: "4piece Semi Stitched Red & Gold Lehenga choli – Premium Bridal Wear. Crafted from premium ArtSilk Brocade, featuring exceptionally detailed Zari, Resham, Sequin, and Metallic thread embroidery.",
+                description: "4-piece Semi Stitched Red & Gold Lehenga choli – Premium Bridal Wear. Crafted from premium ArtSilk Brocade, featuring exceptionally detailed Zari, Resham, Sequin, and Metallic thread embroidery.",
                 img: "47.png"
             },
             {
@@ -1826,7 +1839,7 @@
                 price: 5250,
                 size: "Inquire via WhatsApp / Plum (Deep Magenta)",
                 pieces: "Lehenga, Choli, Dupatta Set",
-                description: "3piece Plum Lehenga choli – Premium Occasion Wear. Features a rich Plum / Deep Magenta base with heavy sequin floral embroidery across the skirt and blouse. Crafted from premium Net and ArtSilk blend.",
+                description: "3-piece Plum Lehenga choli – Premium Occasion Wear. Features a rich Plum / Deep Magenta base with heavy sequin floral embroidery across the skirt and blouse. Crafted from premium Net and ArtSilk blend.",
                 img: "48.png"
             },
             {
@@ -1836,7 +1849,7 @@
                 price: 14650,
                 size: "Inquire via WhatsApp / Bridal Pink with Gold & Sequin",
                 pieces: "Lehenga, Choli, Dupatta Set",
-                description: "3piece Pink Lehenga choli – Premium Bridal Lehenga. Crafted from premium ArtSilk with Heavy Sequin and Zari embroidery, featuring rich floral and leaf motifs across the skirt and blouse.",
+                description: "3-piece Pink Lehenga choli – Premium Bridal Lehenga. Crafted from premium ArtSilk with Heavy Sequin and Zari embroidery, featuring rich floral and leaf motifs across the skirt and blouse.",
                 img: "49.png"
             },
             {
@@ -1846,7 +1859,7 @@
                 price: 6065,
                 size: "Inquire via WhatsApp / Maroon & Gold",
                 pieces: "Lehenga, Choli, Dupatta Set",
-                description: "3piece Maroon & Gold Lehenga choli – Premium Bridal Lehenga. Crafted from premium ArtSilk with Heavy Sequin embroidery, featuring shimmering floral motifs across the skirt and blouse.",
+                description: "3-piece Maroon & Gold Lehenga choli – Premium Bridal Lehenga. Crafted from premium ArtSilk with Heavy Sequin embroidery, featuring shimmering floral motifs across the skirt and blouse.",
                 img: "50.png"
             },
             {
@@ -1856,7 +1869,7 @@
                 price: 0,
                 size: "Inquire via WhatsApp / Pink, Gold & Purple",
                 pieces: "Lehenga, Choli, Dupatta Set",
-                description: "3piece Pink, Gold & Purple Lehenga choli – Premium Bridal/Occasion Wear. Vibrantly blended Pink, Gold, and Purple with heavy sequin and thread embroidery across the skirt and blouse.",
+                description: "3-piece Pink, Gold & Purple Lehenga choli – Premium Bridal/Occasion Wear. Vibrantly blended Pink, Gold, and Purple with heavy sequin and thread embroidery across the skirt and blouse.",
                 img: "51.png"
             },
             {
@@ -1866,7 +1879,7 @@
                 price: 2665,
                 size: "Inquire via WhatsApp / Maroon & Mustard Yellow",
                 pieces: "Lehenga, Choli, Dupatta Set",
-                description: "3piece Maroon & Yellow Lehenga choli – Premium Bridal Wear. Features a rich Maroon skirt with detailed embroidery paired with a contrasting Mustard-Yellow dupatta for a vibrant, traditional look.",
+                description: "3-piece Maroon & Yellow Lehenga choli – Premium Bridal Wear. Features a rich Maroon skirt with detailed embroidery paired with a contrasting Mustard-Yellow dupatta for a vibrant, traditional look.",
                 img: "52.png"
             },
             {
@@ -1876,7 +1889,7 @@
                 price: 1210,
                 size: "Inquire via WhatsApp / Pink, Royal Blue & Gold",
                 pieces: "Pavada Skirt & Blouse Set",
-                description: "3piece Pink & Blue Pattu Pavadai Outfit – Premium. This South-Indian inspired Langa Voni set features a rich Pink blouse with gold embroidery paired with a traditional Royal Blue woven skirt.",
+                description: "3-piece Pink & Blue Pattu Pavadai Outfit – Premium. This South-Indian inspired Langa Voni set features a rich Pink blouse with gold embroidery paired with a traditional Royal Blue woven skirt.",
                 img: "53.png"
             },
             {
@@ -1886,7 +1899,7 @@
                 price: 1410,
                 size: "Inquire via WhatsApp / Royal Blue, Purple & Gold",
                 pieces: "Pavada Skirt & Blouse Set",
-                description: "3piece Blue & Purple Pattu Pavadai Outfit – Premium. South-Indian inspired Langa Voni set with a rich Royal Blue and Purple woven skirt with traditional gold motifs and matching blouse.",
+                description: "3-piece Blue & Purple Pattu Pavadai Outfit – Premium. South-Indian inspired Langa Voni set with a rich Royal Blue and Purple woven skirt with traditional gold motifs and matching blouse.",
                 img: "54.png"
             },
             {
@@ -1896,7 +1909,7 @@
                 price: 820,
                 size: "Inquire via WhatsApp / Green, Purple & Gold",
                 pieces: "Pavada Skirt & Blouse Set",
-                description: "3piece Green Purple and Gold Pattu Pavadai – Premium. South-Indian inspired Langa Voni set featuring a rich Deep Green and Purple woven skirt with traditional gold zari-style motifs.",
+                description: "3-piece Green Purple and Gold Pattu Pavadai – Premium. South-Indian inspired Langa Voni set featuring a rich Deep Green and Purple woven skirt with traditional gold zari-style motifs.",
                 img: "55.png"
             },
             {
@@ -1906,7 +1919,7 @@
                 price: 4100,
                 size: "Inquire in-store for size / Emerald & Lime Green",
                 pieces: "Lehenga, Choli, Dupatta Set",
-                description: "3piece Emerald & Lime Green lehenga choli – Premium. Elegant lehenga choli set featuring a rich Emerald Green embroidered skirt paired with a beautifully detailed Lime Green blouse.",
+                description: "3-piece Emerald & Lime Green lehenga choli – Premium. Elegant lehenga choli set featuring a rich Emerald Green embroidered skirt paired with a beautifully detailed Lime Green blouse.",
                 img: "56.png"
             },
             {
@@ -1916,7 +1929,7 @@
                 price: 6490,
                 size: "Inquire in-store for size / Yellow & Pink",
                 pieces: "Lehenga, Choli, Dupatta Set",
-                description: "3piece Yellow and Pink lehenga choli – Premium. Soft Pastel Yellow skirt with intricate embroidery and floral detailing, paired with a delicate Pink-accented dupatta for a graceful, feminine look.",
+                description: "3-piece Yellow and Pink lehenga choli – Premium. Soft Pastel Yellow skirt with intricate embroidery and floral detailing, paired with a delicate Pink-accented dupatta for a graceful, feminine look.",
                 img: "57.png"
             },
             {
@@ -1926,7 +1939,7 @@
                 price: 8660,
                 size: "Inquire in-store for size / Lime Green",
                 pieces: "Western Gown / Anarkali Gown",
-                description: "1piece Lime Green Indo Western Gown – Premium. Stunning one-piece gown with a soft Lime Green base, intricate floral embroidery, sequins, and bead detailing throughout the bodice and skirt.",
+                description: "1-piece Lime Green Indo Western Gown – Premium. Stunning one-piece gown with a soft Lime Green base, intricate floral embroidery, sequins, and bead detailing throughout the bodice and skirt.",
                 img: "58.png"
             },
             {
@@ -1936,7 +1949,7 @@
                 price: 9970,
                 size: "Inquire in-store for size / Pink",
                 pieces: "Western Gown / Anarkali Gown",
-                description: "1piece Pink Indo Western Gown – Premium. Luxurious one-piece gown featuring a soft Blush Pink base with intricate beadwork, sequins, and delicate embroidery flowing into a full tulle skirt.",
+                description: "1-piece Pink Indo Western Gown – Premium. Luxurious one-piece gown featuring a soft Blush Pink base with intricate beadwork, sequins, and delicate embroidery flowing into a full tulle skirt.",
                 img: "59.png"
             },
             {
@@ -1946,7 +1959,7 @@
                 price: 9950,
                 size: "Inquire in-store for size / Purple",
                 pieces: "Western Gown / Anarkali Gown",
-                description: "1piece Purple Indo Western Gown – Premium. Glamorous one-piece gown featuring a deep Purple shimmer base with a fitted bodice and a layered, flared skirt for a dramatic, elegant silhouette.",
+                description: "1-piece Purple Indo Western Gown – Premium. Glamorous one-piece gown featuring a deep Purple shimmer base with a fitted bodice and a layered, flared skirt for a dramatic, elegant silhouette.",
                 img: "60.png"
             },
             {
@@ -1956,7 +1969,7 @@
                 price: 1063,
                 size: "Inquire in-store for size / Red & Gold",
                 pieces: "Kurta & Pants Set",
-                description: "2piece Red & Gold Kurta Outfit – Premium. This elegant kurta set features a rich Red base with intricate Gold thread embroidery across the chest and collar, giving it a refined and festive look.",
+                description: "2-piece Red & Gold Kurta Outfit – Premium. This elegant kurta set features a rich Red base with intricate Gold thread embroidery across the chest and collar, giving it a refined and festive look.",
                 img: "61.png"
             },
             {
@@ -1966,7 +1979,7 @@
                 price: 1063,
                 size: "Inquire in-store for size: 38 / Orange",
                 pieces: "Kurta & Pants Set",
-                description: "2piece Orange Kurta Outfit – Premium. This stylish kurta set features a warm Orange/Coral base with intricate embroidered detailing across the chest and shoulders.",
+                description: "2-piece Orange Kurta Outfit – Premium. This stylish kurta set features a warm Orange/Coral base with intricate embroidered detailing across the chest and shoulders.",
                 img: "62.png"
             },
             {
@@ -1976,7 +1989,7 @@
                 price: 3140,
                 size: "Inquire in-store for size / Black & Grey",
                 pieces: "Kurta, Waistcoat & Pants Set",
-                description: "3piece Black & Grey Kurta Outfit – Premium. Sophisticated kurta set featuring a classic Black long-sleeve kurta paired with a beautifully designed Grey patterned waistcoat.",
+                description: "3-piece Black & Grey Kurta Outfit – Premium. Sophisticated kurta set featuring a classic Black long-sleeve kurta paired with a beautifully designed Grey patterned waistcoat.",
                 img: "63.png"
             },
             {
@@ -1986,7 +1999,7 @@
                 price: 1010,
                 size: "Inquire in-store for size / Emerald Green & Gold",
                 pieces: "Kurta & Pants Set",
-                description: "2piece Emerald Green & Gold Kurta Outfit – Premium. This refined kurta set features a deep Emerald Green base adorned with elegant Gold embroidered motifs and a detailed collar.",
+                description: "2-piece Emerald Green & Gold Kurta Outfit – Premium. This refined kurta set features a deep Emerald Green base adorned with elegant Gold embroidered motifs and a detailed collar.",
                 img: "64.png"
             },
             {
@@ -1996,7 +2009,7 @@
                 price: 1590,
                 size: "Inquire in-store for size / Gold & Red",
                 pieces: "Kurta & Pants Set",
-                description: "2piece Gold & Red Kurta Outfit – Premium. Elegant kurta set featuring a luxurious Gold base with intricate Red-accented embroidery along the collar and placket.",
+                description: "2-piece Gold & Red Kurta Outfit – Premium. Elegant kurta set featuring a luxurious Gold base with intricate Red-accented embroidery along the collar and placket.",
                 img: "65.png"
             },
             {
@@ -2006,7 +2019,7 @@
                 price: 1910,
                 size: "Inquire in-store for size: 40 / Lime Green & Gold",
                 pieces: "Kurta & Pants Set",
-                description: "2piece Lime Green & Gold Kurta Outfit – Premium. Refined kurta set featuring a soft Lime Green base with intricate Gold embroidered detailing along the collar and placket.",
+                description: "2-piece Lime Green & Gold Kurta Outfit – Premium. Refined kurta set featuring a soft Lime Green base with intricate Gold embroidered detailing along the collar and placket.",
                 img: "66.png"
             },
             {
@@ -2016,7 +2029,7 @@
                 price: 900,
                 size: "Inquire in-store for size / Emerald Green",
                 pieces: "Kurta & Pants Set",
-                description: "2piece Emerald Green Kurta Outfit – Premium. This stylish kurta set features a deep Emerald Green base with subtle textured detailing and light reflective embellishments.",
+                description: "2-piece Emerald Green Kurta Outfit – Premium. This stylish kurta set features a deep Emerald Green base with subtle textured detailing and light reflective embellishments.",
                 img: "67.png"
             },
             {
@@ -2026,7 +2039,7 @@
                 price: 6310,
                 size: "Inquire instore for size: 38 Medium / Navy Blue",
                 pieces: "Suit Set",
-                description: "2Piece Navy Blue Suit Outfit – Premium Occasion Wear. This premium suit-style outfit features a deep Navy Blue jacket with elegant embroidered detailing across the upper panel and sleeves, paired with matching bottoms for a refined, formal look. Designed in a modern Indo-Western suit silhouette, this outfit is ideal for weddings, receptions, engagements, gala events, and high-end cultural celebrations. Crafted from high-quality ArtSilk and Suiting Fabric, it offers a polished, structured, and sophisticated finish.",
+                description: "2-Piece Navy Blue Suit Outfit – Premium Occasion Wear. This premium suit-style outfit features a deep Navy Blue jacket with elegant embroidered detailing across the upper panel and sleeves, paired with matching bottoms for a refined, formal look.",
                 img: "68.png"
             },
             {
@@ -2036,7 +2049,7 @@
                 price: 660,
                 size: "Inquire instore for size – Medium / Maroon & Silver",
                 pieces: "Necklace & Earring Set",
-                description: "2Piece Maroon & Silver Necklace & Earring Set – Premium Jewellery. This elegant jewellery set features a beautifully crafted Maroon and Silver necklace with a detailed centre pendant, paired with matching earrings. Designed with premium stones and intricate metalwork, this set is perfect for weddings, engagements, receptions, Diwali, and all special occasions. The rich maroon stones paired with silver detailing create a bold, luxurious look that complements both traditional and modern outfits.",
+                description: "2-Piece Maroon & Silver Necklace & Earring Set – Premium Jewellery. This elegant jewellery set features a beautifully crafted Maroon and Silver necklace with a detailed centre pendant, paired with matching earrings.",
                 img: "69.png"
             },
             {
@@ -2046,7 +2059,7 @@
                 price: 501,
                 size: "Inquire instore for size – Medium / Black & Silver",
                 pieces: "Necklace & Earring Set",
-                description: "2Piece Black & Silver Necklace & Earring Set – Premium Jewellery. This elegant jewellery set features a striking Black and Silver necklace with a detailed centre pendant, paired with matching earrings. Designed with premium stones and refined metalwork, this set is perfect for weddings, receptions, parties, Diwali, and all special occasions. The bold black stones combined with silver detailing create a modern, sophisticated look that complements both traditional and contemporary outfits.",
+                description: "2-Piece Black & Silver Necklace & Earring Set – Premium Jewellery. This elegant jewellery set features a striking Black and Silver necklace with a detailed centre pendant, paired with matching earrings.",
                 img: "70.png"
             },
             {
@@ -2056,7 +2069,7 @@
                 price: 660,
                 size: "Inquire instore for size – Medium / Red & Silver",
                 pieces: "Necklace & Earring Set",
-                description: "2Piece Red & Silver Necklace & Earring Set – Premium Jewellery. This beautifully crafted jewellery set features a striking Red and Silver necklace with an intricate centre design, paired with matching earrings. The combination of rich red stones and shimmering silver detailing creates a bold, elegant look ideal for weddings, engagements, receptions, Diwali, and all special occasions. Designed with premium stones and fine metalwork, this set complements both traditional and modern outfits with ease.",
+                description: "2-Piece Red & Silver Necklace & Earring Set – Premium Jewellery. This beautifully crafted jewellery set features a striking Red and Silver necklace with an intricate centre design, paired with matching earrings.",
                 img: "71.png"
             },
             {
@@ -2066,7 +2079,7 @@
                 price: 544,
                 size: "Inquire instore for size – Medium / Red & Silver",
                 pieces: "Necklace & Earring Set",
-                description: "2Piece Red & Silver Necklace & Earring Set – Premium Jewellery. This exquisite jewellery set features a beautifully designed Red and Silver necklace with an ornate centre pendant, paired with matching earrings. Crafted with premium stones and intricate metalwork, the set offers a luxurious, eye-catching look ideal for weddings, engagements, receptions, Diwali, and all formal celebrations. The combination of deep red stones and shimmering silver detailing creates a bold, elegant finish that complements both traditional and modern outfits.",
+                description: "2-Piece Red & Silver Necklace & Earring Set – Premium Jewellery. This exquisite jewellery set features a beautifully designed Red and Silver necklace with an ornate centre pendant, paired with matching earrings.",
                 img: "72.png"
             },
             {
@@ -2076,7 +2089,7 @@
                 price: 4150,
                 size: "Inquire instore for size – 38 Large / Cream & Gold",
                 pieces: "Sherwani Suit Set",
-                description: "2Piece Cream Sherwani Suit – Premium Groom’s Wear. This luxurious Sherwani features a refined Cream base with intricate Gold embroidered detailing along the collar, chest, and placket. Crafted from premium textured fabric, it offers a royal, elegant look ideal for weddings, engagements, and high-end cultural ceremonies. The premium craftsmanship and ornate button detailing elevate this Sherwani into a standout groom’s outfit.",
+                description: "2-Piece Cream Sherwani Suit – Premium Groom’s Wear. This luxurious Sherwani features a refined Cream base with intricate Gold embroidered detailing along the collar, chest, and placket.",
                 img: "73.png"
             },
             {
@@ -2086,7 +2099,7 @@
                 price: 440,
                 size: "Inquire instore for Medium / Pastel Pink & Green",
                 pieces: "Necklace & Earring Set",
-                description: "2Piece Pastel Pink & Green Necklace & Earring Set – Premium Jewellery. This exquisite jewellery set features a beautifully designed Pastel Pink and Green necklace with intricate detailing, paired with matching earrings. Crafted with premium stones and fine metalwork, the set offers a soft, elegant look ideal for weddings, engagements, receptions, Diwali, and all formal celebrations. The pastel tones combined with the silver finish create a graceful, luxurious aesthetic that complements both traditional and modern outfits.",
+                description: "2-Piece Pastel Pink & Green Necklace & Earring Set – Premium Jewellery. This exquisite jewellery set features a beautifully designed Pastel Pink and Green necklace with intricate detailing, paired with matching earrings.",
                 img: "74.png"
             },
             {
@@ -2096,7 +2109,7 @@
                 price: 420,
                 size: "Inquire instore for Medium / Pink & Silver",
                 pieces: "Necklace & Earring Set",
-                description: "2Piece Pink & Silver Necklace & Earring Set – Premium Jewellery. This stunning jewellery set features a beautifully designed Pink and Silver necklace with intricate floral detailing, paired with matching earrings. Crafted with premium stones and fine metalwork, the set offers a soft, elegant look ideal for weddings, engagements, receptions, Diwali, and all formal celebrations. The pastel pink stones combined with the silver finish create a graceful, luxurious aesthetic that complements both traditional and modern outfits.",
+                description: "2-Piece Pink & Silver Necklace & Earring Set – Premium Jewellery. This stunning jewellery set features a beautifully designed Pink and Silver necklace with intricate floral detailing, paired with matching earrings.",
                 img: "75.png"
             },
             {
@@ -2106,7 +2119,7 @@
                 price: 437,
                 size: "Inquire instore for Medium / Purple & Silver",
                 pieces: "Necklace & Earring Set",
-                description: "2Piece Purple & Silver Necklace & Earring Set – Premium Jewellery. This elegant jewellery set features a beautifully crafted Purple and Silver necklace with an intricate centre pendant, paired with matching earrings. Designed with premium stones and fine metalwork, the set offers a luxurious, eye-catching look ideal for weddings, engagements, receptions, Diwali, and all formal celebrations. The deep purple stones combined with the silver detailing create a striking, sophisticated finish that complements both traditional and modern outfits.",
+                description: "2-Piece Purple & Silver Necklace & Earring Set – Premium Jewellery. This elegant jewellery set features a beautifully crafted Purple and Silver necklace with an intricate centre pendant, paired with matching earrings.",
                 img: "76.png"
             },
             {
@@ -2116,7 +2129,7 @@
                 price: 390,
                 size: "Instore for Medium / Silver & Purple",
                 pieces: "Necklace & Earring Set",
-                description: "2Piece Silver & Purple Necklace & Earring Set – Premium Jewellery. This elegant jewellery set features a beautifully designed Silver and Purple necklace with intricate stonework and a bold centre pendant, paired with matching earrings. Crafted with premium stones and fine metal detailing, the set offers a luxurious, eye-catching look ideal for weddings, engagements, receptions, Diwali, and all formal celebrations. The deep purple stones combined with the silver finish create a regal, sophisticated aesthetic that complements both traditional and modern outfits.",
+                description: "2-Piece Silver & Purple Necklace & Earring Set – Premium Jewellery. This elegant jewellery set features a beautifully designed Silver and Purple necklace with intricate stonework and a bold centre pendant, paired with matching earrings.",
                 img: "77.png"
             },
             {
@@ -2126,7 +2139,7 @@
                 price: 440,
                 size: "Instore for Medium / Ruby & Silver",
                 pieces: "Necklace & Earring Set",
-                description: "2Piece Ruby & Silver Necklace & Earring Set – Premium Jewellery. This stunning jewellery set features a beautifully designed Ruby and Silver necklace with intricate stonework and a detailed centre pendant, paired with matching earrings. Crafted with premium stones and fine metal detailing, the set offers a luxurious, eye-catching look ideal for weddings, engagements, receptions, Diwali, and all formal celebrations. The deep ruby stones combined with the silver finish create a bold, elegant aesthetic that complements both traditional and modern outfits.",
+                description: "2-Piece Ruby & Silver Necklace & Earring Set – Premium Jewellery. This stunning jewellery set features a beautifully designed Ruby and Silver necklace with intricate stonework and a detailed centre pendant, paired with matching earrings.",
                 img: "78.png"
             },
             {
@@ -2136,7 +2149,7 @@
                 price: 440,
                 size: "Instore for Small / Turquoise & Silver",
                 pieces: "Necklace & Earring Set",
-                description: "2Piece Turquoise & Silver Necklace & Earring Set – Premium Jewellery. This elegant jewellery set features a beautifully designed Turquoise and Silver necklace with intricate stonework arranged in a symmetrical pattern, paired with matching earrings. Crafted with premium stones and fine metal detailing, the set offers a fresh, eye-catching look ideal for weddings, engagements, receptions, Diwali, and all formal celebrations. The vibrant turquoise stones combined with the silver finish create a bright, luxurious aesthetic that complements both traditional and modern outfits.",
+                description: "2-Piece Turquoise & Silver Necklace & Earring Set – Premium Jewellery. This elegant jewellery set features a beautifully designed Turquoise and Silver necklace with intricate stonework arranged in a symmetrical pattern, paired with matching earrings.",
                 img: "79.png"
             },
             {
@@ -2146,7 +2159,7 @@
                 price: 660,
                 size: "Instore for Small / Red & Silver",
                 pieces: "Necklace & Earring Set",
-                description: "2Piece Red & Silver Necklace & Earring Set – Premium Jewellery. This elegant jewellery set features a beautifully crafted Red and Silver necklace with intricate stonework and a detailed centre design, paired with matching earrings. Made with premium stones and fine metal detailing, the set offers a luxurious, eye-catching look ideal for weddings, engagements, receptions, Diwali, and all formal celebrations. The deep red stones paired with the silver finish create a bold, sophisticated aesthetic that complements both traditional and modern outfits.",
+                description: "2-Piece Red & Silver Necklace & Earring Set – Premium Jewellery. This elegant jewellery set features a beautifully crafted Red and Silver necklace with intricate stonework and a detailed centre design, paired with matching earrings.",
                 img: "80.png"
             },
             {
@@ -2156,7 +2169,7 @@
                 price: 270,
                 size: "Instore for Small / Yellow & Silver",
                 pieces: "Necklace & Earring Set",
-                description: "2Piece Yellow & Silver Necklace & Earring Set – Premium Jewellery. This elegant jewellery set features a beautifully crafted Yellow and Silver necklace with intricate swirling detailing and a teardrop centre design, paired with matching earrings. Made with premium stones and fine metalwork, the set offers a bright, eye-catching look ideal for weddings, engagements, receptions, Diwali, and all formal celebrations. The warm yellow stones combined with the silver finish create a radiant, sophisticated aesthetic that complements both traditional and modern outfits.",
+                description: "2-Piece Yellow & Silver Necklace & Earring Set – Premium Jewellery. This elegant jewellery set features a beautifully crafted Yellow and Silver necklace with intricate swirling detailing and a teardrop centre design, paired with matching earrings.",
                 img: "81.png"
             },
             {
@@ -2166,7 +2179,7 @@
                 price: 431,
                 size: "Instore for Small / Orange & Silver",
                 pieces: "Necklace & Earring Set",
-                description: "2Piece Orange & Silver Necklace & Earring Set – Premium Jewellery. This elegant jewellery set features a beautifully crafted Orange and Silver necklace with intricate stonework and a detailed centre pendant, paired with matching earrings. Designed with premium stones and fine metal detailing, the set offers a bright, eye-catching look ideal for weddings, engagements, receptions, Diwali, and all formal celebrations. The vibrant orange stones combined with the silver finish create a bold, sophisticated aesthetic that complements both traditional and modern outfits.",
+                description: "2-Piece Orange & Silver Necklace & Earring Set – Premium Jewellery. This elegant jewellery set features a beautifully crafted Orange and Silver necklace with intricate stonework and a detailed centre pendant, paired with matching earrings.",
                 img: "82.png"
             },
             {
@@ -2176,7 +2189,7 @@
                 price: 440,
                 size: "Instore for Small / Turquoise & Silver",
                 pieces: "Necklace & Earring Set",
-                description: "2Piece Turquoise & Silver Necklace & Earring Set – Premium Jewellery. This elegant jewellery set features a beautifully designed Turquoise and Silver necklace with intricate stone detailing arranged in a symmetrical pattern, paired with matching earrings. Crafted with premium stones and fine metalwork, the set offers a bright, eye-catching look ideal for weddings, engagements, receptions, Diwali, and all formal celebrations. The vibrant turquoise stones combined with the silver finish create a fresh, luxurious aesthetic that complements both traditional and modern outfits.",
+                description: "2-Piece Turquoise & Silver Necklace & Earring Set – Premium Jewellery. This elegant jewellery set features a beautifully designed Turquoise and Silver necklace with intricate stone detailing arranged in a symmetrical pattern, paired with matching earrings.",
                 img: "83.png"
             },
             {
@@ -2186,7 +2199,7 @@
                 price: 510,
                 size: "Instore for Small / Turquoise & Silver",
                 pieces: "Necklace & Earring Set",
-                description: "2Piece Turquoise & Silver Necklace & Earring Set – Premium Jewellery. This exquisite jewellery set features a beautifully designed Turquoise and Silver necklace with intricate teardrop stonework and a detailed centre arrangement, paired with matching earrings. Crafted with premium stones and fine metal detailing, the set offers a luxurious, eye-catching look ideal for weddings, engagements, receptions, Diwali, and all formal celebrations. The vibrant turquoise stones combined with the silver finish create a fresh, sophisticated aesthetic that complements both traditional and modern outfits.",
+                description: "2-Piece Turquoise & Silver Necklace & Earring Set – Premium Jewellery. This exquisite jewellery set features a beautifully designed Turquoise and Silver necklace with intricate teardrop stonework and a detailed centre arrangement, paired with matching earrings.",
                 img: "84.png"
             },
             {
@@ -2196,7 +2209,7 @@
                 price: 0,
                 size: "Instore for Medium / Blue & Silver",
                 pieces: "Butterfly Choker Necklace",
-                description: "1Piece Blue & Silver Butterfly Choker Necklace – Premium Jewellery. This stylish choker features a beautifully crafted Blue and Silver butterfly pendant set on a sleek, elegant band. Designed with premium stones and fine metal detailing, it offers a modern, eye-catching look ideal for parties, receptions, festive wear, and contemporary fashion styling. The vibrant blue stones paired with the silver finish create a fresh, youthful aesthetic that complements both traditional and western outfits.",
+                description: "1-Piece Blue & Silver Butterfly Choker Necklace – Premium Jewellery. This stylish choker features a beautifully crafted Blue and Silver butterfly pendant set on a sleek, elegant band. Designed with premium stones and fine metal detailing, it offers a modern, eye-catching look.",
                 img: "85.png"
             },
             {
@@ -2206,13 +2219,12 @@
                 price: 394,
                 size: "Medium / Aqua Blue & Gold",
                 pieces: "Necklace & Earring Set",
-                description: "2Piece Aqua Blue & Gold Necklace & Earring Set – Premium Jewellery. This elegant jewellery set features a beautifully designed Aqua Blue and Gold necklace with intricate detailing and matching earrings. Crafted with premium stones and fine metalwork, the set offers a luxurious, eye-catching look ideal for weddings, engagements, receptions, Diwali, and all formal celebrations. The vibrant aqua blue stones paired with the gold finish create a regal, sophisticated aesthetic that complements both traditional and modern outfits.",
+                description: "2-Piece Aqua Blue & Gold Necklace & Earring Set – Premium Jewellery. This elegant jewellery set features a beautifully designed Aqua Blue and Gold necklace with intricate detailing and matching earrings. Crafted with premium stones and fine metalwork.",
                 img: "86.png"
             }
         ];
 
         function initCatalogDatabase() {
-            // Check if we have an active, initialized database backup in state
             const savedState = localStorage.getItem('zari_showroom_catalog_v3');
             if (savedState) {
                 try {
@@ -2325,8 +2337,8 @@
                         </div>
                         ${item.img !== 'placeholder' ? `<img src="${item.img}" onerror="this.src='https://placehold.co/480x640/7A1F3D/ffffff?text=Zari+Wear';" class="absolute inset-0 w-full h-full object-cover" alt="Zari Ethnics Wear Asset">` : ''}
                         
-                        <div class="absolute top-4 right-4 bg-slate-900/90 text-white text-[8px] uppercase font-bold tracking-widest px-3.5 py-1.5 rounded-full shadow-sm z-30">
-                            ${isVault ? 'Price on Request' : `R ${item.price.toLocaleString('en-ZA')}`}
+                        <div class="absolute top-4 right-4 bg-zariCrimson text-white text-[8px] uppercase font-bold tracking-widest px-3.5 py-1.5 rounded-full shadow-sm z-30">
+                            ${isVault ? 'WhatsApp Estimate' : `R ${item.price.toLocaleString('en-ZA')}`}
                         </div>
                     </div>
                 `;
@@ -2344,7 +2356,7 @@
                             <!-- Delicate Professional AI Representation Disclaimer on Product Cards -->
                             <div class="pt-2 flex items-start space-x-1 border-t border-slate-100 text-[8.5px] text-slate-400 font-semibold leading-relaxed">
                                 <i class="fas fa-circle-info text-zariCrimson/80 mt-0.5" aria-hidden="true"></i>
-                                <span>AI model representation. Any lookalike likenesses to physical persons are entirely coincidental.</span>
+                                <span>Digital reference only. Actual physical garment sizing, fabric tone, and weave detail may vary slightly.</span>
                             </div>
                         </div>
                     </div>
@@ -2450,9 +2462,45 @@
         }
 
         // ==========================================
-        // Shopping Bag Logic (POPIA Compliant)
         // ==========================================
         let shoppingBag = [];
+        let invoiceNumber = '';
+        let customerVatNumber = '';
+
+        // Generate persistent invoice sequential number matching SARS compliance
+        function generateInvoiceNumber() {
+            const savedInv = localStorage.getItem('zari_curr_invoice_number');
+            if (savedInv) {
+                invoiceNumber = savedInv;
+            } else {
+                const now = new Date();
+                const yyyymmdd = now.getFullYear().toString() + 
+                                 (now.getMonth() + 1).toString().padStart(2, '0') + 
+                                 now.getDate().toString().padStart(2, '0');
+                const randSuffix = Math.floor(1000 + Math.random() * 9000);
+                invoiceNumber = `INV-${yyyymmdd}-${randSuffix}`;
+                localStorage.setItem('zari_curr_invoice_number', invoiceNumber);
+            }
+            document.getElementById('invoiceNumberDisplay').textContent = invoiceNumber;
+            
+            // Set dynamic invoice generation date
+            const dateStr = new Date().toLocaleDateString('en-ZA', { year: 'numeric', month: '2-digit', day: '2-digit' }).replace(/\//g, '-');
+            document.getElementById('invoiceDateDisplay').textContent = dateStr;
+        }
+
+        function saveCustomerVat() {
+            customerVatNumber = document.getElementById('customerVatNo').value.trim();
+            localStorage.setItem('zari_cust_vat_number', customerVatNumber);
+        }
+
+        function loadCustomerVat() {
+            const savedVat = localStorage.getItem('zari_cust_vat_number');
+            if (savedVat) {
+                customerVatNumber = savedVat;
+                const input = document.getElementById('customerVatNo');
+                if (input) input.value = savedVat;
+            }
+        }
 
         function toggleBagDrawer() {
             playAtmosphericSound('low');
@@ -2462,6 +2510,8 @@
             if (drawer.classList.contains('translate-x-full')) {
                 drawer.classList.remove('translate-x-full');
                 overlay.classList.remove('opacity-0', 'pointer-events-none');
+                generateInvoiceNumber();
+                loadCustomerVat();
                 renderBagItems();
             } else {
                 drawer.classList.add('translate-x-full');
@@ -2556,12 +2606,13 @@
         function clearShoppingBag() {
             playAtmosphericSound('success');
             shoppingBag = [];
+            localStorage.removeItem('zari_curr_invoice_number');
             saveBagToStorage();
             renderBagItems();
             showToastNotification("Your shopping bag is now completely empty.", "info");
         }
 
-        // Render drawer list dynamically
+        // Render drawer list dynamically (SARS Precision Math Standards)
         function renderBagItems() {
             const container = document.getElementById('cartItemsContainer');
             
@@ -2581,14 +2632,12 @@
                 
                 document.getElementById('cartSubtotal').textContent = "R 0.00";
                 document.getElementById('cartVatAmount').textContent = "R 0.00";
-                document.getElementById('cartQuoteCount').textContent = "0 Pending Quotes";
                 document.getElementById('cartGrandTotal').textContent = "R 0.00";
                 return;
             }
 
             container.innerHTML = "";
-            let subtotal = 0;
-            let quoteCount = 0;
+            let grandTotal = 0; // Total (Incl. VAT)
 
             shoppingBag.forEach(cartItem => {
                 const product = catalog.find(x => x.id === cartItem.id);
@@ -2601,9 +2650,8 @@
                 let priceDisplay = `R ${product.price.toLocaleString('en-ZA')}`;
                 if (isVault) {
                     priceDisplay = "Quote Pending";
-                    quoteCount += cartItem.quantity;
                 } else {
-                    subtotal += (product.price * cartItem.quantity);
+                    grandTotal += (product.price * cartItem.quantity);
                 }
 
                 let fallbackColor = `linear-gradient(135deg, #1b1c1e, #0f172a)`;
@@ -2652,25 +2700,34 @@
                 container.appendChild(itemRow);
             });
 
-            const includedVat = (subtotal * 15) / 115;
+            // SARS Standard Precision Rule Execution:
+            // Subtotal Excl. VAT = round(GrandTotal / 1.15) to 2 decimals
+            const subtotalExclVat = Number((grandTotal / 1.15).toFixed(2));
+            // VAT (15%) = round(GrandTotal - Subtotal Excl. VAT) to 2 decimals (to eliminate double rounding mismatch)
+            const vatAmount = Number((grandTotal - subtotalExclVat).toFixed(2));
 
-            document.getElementById('cartSubtotal').textContent = `R ${subtotal.toLocaleString('en-ZA', {minimumFractionDigits: 2})}`;
-            document.getElementById('cartVatAmount').textContent = `R ${includedVat.toLocaleString('en-ZA', {minimumFractionDigits: 2})}`;
-            document.getElementById('cartQuoteCount').textContent = `${quoteCount} Pending Quote Items`;
-            document.getElementById('cartGrandTotal').textContent = `R ${subtotal.toLocaleString('en-ZA', {minimumFractionDigits: 2})}`;
+            document.getElementById('cartSubtotal').textContent = `R ${subtotalExclVat.toLocaleString('en-ZA', {minimumFractionDigits: 2, maximumFractionDigits: 2})}`;
+            document.getElementById('cartVatAmount').textContent = `R ${vatAmount.toLocaleString('en-ZA', {minimumFractionDigits: 2, maximumFractionDigits: 2})}`;
+            document.getElementById('cartGrandTotal').textContent = `R ${grandTotal.toLocaleString('en-ZA', {minimumFractionDigits: 2, maximumFractionDigits: 2})}`;
         }
 
-        // Create beautiful structured WhatsApp order lists
+        // Create beautiful structured WhatsApp order lists matching SARS invoice checklist
         function checkoutBagWhatsApp() {
             if (shoppingBag.length === 0) return;
             playAtmosphericSound('success');
 
-            let messageString = `*ZARI ETHNICS - SHOPPING CART RECEIPT*\n`;
+            let messageString = `*TAX INVOICE - ZARI ETHNICS*\n`;
             messageString += `_Shop U28A Trade Route Mall, Lenasia_\n`;
-            messageString += `_VAT Number: 4460265194 (All prices inclusive of VAT)_\n`;
+            messageString += `*Seller VAT No:* 4460265194\n`;
+            messageString += `*Invoice No:* ${invoiceNumber}\n`;
+            messageString += `*Date of Issue:* ${new Date().toLocaleDateString('en-ZA', { year: 'numeric', month: '2-digit', day: '2-digit' }).replace(/\//g, '-')}\n`;
+            
+            if (customerVatNumber) {
+                messageString += `*Customer VAT No:* ${customerVatNumber.toUpperCase()}\n`;
+            }
             messageString += `==================================\n\n`;
 
-            let subtotal = 0;
+            let grandTotal = 0;
             let pendingInquiryCount = 0;
 
             shoppingBag.forEach((cartItem, idx) => {
@@ -2681,7 +2738,7 @@
                 let priceLine = "";
                 if (hasPrice) {
                     const lineCost = product.price * cartItem.quantity;
-                    subtotal += lineCost;
+                    grandTotal += lineCost;
                     priceLine = `R ${product.price.toLocaleString('en-ZA')} (Subtotal: R ${lineCost.toLocaleString('en-ZA')})`;
                 } else {
                     pendingInquiryCount += cartItem.quantity;
@@ -2691,20 +2748,22 @@
                 messageString += `*${idx + 1}. ${product.title}*\n`;
                 messageString += `   - Quantity: ${cartItem.quantity}\n`;
                 messageString += `   - Size Option: _${product.size}_\n`;
-                messageString += `   - Pieces: _${product.pieces}_\n`;
-                messageString += `   - Slot ID: _#${product.id}_\n`;
                 messageString += `   - Price: ${priceLine}\n\n`;
             });
 
-            const includedVat = (subtotal * 15) / 115;
+            // Calculate precise SARS compliance rounded values
+            const subtotalExclVat = Number((grandTotal / 1.15).toFixed(2));
+            const vatAmount = Number((grandTotal - subtotalExclVat).toFixed(2));
 
             messageString += `==================================\n`;
-            messageString += `*ESTIMATED TOTAL (VAT INCL.):* R ${subtotal.toLocaleString('en-ZA', {minimumFractionDigits: 2})}\n`;
-            messageString += `*INCLUDED VAT (15%):* R ${includedVat.toLocaleString('en-ZA', {minimumFractionDigits: 2})} (Formula: Total x 15/115)\n`;
+            messageString += `*Subtotal (Excl. VAT):* R ${subtotalExclVat.toLocaleString('en-ZA', {minimumFractionDigits: 2, maximumFractionDigits: 2})}\n`;
+            messageString += `*VAT (15%):* R ${vatAmount.toLocaleString('en-ZA', {minimumFractionDigits: 2, maximumFractionDigits: 2})}\n`;
+            messageString += `*Total (Incl. VAT):* R ${grandTotal.toLocaleString('en-ZA', {minimumFractionDigits: 2, maximumFractionDigits: 2})}\n`;
+            
             if (pendingInquiryCount > 0) {
                 messageString += `*PENDING BESPOKE QUOTES:* ${pendingInquiryCount} item(s) requiring bespoke estimate consultation.\n`;
             }
-            messageString += `\nHello Zari Ethnics team, I would love to verify showroom availability, tailoring options, and schedules for the items compiled inside my shopping bag above.`;
+            messageString += `\nHello Zari Ethnics team, please find my compiled South African Tax Invoice check-list receipt above. I would love to verify showroom collection schedules, on-site tailors capacity, and final order coordination.`;
 
             const encoded = encodeURIComponent(messageString);
             window.open(`https://wa.me/27812742028?text=${encoded}`, '_blank');

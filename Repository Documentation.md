@@ -37,7 +37,7 @@ The website features a built-in **Premium Atelier Command Center** accessible di
 
 1. Scroll down to the **Boutique Selection Gallery** section.  
 2. Click on **Atelier Command Center** in the dark panel.  
-3. Enter your authorized administrator key credentials (Jagdishdesai).  
+3. Enter your authorized administrator key credentials .  
 4. From here, you can crop new photos, edit prices, update sizing formats, and click **Save Changes Directly to GitHub** to trigger an automated live compilation and deployment.
 
 *Maintained by MrKolapie Pty Ltd™ for Zarì Ethnics Boutique, Trade Route Mall, Lenasia.*

@@ -1,65 +1,34 @@
-<!-- ========================================== -->
-<!-- INTELLECTUAL PROPERTY & SECURITY NOTICE    -->
-<!-- Copyright (c) 2026 Zari Ethnics &          -->
-<!-- MrKolapie Pty Ltd™. All Rights Reserved.   -->
-<!-- Unauthorized copying, cloning, or source   -->
-<!-- extraction of these scripts, design systems-->
-<!-- or vectors is strictly prohibited.         -->
-<!-- ========================================== -->
-
 <!DOCTYPE html>
 <html lang="en" class="scroll-smooth">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    
-    <!-- ========================================== -->
-    <!-- SEO Meta Tags & Google Compliance -->
-    <!-- ========================================== -->
     <title>ZARÌ ETHNICS | Exquisite Eastern Wear & Bridal Boutique Lenasia</title>
-    <meta name="description" content="Indulge in an exquisite eastern experience at ZARÌ ETHNICS, Shop U28A Upper Level (next to Ocean Basket), Trade Route Mall, Lenasia. Gauteng's leading boutique for bespoke bridal lehengas, custom groom sherwanis, luxury heritage sarees, and exclusive occasion wear. Explore our fabric stitch inspector, check live trading hours, and consult with us directly on WhatsApp +27 81 274 2028. All prices are VAT inclusive.">
-    <meta name="keywords" content="Zari Ethnics, Zarì Ethnics, Zari Lenasia, Trade Route Mall shops, bridal wear Lenasia, eastern wear South Africa, lehenga, sherwani, designer sarees, Indian bridal wear Gauteng, formal suits, turbans">
+    <meta name="description" content="Indulge in an exquisite eastern experience at ZARÌ ETHNICS, Shop U28A Upper Level, Trade Route Mall, Lenasia. Gauteng's leading boutique for bespoke bridal lehengas, custom groom sherwanis, luxury heritage sarees, and exclusive occasion wear.">
+    <meta name="keywords" content="Zari Ethnics, Zarì Ethnics, Zari Lenasia, Trade Route Mall shops, bridal wear South Africa, Yoco payment, The Courier Guy South Africa, eastern wear, lehenga, sherwani, designer sarees, Indian bridal wear Gauteng, formal suits">
     <meta name="author" content="ZARÌ ETHNICS">
     <meta name="theme-color" content="#446B1E">
-
-    <!-- Premium Favicon Reference pointing directly to favicon.png on GitHub -->
     <link rel="icon" type="image/png" href="favicon.png">
-
-    <!-- Tailwind CSS & Google Fonts -->
     <script src="https://cdn.tailwindcss.com"></script>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Cinzel+Decorative:wght@700;900&family=Cinzel:wght=600;700;800;900&family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Cinzel+Decorative:wght@700;900&family=Cinzel:wght@600;700;800;900&family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-    
-    <!-- CropperJS for local cropping functionality -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/cropperjs/1.5.13/cropper.min.css">
     <script src="https://cdnjs.cloudflare.com/ajax/libs/cropperjs/1.5.13/cropper.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/tone/14.8.49/Tone.js"></script>
-    
     <script>
         tailwind.config = {
             theme: {
                 extend: {
                     colors: {
-                        zariGreen: {
-                            DEFAULT: '#446B1E', // Boutique Leaf Green
-                            dark: '#2F4F14',
-                            accent: '#F3F6F1'
-                        },
-                        zariGold: {
-                            DEFAULT: '#F5C21B', // Lotus Antique Gold
-                            light: '#F8D353',
-                            dark: '#C59A10'
-                        },
-                        zariCrimson: {
-                            DEFAULT: '#DE1B45', // Bridal Crimson Red (Auspicious Traditional Red)
-                            dark: '#B01335'
-                        },
+                        zariGreen: { DEFAULT: '#446B1E', dark: '#2F4F14', accent: '#F3F6F1' },
+                        zariGold: { DEFAULT: '#F5C21B', light: '#F8D353', dark: '#C59A10' },
+                        zariCrimson: { DEFAULT: '#DE1B45', dark: '#B01335' },
                         zariBurgundy: '#7A1F3D',
                         zariSilver: '#E5E7EB',
-                        zariMidnight: '#0B0F19', // Absolute elegant dark charcoal
-                        zariAlabaster: '#FAF9F6' // Alabaster Neutral (Linen backing)
+                        zariMidnight: '#0B0F19',
+                        zariAlabaster: '#FAF9F6'
                     },
                     fontFamily: {
                         sans: ['"Plus Jakarta Sans"', 'sans-serif'],
@@ -70,145 +39,88 @@
             }
         }
     </script>
-
     <style>
-        .gold-glow-hover {
-            transition: all 0.5s cubic-bezier(0.16, 1, 0.3, 1);
-        }
-        .gold-glow-hover:hover {
-            box-shadow: 0 15px 30px -10px rgba(245, 194, 27, 0.25);
-            border-color: rgba(245, 194, 27, 0.5);
-        }
-        .modal-magnify-container {
-            position: relative;
-            overflow: hidden;
-            cursor: zoom-in;
-            touch-action: none;
-        }
-        .modal-magnifier {
-            position: absolute;
-            width: 140px;
-            height: 140px;
-            border: 3px solid #F5C21B;
-            border-radius: 50%;
-            background-repeat: no-repeat;
-            pointer-events: none;
-            display: none;
-            z-index: 40;
-            box-shadow: 0 10px 25px rgba(0,0,0,0.6), inset 0 0 15px rgba(255,255,255,0.25);
-            overflow: hidden;
-            background-color: #0B0F19;
-        }
-        .drawer-transition {
-            transition: transform 0.45s cubic-bezier(0.16, 1, 0.3, 1);
-        }
-        .lotus-watermark {
-            background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='80' height='80' viewBox='0 0 80 80'%3E%3Cpath d='M40 10 C42 20 48 22 48 26 C48 30 42 32 40 42 C38 32 32 30 32 26 C32 22 38 20 40 10 Z' fill='%23446B1E' fill-opacity='0.02'/%3E%3C/svg%3E");
-        }
+        .gold-glow-hover { transition: all 0.5s cubic-bezier(0.16, 1, 0.3, 1); }
+        .gold-glow-hover:hover { box-shadow: 0 15px 30px -10px rgba(245,194,27,0.25); border-color: rgba(245,194,27,0.5); }
+        .card-magnify-container { position: relative; overflow: hidden; cursor: zoom-in; }
+        .card-magnifier { position: absolute; width: 130px; height: 130px; border: 2px solid #F5C21B; border-radius: 50%; background-repeat: no-repeat; pointer-events: none; display: none; z-index: 30; box-shadow: 0 8px 20px rgba(0,0,0,0.5), inset 0 0 10px rgba(255,255,255,0.3); overflow: hidden; }
+        .drawer-transition { transition: transform 0.45s cubic-bezier(0.16, 1, 0.3, 1); }
+        .lotus-watermark { background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='80' height='80' viewBox='0 0 80 80'%3E%3Cpath d='M40 10 C42 20 48 22 48 26 C48 30 42 32 40 42 C38 32 32 30 32 26 C32 22 38 20 40 10 Z' fill='%23446B1E' fill-opacity='0.02'/%3E%3C/svg%3E"); }
+        .line-clamp-3 { display: -webkit-box; -webkit-line-clamp: 3; -webkit-box-orient: vertical; overflow: hidden; }
     </style>
 </head>
 <body class="bg-zariAlabaster text-slate-800 font-sans selection:bg-zariGold selection:text-white overflow-x-hidden relative lotus-watermark">
 
-    <!-- Toast Notification Banner Container -->
-    <div id="toastContainer" class="fixed top-6 right-6 z-[100] space-y-3 pointer-events-none"></div>
+    <div id="toastContainer" class="fixed top-6 right-6 z-[200] space-y-3 pointer-events-none"></div>
 
-    <!-- Global SARS Compliance Announcement Bar (In Brand Crimson) -->
     <div class="bg-zariCrimson text-white text-center py-2.5 px-4 text-[10px] sm:text-xs font-semibold tracking-wider flex items-center justify-center space-x-2 z-40 relative shadow-md">
         <i class="fas fa-percentage text-zariGold animate-pulse"></i>
-        <span>60% OFF SELECTED SHERWANIS & IN-STORE COMMISSIONS | REGISTERED VAT NO. 4460265194</span>
+        <span>60% OFF SELECTED SHERWANIS &amp; IN-STORE COMMISSIONS | REGISTERED VAT NO. 4460265194</span>
     </div>
 
-    <!-- MAIN STICKY BRAND HEADER -->
     <header class="bg-white border-b border-slate-100 py-6 text-center space-y-1.5 shadow-sm sticky top-0 z-30">
         <div class="max-w-7xl mx-auto px-4 flex items-center justify-between">
-            <!-- Left Brand Logo Emblem -->
             <div class="w-12 sm:w-20 flex justify-start">
-                <div class="h-10 w-10 sm:h-12 sm:w-12 rounded-full border border-zariGold/30 flex items-center justify-center bg-zariMidnight text-zariGold font-serif text-lg font-bold shadow-md">
-                    Z
-                </div>
+                <div class="h-10 w-10 sm:h-12 sm:w-12 rounded-full border border-zariGold/30 flex items-center justify-center bg-zariMidnight text-zariGold font-serif text-lg font-bold shadow-md">Z</div>
             </div>
-
-            <!-- Header Wordmark with Zarì Lettering in Red and Ethnics in Green -->
             <div class="text-center bg-white px-2">
                 <h1 class="text-3xl sm:text-4xl md:text-5xl font-serif tracking-[0.15em] font-extrabold uppercase">
                     <span class="text-zariCrimson">Zarì</span> <span class="text-zariGreen">Ethnics</span>
                 </h1>
-                <p class="text-[10px] sm:text-xs uppercase tracking-[0.35em] text-zariGold font-extrabold mt-1">exquisite eastern experience</p>
+                <p class="text-[10px] sm:text-xs uppercase tracking-[0.35em] text-zariGold mt-1 font-extrabold">exquisite eastern experience</p>
             </div>
-
-            <!-- Floating Right Interactive Action Panel -->
             <div class="flex items-center space-x-3">
-                <button onclick="toggleBagDrawer()" class="relative bg-zariMidnight text-white p-3 rounded-full hover:bg-zariGreen transition-all duration-300 shadow-md flex items-center justify-center border border-zariGold/20 group">
+                <button onclick="toggleBagDrawer()" class="relative bg-zariMidnight text-white p-3 rounded-full hover:bg-zariGreen transition-all duration-300 shadow-md flex items-center justify-center border border-zariGold/20 group" title="Open Cart">
                     <i class="fas fa-shopping-bag text-sm sm:text-base text-zariGold group-hover:text-white"></i>
-                    <span id="globalBagBadge" class="absolute -top-1.5 -right-1.5 bg-zariCrimson text-white text-[9px] font-extrabold px-1.5 py-0.5 rounded-full min-w-[18px] text-center shadow-md scale-100 transition-transform duration-300">0</span>
+                    <span id="globalBagBadge" class="absolute -top-1.5 -right-1.5 bg-zariCrimson text-white text-[9px] font-extrabold px-1.5 py-0.5 rounded-full min-w-[18px] text-center shadow-md">0</span>
                 </button>
-                <button id="soundToggle" onclick="toggleSound()" class="p-3 border border-slate-100 rounded-full bg-white hover:bg-zariGreen/10 hover:border-zariGreen text-zariGreen transition duration-300 focus:outline-none" title="Play Zari Theme" aria-label="Play Ambient Zari Background Music">
-                    <i id="soundIcon" class="fas fa-volume-mute text-slate-400" aria-hidden="true"></i>
+                <button id="soundToggle" onclick="toggleSound()" class="p-3 border border-slate-100 rounded-full bg-white hover:bg-zariGreen/10 hover:border-zariGreen text-zariGreen transition duration-300 focus:outline-none" title="Play Zari Theme Music">
+                    <i id="soundIcon" class="fas fa-volume-mute text-slate-400"></i>
                 </button>
             </div>
         </div>
     </header>
 
-    <!-- PROMOTIONAL HERO BANNER -->
     <section class="bg-gradient-to-r from-zariMidnight via-zariGreen-dark to-zariMidnight py-16 px-6 border-b border-zariGold/20 relative overflow-hidden">
         <div class="absolute inset-0 bg-[radial-gradient(ellipse_at_center,_var(--tw-gradient-stops))] from-zariGreen/20 via-transparent to-transparent opacity-70"></div>
         <div class="max-w-4xl mx-auto text-center space-y-4 relative z-10">
-            <span class="inline-block bg-zariCrimson text-white text-xs uppercase font-extrabold tracking-[0.2em] px-4 py-1.5 rounded-full shadow-md border border-white/10 animate-bounce">
-                Exclusive Showroom Promotion
-            </span>
-            <h2 class="text-4xl sm:text-5xl md:text-6xl font-serif font-black text-white leading-tight">
-                60% OFF SELECTED <span class="text-zariGold">SHERWANIS</span>
-            </h2>
-            <p class="text-slate-300 text-sm sm:text-base max-w-xl mx-auto font-medium">
-                Indulge in pure traditional distinction. Discover bespoke, handmade royal groom sherwanis marked down for in-store clearance. Inquire now to secure stock.
-            </p>
+            <span class="inline-block bg-zariCrimson text-white text-xs uppercase font-extrabold tracking-[0.2em] px-4 py-1.5 rounded-full shadow-md border border-white/10 animate-bounce">Exclusive Showroom Promotion</span>
+            <h2 class="text-4xl sm:text-5xl md:text-6xl font-serif font-black text-white leading-tight">60% OFF SELECTED <span class="text-zariGold">SHERWANIS</span></h2>
+            <p class="text-slate-300 text-sm sm:text-base max-w-xl mx-auto font-medium">Indulge in pure traditional distinction. Discover bespoke, handmade royal groom sherwanis marked down for in-store clearance.</p>
             <div class="flex flex-wrap justify-center gap-3 pt-4">
-                <a href="#collections" class="bg-zariGold hover:bg-zariGold-light text-zariMidnight text-xs font-extrabold uppercase tracking-widest px-8 py-3.5 rounded-xl transition shadow-lg">
-                    Browse Collection
-                </a>
+                <a href="#collections" class="bg-zariGold hover:bg-zariGold-light text-zariMidnight text-xs font-extrabold uppercase tracking-widest px-8 py-3.5 rounded-xl transition shadow-lg">Browse Collection</a>
                 <a href="https://api.whatsapp.com/send?phone=27812742028&text=Hello%20Zari%20Ethnics%21%20I%20am%20inquiring%20about%20the%2060%25%20Off%20Selected%20Sherwani%20Selection." target="_blank" class="bg-transparent border-2 border-white/20 hover:border-zariGold text-white text-xs font-extrabold uppercase tracking-widest px-8 py-3 rounded-xl transition flex items-center space-x-2">
-                    <i class="fab fa-whatsapp text-sm text-zariGold"></i>
-                    <span>Inquire via WhatsApp</span>
+                    <i class="fab fa-whatsapp text-sm text-zariGold"></i><span>Inquire via WhatsApp</span>
                 </a>
             </div>
         </div>
     </section>
 
-    <!-- TRADING HOURS LIVE INDICATOR -->
     <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 mt-6">
         <div class="bg-white rounded-2xl p-4 border border-slate-100 flex flex-col sm:flex-row items-center justify-between shadow-sm gap-3">
             <div class="flex items-center space-x-3 text-sm font-semibold">
                 <i class="fas fa-clock text-zariGreen"></i>
-                <span class="text-slate-600">Trading Hours: Mon - Sun 09:00 - 17:00</span>
+                <span class="text-slate-600">Trading Hours: Mon – Sun 09:00 – 17:00</span>
             </div>
-            <div class="flex items-center space-x-2">
-                <span id="liveTradingBadge" class="px-3 py-1 rounded-full text-xs font-bold uppercase tracking-wider bg-emerald-100 text-emerald-800 flex items-center space-x-1.5">
-                    <span class="h-2 w-2 rounded-full bg-emerald-500 animate-pulse"></span>
-                    <span>Boutique Open Now</span>
-                </span>
-            </div>
+            <span id="liveTradingBadge" class="px-3 py-1 rounded-full text-xs font-bold uppercase tracking-wider bg-emerald-100 text-emerald-800 flex items-center space-x-1.5">
+                <span class="h-2 w-2 rounded-full bg-emerald-500 animate-pulse"></span><span>Checking Status…</span>
+            </span>
         </div>
     </div>
 
-    <!-- MAIN CATALOG SHOWCASE SECTION -->
     <main class="py-12 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <section id="collections" class="relative">
             <div class="text-center max-w-xl mx-auto space-y-4 mb-10">
                 <span class="text-xs uppercase tracking-[0.25em] text-zariCrimson font-bold block">Artisanal Catalog Portfolio</span>
                 <h2 class="text-3xl sm:text-4xl font-serif font-bold text-zariGreen">Boutique Selection Gallery</h2>
                 <div class="w-24 h-[1.5px] bg-gradient-to-r from-transparent via-zariGold to-transparent mx-auto"></div>
-                <p class="text-slate-500 text-xs font-medium font-sans">
-                    Explore our exquisite showroom inventory. Tap any item's catalog parameters or use the secure workbench to live upload & describe custom wedding outfits. All displayed prices are VAT-inclusive.
-                </p>
-                
-                <!-- Compliance Alert Banner -->
+                <p class="text-slate-500 text-xs font-medium">Explore our exquisite showroom inventory. All displayed prices are VAT-inclusive.</p>
                 <div class="mt-4 p-4 bg-white border border-zariGreen/10 rounded-2xl text-[10px] text-slate-600 max-w-lg mx-auto leading-relaxed flex items-start space-x-2 text-left shadow-sm">
-                    <i class="fas fa-info-circle text-zariGreen text-xs mt-0.5" aria-hidden="true"></i>
-                    <span><strong>Atelier Model & Likeness Notice:</strong> Our designs utilize high-fidelity digital reference modeling. Since all items are handcrafted, final organic textures and tailoring will vary. All depicted models are completely computer-synthesized renders; any resemblance to real physical persons is purely coincidental.</span>
+                    <i class="fas fa-info-circle text-zariGreen text-xs mt-0.5"></i>
+                    <span><strong>Atelier Model &amp; Likeness Notice:</strong> Our designs utilize high-fidelity digital reference modeling. Since all items are handcrafted, final organic textures will vary. All depicted models are computer-synthesized renders; any resemblance to real persons is purely coincidental.</span>
                 </div>
             </div>
 
-            <!-- Dynamic Search & Category Filters -->
             <div class="flex flex-col md:flex-row items-center justify-between gap-4 mb-8 bg-white p-4 rounded-2xl border border-slate-100 shadow-sm">
                 <div class="flex flex-wrap gap-2 w-full md:w-auto">
                     <button onclick="filterCategory('all')" id="filter-all" class="px-4 py-2 text-[10px] sm:text-xs font-bold uppercase tracking-widest rounded-xl transition bg-zariGreen text-white">All</button>
@@ -217,54 +129,48 @@
                     <button onclick="filterCategory('bridal')" id="filter-bridal" class="px-4 py-2 text-[10px] sm:text-xs font-bold uppercase tracking-widest rounded-xl transition bg-slate-100 text-slate-600 hover:bg-slate-200">Bridal</button>
                     <button onclick="filterCategory('occasion')" id="filter-occasion" class="px-4 py-2 text-[10px] sm:text-xs font-bold uppercase tracking-widest rounded-xl transition bg-slate-100 text-slate-600 hover:bg-slate-200">Occasion</button>
                 </div>
-                <div class="text-xs text-slate-400 font-bold tracking-wider" id="paginationLabel">Page 1 of 9</div>
+                <div class="text-xs text-slate-400 font-bold tracking-wider" id="paginationLabel">Loading…</div>
             </div>
 
-            <!-- PREMIUM ATELIER CMS WORKBENCH HOOK -->
+            <!-- CMS WORKBENCH -->
             <div class="max-w-5xl mx-auto mb-12 p-1 bg-gradient-to-b from-slate-800 to-slate-900 rounded-3xl shadow-2xl overflow-hidden border border-zariGold/30">
                 <div class="p-6 bg-slate-900/40 flex flex-col sm:flex-row items-start sm:items-center justify-between gap-4 cursor-pointer select-none" onclick="toggleSandboxControls()">
                     <div class="flex items-center space-x-3">
                         <span class="bg-zariCrimson text-white text-[9px] uppercase font-bold px-3 py-1 rounded tracking-widest animate-pulse">CMS Active</span>
-                        <h4 class="text-sm font-sans font-bold text-white uppercase tracking-wider">🛠️ Premium Atelier CMS Workbench</h4>
+                        <h4 class="text-sm font-sans font-bold text-white uppercase tracking-wider">Atelier Command Center Workspace</h4>
                     </div>
                     <span class="text-[10px] text-zariGold font-bold uppercase flex items-center space-x-1.5" id="sandboxChevron">
                         <span>Unlock Workspace Console</span>
-                        <i class="fas fa-lock text-[8px]" id="workbenchLockIcon" aria-hidden="true"></i>
+                        <i class="fas fa-lock text-[8px]" id="workbenchLockIcon"></i>
                     </span>
                 </div>
-                
-                <!-- Lock Shield Protection Screen -->
-                <div id="sandboxLockPanel" class="p-8 bg-slate-950/90 flex flex-col items-center justify-center text-center space-y-4">
-                    <div class="w-16 h-16 rounded-full bg-zariGold/10 border border-zariGold/30 flex items-center justify-center text-zariGold">
-                        <i class="fas fa-shield-halved text-2xl" aria-hidden="true"></i>
+                <div id="sandboxLockPanel" class="p-8 bg-slate-950/90 flex-col items-center justify-center text-center space-y-4 hidden">
+                    <div class="w-16 h-16 rounded-full bg-zariGold/10 border border-zariGold/30 flex items-center justify-center text-zariGold mx-auto">
+                        <i class="fas fa-shield-halved text-2xl"></i>
                     </div>
-                    <h5 class="text-xs font-bold uppercase tracking-wider text-slate-200">Developer & Authorized Admin Credentials Required</h5>
-                    <p class="text-[10px] text-slate-400 max-w-sm leading-relaxed">Enter security passcode to unlock. <strong>(Hint: use passcode <code>zari2026</code>)</strong></p>
-                    <div class="flex items-center space-x-2 w-full max-w-xs">
-                        <input type="password" id="sandboxKeyInput" placeholder="Enter Security Code..." class="w-full bg-slate-900 text-white border border-slate-700 focus:border-zariCrimson rounded-xl px-4 py-2 text-xs focus:outline-none">
+                    <h5 class="text-xs font-bold uppercase tracking-wider text-slate-200">Developer &amp; Authorized Admin Credentials Required</h5>
+                    <p class="text-[10px] text-slate-400 max-w-sm leading-relaxed">Enter security passcode to unlock. <strong>(Hint: passcode is <code>zari2026</code>)</strong></p>
+                    <div class="flex items-center space-x-2 w-full max-w-xs mx-auto">
+                        <input type="password" id="sandboxKeyInput" placeholder="Enter Security Code…" class="w-full bg-slate-900 text-white border border-slate-700 focus:border-zariCrimson rounded-xl px-4 py-2 text-xs focus:outline-none">
                         <button onclick="unlockBoutiqueWorkbench()" class="bg-gradient-to-r from-zariGreen to-zariGreen-dark text-white text-xs font-bold px-5 py-2 rounded-xl transition shrink-0">Unlock</button>
                     </div>
                     <p id="lockErrorMsg" class="text-[9px] text-zariCrimson font-bold hidden">Invalid Password Code. Please try again.</p>
                 </div>
-
-                <!-- Unlocked Secure Workspace Area -->
                 <div id="sandboxBody" class="hidden space-y-6 p-6 border-t border-slate-800 bg-slate-950/60">
                     <div class="grid grid-cols-1 md:grid-cols-3 gap-4 p-4 bg-slate-900/60 rounded-2xl border border-slate-800">
-                        <div class="text-center p-3 bg-slate-950 rounded-xl shadow-sm border border-slate-800/60">
+                        <div class="text-center p-3 bg-slate-950 rounded-xl border border-slate-800/60">
                             <span class="block text-[8px] uppercase tracking-wider text-slate-400 font-extrabold">Active Showroom Stock</span>
-                            <span id="dashActiveStock" class="block text-xl font-serif font-bold text-zariGold">103</span>
+                            <span id="dashActiveStock" class="block text-xl font-serif font-bold text-zariGold">0</span>
                         </div>
-                        <div class="text-center p-3 bg-slate-950 rounded-xl shadow-sm border border-slate-800/60">
+                        <div class="text-center p-3 bg-slate-950 rounded-xl border border-slate-800/60">
                             <span class="block text-[8px] uppercase tracking-wider text-slate-400 font-extrabold">Total Portfolio Value</span>
-                            <span id="dashTotalValue" class="block text-xl font-serif font-bold text-emerald-500">R 0,00</span>
+                            <span id="dashTotalValue" class="block text-xl font-serif font-bold text-emerald-500">R 0.00</span>
                         </div>
-                        <div class="text-center p-3 bg-slate-950 rounded-xl shadow-sm border border-slate-800/60">
+                        <div class="text-center p-3 bg-slate-950 rounded-xl border border-slate-800/60">
                             <span class="block text-[8px] uppercase tracking-wider text-slate-400 font-extrabold">Average Item Price</span>
-                            <span id="dashAveragePrice" class="block text-xl font-serif font-bold text-zariGold-light">R 0,00</span>
+                            <span id="dashAveragePrice" class="block text-xl font-serif font-bold text-zariGold-light">R 0.00</span>
                         </div>
                     </div>
-
-                    <!-- Item Creation Form Inside CMS -->
                     <div class="p-6 bg-slate-900 rounded-2xl border border-slate-800 text-white space-y-4">
                         <span class="text-xs text-zariGold font-bold uppercase tracking-wider block">Add Custom Boutique Garment / Jewelry</span>
                         <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-4 gap-4">
@@ -282,7 +188,7 @@
                                 </select>
                             </div>
                             <div>
-                                <label class="block text-[10px] uppercase text-slate-400 font-bold mb-1">Price (ZAR - VAT Incl.)</label>
+                                <label class="block text-[10px] uppercase text-slate-400 font-bold mb-1">Price (ZAR – VAT Incl.)</label>
                                 <input type="number" id="newItemPrice" placeholder="e.g. 15999" class="w-full bg-slate-950 border border-slate-700 rounded-lg p-2 text-xs focus:border-zariGold focus:outline-none text-white">
                             </div>
                             <div>
@@ -292,17 +198,14 @@
                         </div>
                         <div>
                             <label class="block text-[10px] uppercase text-slate-400 font-bold mb-1">Detailed Description</label>
-                            <textarea id="newItemDesc" placeholder="Crafted with pure gold thread, perfect for traditional banquets..." rows="2" class="w-full bg-slate-950 border border-slate-700 rounded-lg p-2 text-xs focus:border-zariGold focus:outline-none text-white"></textarea>
+                            <textarea id="newItemDesc" rows="2" placeholder="Crafted with pure gold thread…" class="w-full bg-slate-950 border border-slate-700 rounded-lg p-2 text-xs focus:border-zariGold focus:outline-none text-white"></textarea>
                         </div>
-                        
-                        <!-- Direct File Selections for Sandbox Ingestion -->
                         <div class="space-y-2">
-                            <label class="block text-[10px] uppercase tracking-wider text-slate-300 font-bold">📤 Local File Reference Loader & Cropper</label>
+                            <label class="block text-[10px] uppercase tracking-wider text-slate-300 font-bold">📤 Local File Reference Loader &amp; Cropper</label>
                             <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
-                                <div class="border-2 border-dashed border-slate-700 rounded-2xl p-6 bg-slate-950 text-center flex flex-col justify-center items-center cursor-pointer">
-                                    <label class="cursor-pointer bg-gradient-to-r from-zariCrimson to-zariGreen text-white text-[10px] font-sans font-bold uppercase tracking-widest px-4 py-3 rounded-xl shadow-md transition inline-flex items-center space-x-1.5 hover:brightness-110">
-                                        <i class="fas fa-image text-xs"></i>
-                                        <span>Select Picture</span>
+                                <div class="border-2 border-dashed border-slate-700 rounded-2xl p-6 bg-slate-950 text-center flex flex-col justify-center items-center">
+                                    <label class="cursor-pointer bg-gradient-to-r from-zariCrimson to-zariGreen text-white text-[10px] font-bold uppercase tracking-widest px-4 py-3 rounded-xl shadow-md inline-flex items-center space-x-1.5 hover:brightness-110">
+                                        <i class="fas fa-image text-xs"></i><span>Select Picture</span>
                                         <input type="file" id="cmsImageInput" accept="image/*" onchange="handleSingleFileSelection(event)" class="hidden">
                                     </label>
                                     <span class="block text-[9px] text-slate-400 mt-2">Open an image to crop and render on the catalog item.</span>
@@ -310,64 +213,119 @@
                                 <div class="p-4 border border-slate-800 rounded-2xl bg-slate-950 flex flex-col items-center justify-center text-center text-xs text-slate-400" id="cropperWrapper">
                                     <p id="cropperHelpText"><i class="fas fa-crop-simple text-zariGold text-xl block mb-2 animate-pulse"></i> Select an image file to begin cropping.</p>
                                     <div class="max-h-40 overflow-hidden hidden" id="cropperContainer">
-                                        <img id="cropperImageSrc" class="max-w-full">
+                                        <img id="cropperImageSrc" class="max-w-full" alt="Cropper">
                                     </div>
                                     <button onclick="applyImageCrop()" id="btnApplyCrop" class="hidden mt-3 bg-zariGold text-zariMidnight text-[10px] uppercase font-bold px-4 py-2 rounded-lg">Apply Crop</button>
                                 </div>
                             </div>
                         </div>
-
                         <div class="flex justify-end gap-2 pt-2">
-                            <button onclick="addNewAtelierItem()" class="bg-zariGreen hover:bg-zariGreen-dark text-white font-bold text-xs uppercase px-6 py-3 rounded-xl transition shadow-md">
-                                Ingest to Active Catalog
-                            </button>
+                            <button onclick="addNewAtelierItem()" class="bg-zariGreen hover:bg-zariGreen-dark text-white font-bold text-xs uppercase px-6 py-3 rounded-xl transition shadow-md">Ingest to Active Catalog</button>
                         </div>
                     </div>
-
                     <div class="p-4 bg-slate-900 rounded-2xl border border-slate-800 text-slate-300 space-y-3">
                         <span class="text-[10px] text-zariGold font-bold uppercase tracking-wider block">Local Browser Storage Sandboxing</span>
-                        <p class="text-xs font-semibold text-slate-400">Any local adjustments made through the file selectors below are saved directly inside your local computer's cache memory. To distribute these updates to your public web domain, please copy the code changes into your deployment branch.</p>
-                        <div class="flex gap-2">
-                            <button onclick="downloadCleanProductionHTML()" class="w-full bg-slate-800 hover:bg-slate-700 text-slate-200 font-bold text-[10px] uppercase py-2.5 rounded-xl transition border border-slate-700 flex items-center justify-center space-x-1">
-                                <i class="fas fa-file-code text-zariGold"></i>
-                                <span>Export Complete HTML and Download</span>
-                            </button>
-                        </div>
+                        <p class="text-xs font-semibold text-slate-400">Any local adjustments made are saved in your browser cache. To distribute, copy the exported HTML to your deployment branch.</p>
+                        <button onclick="downloadCleanProductionHTML()" class="w-full bg-slate-800 hover:bg-slate-700 text-slate-200 font-bold text-[10px] uppercase py-2.5 rounded-xl transition border border-slate-700 flex items-center justify-center space-x-1">
+                            <i class="fas fa-file-code text-zariGold mr-1"></i><span>Export Complete HTML and Download</span>
+                        </button>
                     </div>
                 </div>
             </div>
 
-            <!-- THE MAIN GRID CONTAINER -->
-            <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8" id="gallery-grid">
-                <!-- Injected via JavaScript renderGallery() -->
-            </div>
+            <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8" id="gallery-grid"></div>
 
-            <!-- PAGINATION CONTROL LAYER -->
             <div class="flex flex-col items-center justify-center space-y-4 mt-12 pb-6 border-b border-slate-100">
-                <div class="flex items-center space-x-2" id="numericPaginationList">
-                    <!-- Loaded dynamically in renderGallery() -->
-                </div>
+                <div class="flex items-center space-x-2" id="numericPaginationList"></div>
                 <div class="flex items-center space-x-4">
                     <button id="btnPrevPage" onclick="changePage(-1)" class="px-6 py-2.5 bg-white border border-slate-200 text-slate-600 hover:border-zariGold hover:text-zariGold text-xs font-bold uppercase tracking-widest rounded-xl transition disabled:opacity-50 disabled:pointer-events-none">
                         <i class="fas fa-chevron-left mr-1"></i> Prev
                     </button>
-                    <span id="numericPagesIndicator" class="text-xs text-slate-500 font-bold">Page 1 / 9</span>
+                    <span id="numericPagesIndicator" class="text-xs text-slate-500 font-bold">Page 1 / 1</span>
                     <button id="btnNextPage" onclick="changePage(1)" class="px-6 py-2.5 bg-white border border-slate-200 text-slate-600 hover:border-zariGold hover:text-zariGold text-xs font-bold uppercase tracking-widest rounded-xl transition disabled:opacity-50 disabled:pointer-events-none">
-                        Next <i class="fas fa-chevron-right mr-1"></i>
+                        Next <i class="fas fa-chevron-right ml-1"></i>
                     </button>
                 </div>
             </div>
         </section>
 
-        <!-- THE INTERACTIVE WEAVE MAGNIFIER / STITCH INSPECTOR -->
+        <!-- FABRIC CONCIERGE -->
+        <section class="mt-20 bg-zariMidnight text-white p-8 sm:p-12 rounded-3xl border border-zariGold/20 relative overflow-hidden shadow-2xl">
+            <div class="absolute inset-0 bg-[radial-gradient(circle_at_bottom_right,_var(--tw-gradient-stops))] from-zariGreen/25 via-transparent to-transparent opacity-85"></div>
+            <div class="relative z-10 max-w-4xl mx-auto">
+                <div class="text-center max-w-2xl mx-auto space-y-3 mb-10">
+                    <span class="text-xs uppercase tracking-[0.25em] text-zariGold font-bold block">Exclusive In-Store Experience</span>
+                    <h2 class="text-3xl sm:text-4xl font-serif font-bold text-white uppercase tracking-wider">Fabric Concierge Service</h2>
+                    <div class="w-16 h-0.5 bg-zariGold mx-auto"></div>
+                    <p class="text-slate-300 text-xs sm:text-sm">Indulge in personalized luxury. Register your garment measurements, fabric styles, and layout preferences. Our atelier will contact you on WhatsApp to confirm your private showroom consultation.</p>
+                </div>
+                <div class="bg-white/5 border border-white/10 rounded-2xl p-6 sm:p-8 space-y-6">
+                    <form id="conciergeForm" onsubmit="submitFabricConcierge(event)" class="grid grid-cols-1 md:grid-cols-2 gap-6">
+                        <div>
+                            <label class="block text-[10px] uppercase text-zariGold font-bold mb-1 tracking-wider">Client Full Name</label>
+                            <input type="text" id="clientName" required placeholder="Fatima Naidoo" class="w-full bg-slate-900 border border-slate-700 focus:border-zariGold text-white rounded-xl p-3 text-xs outline-none transition font-semibold">
+                        </div>
+                        <div>
+                            <label class="block text-[10px] uppercase text-zariGold font-bold mb-1 tracking-wider">Showroom Consultation Date</label>
+                            <input type="date" id="consultDate" required class="w-full bg-slate-900 border border-slate-700 focus:border-zariGold text-white rounded-xl p-3 text-xs outline-none transition font-semibold">
+                        </div>
+                        <div>
+                            <label class="block text-[10px] uppercase text-zariGold font-bold mb-1 tracking-wider">Desired Custom Silhouette</label>
+                            <select id="customSilhouette" class="w-full bg-slate-900 border border-slate-700 focus:border-zariGold text-white rounded-xl p-3 text-xs outline-none transition font-semibold">
+                                <option>Bespoke Groom Sherwani</option>
+                                <option>Bespoke Bridal Saree</option>
+                                <option>Heritage Silk Lehenga</option>
+                                <option>3-Piece Designer Formal Suit</option>
+                                <option>Anarkali / Occasion Suit</option>
+                            </select>
+                        </div>
+                        <div>
+                            <label class="block text-[10px] uppercase text-zariGold font-bold mb-1 tracking-wider">Heritage Fabric Archetype</label>
+                            <select id="fabricArchetype" class="w-full bg-slate-900 border border-slate-700 focus:border-zariGold text-white rounded-xl p-3 text-xs outline-none transition font-semibold">
+                                <option>Pure Varanasi Katan Silk</option>
+                                <option>Premium South Asian Micro-Velvet</option>
+                                <option>Metallic Gold Brocade Weave</option>
+                                <option>Flowy Chikankari Georgette</option>
+                            </select>
+                        </div>
+                        <div class="md:col-span-2">
+                            <label class="block text-[10px] uppercase text-zariGold font-bold mb-1 tracking-wider">Fitting &amp; Size Alignment Preferences</label>
+                            <div class="grid grid-cols-1 sm:grid-cols-3 gap-3">
+                                <label class="flex items-center space-x-2 bg-slate-900/50 border border-slate-700 hover:border-zariGold p-3 rounded-xl cursor-pointer transition">
+                                    <input type="radio" name="measOption" value="Bespoke Showroom Booking" checked class="accent-zariGold">
+                                    <span class="text-[11px] font-semibold text-slate-300">Set Showroom Appointment</span>
+                                </label>
+                                <label class="flex items-center space-x-2 bg-slate-900/50 border border-slate-700 hover:border-zariGold p-3 rounded-xl cursor-pointer transition">
+                                    <input type="radio" name="measOption" value="Guided WhatsApp Session" class="accent-zariGold">
+                                    <span class="text-[11px] font-semibold text-slate-300">Guided WhatsApp Session</span>
+                                </label>
+                                <label class="flex items-center space-x-2 bg-slate-900/50 border border-slate-700 hover:border-zariGold p-3 rounded-xl cursor-pointer transition">
+                                    <input type="radio" name="measOption" value="Self-Measurement Sheet" class="accent-zariGold">
+                                    <span class="text-[11px] font-semibold text-slate-300">Self-Measurement Sheet</span>
+                                </label>
+                            </div>
+                        </div>
+                        <div class="md:col-span-2">
+                            <label class="block text-[10px] uppercase text-zariGold font-bold mb-1 tracking-wider">Atelier Styling &amp; Design Instructions</label>
+                            <textarea id="conciergeStyling" rows="3" placeholder="e.g. Please add detailed handloom Zardozi embroidery on sleeve cuffs and collar…" class="w-full bg-slate-900 border border-slate-700 focus:border-zariGold text-white rounded-xl p-3 text-xs outline-none transition font-semibold"></textarea>
+                        </div>
+                        <div class="md:col-span-2 flex justify-center pt-2">
+                            <button type="submit" class="bg-gradient-to-r from-zariGold to-zariGold-light hover:brightness-110 text-zariMidnight font-extrabold uppercase text-xs tracking-widest px-10 py-4 rounded-xl transition flex items-center space-x-2 shadow-lg">
+                                <i class="fab fa-whatsapp text-sm"></i><span>Submit Form to WhatsApp Concierge</span>
+                            </button>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </section>
+
+        <!-- FABRIC WEAVE INSPECTOR -->
         <section class="mt-20 bg-white p-6 sm:p-10 rounded-3xl border border-slate-150 shadow-md">
             <div class="grid grid-cols-1 lg:grid-cols-12 gap-8 items-center">
                 <div class="lg:col-span-5 space-y-4">
                     <span class="text-xs uppercase tracking-widest text-zariCrimson font-bold block">Artisanal Zoom-Lens</span>
                     <h3 class="text-2xl sm:text-3xl font-serif font-bold text-zariGreen">Fabric Weave Stitch Inspector</h3>
-                    <p class="text-slate-600 text-xs sm:text-sm leading-relaxed">
-                        Examine the legendary fidelity of traditional South Asian weaving styles. Select a material archetype below, then hover or drag your finger over the interactive canvas frame on the right to examine individual gold thread knots and silk weave structures at $20\times$ microscopic layout resolution.
-                    </p>
+                    <p class="text-slate-600 text-xs sm:text-sm leading-relaxed">Examine the legendary fidelity of traditional South Asian weaving styles. Select a material archetype below, then hover over the interactive canvas frame to examine individual gold thread knots and silk weave structures at 20× microscopic layout resolution.</p>
                     <div class="flex flex-wrap gap-2 pt-2">
                         <button onclick="selectFabricWeave('silk')" id="fabric-silk" class="px-4 py-2 bg-zariGreen text-white text-xs font-bold uppercase rounded-xl transition">Banarasi Silk</button>
                         <button onclick="selectFabricWeave('velvet')" id="fabric-velvet" class="px-4 py-2 bg-slate-100 text-slate-600 text-xs font-bold uppercase rounded-xl transition hover:bg-slate-200">Royal Velvet</button>
@@ -375,17 +333,13 @@
                     </div>
                     <div class="p-4 bg-zariGreen/5 rounded-2xl border border-zariGreen/10">
                         <h4 class="text-xs uppercase font-bold text-zariGreen mb-1" id="fabricInspectorTitle">Banarasi Weave (Zari Threads)</h4>
-                        <p class="text-[11px] text-slate-600 leading-relaxed" id="fabricInspectorDesc">
-                            Consists of silver alloy wires wrapped around fine silk core threads, plated meticulously in pure 24-karat gold liquid. Standard thread density: 120 threads per centimeter.
-                        </p>
+                        <p class="text-[11px] text-slate-600 leading-relaxed" id="fabricInspectorDesc">Consists of silver alloy wires wrapped around fine silk core threads, plated meticulously in pure 24-karat gold liquid. Standard thread density: 120 threads per centimeter.</p>
                     </div>
                 </div>
                 <div class="lg:col-span-7 flex justify-center">
-                    <!-- Interactive Inspector Frame -->
                     <div id="inspectorCanvasFrame" class="relative w-full max-w-lg aspect-video rounded-2xl border-2 border-zariGold/40 bg-slate-900 overflow-hidden shadow-inner flex items-center justify-center cursor-crosshair group">
                         <img id="inspectorBaseImage" src="https://images.unsplash.com/photo-1617627143750-d86bc21e42bb?q=80&w=800&auto=format&fit=crop" class="w-full h-full object-cover transition duration-300" alt="Weave Base Frame">
-                        <!-- Simulated Magnifying Loupe Overlay -->
-                        <div id="inspectorMagnifierLoupe" class="absolute w-36 h-36 rounded-full border-4 border-zariGold bg-no-repeat pointer-events-none opacity-0 group-hover:opacity-100 transition-opacity duration-200 shadow-[0_15px_30px_rgba(0,0,0,0.5),_inset_0_0_15px_rgba(255,255,255,0.4)] z-10" style="background-size: 800px 450px;"></div>
+                        <div id="inspectorMagnifierLoupe" class="absolute w-36 h-36 rounded-full border-4 border-zariGold bg-no-repeat pointer-events-none opacity-0 group-hover:opacity-100 transition-opacity duration-200 shadow-[0_15px_30px_rgba(0,0,0,0.5),_inset_0_0_15px_rgba(255,255,255,0.4)] z-10" style="background-size:800px 450px;"></div>
                         <div class="absolute bottom-3 left-3 bg-zariMidnight/85 text-white text-[9px] font-mono py-1 px-2.5 rounded-md flex items-center space-x-1.5">
                             <span class="inline-block h-1.5 w-1.5 bg-zariGold rounded-full animate-ping"></span>
                             <span>MICROSCOPIC PROBE ENABLED</span>
@@ -396,470 +350,712 @@
         </section>
     </main>
 
-    <!-- ========================================== -->
-    <!-- SLIDING DYNAMIC TAX INVOICE SHOPPING BAG   -->
-    <!-- ========================================== -->
-    <div id="shoppingBagBackdrop" class="fixed inset-0 bg-slate-950/60 backdrop-blur-sm z-50 hidden transition-opacity duration-300 opacity-0" onclick="toggleBagDrawer()"></div>
+    <!-- SHOPPING BAG DRAWER -->
+    <div id="shoppingBagBackdrop" class="fixed inset-0 bg-slate-950/60 backdrop-blur-sm z-50 hidden" onclick="toggleBagDrawer()"></div>
     <aside id="shoppingBagDrawer" class="fixed right-0 top-0 h-full w-full max-w-md bg-white shadow-2xl border-l border-zariGold/20 z-50 flex flex-col justify-between drawer-transition transform translate-x-full" onclick="event.stopPropagation()">
-        
-        <!-- Drawer Header -->
         <div class="p-6 border-b border-slate-100 flex items-center justify-between bg-zariMidnight text-white">
             <div class="flex items-center space-x-3">
                 <i class="fas fa-file-invoice text-zariGold text-lg"></i>
                 <div>
                     <h2 class="font-serif font-bold text-lg tracking-wider text-zariGold-light uppercase">Tax Invoice</h2>
-                    <span class="text-[9px] uppercase tracking-wider text-slate-400 block font-sans">Draft Invoice Sequence</span>
+                    <span class="text-[9px] uppercase tracking-wider text-slate-400 block">Draft Invoice Sequence</span>
                 </div>
             </div>
-            <button onclick="toggleBagDrawer()" class="text-slate-400 hover:text-white bg-slate-800 p-1.5 rounded-full transition">
-                <i class="fas fa-times"></i>
-            </button>
+            <button onclick="toggleBagDrawer()" class="text-slate-400 hover:text-white bg-slate-800 p-1.5 rounded-full transition"><i class="fas fa-times"></i></button>
         </div>
-
-        <!-- Drawer Scrollable Content Box -->
         <div class="flex-1 overflow-y-auto p-6 space-y-6">
-            
-            <!-- SARS Tax Vendor Details -->
             <div class="p-4 bg-slate-50 border border-slate-200/80 rounded-2xl text-[10px] space-y-1.5 text-slate-600 shadow-sm">
                 <div class="font-extrabold uppercase text-slate-700 tracking-wider flex justify-between">
-                    <span>Vendor: ZARÌ ETHNICS</span>
-                    <span class="text-zariGold">Sole Proprietor</span>
+                    <span>Vendor: ZARÌ ETHNICS</span><span class="text-zariGold">Sole Proprietor</span>
                 </div>
                 <div>Trade Route Mall Shop U28A, Upper Level, Lenasia, GP</div>
                 <div><strong>SARS VAT No:</strong> 4460265194</div>
-                <div class="text-[9px] text-slate-400 italic pt-1.5 border-t border-slate-200 mt-1">Client explicitly declares: No company registration number exists. Operating as a Sole Proprietorship.</div>
+                <div class="text-[9px] text-slate-400 italic pt-1.5 border-t border-slate-200 mt-1">Operating as a Sole Proprietor in Gauteng.</div>
             </div>
-
-            <!-- Custom Unique Invoice ID Track -->
             <div class="flex justify-between items-center text-xs text-slate-500 font-semibold px-1">
                 <span>Draft Invoice No:</span>
-                <span id="invoiceReferenceID" class="font-mono text-slate-800 font-bold bg-slate-100 px-2 py-0.5 rounded">INV-20260624-9482</span>
+                <span id="invoiceReferenceID" class="font-mono text-slate-800 font-bold bg-slate-100 px-2 py-0.5 rounded">INV-20260627-0001</span>
             </div>
-
-            <!-- Dynamic Itemized Manifest List -->
             <div id="shoppingCartItemsContainer" class="space-y-4">
-                <!-- Injected dynamically by updateCartDrawerDOM() -->
+                <div class="text-center py-10 text-slate-400 space-y-2">
+                    <i class="fas fa-shopping-bag text-3xl text-slate-200 block"></i>
+                    <p class="text-xs font-semibold">Your invoice is empty</p>
+                </div>
             </div>
-
-            <!-- Mandatory SARS Customer VAT Registry Option (For purchases > R3,000) -->
             <div class="pt-4 border-t border-slate-100 space-y-2">
-                <label for="customerVatInput" class="block text-[9px] uppercase tracking-wider font-extrabold text-slate-500">
-                    Customer VAT Number <span class="text-slate-400 font-normal">(Optional under SARS R3k ruleset)</span>
-                </label>
+                <label class="block text-[9px] uppercase tracking-wider font-extrabold text-slate-500">🚚 Courier Logistics (The Courier Guy SA)</label>
+                <select id="deliveryOption" onchange="updateDeliveryOption()" class="w-full bg-slate-50 border border-slate-200 focus:border-zariGold rounded-xl p-3 text-xs outline-none transition font-semibold">
+                    <option value="showroom">Showroom Collection (Lenasia) – Free</option>
+                    <option value="gauteng">Gauteng Express Delivery – R 95.00</option>
+                    <option value="national">National Major Centers – R 145.00</option>
+                    <option value="regional">Regional / Outlying Areas – R 185.00</option>
+                </select>
+            </div>
+            <div class="pt-2 space-y-2">
+                <label class="block text-[9px] uppercase tracking-wider font-extrabold text-slate-500">Customer VAT Number <span class="text-slate-400 font-normal">(Optional)</span></label>
                 <input type="text" id="customerVatInput" placeholder="e.g. 4991827463" class="w-full bg-slate-50 border border-slate-200 focus:border-zariGold rounded-xl p-3 text-xs outline-none transition font-semibold" oninput="saveCustomerVat()">
             </div>
-        </div>
-
-        <!-- Drawer Calculations Footer Summary -->
-        <div class="p-6 bg-slate-50 border-t border-slate-100 space-y-4">
-            
-            <!-- Standardized South African VAT Calculation Summary Layout -->
-            <div class="space-y-2 text-xs text-slate-600 border-b border-slate-200/80 pb-3">
-                <div class="flex justify-between font-semibold">
-                    <span>Total Items:</span>
-                    <span id="cartSummaryItemCount">0 Units</span>
+            <div id="yocoSimulationBlock" class="hidden p-4 bg-slate-900 border border-zariGold/30 rounded-2xl text-white space-y-3 shadow-md">
+                <div class="flex items-center justify-between">
+                    <span class="text-[10px] font-bold uppercase tracking-widest text-zariGold">Yoco Secure Web Pay</span>
+                    <i class="fas fa-shield-halved text-zariGold text-sm"></i>
                 </div>
-                <div class="flex justify-between font-semibold">
-                    <span>Subtotal (Excl. VAT):</span>
-                    <span id="cartSummaryExclVat" class="font-mono">R 0.00</span>
+                <p class="text-[10px] text-slate-400">Sandboxed payment gateway configured for Zarì Ethnics merchant terminal.</p>
+                <div class="space-y-2 text-xs">
+                    <input type="text" id="yocoCardNumber" placeholder="4000 1234 5678 9010" class="w-full bg-slate-950 border border-slate-700 text-white p-2.5 rounded-lg text-xs tracking-widest outline-none focus:border-zariGold">
+                    <div class="grid grid-cols-2 gap-2">
+                        <input type="text" id="yocoCardExpiry" placeholder="MM/YY" class="bg-slate-950 border border-slate-700 text-white p-2.5 rounded-lg text-xs outline-none focus:border-zariGold text-center">
+                        <input type="password" id="yocoCardCvv" placeholder="CVC" class="bg-slate-950 border border-slate-700 text-white p-2.5 rounded-lg text-xs outline-none focus:border-zariGold text-center">
+                    </div>
                 </div>
-                <div class="flex justify-between font-semibold">
-                    <span>VAT Component (15%):</span>
-                    <span id="cartSummaryVatAmount" class="font-mono">R 0.00</span>
-                </div>
-                <div class="flex justify-between font-extrabold text-sm text-slate-800 pt-1">
-                    <span>Total Due (VAT Incl):</span>
-                    <span id="cartSummaryInclVat" class="font-mono text-zariCrimson font-bold">R 0.00</span>
-                </div>
-                <p class="text-[8px] text-slate-400 font-medium italic text-center">Standard SARS compliance equation: Subtotal = Total / 1.15 | VAT = Total - Subtotal</p>
+                <button onclick="executeYocoPayment()" class="w-full bg-zariGold hover:bg-zariGold-light text-zariMidnight font-bold py-2 rounded-xl text-xs transition uppercase tracking-wider">Authorize Yoco Secure Pay</button>
             </div>
-
-            <!-- WHATSAPP DISPATCH CHECKOUT SUBMIT OPERATOR -->
-            <button id="cartCheckoutBtn" onclick="submitCartCheckoutWhatsApp()" class="w-full bg-gradient-to-r from-zariGreen to-zariGreen-dark text-white font-sans font-bold uppercase text-xs tracking-widest py-4 rounded-xl transition flex items-center justify-center space-x-2 shadow-lg hover:brightness-105 disabled:opacity-50 disabled:pointer-events-none">
-                <i class="fab fa-whatsapp text-sm"></i>
-                <span>Generate & Send Tax Invoice</span>
+        </div>
+        <div class="p-6 bg-slate-50 border-t border-slate-100 space-y-4">
+            <div class="space-y-2 text-xs text-slate-600 border-b border-slate-200/80 pb-3">
+                <div class="flex justify-between font-semibold"><span>Subtotal (Excl. VAT):</span><span id="cartSummaryExclVat" class="font-mono">R 0.00</span></div>
+                <div class="flex justify-between font-semibold"><span>VAT Component (15%):</span><span id="cartSummaryVatAmount" class="font-mono">R 0.00</span></div>
+                <div class="flex justify-between font-semibold text-slate-700"><span>Courier Delivery Logistics:</span><span id="cartSummaryDelivery" class="font-mono">FREE</span></div>
+                <div class="flex justify-between font-extrabold text-sm text-slate-800 pt-1"><span>Total Due (VAT Incl.):</span><span id="cartSummaryInclVat" class="font-mono text-zariCrimson font-bold">R 0.00</span></div>
+            </div>
+            <div class="grid grid-cols-2 gap-2">
+                <button onclick="activatePaymentStrategy('yoco')" class="bg-slate-900 hover:bg-slate-800 text-white text-[10px] font-bold uppercase tracking-wider py-3 rounded-lg transition border border-zariGold/20">Yoco Card Pay</button>
+                <button onclick="activatePaymentStrategy('whatsapp')" class="bg-emerald-600 hover:bg-emerald-700 text-white text-[10px] font-bold uppercase tracking-wider py-3 rounded-lg transition">WhatsApp Invoice</button>
+            </div>
+            <button id="cartCheckoutBtn" onclick="executeSelectedCheckout()" class="w-full bg-gradient-to-r from-zariGreen to-zariGreen-dark text-white font-bold uppercase text-xs tracking-widest py-4 rounded-xl transition flex items-center justify-center space-x-2 shadow-lg hover:brightness-105">
+                <span id="checkoutActionText">Select Checkout Method Above</span>
             </button>
         </div>
-
     </aside>
 
-    <!-- DEVELOPMENT AGENCY FOOTER DISCLAIMER PROTECTION BLOCK -->
+    <!-- FOOTER -->
     <footer class="bg-zariMidnight text-slate-400 py-16 text-xs border-t border-zariGold/20 mt-16">
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 space-y-8">
             <div class="grid grid-cols-1 md:grid-cols-2 gap-8 text-left">
                 <div class="space-y-4">
-                    <h4 class="text-white font-serif font-bold text-sm uppercase tracking-wider text-zariGold text-base">ZARÌ ETHNICS</h4>
-                    <p class="leading-relaxed font-semibold text-xs text-slate-400">
-                        Shop U28A Upper Level, Trade Route Mall, Lenasia. Gauteng's leading bridal atelier. We celebrate traditional heritage through handloom silk, velvet and delicate embroidery. All prices shown include 15% VAT under registered SA tax structures.
-                    </p>
-                    
-                    <!-- HIGH-FIDELITY SOCIAL MEDIA BUTTONS & WHATSAPP SHORTCUT -->
+                    <h4 class="text-zariGold font-serif font-bold text-base uppercase tracking-wider">ZARÌ ETHNICS</h4>
+                    <p class="leading-relaxed font-semibold text-xs text-slate-400">Shop U28A Upper Level, Trade Route Mall, Lenasia. Gauteng's leading bridal atelier. All prices shown include 15% VAT under registered South African tax structures.</p>
                     <div class="pt-2 flex items-center space-x-3">
-                        <a href="https://www.facebook.com/zariethnics/" target="_blank" class="h-9 w-9 rounded-full bg-white/10 hover:bg-zariGreen text-zariGold hover:text-white flex items-center justify-center transition duration-300 border border-white/15" title="Follow us on Facebook">
-                            <i class="fab fa-facebook-f text-sm"></i>
-                        </a>
-                        <a href="https://www.instagram.com/zariethnics/" target="_blank" class="h-9 w-9 rounded-full bg-white/10 hover:bg-zariGreen text-zariGold hover:text-white flex items-center justify-center transition duration-300 border border-white/15" title="Follow us on Instagram">
-                            <i class="fab fa-instagram text-sm"></i>
-                        </a>
-                        <a href="https://www.tiktok.com/@zariethnics" target="_blank" class="h-9 w-9 rounded-full bg-white/10 hover:bg-zariGreen text-zariGold hover:text-white flex items-center justify-center transition duration-300 border border-white/15" title="Follow us on TikTok">
-                            <i class="fab fa-tiktok text-sm"></i>
-                        </a>
-                        <a href="https://api.whatsapp.com/send?phone=27812742028" target="_blank" class="h-9 w-9 rounded-full bg-white/10 hover:bg-zariGreen text-zariGold hover:text-white flex items-center justify-center transition duration-300 border border-white/15" title="Chat on WhatsApp">
-                            <i class="fab fa-whatsapp text-sm"></i>
-                        </a>
+                        <a href="https://www.facebook.com/zariethnics/" target="_blank" class="h-9 w-9 rounded-full bg-white/10 hover:bg-zariGreen text-zariGold hover:text-white flex items-center justify-center transition border border-white/15"><i class="fab fa-facebook-f text-sm"></i></a>
+                        <a href="https://www.instagram.com/zariethnics/" target="_blank" class="h-9 w-9 rounded-full bg-white/10 hover:bg-zariGreen text-zariGold hover:text-white flex items-center justify-center transition border border-white/15"><i class="fab fa-instagram text-sm"></i></a>
+                        <a href="https://www.tiktok.com/@zariethnics" target="_blank" class="h-9 w-9 rounded-full bg-white/10 hover:bg-zariGreen text-zariGold hover:text-white flex items-center justify-center transition border border-white/15"><i class="fab fa-tiktok text-sm"></i></a>
+                        <a href="https://api.whatsapp.com/send?phone=27812742028" target="_blank" class="h-9 w-9 rounded-full bg-white/10 hover:bg-zariGreen text-zariGold hover:text-white flex items-center justify-center transition border border-white/15"><i class="fab fa-whatsapp text-sm"></i></a>
                     </div>
-
-                    <!-- Clickable Compliance Links for GDPR, POPIA, T&Cs, and IP Protection -->
                     <div class="flex flex-wrap gap-x-4 gap-y-2 text-[10px] uppercase font-bold tracking-widest text-zariGold pt-4 border-t border-white/10 mt-4">
                         <button onclick="openCompliance('popia')" class="hover:underline hover:text-white">POPIA Privacy Shield</button>
                         <span>•</span>
-                        <button onclick="openCompliance('returns')" class="hover:underline hover:text-white">Refunds & Returns</button>
+                        <button onclick="openCompliance('returns')" class="hover:underline hover:text-white">Refunds &amp; Returns</button>
                         <span>•</span>
                         <button onclick="openCompliance('disclaimers')" class="hover:underline hover:text-white">Artisanal Disclaimers</button>
                         <span>•</span>
-                        <button onclick="openCompliance('mrkolapie')" class="hover:underline hover:text-white">Developer Shield & IP License</button>
+                        <button onclick="openCompliance('mrkolapie')" class="hover:underline hover:text-white">Developer Shield &amp; IP License</button>
                     </div>
-
-                    <div class="text-[10px] text-slate-500">
-                        <strong>SARS VAT NO:</strong> 4460265194 | <strong>Trading:</strong> Mon - Sun 09:00 - 17:00
-                    </div>
+                    <div class="text-[10px] text-slate-500"><strong>SARS VAT NO:</strong> 4460265194 | <strong>Trading:</strong> Mon – Sun 09:00 – 17:00</div>
                 </div>
                 <div class="space-y-3">
-                    <h4 class="text-white font-serif font-bold text-sm uppercase tracking-wider text-zariGold text-base">MrKolapie Protection Shield</h4>
-                    <p class="leading-relaxed font-semibold text-xs text-slate-400">
-                        This storefront, client-side dynamic database, and compliance mapping suite was engineered by **MrKolapie Pty Ltd™**. All copy, metadata, and design files were loaded verbatim under explicit instructions of Zari Ethnics management. The developer is completely indemnified against color mismatches, textual errors, or AI facial coincidences.
-                    </p>
-                    <div class="text-[10px] text-slate-500">
-                        Developed in Johannesburg, South Africa. Protected under Copyright © 2026 MrKolapie Pty Ltd™.
-                    </div>
+                    <h4 class="text-zariGold font-serif font-bold text-base uppercase tracking-wider">MrKolapie Protection Shield</h4>
+                    <p class="leading-relaxed font-semibold text-xs text-slate-400">This storefront and compliance mapping suite was engineered by MrKolapie Pty Ltd™. The developer is completely indemnified against color mismatches, textual errors, or AI facial coincidences.</p>
+                    <div class="text-[10px] text-slate-500">Developed in Johannesburg, South Africa. Protected under Copyright © 2026 MrKolapie Pty Ltd™.</div>
                 </div>
             </div>
             <div class="border-t border-slate-800 pt-8 text-center flex flex-col sm:flex-row items-center justify-between gap-4 text-slate-500">
                 <p>© 2026 ZARÌ ETHNICS. exquisite eastern experience. All Rights Reserved.</p>
-                <div class="flex items-center space-x-4">
-                    <a href="https://mrkolapie.com" target="_blank" class="text-zariGold hover:underline font-bold">Contact Developer Agency</a>
-                </div>
+                <a href="https://mrkolapie.com" target="_blank" class="text-zariGold hover:underline font-bold">Contact Developer Agency</a>
             </div>
         </div>
     </footer>
 
-    <!-- INTERACTIVE COMPLIANCE LEGAL MODAL BACKDROP FRAME -->
+    <!-- COMPLIANCE MODAL -->
     <div id="complianceLegalModal" class="fixed inset-0 bg-slate-950/85 backdrop-blur-sm z-[100] flex items-center justify-center p-4 hidden">
         <div class="bg-white rounded-3xl border border-zariGold/30 max-w-2xl w-full overflow-hidden shadow-2xl relative">
-            <button onclick="closeComplianceModal()" class="absolute top-4 right-4 text-slate-400 hover:text-slate-900 bg-slate-100 hover:bg-slate-200 p-2 rounded-full z-40 transition">
-                <i class="fas fa-times"></i>
-            </button>
+            <button onclick="closeComplianceModal()" class="absolute top-4 right-4 text-slate-400 hover:text-slate-900 bg-slate-100 hover:bg-slate-200 p-2 rounded-full z-40 transition"><i class="fas fa-times"></i></button>
             <div class="p-6 sm:p-8 max-h-[80vh] overflow-y-auto space-y-4">
                 <h3 id="complianceModalTitle" class="text-xl sm:text-2xl font-serif font-bold text-zariGreen uppercase tracking-wider">Legal Statement</h3>
-                <div id="complianceModalBody" class="text-xs sm:text-sm text-slate-600 leading-relaxed space-y-3">
-                    <!-- Loaded dynamically in showModal -->
-                </div>
+                <div id="complianceModalBody" class="text-xs sm:text-sm text-slate-600 leading-relaxed space-y-3"></div>
             </div>
         </div>
     </div>
 
-    <!-- MAIN JAVASCRIPT SYSTEM ENGINE -->
+    <!-- ============================================================
+         ZARÌ ETHNICS — COMPLETE PRODUCTION JAVASCRIPT ENGINE
+         All functions globally scoped, script properly closed.
+         FIX: Completed truncated script, removed duplicate changePage,
+              added all missing functions: showToast, updateBagDOM,
+              updateCartTotals, activatePaymentStrategy, executeSelectedCheckout,
+              executeYocoPayment, sendWhatsAppInvoice, submitFabricConcierge,
+              addNewAtelierItem, downloadCleanProductionHTML, openCompliance,
+              closeComplianceModal, selectFabricWeave, initFabricInspector.
+         ============================================================ -->
     <script>
-        // --- DATA DEFAULTS & LOCAL CMS MANAGEMENT ---
-        const INITIAL_CATALOG = [
-            { id: "1", title: "Black & Silver Set", category: "jewellery", price: 329, tailoring: "Small / Black & Silver", desc: "2 Piece Small Size Necklace and Earrings Black & Silver. Elegant and stylish ornament ideal for formal banquets.", img: "1.png" },
-            { id: "2", title: "Red/Orange & Silver Set", category: "jewellery", price: 544, tailoring: "Small / Red/Orange & Silver", desc: "2 Piece Small Size Necklace and Earrings Red/Orange & Silver. Designed meticulously to capture festive energy.", img: "2.png" },
-            { id: "3", title: "Blue & Gold Pearl Necklace", category: "jewellery", price: 710, tailoring: "Medium / Blue & Gold Pearl", desc: "2piece Blue & Gold Pearl Necklace (medium size). Featuring layered blue and gold pearl beads with intricate traditional detailing.", img: "3.png" },
-            { id: "4", title: "Purple, Silver & Gold Set", category: "jewellery", price: 760, tailoring: "Large / Purple, Silver & Gold", desc: "2piece Purple, Silver & Gold Necklace (large size). Exceptional layout featuring luxurious gems.", img: "4.png" },
-            { id: "5", title: "White Pearl & Gold Pendant", category: "jewellery", price: 810, tailoring: "Medium / White Pearl & Gold", desc: "Premium 2 Piece Medium Set. Handloom traditional gold luster matching perfectly with bridal silhouettes.", img: "5.png" },
-            { id: "6", title: "Premium Maroon & Gold Set", category: "jewellery", price: 850, tailoring: "Medium / Maroon & Gold", desc: "Premium designer set featuring rich hand-polished maroon stone accents.", img: "6.png" },
-            { id: "7", title: "Teal & Gold Choker Set", category: "jewellery", price: 920, tailoring: "Medium / Teal & Gold", desc: "Stunning kundan-style gold plating with teal-blue highlights.", img: "7.png" },
-            { id: "8", title: "Kundan Royal Bridal Set", category: "jewellery", price: 1850, tailoring: "Large / Antique Kundan", desc: "Encrusted with exquisite clear stones, glass beads, and matching bridal earrings.", img: "8.png" },
-            { id: "9", title: "Gold & Diamond-Cut Drop Set", category: "jewellery", price: 1100, tailoring: "Medium / Premium Diamond-Cut", desc: "Exquisite drop design with precise gem placement creating an eye-catching wedding glow.", img: "9.png" },
-            { id: "10", title: "Emerald Blossom Earring & Choker", category: "jewellery", price: 1450, tailoring: "Small / Gold & Emerald", desc: "Elegant floral patterns crafted meticulously for receptions and formal banquets.", img: "10.png" },
-            { id: "11", title: "Classic Pearl Strands Set", category: "jewellery", price: 590, tailoring: "Medium / Off-White", desc: "Simulated multi-layered pearl threads with premium gold-tone locks.", img: "11.png" },
-            { id: "12", title: "Antique Gold Temple Set", category: "jewellery", price: 1750, tailoring: "Medium / Matte Temple Gold", desc: "Breathtaking South Indian classic carving depicting auspicious traditional symbols.", img: "12.png" },
-            
-            // Groom Section
-            { id: "13", title: "Royal Ivory Silk Sherwani", category: "groom", price: 15900, tailoring: "Custom Tailored Banarasi Silk", desc: "A majestic groom's sherwani in heavy ivory silk, woven with pure gold threadwork and rich borders.", img: "13.png" },
-            { id: "14", title: "Midnight Navy Velvet Sherwani", category: "groom", price: 17500, tailoring: "Bespoke Royal Zardozi", desc: "Stitched with classical French bullion threads on dark navy micro-velvet.", img: "14.png" },
-            { id: "15", title: "Imperial Crimson Sherwani", category: "groom", price: 18999, tailoring: "Handloom Zardozi & Dabka Stitch", desc: "Clearance discount. Indulge in auspicious crimson embroidery perfect for royal entry.", img: "15.png" },
-            { id: "16", title: "Emerald Green Heritage Sherwani", category: "groom", price: 16500, tailoring: "Classic Cut Silk", desc: "Decorated with classical antique gold buttons and traditional sleeve patterns.", img: "16.png" },
-            { id: "17", title: "Lucknowi Pastel Sherwani", category: "groom", price: 14500, tailoring: "Georgette Threadwork & Shadow Work", desc: "Pastel ivory silhouette, highly breathable and perfect for daytime garden weddings.", img: "17.png" },
-            { id: "18", title: "Gold Brocade Ceremonial Sherwani", category: "groom", price: 19500, tailoring: "Hand-Knotted Brocade", desc: "Pure Banarasi weave, featuring structured shoulder pads and elegant traditional fit.", img: "18.png" },
+        /* ============================
+           GLOBAL STATE VARIABLES
+        ============================ */
+        var catalogData = [];
+        var shoppingBag = [];
+        var activeCategory = 'all';
+        var currentPageIndex = 0;
+        var isWorkbenchUnlocked = false;
+        var cropperInstance = null;
+        var activeCroppedBase64 = null;
+        var selectedShippingCost = 0;
+        var selectedPaymentMethod = '';
 
-            // Bridal Section
-            { id: "19", title: "Varanasi Silk Heritage Lehenga", category: "bridal", price: 34999, tailoring: "Exclusive Banarasi Broad Border", desc: "A magnificent bridal masterpiece in heavy crimson red silk, woven with pure gold brocade patterns and layered dupattas.", img: "19.png" },
-            { id: "20", title: "Majestic Crimson Velvet Lehenga", category: "bridal", price: 28900, tailoring: "Handloom Velvet Gher Ghagra", desc: "Rich French bullion stitchery and real brass threads, delivering absolute weight and dramatic flair.", img: "20.png" },
-            { id: "21", title: "Blush Pink Embroidered Lehenga", category: "bridal", price: 24500, tailoring: "Premium Silk Tulle", desc: "Delicate sequin work with pastel floral motifs, perfect for modern brides.", img: "21.png" },
-            { id: "22", title: "Royal Peacock Blue Lehenga", category: "bridal", price: 27900, tailoring: "Banarasi Silk", desc: "An eye-catching deep blue masterpiece decorated with peacock feather handloom embroidery.", img: "22.png" },
-            { id: "23", title: "Golden Ochre Bridal Lehenga", category: "bridal", price: 31000, tailoring: "Zari Threadwork", desc: "Dazzling gold embroidery on amber silk fabric, glowing under traditional pavilion lights.", img: "23.png" },
+        var ITEMS_PER_PAGE = 12;
+        var SHIPPING_RATES = { showroom: 0, gauteng: 95, national: 145, regional: 185 };
 
-            // Occasion Section
-            { id: "24", title: "Designer Anarkali Suit", category: "occasion", price: 7200, tailoring: "Floor Length Kalidaar Cut", desc: "Emerald green georgette flowy silhouette decorated with rich sequined embroidery.", img: "24.png" },
-            { id: "25", title: "Royal Banarasi Saree", category: "occasion", price: 8900, tailoring: "Fine Weave Katan Silk", desc: "Crafted in Katan silk with absolute authentic gold weavings, capturing true classical Indian elegance.", img: "25.png" },
-            { id: "26", title: "Pastel Mint Gharara Set", category: "occasion", price: 6800, tailoring: "Bespoke Georgette Stitch", desc: "Flared silhouette with hand-placed silver gota-patti decorations.", img: "26.png" },
-            { id: "27", title: "Crimson Silk Saree", category: "occasion", price: 7500, tailoring: "Traditional Jacquard", desc: "A beautiful deep red saree with broad golden borders, ideal for family functions.", img: "27.png" }
-        ];
-
-        // Synthesize the rest of the 103 items to ensure 100% complete database mapping
-        for (let i = 28; i <= 103; i++) {
-            let cat = "jewellery";
-            let price = 300 + (i * 12) - (i % 3 * 20);
-            let sizeStr = i % 2 === 0 ? "Medium" : "Small";
-            let colStr = i % 3 === 0 ? "Lilac & Gold" : (i % 2 === 0 ? "Orange & Silver" : "Turquoise & Silver");
-            let title = `Premium Set ${i}`;
-            let desc = `2Piece ${colStr} Necklace & Earring Set – Premium Jewellery. Beautifully crafted set designed for weddings, receptions, Diwali, and all formal celebrations.`;
-
-            // Specific names from meta_data snippet to ensure authentic matches
-            if (i === 102) {
-                title = "2Piece Lilac & Gold Necklace & Earring Set";
-                price = 501;
-                sizeStr = "Small";
-                colStr = "Lilac & Gold";
-                desc = "2Piece Lilac & Gold Necklace & Earring Set – Premium Jewellery. This elegant jewellery set features a beautifully crafted Lilac and Gold necklace with intricate stone detailing.";
-            } else if (i === 103) {
-                title = "2Piece Orange & Silver Necklace & Earring Set";
-                price = 501;
-                sizeStr = "Medium";
-                colStr = "Orange & Silver";
-                desc = "2Piece Orange & Silver Necklace & Earring Set – Premium Jewellery. This elegant jewellery set features a beautifully crafted Orange and Silver necklace with intricate circular and dropstone detailing.";
-            } else if (i >= 50 && i <= 70) {
-                cat = "occasion";
-                title = `Boutique Festival Wear ${i}`;
-                desc = `Crafted premium festival garment featuring exclusive traditional stitching and fine fabric backing.`;
-            } else if (i > 70 && i <= 85) {
-                cat = "groom";
-                title = `Artisanal Groom Sherwani Accessory ${i}`;
-                desc = `Handloom accessory stitched carefully to match royal sherwanis.`;
-            } else if (i > 85 && i <= 101) {
-                cat = "bridal";
-                title = `Bridal Heritage Saree ${i}`;
-                desc = `Exquisite silk blend drape decorated with gold thread borders and floral motifs.`;
-            }
-
-            INITIAL_CATALOG.push({
-                id: `${i}`,
-                title: title,
-                category: cat,
-                price: price,
-                tailoring: `${sizeStr} / ${colStr}`,
-                desc: desc,
-                img: `${i}.png`
-            });
+        /* ============================
+           TOAST NOTIFICATION SYSTEM
+        ============================ */
+        function showToast(message, type) {
+            var container = document.getElementById('toastContainer');
+            if (!container) return;
+            var toast = document.createElement('div');
+            var bg = (type === 'success') ? 'background:#446B1E' : 'background:#DE1B45';
+            var icon = (type === 'success') ? 'fa-check-circle' : 'fa-exclamation-circle';
+            toast.style.cssText = bg + ';color:#fff;padding:12px 18px;border-radius:14px;font-size:11px;font-weight:700;display:flex;align-items:center;gap:8px;box-shadow:0 8px 25px rgba(0,0,0,0.25);pointer-events:auto;transition:opacity 0.4s,transform 0.4s;border:1px solid rgba(255,255,255,0.15);max-width:320px;';
+            toast.innerHTML = '<i class="fas ' + icon + '"></i><span>' + message + '</span>';
+            container.appendChild(toast);
+            setTimeout(function() {
+                toast.style.opacity = '0';
+                toast.style.transform = 'translateX(20px)';
+                setTimeout(function() { if (toast.parentNode) toast.parentNode.removeChild(toast); }, 450);
+            }, 3200);
         }
 
-        let catalogData = [];
-        let shoppingBag = [];
-        let activeCategory = 'all';
-        let currentPageIndex = 0;
-        const ITEMS_PER_PAGE = 12; // Cohesive and clean multi-column layout
+        /* ============================
+           UTILITY
+        ============================ */
+        function formatZAR(val) {
+            if (!val || val === 0) return 'Price on Inquiry';
+            return 'R ' + val.toLocaleString('en-ZA', { minimumFractionDigits: 2, maximumFractionDigits: 2 });
+        }
 
-        // --- AMBIENT SYNTH AUDIO (TONE.JS) ---
-        let audioActive = false;
-        let padSynth, pluckSynth;
+        /* ============================
+           BAG DRAWER TOGGLE
+        ============================ */
+        function toggleBagDrawer() {
+            var backdrop = document.getElementById('shoppingBagBackdrop');
+            var drawer = document.getElementById('shoppingBagDrawer');
+            if (!backdrop || !drawer) return;
+            if (drawer.classList.contains('translate-x-full')) {
+                backdrop.classList.remove('hidden');
+                drawer.classList.remove('translate-x-full');
+            } else {
+                backdrop.classList.add('hidden');
+                drawer.classList.add('translate-x-full');
+            }
+        }
+
+        /* ============================
+           CART / BAG DOM UPDATE
+        ============================ */
+        function updateBagDOM() {
+            var container = document.getElementById('shoppingCartItemsContainer');
+            var badge = document.getElementById('globalBagBadge');
+            var totalItems = shoppingBag.reduce(function(a, i) { return a + i.qty; }, 0);
+            if (badge) badge.textContent = totalItems;
+            if (!container) return;
+            if (shoppingBag.length === 0) {
+                container.innerHTML = '<div class="text-center py-10 text-slate-400 space-y-2"><i class="fas fa-shopping-bag text-3xl text-slate-200 block"></i><p class="text-xs font-semibold">Your invoice is empty</p></div>';
+                updateCartTotals();
+                return;
+            }
+            container.innerHTML = shoppingBag.map(function(item) {
+                return '<div class="flex items-start space-x-3 bg-slate-50 rounded-2xl p-3 border border-slate-100">' +
+                    '<img src="' + item.img + '" alt="' + item.title + '" class="w-14 h-16 object-cover rounded-xl border border-slate-200 bg-slate-100 shrink-0" onerror="this.src=\'https://images.unsplash.com/photo-1617627143750-d86bc21e42bb?q=80&w=200&auto=format&fit=crop\'">' +
+                    '<div class="flex-1 min-w-0">' +
+                        '<h4 class="text-xs font-bold text-slate-800 leading-tight truncate">' + item.title + '</h4>' +
+                        '<p class="text-[10px] text-slate-500 italic mt-0.5">' + item.tailoring + '</p>' +
+                        '<div class="flex items-center justify-between mt-2">' +
+                            '<div class="flex items-center space-x-2">' +
+                                '<button onclick="changeItemQty(\'' + item.id + '\',-1)" class="h-6 w-6 rounded-lg bg-slate-200 hover:bg-red-500 hover:text-white text-slate-600 text-xs font-bold transition flex items-center justify-center">&minus;</button>' +
+                                '<span class="text-xs font-bold text-slate-800 w-5 text-center">' + item.qty + '</span>' +
+                                '<button onclick="changeItemQty(\'' + item.id + '\',1)" class="h-6 w-6 rounded-lg bg-slate-200 hover:bg-zariGreen hover:text-white text-slate-600 text-xs font-bold transition flex items-center justify-center">+</button>' +
+                            '</div>' +
+                            '<span class="text-xs font-mono font-extrabold text-red-600">R ' + (item.price * item.qty).toLocaleString('en-ZA', {minimumFractionDigits:2}) + '</span>' +
+                        '</div>' +
+                    '</div>' +
+                    '<button onclick="removeFromCart(\'' + item.id + '\')" class="text-slate-300 hover:text-red-500 text-xs transition shrink-0 mt-0.5 pl-1"><i class="fas fa-times"></i></button>' +
+                    '</div>';
+            }).join('');
+            updateCartTotals();
+        }
+
+        function changeItemQty(id, delta) {
+            var item = shoppingBag.find(function(x) { return x.id === id; });
+            if (!item) return;
+            item.qty += delta;
+            if (item.qty <= 0) shoppingBag = shoppingBag.filter(function(x) { return x.id !== id; });
+            try { localStorage.setItem('zari_bag', JSON.stringify(shoppingBag)); } catch(e) {}
+            updateBagDOM();
+        }
+
+        function removeFromCart(id) {
+            shoppingBag = shoppingBag.filter(function(x) { return x.id !== id; });
+            try { localStorage.setItem('zari_bag', JSON.stringify(shoppingBag)); } catch(e) {}
+            updateBagDOM();
+            showToast('Item removed from invoice', 'success');
+        }
+
+        function addToCart(itemId) {
+            var item = catalogData.find(function(x) { return x.id === itemId; });
+            if (!item) return;
+            if (item.inquire || item.price === 0) { showToast('Please inquire directly via WhatsApp', 'error'); return; }
+            var existing = shoppingBag.find(function(x) { return x.id === itemId; });
+            if (existing) { existing.qty += 1; } else { shoppingBag.push(Object.assign({}, item, { qty: 1 })); }
+            try { localStorage.setItem('zari_bag', JSON.stringify(shoppingBag)); } catch(e) {}
+            showToast(item.title + ' added to invoice', 'success');
+            playAtmosphericSound('high');
+            updateBagDOM();
+        }
+
+        /* ============================
+           CART TOTALS
+        ============================ */
+        function updateCartTotals() {
+            var inclVat = shoppingBag.reduce(function(a, i) { return a + (i.price * i.qty); }, 0);
+            var exclVat = inclVat / 1.15;
+            var vatAmt = inclVat - exclVat;
+            var total = inclVat + selectedShippingCost;
+            var fmt = function(n) { return 'R ' + n.toLocaleString('en-ZA', {minimumFractionDigits:2, maximumFractionDigits:2}); };
+            var el = function(id) { return document.getElementById(id); };
+            if (el('cartSummaryExclVat')) el('cartSummaryExclVat').textContent = fmt(exclVat);
+            if (el('cartSummaryVatAmount')) el('cartSummaryVatAmount').textContent = fmt(vatAmt);
+            if (el('cartSummaryDelivery')) el('cartSummaryDelivery').textContent = selectedShippingCost === 0 ? 'FREE' : fmt(selectedShippingCost);
+            if (el('cartSummaryInclVat')) el('cartSummaryInclVat').textContent = fmt(total);
+        }
+
+        function updateDeliveryOption() {
+            var sel = document.getElementById('deliveryOption');
+            if (sel) selectedShippingCost = SHIPPING_RATES[sel.value] || 0;
+            updateCartTotals();
+        }
+
+        function saveCustomerVat() {
+            var inp = document.getElementById('customerVatInput');
+            if (inp) try { localStorage.setItem('zari_customer_vat', inp.value); } catch(e) {}
+        }
+
+        /* ============================
+           PAYMENT STRATEGY
+        ============================ */
+        function activatePaymentStrategy(method) {
+            selectedPaymentMethod = method;
+            var yoco = document.getElementById('yocoSimulationBlock');
+            var btnText = document.getElementById('checkoutActionText');
+            if (method === 'yoco') {
+                if (yoco) yoco.classList.remove('hidden');
+                if (btnText) btnText.textContent = 'Authorize Yoco Card Payment';
+            } else if (method === 'whatsapp') {
+                if (yoco) yoco.classList.add('hidden');
+                if (btnText) btnText.textContent = 'Send Invoice via WhatsApp';
+            }
+        }
+
+        function executeSelectedCheckout() {
+            if (!selectedPaymentMethod) { showToast('Please select a payment method above', 'error'); return; }
+            if (shoppingBag.length === 0) { showToast('Your invoice is empty', 'error'); return; }
+            if (selectedPaymentMethod === 'whatsapp') sendWhatsAppInvoice();
+            else if (selectedPaymentMethod === 'yoco') executeYocoPayment();
+        }
+
+        function sendWhatsAppInvoice() {
+            var inclVat = shoppingBag.reduce(function(a, i) { return a + (i.price * i.qty); }, 0);
+            var total = inclVat + selectedShippingCost;
+            var lines = shoppingBag.map(function(i) { return '• ' + i.title + ' (x' + i.qty + ') – R ' + (i.price * i.qty).toLocaleString('en-ZA', {minimumFractionDigits:2}); }).join('\n');
+            var sel = document.getElementById('deliveryOption');
+            var delivText = sel ? sel.options[sel.selectedIndex].text : 'Showroom Collection';
+            var msg = encodeURIComponent('Hello Zarì Ethnics! I would like to place an order.\n\nORDER DETAILS:\n' + lines + '\n\nDelivery: ' + delivText + '\nTotal Due: R ' + total.toLocaleString('en-ZA', {minimumFractionDigits:2}) + ' (VAT Incl.)\n\nSARS VAT Reg: 4460265194\nPlease confirm availability and payment details. Thank you!');
+            window.open('https://api.whatsapp.com/send?phone=27812742028&text=' + msg, '_blank');
+        }
+
+        function executeYocoPayment() {
+            var num = document.getElementById('yocoCardNumber');
+            var exp = document.getElementById('yocoCardExpiry');
+            var cvv = document.getElementById('yocoCardCvv');
+            if (!num || !num.value.trim() || !exp || !exp.value.trim() || !cvv || !cvv.value.trim()) {
+                showToast('Please complete all card details', 'error'); return;
+            }
+            showToast('Processing Yoco secure payment…', 'success');
+            setTimeout(function() { showToast('Payment authorized! Check WhatsApp for confirmation.', 'success'); playAtmosphericSound('success'); }, 2000);
+        }
+
+        /* ============================
+           FABRIC CONCIERGE
+        ============================ */
+        function submitFabricConcierge(event) {
+            event.preventDefault();
+            var name = document.getElementById('clientName').value;
+            var date = document.getElementById('consultDate').value;
+            var sil = document.getElementById('customSilhouette').value;
+            var fab = document.getElementById('fabricArchetype').value;
+            var meas = document.querySelector('input[name="measOption"]:checked');
+            var styling = document.getElementById('conciergeStyling').value;
+            var measText = meas ? meas.value : 'Showroom Appointment';
+            var msg = encodeURIComponent('Hello Zarì Ethnics! I would like to book a Fabric Concierge Consultation.\n\nClient Name: ' + name + '\nConsultation Date: ' + date + '\nCustom Silhouette: ' + sil + '\nHeritage Fabric: ' + fab + '\nFitting Preference: ' + measText + '\nStyling Instructions: ' + (styling || 'N/A') + '\n\nPlease contact me to confirm. Thank you!');
+            window.open('https://api.whatsapp.com/send?phone=27812742028&text=' + msg, '_blank');
+            showToast('Concierge request sent via WhatsApp!', 'success');
+        }
+
+        /* ============================
+           COMPLIANCE MODAL
+        ============================ */
+        var COMPLIANCE_CONTENT = {
+            popia: {
+                title: 'POPIA Privacy Shield',
+                body: '<p><strong>Protection of Personal Information Act (POPIA) Compliance</strong></p><p>Zarì Ethnics is fully committed to protecting your personal information in accordance with POPIA 4 of 2013.</p><p><strong>Information We Collect:</strong> Name, contact number, WhatsApp number, and garment measurement details solely for order processing.</p><p><strong>How We Use Your Information:</strong> Exclusively to fulfill your order and provide aftercare. We never sell or distribute personal data.</p><p><strong>Data Retention:</strong> Order records are retained for 5 years in compliance with SARS requirements.</p><p><strong>Your Rights:</strong> You may access, correct, or request deletion of your information. Contact +27 81 274 2028.</p>'
+            },
+            returns: {
+                title: 'Refunds & Returns Policy',
+                body: '<p><strong>Zarì Ethnics Refund &amp; Returns Policy</strong></p><p><strong>Custom Orders:</strong> All custom-tailored garments are non-refundable once production has commenced.</p><p><strong>Ready-to-Wear Items:</strong> May be exchanged within 7 days of purchase with original receipt, unworn and in original condition.</p><p><strong>Jewellery:</strong> Non-refundable for hygiene reasons. Exchange only within 48 hours with receipt.</p><p><strong>Faulty Items:</strong> In accordance with the Consumer Protection Act 68 of 2008, faulty items will be repaired, replaced, or refunded within 6 months of purchase.</p><p><strong>Process:</strong> Contact us via WhatsApp at +27 81 274 2028.</p>'
+            },
+            disclaimers: {
+                title: 'Artisanal Disclaimers',
+                body: '<p><strong>Handcraft &amp; Artisanal Variation Disclaimer</strong></p><p>All garments are handcrafted by skilled artisans using traditional South Asian weaving and embroidery techniques.</p><p><strong>Color Variations:</strong> Colors displayed on screen may vary from the actual garment due to screen calibration and hand-dyed fabric properties.</p><p><strong>Embroidery Variations:</strong> Minor variations in embroidery patterns are inherent characteristics of handmade garments and are not defects.</p><p><strong>Digital Models:</strong> All model renders are computer-synthesized digital reference models. Any resemblance to real persons is purely coincidental.</p><p><strong>Sizing:</strong> We strongly recommend an in-store or WhatsApp-guided measurement consultation before placing a custom order.</p>'
+            },
+            mrkolapie: {
+                title: 'Developer Shield & IP License',
+                body: '<p><strong>MrKolapie Pty Ltd™ – Developer Indemnification &amp; IP License</strong></p><p>This digital storefront and UI/UX design system was engineered by <strong>MrKolapie Pty Ltd™</strong>, Johannesburg, South Africa.</p><p><strong>Intellectual Property:</strong> All custom code and design systems are protected under Copyright © 2026 MrKolapie Pty Ltd™. Unauthorized reproduction is strictly prohibited.</p><p><strong>Developer Indemnification:</strong> MrKolapie Pty Ltd™ is fully indemnified against claims arising from product color discrepancies, textual content errors provided by the client, or AI-synthesized model likeness concerns.</p><p><strong>Content Responsibility:</strong> All product descriptions, pricing, and VAT numbers were provided verbatim by Zarì Ethnics management.</p><p>For developer inquiries: <a href="https://mrkolapie.com" class="text-green-700 underline font-bold" target="_blank">www.mrkolapie.com</a></p>'
+            }
+        };
+
+        function openCompliance(type) {
+            var modal = document.getElementById('complianceLegalModal');
+            var title = document.getElementById('complianceModalTitle');
+            var body = document.getElementById('complianceModalBody');
+            var data = COMPLIANCE_CONTENT[type];
+            if (!data || !modal) return;
+            if (title) title.textContent = data.title;
+            if (body) body.innerHTML = data.body;
+            modal.classList.remove('hidden');
+        }
+
+        function closeComplianceModal() {
+            var modal = document.getElementById('complianceLegalModal');
+            if (modal) modal.classList.add('hidden');
+        }
+
+        /* ============================
+           AUDIO ENGINE (Tone.js Raga)
+        ============================ */
+        var audioActive = false;
+        var ambientSynth = null;
+        var ragaPluck = null;
+        var ragaIntervalId = null;
+        var RAGA_SCALE = ["E3","F3","G#3","A3","B3","C4","D4","E4","F4","G#4","A4","B4","C5"];
 
         function initAudioEngine() {
             try {
-                padSynth = new Tone.PolySynth(Tone.Synth, {
-                    oscillator: { type: "triangle" },
-                    envelope: { attack: 4, decay: 2, sustain: 0.8, release: 4 }
-                }).toDestination();
-                padSynth.volume.value = -24;
+                ambientSynth = new Tone.PolySynth(Tone.Synth, { oscillator:{type:"triangle"}, envelope:{attack:4,decay:2,sustain:0.9,release:4} }).toDestination();
+                ambientSynth.volume.value = -22;
+                ragaPluck = new Tone.Synth({ oscillator:{type:"sawtooth"}, envelope:{attack:0.01,decay:0.8,sustain:0,release:1.2}, filter:{Q:3,type:"bandpass",frequency:1000} }).toDestination();
+                ragaPluck.volume.value = -12;
+            } catch(e) { console.warn('Audio init failed', e); }
+        }
 
-                pluckSynth = new Tone.MonoSynth({
-                    oscillator: { type: "sine" },
-                    envelope: { attack: 0.01, decay: 0.4, sustain: 0, release: 0.5 },
-                    filter: { Q: 2, type: "lowpass", frequency: 1200 }
-                }).toDestination();
-                pluckSynth.volume.value = -12;
-            } catch (err) {
-                console.warn("Audio Context setup not supported or restricted", err);
-            }
+        function playAhirBhairavRaga() {
+            if (!audioActive || !ambientSynth) return;
+            try {
+                ambientSynth.triggerAttack(["E2","B2","E3"]);
+                ragaIntervalId = setInterval(function() {
+                    if (!audioActive || !ragaPluck) return;
+                    var note = RAGA_SCALE[Math.floor(Math.random() * RAGA_SCALE.length)];
+                    var dur = Math.random() > 0.6 ? "4n" : "8n";
+                    try { ragaPluck.triggerAttackRelease(note, dur); } catch(e) {}
+                }, 450);
+            } catch(e) {}
+        }
+
+        function stopRaga() {
+            if (ragaIntervalId) { clearInterval(ragaIntervalId); ragaIntervalId = null; }
+            try { if (ambientSynth) ambientSynth.triggerRelease(["E2","B2","E3"]); } catch(e) {}
         }
 
         function toggleSound() {
-            if (!padSynth) {
-                initAudioEngine();
-            }
-
-            const icon = document.getElementById('soundIcon');
+            if (!ambientSynth) initAudioEngine();
+            var icon = document.getElementById('soundIcon');
             if (!audioActive) {
-                Tone.start();
+                try { Tone.start(); } catch(e) {}
                 audioActive = true;
-                icon.className = "fas fa-music text-zariGold animate-bounce";
-                showToast("Zari Ambient Harmony Playing", "success");
-                try {
-                    padSynth.triggerAttack(["E2", "B2", "E3", "G#3"]);
-                } catch(err){}
+                if (icon) icon.className = 'fas fa-music text-yellow-400 animate-bounce';
+                playAhirBhairavRaga();
+                showToast('Playing traditional Raga baseline…', 'success');
             } else {
                 audioActive = false;
-                icon.className = "fas fa-volume-mute text-slate-400";
-                try {
-                    padSynth.triggerRelease(["E2", "B2", "E3", "G#3"]);
-                } catch(err){}
+                if (icon) icon.className = 'fas fa-volume-mute text-slate-400';
+                stopRaga();
+                showToast('Harmony baseline muted', 'success');
             }
         }
 
         function playAtmosphericSound(pitch) {
-            if (!audioActive || !pluckSynth) return;
+            if (!audioActive || !ragaPluck) return;
             try {
-                if (pitch === 'high') {
-                    pluckSynth.triggerAttackRelease("E4", "8n");
-                } else if (pitch === 'success') {
-                    pluckSynth.triggerAttackRelease("B4", "16n");
-                    setTimeout(() => pluckSynth.triggerAttackRelease("E5", "8n"), 120);
-                } else {
-                    pluckSynth.triggerAttackRelease("B3", "8n");
-                }
-            } catch(e){}
+                if (pitch === 'high') ragaPluck.triggerAttackRelease("E5","8n");
+                else if (pitch === 'success') { ragaPluck.triggerAttackRelease("B4","16n"); setTimeout(function(){ try{ragaPluck.triggerAttackRelease("E5","8n");}catch(e){} },120); }
+                else ragaPluck.triggerAttackRelease("B3","8n");
+            } catch(e) {}
         }
 
-        // --- CATALOG INITIALIZATION & DATA STORAGE ---
-        function initCatalogDatabase() {
-            const cached = localStorage.getItem('zari_catalog');
-            if (cached) {
-                catalogData = JSON.parse(cached);
-            } else {
-                catalogData = [...INITIAL_CATALOG];
-                localStorage.setItem('zari_catalog', JSON.stringify(catalogData));
+        /* ============================
+           FABRIC INSPECTOR
+        ============================ */
+        var FABRIC_DATA = {
+            silk: {
+                title: 'Banarasi Weave (Zari Threads)',
+                desc: 'Consists of silver alloy wires wrapped around fine silk core threads, plated meticulously in pure 24-karat gold liquid. Standard thread density: 120 threads per centimeter.',
+                img: 'https://images.unsplash.com/photo-1617627143750-d86bc21e42bb?q=80&w=800&auto=format&fit=crop'
+            },
+            velvet: {
+                title: 'Royal Velvet (Cut Pile Weave)',
+                desc: 'Woven on a double-cloth loom with precision cut pile loops creating a plush 3D surface. Premium velvet features 180 pile threads per sq. centimeter for maximum depth and color richness.',
+                img: 'https://images.unsplash.com/photo-1558769132-cb1aea458c5e?q=80&w=800&auto=format&fit=crop'
+            },
+            brocade: {
+                title: 'Gold Brocade (Kinkhab Weave)',
+                desc: 'Traditional Kinkhab brocade with metallic gold weft threads interlaced over silk warp. Features raised floral and geometric motifs created by supplementary weft insertion technique.',
+                img: 'https://images.unsplash.com/photo-1585914924626-15adac1e6402?q=80&w=800&auto=format&fit=crop'
             }
+        };
+
+        function selectFabricWeave(type) {
+            ['silk','velvet','brocade'].forEach(function(t) {
+                var btn = document.getElementById('fabric-' + t);
+                if (btn) btn.className = t === type ? 'px-4 py-2 bg-zariGreen text-white text-xs font-bold uppercase rounded-xl transition' : 'px-4 py-2 bg-slate-100 text-slate-600 text-xs font-bold uppercase rounded-xl transition hover:bg-slate-200';
+            });
+            var data = FABRIC_DATA[type];
+            if (!data) return;
+            var tEl = document.getElementById('fabricInspectorTitle');
+            var dEl = document.getElementById('fabricInspectorDesc');
+            var img = document.getElementById('inspectorBaseImage');
+            var loupe = document.getElementById('inspectorMagnifierLoupe');
+            if (tEl) tEl.textContent = data.title;
+            if (dEl) dEl.textContent = data.desc;
+            if (img) img.src = data.img;
+            if (loupe) { loupe.style.backgroundImage = "url('" + data.img + "')"; loupe.style.backgroundSize = '800px 450px'; }
+        }
+
+        function initFabricInspector() {
+            var frame = document.getElementById('inspectorCanvasFrame');
+            var loupe = document.getElementById('inspectorMagnifierLoupe');
+            var baseImg = document.getElementById('inspectorBaseImage');
+            if (!frame || !loupe || !baseImg) return;
+            loupe.style.backgroundImage = "url('" + baseImg.src + "')";
+            loupe.style.backgroundSize = '800px 450px';
+
+            function moveLoupe(x, y, rect) {
+                loupe.style.left = (x - 72) + 'px';
+                loupe.style.top = (y - 72) + 'px';
+                loupe.style.backgroundPosition = ((x / rect.width) * 100) + '% ' + ((y / rect.height) * 100) + '%';
+            }
+            frame.addEventListener('mousemove', function(e) {
+                var r = frame.getBoundingClientRect();
+                moveLoupe(e.clientX - r.left, e.clientY - r.top, r);
+            });
+            frame.addEventListener('touchmove', function(e) {
+                e.preventDefault();
+                var r = frame.getBoundingClientRect();
+                var t = e.touches[0];
+                moveLoupe(t.clientX - r.left, t.clientY - r.top, r);
+            }, { passive: false });
+        }
+
+        /* ============================
+           TRADING HOURS STATUS
+        ============================ */
+        function updateShowroomStatus() {
+            var badge = document.getElementById('liveTradingBadge');
+            if (!badge) return;
+            var now = new Date();
+            var h = now.getUTCHours() + 2; // SAST = UTC+2
+            if (h >= 9 && h < 17) {
+                badge.className = 'px-3 py-1 rounded-full text-xs font-bold uppercase tracking-wider bg-emerald-100 text-emerald-800 flex items-center space-x-1.5';
+                badge.innerHTML = '<span class="h-2 w-2 rounded-full bg-emerald-500 animate-pulse"></span><span>Boutique Open Now</span>';
+            } else {
+                badge.className = 'px-3 py-1 rounded-full text-xs font-bold uppercase tracking-wider bg-rose-100 text-rose-800 flex items-center space-x-1.5';
+                badge.innerHTML = '<span class="h-2 w-2 rounded-full bg-rose-500 animate-pulse"></span><span>Boutique Closed (Opens 09:00)</span>';
+            }
+        }
+
+        /* ============================
+           CATALOG DATA
+        ============================ */
+        var INITIAL_CATALOG = [
+            {id:"1",title:"2 Piece Black & Silver Set",category:"jewellery",price:329,tailoring:"Small / Available in Black & Silver",desc:"2 Piece Small Size Necklace and Earrings Black & Silver at R329.00. Elegant ornament designed for traditional look.",img:"1.png"},
+            {id:"2",title:"2 Piece Red/Orange & Silver Set",category:"jewellery",price:544,tailoring:"Small / Available in Red/Orange & Silver",desc:"2 Piece Small Size Necklace and Earrings Red/Orange & Silver at R544.00. Gorgeous matching stones and silver metalwork.",img:"2.png"},
+            {id:"3",title:"2-piece Blue & Gold Pearl Necklace",category:"jewellery",price:710,tailoring:"Medium / Available in Blue & Gold Pearl",desc:"2-piece Blue & Gold Pearl Necklace (medium size) priced at R710.00. Layered blue and gold pearl beads with intricate detailing.",img:"3.png"},
+            {id:"4",title:"2-piece Purple, Silver & Gold Set",category:"jewellery",price:760,tailoring:"Large / Available in Purple, Silver & Gold",desc:"2-piece Purple, Silver & Gold Necklace (large size) priced at R760. Ornate layered strands with silver and gold detailing.",img:"4.png"},
+            {id:"5",title:"2-piece Emerald Green & Silver Set",category:"jewellery",price:2820,tailoring:"Small / Available in Emerald Green & Silver",desc:"2-piece Emerald Green & Silver Necklace Set (small size) priced at R2820.00 featuring silver craftsmanship with emerald-green stones.",img:"5.png"},
+            {id:"6",title:"2-piece Silver & Pink Necklace Set",category:"jewellery",price:0,tailoring:"Inquire in store / Silver & Pink Necklace",desc:"2-piece Silver & Pink Necklace set. Layered oval pendants with ornate silver detailing and pink highlights. For price inquire via WhatsApp.",img:"6.png",inquire:true},
+            {id:"7",title:"3-piece Dark Formal Suit Set",category:"occasion",price:7500,tailoring:"Large / Available in Dark Grey",desc:"3-piece Dark Formal Suit Jacket, Waistcoat & Shirt Set (size 44, large) priced at R7,500. Premium dark tailoring with decorative stitching.",img:"7.png"},
+            {id:"8",title:"3-piece Deep Maroon Suit",category:"occasion",price:4010,tailoring:"Large / Available in Deep Maroon",desc:"3-piece Deep Maroon Suit (size 44, large) priced at R4,010. Premium maroon tailoring with textured jacket and matching vest.",img:"8.png"},
+            {id:"9",title:"3-piece Teal Jacket & Pants Suit",category:"occasion",price:4810,tailoring:"Medium / Available in Teal",desc:"3-piece Teal Jacket & Pants Suit (medium size) priced at R4,810. Premium teal tailoring with decorative buttons.",img:"9.png"},
+            {id:"10",title:"2-piece Gold Sherwani Set",category:"groom",price:3970,tailoring:"Large / Available in Gold",desc:"2-piece Gold Sherwani set (size 38, large) priced at R3,970. Rich fabrics with intricate embroidery.",img:"10.png"},
+            {id:"11",title:"2-piece Floral Pink & Gold Sherwani",category:"groom",price:6400,tailoring:"Large / Available in Floral Pink & Gold",desc:"2-piece Floral Pink & Gold Sherwani (size 40, large) priced at R6,400. Intricate floral embroidery and premium detailing.",img:"11.png"},
+            {id:"12",title:"2-piece Grey & Gold Sherwani Set",category:"groom",price:5800,tailoring:"Large / Available in Grey & Gold",desc:"2-piece Grey & Gold Sherwani set (size 40, large) priced at R5,800. Ornate embroidery and premium detailing.",img:"12.png"},
+            {id:"13",title:"2-piece Floral White & Gold Sherwani",category:"groom",price:6910,tailoring:"Large / Available in Floral White & Gold",desc:"2-piece Floral White & Gold Sherwani (size 40, large) priced at R6,910. Premium white fabric with intricate gold floral embroidery.",img:"13.png"},
+            {id:"14",title:"2-piece Red & Gold Sherwani",category:"groom",price:6700,tailoring:"Large / Available in Red & Gold",desc:"2-piece Red & Gold Sherwani (R6,700, size 46), crafted with intricate embroidery. Perfect for weddings.",img:"14.png"},
+            {id:"15",title:"2-piece Cream & White Sherwani",category:"groom",price:5990,tailoring:"Large / Available in Cream & White",desc:"2-piece Cream & White Sherwani (size 44, large) priced at R5,990. Ornate embroidery with traditional high-collar design.",img:"15.png"},
+            {id:"16",title:"2-Piece Lilac Sherwani Set",category:"groom",price:5448,tailoring:"Large / Available in Lilac",desc:"2-Piece Lilac Sherwani Set (size 42, large) priced at R5,448. Premium couture crafted with hand-loomed gold threads.",img:"16.png"},
+            {id:"17",title:"2-Piece Emerald Green Sherwani Set",category:"groom",price:4150,tailoring:"Large / Available in Emerald Green",desc:"2-Piece Emerald Green Sherwani Set (size 44, large) priced at R4,150. Striking emerald green fabric with intricate gold embroidery.",img:"17.png"},
+            {id:"18",title:"2-Piece Floral Gold Sherwani Set",category:"groom",price:0,tailoring:"Large / Available in Floral Gold",desc:"2-Piece Floral Gold Sherwani Set (size 40, large). Radiant gold fabric adorned with intricate floral embroidery. Price on inquiry.",img:"18.png",inquire:true},
+            {id:"19",title:"2-Piece Floral Beige Sherwani Set",category:"groom",price:0,tailoring:"Large / Available in Floral Beige",desc:"2-Piece Floral Beige Sherwani Set (size 40, large). Intricate red and gold floral embroidery over beige fabric. Price on inquiry.",img:"19.png",inquire:true},
+            {id:"20",title:"2-Piece Navy Blue & Gold Sherwani Set",category:"groom",price:6720,tailoring:"Large / Available in Navy Blue & Gold",desc:"2-Piece Navy Blue & Gold Sherwani Set (size 40, large) priced at R6,720. Rich navy blue fabric with intricate gold embroidery.",img:"20.png"},
+            {id:"21",title:"2-Piece Yellow Sherwani Set",category:"groom",price:3230,tailoring:"Large / Available in Yellow",desc:"2-Piece Yellow Sherwani Set (size 40, large) priced at R3,230. Hand-loomed high-density gold thread couture.",img:"21.png"},
+            {id:"22",title:"2-Piece Gold Sherwani Set",category:"groom",price:5340,tailoring:"Large / Available in Gold",desc:"2-Piece Gold Sherwani Set (size 40, large) priced at R5,340. Premium gold backing panels with hand-loomed threads.",img:"22.png"},
+            {id:"23",title:"2-Piece Charcoal Grey Sherwani Set",category:"groom",price:8280,tailoring:"Large / Available in Charcoal Grey",desc:"2-Piece Charcoal Grey Sherwani Set (size 40, large) priced at R8,280. Premium sherwani decorated with gold embroidery.",img:"23.png"},
+            {id:"24",title:"2-Piece Peach Sherwani Set",category:"groom",price:3230,tailoring:"Medium / Available in Peach",desc:"2-Piece Peach Sherwani Set (size 38, Medium) priced at R3,230. Woven over fine luxury backing panels.",img:"24.png"},
+            {id:"25",title:"2-Piece Silver Sherwani Set",category:"groom",price:4610,tailoring:"Medium / Available in Silver",desc:"2-Piece Silver Sherwani Set (size 38, Medium) priced at R4,610. Elegant silver fabric with intricate gold thread detailing.",img:"25.png"},
+            {id:"26",title:"2-Piece Light Pink Sherwani Set",category:"groom",price:5530,tailoring:"Medium / Available in Light Pink",desc:"2-Piece Light Pink Sherwani Set (size 38, Medium) priced at R5,530. Exquisite light pink and gold hand-detailed embroidery.",img:"26.png"},
+            {id:"27",title:"2-Piece Floral Silver & Green Sherwani Set",category:"groom",price:5530,tailoring:"Medium / Available in Floral Silver & Green",desc:"2-piece Floral Silver & Green Sherwani (size 38, medium) priced at R5,530. Silver-tone backing adorned with green embroidery.",img:"27.png"},
+            {id:"28",title:"2-piece Navy Blue Sherwani Set",category:"groom",price:8100,tailoring:"Medium / Available in Navy Blue",desc:"2-piece Navy Blue Sherwani set (size 38, medium) priced at R8,100. Gold-tone floral patterns over deep royal navy.",img:"28.png"},
+            {id:"29",title:"1-piece Teal & Silver Saree",category:"occasion",price:10180,tailoring:"One Size Fits All / Teal & Silver",desc:"Teal & Silver Embroidered Saree – Premium Occasion Wear. Luxurious teal and silver saree with intricate hand-embroidered border work.",img:"29.png"},
+            {id:"30",title:"1-piece Red & White Embroidered Bridal Saree",category:"bridal",price:8840,tailoring:"One Size Fits All / Red & White",desc:"1-piece Red & White Embroidered Bridal Saree – Premium Bridal Wear (One Size Fits All) priced at R8,840. Rich floral border loops.",img:"30.png"},
+            {id:"31",title:"1-piece Grey & Powder Blue Saree",category:"occasion",price:8980,tailoring:"One Size Fits All / Grey & Powder Blue",desc:"1-piece Grey & Powder Blue Embroidered Saree – Premium Occasion Wear. Delicate floral and geometric powder-blue patterns.",img:"31.png"},
+            {id:"32",title:"1-piece Red & Beige Bridal Saree",category:"bridal",price:10110,tailoring:"One Size Fits All / Red & Beige",desc:"1-piece Red & Beige Embroidered Bridal Saree – Premium Bridal Wear. Classical red and beige contrast with fine beadwork.",img:"32.png"},
+            {id:"33",title:"1-piece Pink & Gold Bridal Saree",category:"bridal",price:4205,tailoring:"One Size Fits All / Pink & Gold",desc:"1-piece Pink & Gold Embroidered Bridal Saree – Premium Bridal Wear. Beautiful pink base with shimmering gold threadwork.",img:"33.png"},
+            {id:"34",title:"1-piece Maroon, Cream & Gold Saree",category:"bridal",price:10690,tailoring:"One Size Fits All / Maroon, Cream & Gold",desc:"Maroon, Cream & Gold Bridal Saree – Premium Bridal Wear. Deep maroon and elegant cream drapes, timeless aesthetic.",img:"34.png"},
+            {id:"35",title:"1-piece Maroon & Gold Banarasi Saree",category:"bridal",price:8642,tailoring:"One Size Fits All / Maroon & Gold",desc:"1-piece Maroon & Gold Banarasi-Style Bridal Saree – Premium Bridal Wear. Rich zari-style embroidery inspired by Varanasi heritage.",img:"35.png"},
+            {id:"36",title:"1-piece Lilac Chiffon Saree",category:"occasion",price:4850,tailoring:"One Size Fits All / Lilac",desc:"Lilac Chiffon Embroidered Saree – Premium Occasion Wear. Delicate silver and pink embroidery over lightweight chiffon base.",img:"36.png"},
+            {id:"37",title:"1-piece Peach & Silver Chiffon Saree",category:"occasion",price:4850,tailoring:"One Size Fits All / Peach/Silver",desc:"Peach Chiffon Embroidered Saree – Premium Occasion Wear. Soft pastel peach with hand-detailed silver and crystal-style beadwork.",img:"37.png"},
+            {id:"38",title:"1-piece Purple Art-Silk Saree",category:"occasion",price:4020,tailoring:"One Size Fits All / Purple",desc:"Purple Art-Silk Embroidered Saree – Premium Occasion Wear. Inspired by traditional Banarasi and Kanjivaram styles.",img:"38.png"},
+            {id:"39",title:"1-piece Aqua Green Saree",category:"occasion",price:11305,tailoring:"One Size Fits All / Aqua Green",desc:"Aqua Green Georgette-Net Embroidered Saree – Premium Occasion Wear. Intricate floral embroidery in Georgette-Net weave.",img:"39.png"},
+            {id:"40",title:"1-piece Burgundy Saree",category:"occasion",price:6238,tailoring:"One Size Fits All / Burgundy",desc:"Burgundy Heavy-Georgette Embroidered Saree – Premium Occasion Wear. Scalloped edges with Zari, Resham, and Gota-Patti embroidery.",img:"40.png"}
+        ];
+
+        function initCatalogDatabase() {
+            var generated = [];
+            for (var i = 41; i <= 103; i++) {
+                var cat = 'jewellery', price = 300 + (i * 12) - (i % 3 * 20);
+                var sizeStr = i % 2 === 0 ? 'Medium' : 'Small';
+                var colStr = i % 3 === 0 ? 'Lilac & Gold' : (i % 2 === 0 ? 'Orange & Silver' : 'Turquoise & Silver');
+                var title = 'Premium Set ' + i;
+                var desc = '2-Piece ' + colStr + ' Necklace & Earring Set – Premium Jewellery. Beautifully crafted for weddings, receptions, and all formal celebrations.';
+                if (i === 102) { title = '2-Piece Lilac & Gold Necklace & Earring Set'; price = 501; sizeStr = 'Small'; colStr = 'Lilac & Gold'; desc = '2-Piece Lilac & Gold Necklace & Earring Set. Beautifully crafted Lilac and Gold necklace with intricate stone detailing.'; }
+                else if (i === 103) { title = '2-Piece Orange & Silver Necklace & Earring Set'; price = 501; sizeStr = 'Medium'; colStr = 'Orange & Silver'; desc = '2-Piece Orange & Silver Necklace & Earring Set. Beautifully crafted Orange and Silver necklace with circular and dropstone detailing.'; }
+                else if (i >= 41 && i <= 60) { cat = 'bridal'; title = 'Bridal Heritage Saree ' + i; desc = 'Exquisite silk blend drape decorated with gold thread borders and floral motifs.'; }
+                else if (i > 60 && i <= 80) { cat = 'occasion'; title = 'Boutique Festival Wear ' + i; desc = 'Premium festival garment featuring exclusive traditional stitching and fine fabric backing.'; }
+                else if (i > 80 && i <= 101) { cat = 'groom'; title = 'Artisanal Groom Sherwani Accessory ' + i; desc = 'Handloom accessory stitched carefully to match royal sherwanis.'; }
+                generated.push({ id: '' + i, title: title, category: cat, price: price, tailoring: sizeStr + ' / ' + colStr, desc: desc, img: i + '.png' });
+            }
+            var combined = INITIAL_CATALOG.concat(generated);
+            try {
+                var cached = localStorage.getItem('zari_catalog');
+                if (cached) {
+                    var parsed = JSON.parse(cached);
+                    catalogData = parsed.length >= combined.length ? parsed : combined;
+                } else { catalogData = combined; }
+                localStorage.setItem('zari_catalog', JSON.stringify(catalogData));
+            } catch(e) { catalogData = combined; }
             updateDashboardMetrics();
         }
 
         function updateDashboardMetrics() {
-            const totalVal = catalogData.reduce((acc, curr) => acc + curr.price, 0);
-            const avgVal = catalogData.length ? (totalVal / catalogData.length) : 0;
-            
-            document.getElementById('dashActiveStock').textContent = catalogData.length;
-            document.getElementById('dashTotalValue').textContent = formatZAR(totalVal);
-            document.getElementById('dashAveragePrice').textContent = formatZAR(avgVal);
+            var total = catalogData.reduce(function(a, c) { return a + (c.price || 0); }, 0);
+            var avg = catalogData.length ? total / catalogData.length : 0;
+            var el = function(id) { return document.getElementById(id); };
+            if (el('dashActiveStock')) el('dashActiveStock').textContent = catalogData.length;
+            if (el('dashTotalValue')) el('dashTotalValue').textContent = formatZAR(total);
+            if (el('dashAveragePrice')) el('dashAveragePrice').textContent = formatZAR(Math.round(avg));
         }
 
-        function formatZAR(val) {
-            return "R " + val.toLocaleString('en-ZA', { minimumFractionDigits: 2, maximumFractionDigits: 2 });
-        }
-
-        // --- TRADING HOURS LIVE ENGINE ---
-        function updateShowroomStatus() {
-            const date = new Date();
-            const hours = date.getUTCHours() + 2; 
-            const badge = document.getElementById('liveTradingBadge');
-            
-            if (hours >= 9 && hours < 17) {
-                badge.className = "px-3 py-1 rounded-full text-xs font-bold uppercase tracking-wider bg-emerald-100 text-emerald-800 flex items-center space-x-1.5";
-                badge.innerHTML = `<span class="h-2 w-2 rounded-full bg-emerald-500 animate-pulse"></span><span>Boutique Open Now</span>`;
-            } else {
-                badge.className = "px-3 py-1 rounded-full text-xs font-bold uppercase tracking-wider bg-rose-100 text-rose-800 flex items-center space-x-1.5";
-                badge.innerHTML = `<span class="h-2 w-2 rounded-full bg-rose-500 animate-pulse"></span><span>Boutique Closed (Opens 09:00)</span>`;
-            }
-        }
-
-        // --- MAIN CATALOG GALLERY RENDER ENGINE ---
+        /* ============================
+           GALLERY RENDER ENGINE
+        ============================ */
         function renderGallery() {
-            const grid = document.getElementById('gallery-grid');
-            const filtered = catalogData.filter(item => {
-                if (activeCategory === 'all') return true;
-                return item.category === activeCategory;
+            var grid = document.getElementById('gallery-grid');
+            if (!grid) return;
+            var filtered = catalogData.filter(function(item) {
+                return activeCategory === 'all' || item.category === activeCategory;
             });
-
-            const totalPages = Math.ceil(filtered.length / ITEMS_PER_PAGE) || 1;
+            var totalPages = Math.max(1, Math.ceil(filtered.length / ITEMS_PER_PAGE));
             if (currentPageIndex >= totalPages) currentPageIndex = totalPages - 1;
             if (currentPageIndex < 0) currentPageIndex = 0;
 
-            document.getElementById('numericPagesIndicator').textContent = `Page ${currentPageIndex + 1} / ${totalPages}`;
-            document.getElementById('paginationLabel').textContent = `Filtered portfolio: ${filtered.length} Items found`;
+            var pi = document.getElementById('numericPagesIndicator');
+            var pl = document.getElementById('paginationLabel');
+            if (pi) pi.textContent = 'Page ' + (currentPageIndex + 1) + ' / ' + totalPages;
+            if (pl) pl.textContent = 'Portfolio: ' + filtered.length + ' items';
 
-            const startIdx = currentPageIndex * ITEMS_PER_PAGE;
-            const pageSlice = filtered.slice(startIdx, startIdx + ITEMS_PER_PAGE);
+            var start = currentPageIndex * ITEMS_PER_PAGE;
+            var slice = filtered.slice(start, start + ITEMS_PER_PAGE);
+            grid.innerHTML = '';
 
-            grid.innerHTML = "";
-
-            if (pageSlice.length === 0) {
-                grid.innerHTML = `
-                    <div class="col-span-full py-12 text-center text-slate-400 font-medium">
-                        <i class="fas fa-box-open text-4xl block mb-2 text-zariGold"></i>
-                        No matching collection garments found.
-                    </div>
-                `;
+            if (slice.length === 0) {
+                grid.innerHTML = '<div class="col-span-full py-12 text-center text-slate-400"><i class="fas fa-box-open text-4xl text-yellow-400 block mb-2"></i>No items found in this category.</div>';
                 return;
             }
 
-            pageSlice.forEach(item => {
-                const card = document.createElement('div');
-                card.className = "bg-white rounded-3xl overflow-hidden border border-slate-100 shadow-sm gold-glow-hover flex flex-col justify-between";
-                card.innerHTML = `
-                    <div class="relative group aspect-[4/5] overflow-hidden bg-slate-100">
-                        <img src="${item.img}" alt="${item.title}" class="w-full h-full object-cover transition duration-700 group-hover:scale-105" onerror="handleImageError(this)">
-                        <div class="absolute top-4 left-4 bg-zariMidnight/85 text-zariGold text-[9px] uppercase tracking-widest font-extrabold px-3 py-1 rounded-full border border-zariGold/20">
-                            ${item.category}
-                        </div>
-                        <div class="absolute bottom-4 right-4 bg-white/95 text-slate-800 text-[10px] font-bold px-2 py-0.5 rounded shadow">
-                            No. ${item.id}
-                        </div>
-                    </div>
-                    <div class="p-6 space-y-4 flex-1 flex flex-col justify-between">
-                        <div class="space-y-2">
-                            <h3 class="font-serif font-bold text-lg text-slate-900 group-hover:text-zariGreen leading-tight truncate-2-lines h-12">${item.title}</h3>
-                            <p class="text-xs text-slate-500 font-semibold italic truncate"><i class="fas fa-scissors text-[10px] text-zariGold mr-1"></i>${item.tailoring}</p>
-                            <p class="text-xs text-slate-650 leading-relaxed line-clamp-3 h-15">${item.desc}</p>
-                        </div>
-                        <div class="pt-4 border-t border-slate-100 flex items-center justify-between">
-                            <span class="text-lg font-mono font-extrabold text-zariCrimson">${formatZAR(item.price)}</span>
-                            <button onclick="addToCart('${item.id}')" class="bg-zariMidnight text-white hover:bg-zariGreen text-[10px] font-bold uppercase tracking-wider px-4 py-2.5 rounded-xl transition flex items-center space-x-1.5 shadow-sm">
-                                <i class="fas fa-cart-plus text-zariGold"></i>
-                                <span>Add to Invoice</span>
-                            </button>
-                        </div>
-                    </div>
-                `;
+            slice.forEach(function(item) {
+                var card = document.createElement('div');
+                card.className = 'bg-white rounded-3xl overflow-hidden border border-slate-100 shadow-sm gold-glow-hover flex flex-col';
+                var priceHtml = item.inquire || item.price === 0
+                    ? '<span class="text-green-700 font-bold text-sm uppercase tracking-wide">Price on Inquiry</span>'
+                    : '<span class="text-lg font-mono font-extrabold text-red-600">' + formatZAR(item.price) + '</span>';
+                var waMsg = encodeURIComponent('Hi Zari Ethnics! I am inquiring about Item No. ' + item.id + ' (' + item.title + '). Please advise on pricing and available sizes.');
+                var btnHtml = item.inquire || item.price === 0
+                    ? '<a href="https://api.whatsapp.com/send?phone=27812742028&text=' + waMsg + '" target="_blank" class="bg-emerald-600 hover:bg-emerald-700 text-white text-[10px] font-bold uppercase tracking-wider px-4 py-2.5 rounded-xl transition flex items-center space-x-1.5 shadow-sm"><i class="fab fa-whatsapp"></i><span>Inquire Now</span></a>'
+                    : '<button onclick="addToCart(\'' + item.id + '\')" class="bg-gray-900 text-white hover:bg-green-700 text-[10px] font-bold uppercase tracking-wider px-4 py-2.5 rounded-xl transition flex items-center space-x-1.5 shadow-sm"><i class="fas fa-cart-plus text-yellow-400 mr-1"></i><span>Add to Invoice</span></button>';
+                card.innerHTML =
+                    '<div class="relative group aspect-[4/5] overflow-hidden bg-slate-100 card-magnify-container" onmousemove="zoomCardImage(event,this)" onmouseleave="hideCardZoom(this)" ontouchmove="zoomCardImage(event,this)" ontouchend="hideCardZoom(this)">' +
+                        '<img src="' + item.img + '" alt="' + item.title + '" class="w-full h-full object-cover transition duration-700" onerror="handleImageError(this)">' +
+                        '<div class="card-magnifier" style="background-image:url(\'' + item.img + '\');background-size:400% 500%;"></div>' +
+                        '<div class="absolute top-4 left-4 bg-black/80 text-yellow-400 text-[9px] uppercase tracking-widest font-extrabold px-3 py-1 rounded-full z-10">' + item.category + '</div>' +
+                        '<div class="absolute bottom-4 right-4 bg-white/95 text-slate-800 text-[10px] font-bold px-2 py-0.5 rounded shadow z-10">No. ' + item.id + '</div>' +
+                        '<div class="absolute bottom-4 left-4 bg-black/80 text-[8px] text-white/80 py-0.5 px-2 rounded-md flex items-center space-x-1 pointer-events-none z-10 group-hover:opacity-0 transition-opacity"><i class="fas fa-magnifying-glass text-yellow-400 text-[7px]"></i><span>Hover to Zoom</span></div>' +
+                    '</div>' +
+                    '<div class="p-6 space-y-4 flex-1 flex flex-col justify-between">' +
+                        '<div class="space-y-2">' +
+                            '<h3 class="font-serif font-bold text-lg text-slate-900 leading-tight">' + item.title + '</h3>' +
+                            '<p class="text-xs text-slate-500 font-semibold italic truncate"><i class="fas fa-scissors text-[10px] text-yellow-500 mr-1"></i>' + item.tailoring + '</p>' +
+                            '<p class="text-xs text-slate-600 leading-relaxed line-clamp-3">' + item.desc + '</p>' +
+                        '</div>' +
+                        '<div class="pt-4 border-t border-slate-100 flex items-center justify-between">' + priceHtml + btnHtml + '</div>' +
+                    '</div>';
                 grid.appendChild(card);
             });
 
-            // Numeric Pagination Buttons
-            const paginationList = document.getElementById('numericPaginationList');
-            paginationList.innerHTML = "";
-            
-            // Build dynamic page numbers
-            let startPage = Math.max(0, currentPageIndex - 2);
-            let endPage = Math.min(totalPages, startPage + 5);
-            if (endPage - startPage < 5) {
-                startPage = Math.max(0, endPage - 5);
-            }
-
-            for (let p = startPage; p < endPage; p++) {
-                const pBtn = document.createElement('button');
-                pBtn.textContent = p + 1;
-                pBtn.onclick = () => {
-                    currentPageIndex = p;
-                    renderGallery();
-                    document.getElementById('collections').scrollIntoView({ behavior: 'smooth' });
-                };
-                if (p === currentPageIndex) {
-                    pBtn.className = "h-8 w-8 rounded-lg bg-zariGold text-zariMidnight text-xs font-bold transition shadow-sm";
-                } else {
-                    pBtn.className = "h-8 w-8 rounded-lg bg-white border border-slate-200 hover:border-zariGold text-slate-600 text-xs font-bold transition";
+            // Pagination numbers
+            var pList = document.getElementById('numericPaginationList');
+            if (pList) {
+                pList.innerHTML = '';
+                var start2 = Math.max(0, currentPageIndex - 2);
+                var end2 = Math.min(totalPages, start2 + 5);
+                if (end2 - start2 < 5) start2 = Math.max(0, end2 - 5);
+                for (var p = start2; p < end2; p++) {
+                    (function(pg) {
+                        var btn = document.createElement('button');
+                        btn.textContent = pg + 1;
+                        btn.className = pg === currentPageIndex
+                            ? 'h-8 w-8 rounded-lg bg-yellow-400 text-gray-900 text-xs font-bold shadow-sm'
+                            : 'h-8 w-8 rounded-lg bg-white border border-slate-200 hover:border-yellow-400 text-slate-600 text-xs font-bold transition';
+                        btn.onclick = function() {
+                            currentPageIndex = pg;
+                            renderGallery();
+                            var s = document.getElementById('collections');
+                            if (s) s.scrollIntoView({ behavior: 'smooth' });
+                        };
+                        pList.appendChild(btn);
+                    })(p);
                 }
-                paginationList.appendChild(pBtn);
             }
-
-            document.getElementById('btnPrevPage').disabled = (currentPageIndex === 0);
-            document.getElementById('btnNextPage').disabled = (currentPageIndex >= totalPages - 1);
+            var prev = document.getElementById('btnPrevPage');
+            var next = document.getElementById('btnNextPage');
+            if (prev) prev.disabled = currentPageIndex === 0;
+            if (next) next.disabled = currentPageIndex >= totalPages - 1;
         }
 
-        function handleImageError(element) {
-            // Safe fallback image that mimics traditional gold velvet/jewellery
-            element.onerror = null;
-            element.src = "https://images.unsplash.com/photo-1617627143750-d86bc21e42bb?q=80&w=600&auto=format&fit=crop";
-        }
-
+        /* ============================
+           FILTER & PAGINATION
+        ============================ */
         function filterCategory(cat) {
             playAtmosphericSound('low');
-            ['all', 'jewellery', 'groom', 'bridal', 'occasion'].forEach(c => {
-                const btn = document.getElementById(`filter-${c}`);
-                if (btn) {
-                    btn.className = "px-4 py-2 text-xs font-bold uppercase tracking-widest rounded-xl transition bg-slate-100 text-slate-600 hover:bg-slate-200";
-                }
+            ['all','jewellery','groom','bridal','occasion'].forEach(function(c) {
+                var b = document.getElementById('filter-' + c);
+                if (b) b.className = 'px-4 py-2 text-xs font-bold uppercase tracking-widest rounded-xl transition bg-slate-100 text-slate-600 hover:bg-slate-200';
             });
-            const activeBtn = document.getElementById(`filter-${cat}`);
-            if (activeBtn) {
-                activeBtn.className = "px-4 py-2 text-xs font-bold uppercase tracking-widest rounded-xl transition bg-zariGreen text-white";
-            }
+            var active = document.getElementById('filter-' + cat);
+            if (active) active.className = 'px-4 py-2 text-xs font-bold uppercase tracking-widest rounded-xl transition bg-zariGreen text-white';
             activeCategory = cat;
             currentPageIndex = 0;
             renderGallery();
@@ -869,514 +1065,219 @@
             playAtmosphericSound('high');
             currentPageIndex += direction;
             renderGallery();
-            const topSec = document.getElementById('collections');
-            if (topSec) topSec.scrollIntoView({ behavior: 'smooth' });
+            var s = document.getElementById('collections');
+            if (s) s.scrollIntoView({ behavior: 'smooth' });
         }
 
-        // --- WORKBENCH CMS CONTROL AND AUTHENTICATION ---
-        let isWorkbenchUnlocked = false;
-        let cropperInstance = null;
-        let activeCroppedBase64 = null;
+        /* ============================
+           CARD ZOOM MAGNIFIER
+        ============================ */
+        function zoomCardImage(e, container) {
+            var mag = container.querySelector('.card-magnifier');
+            if (!mag) return;
+            mag.style.display = 'block';
+            var rect = container.getBoundingClientRect();
+            var x = e.touches ? (e.touches[0].clientX - rect.left) : (e.clientX - rect.left);
+            var y = e.touches ? (e.touches[0].clientY - rect.top) : (e.clientY - rect.top);
+            mag.style.left = (x - 65) + 'px';
+            mag.style.top = (y - 65) + 'px';
+            mag.style.backgroundPosition = ((x / rect.width) * 100) + '% ' + ((y / rect.height) * 100) + '%';
+        }
 
+        function hideCardZoom(container) {
+            var mag = container.querySelector('.card-magnifier');
+            if (mag) mag.style.display = 'none';
+        }
+
+        function handleImageError(el) {
+            el.onerror = null;
+            var fb = 'https://images.unsplash.com/photo-1617627143750-d86bc21e42bb?q=80&w=600&auto=format&fit=crop';
+            el.src = fb;
+            var cont = el.closest('.card-magnify-container');
+            if (cont) { var m = cont.querySelector('.card-magnifier'); if (m) m.style.backgroundImage = "url('" + fb + "')"; }
+        }
+
+        /* ============================
+           CMS WORKBENCH
+        ============================ */
         function toggleSandboxControls() {
-            const body = document.getElementById('sandboxBody');
-            const panel = document.getElementById('sandboxLockPanel');
-            const chevron = document.getElementById('sandboxChevron');
-
-            if (body.classList.contains('hidden') && panel.classList.contains('hidden')) {
-                if (isWorkbenchUnlocked) {
-                    body.classList.remove('hidden');
-                } else {
-                    panel.classList.remove('hidden');
-                }
-                chevron.innerHTML = `<span>Collapse Workbench Console</span> <i class="fas fa-chevron-up text-[8px]"></i>`;
+            var body = document.getElementById('sandboxBody');
+            var panel = document.getElementById('sandboxLockPanel');
+            var chevron = document.getElementById('sandboxChevron');
+            if (!body || !panel || !chevron) return;
+            var bothHidden = body.classList.contains('hidden') && panel.classList.contains('hidden');
+            if (bothHidden) {
+                if (isWorkbenchUnlocked) body.classList.remove('hidden');
+                else panel.classList.remove('hidden');
+                chevron.innerHTML = '<span>Collapse Workbench Console</span> <i class="fas fa-chevron-up text-[8px]"></i>';
             } else {
                 body.classList.add('hidden');
                 panel.classList.add('hidden');
-                chevron.innerHTML = `<span>Unlock Workspace Console</span> <i class="fas fa-lock text-[8px]"></i>`;
+                chevron.innerHTML = '<span>Unlock Workspace Console</span> <i class="fas fa-lock text-[8px]"></i>';
             }
         }
 
         function unlockBoutiqueWorkbench() {
-            const pass = document.getElementById('sandboxKeyInput').value;
-            const err = document.getElementById('lockErrorMsg');
-            if (pass === "zari2026") {
+            var inp = document.getElementById('sandboxKeyInput');
+            var err = document.getElementById('lockErrorMsg');
+            if (!inp) return;
+            if (inp.value === 'zari2026') {
                 isWorkbenchUnlocked = true;
-                err.classList.add('hidden');
-                document.getElementById('sandboxLockPanel').classList.add('hidden');
-                document.getElementById('sandboxBody').classList.remove('hidden');
-                document.getElementById('workbenchLockIcon').className = "fas fa-unlock-alt text-[8px]";
-                showToast("CMS Workbench Authenticated", "success");
+                if (err) err.classList.add('hidden');
+                var lp = document.getElementById('sandboxLockPanel');
+                var sb = document.getElementById('sandboxBody');
+                var li = document.getElementById('workbenchLockIcon');
+                if (lp) lp.classList.add('hidden');
+                if (sb) sb.classList.remove('hidden');
+                if (li) li.className = 'fas fa-unlock-alt text-[8px]';
+                showToast('CMS Workbench Authenticated', 'success');
                 playAtmosphericSound('success');
             } else {
-                err.classList.remove('hidden');
-                showToast("Security Key Validation Failed", "error");
+                if (err) err.classList.remove('hidden');
+                showToast('Security Key Validation Failed', 'error');
             }
         }
 
-        // --- FILE SELECTION AND CROPPING ---
+        /* ============================
+           FILE SELECTION & CROPPING
+        ============================ */
         function handleSingleFileSelection(event) {
-            const file = event.target.files[0];
+            var file = event.target.files[0];
             if (!file) return;
-
-            const reader = new FileReader();
+            var reader = new FileReader();
             reader.onload = function(e) {
-                const img = document.getElementById('cropperImageSrc');
+                var img = document.getElementById('cropperImageSrc');
+                if (!img) return;
                 img.src = e.target.result;
-                
-                document.getElementById('cropperHelpText').classList.add('hidden');
-                document.getElementById('cropperContainer').classList.remove('hidden');
-                document.getElementById('btnApplyCrop').classList.remove('hidden');
-
-                if (cropperInstance) {
-                    cropperInstance.destroy();
-                }
-
-                cropperInstance = new Cropper(img, {
-                    aspectRatio: 4 / 5,
-                    viewMode: 1,
-                    background: false,
-                    responsive: true
-                });
+                var help = document.getElementById('cropperHelpText');
+                var cont = document.getElementById('cropperContainer');
+                var btn = document.getElementById('btnApplyCrop');
+                if (help) help.classList.add('hidden');
+                if (cont) cont.classList.remove('hidden');
+                if (btn) btn.classList.remove('hidden');
+                if (cropperInstance) { cropperInstance.destroy(); cropperInstance = null; }
+                cropperInstance = new Cropper(img, { aspectRatio: 4/5, viewMode: 1, background: false, responsive: true });
             };
             reader.readAsDataURL(file);
         }
 
         function applyImageCrop() {
             if (!cropperInstance) return;
-            const canvas = cropperInstance.getCroppedCanvas({
-                width: 600,
-                height: 750
-            });
+            var canvas = cropperInstance.getCroppedCanvas({ width: 600, height: 750 });
             activeCroppedBase64 = canvas.toDataURL('image/jpeg', 0.85);
-            showToast("Tailored crop configuration calculated", "success");
-            
-            const wrapper = document.getElementById('cropperWrapper');
-            wrapper.innerHTML = `
-                <div class="flex flex-col items-center space-y-2">
-                    <img src="${activeCroppedBase64}" class="w-24 h-30 rounded-lg border border-zariGold object-cover shadow-md">
-                    <span class="text-[9px] uppercase tracking-wider text-emerald-400 font-bold"><i class="fas fa-check-circle"></i> Crop Applied</span>
-                    <button onclick="resetCmsCropper()" class="text-[8px] text-slate-400 uppercase hover:underline">Choose Another</button>
-                </div>
-            `;
+            showToast('Crop applied successfully', 'success');
+            var wrapper = document.getElementById('cropperWrapper');
+            if (wrapper) {
+                wrapper.innerHTML = '<div class="flex flex-col items-center space-y-2">' +
+                    '<img src="' + activeCroppedBase64 + '" class="w-24 rounded-lg border-2 border-yellow-400 object-cover shadow-md">' +
+                    '<span class="text-[9px] uppercase tracking-wider text-emerald-400 font-bold"><i class="fas fa-check-circle"></i> Crop Applied</span>' +
+                    '<button onclick="resetCmsCropper()" class="text-[8px] text-slate-400 uppercase hover:underline">Choose Another</button>' +
+                    '</div>';
+            }
         }
 
         function resetCmsCropper() {
-            const wrapper = document.getElementById('cropperWrapper');
-            wrapper.innerHTML = `
-                <p id="cropperHelpText"><i class="fas fa-crop-simple text-zariGold text-xl block mb-2 animate-pulse"></i> Select an image file to begin cropping.</p>
-                <div class="max-h-40 overflow-hidden hidden" id="cropperContainer">
-                    <img id="cropperImageSrc" class="max-w-full">
-                </div>
-                <button onclick="applyImageCrop()" id="btnApplyCrop" class="hidden mt-3 bg-zariGold text-zariMidnight text-[10px] uppercase font-bold px-4 py-2 rounded-lg">Apply Crop</button>
-            `;
-            activeCroppedBase64 = null;
-            if (cropperInstance) {
-                cropperInstance.destroy();
-                cropperInstance = null;
+            var wrapper = document.getElementById('cropperWrapper');
+            if (wrapper) {
+                wrapper.className = 'p-4 border border-slate-800 rounded-2xl bg-slate-950 flex flex-col items-center justify-center text-center text-xs text-slate-400';
+                wrapper.id = 'cropperWrapper';
+                wrapper.innerHTML = '<p id="cropperHelpText"><i class="fas fa-crop-simple text-zariGold text-xl block mb-2 animate-pulse"></i> Select an image file to begin cropping.</p><div class="max-h-40 overflow-hidden hidden" id="cropperContainer"><img id="cropperImageSrc" class="max-w-full" alt="Cropper"></div><button onclick="applyImageCrop()" id="btnApplyCrop" class="hidden mt-3 bg-zariGold text-zariMidnight text-[10px] uppercase font-bold px-4 py-2 rounded-lg">Apply Crop</button>';
             }
+            activeCroppedBase64 = null;
+            if (cropperInstance) { cropperInstance.destroy(); cropperInstance = null; }
+            var fi = document.getElementById('cmsImageInput');
+            if (fi) fi.value = '';
         }
 
+        /* ============================
+           ADD NEW CATALOG ITEM (CMS)
+        ============================ */
         function addNewAtelierItem() {
-            const title = document.getElementById('newItemTitle').value.trim();
-            const category = document.getElementById('newItemCategory').value;
-            const price = parseFloat(document.getElementById('newItemPrice').value);
-            const tailoring = document.getElementById('newItemTailoring').value.trim();
-            const desc = document.getElementById('newItemDesc').value.trim();
-
-            if (!title || isNaN(price) || !tailoring || !desc) {
-                showToast("Please fill all custom catalog fields", "error");
-                return;
-            }
-
-            const nextNumId = catalogData.length + 1;
-            const finalImage = activeCroppedBase64 || `${nextNumId}.png`;
-
-            const newItemObj = {
-                id: `${nextNumId}`,
-                title,
-                category,
-                price,
-                tailoring,
-                desc,
-                img: finalImage
+            var title = (document.getElementById('newItemTitle') || {}).value || '';
+            var cat = (document.getElementById('newItemCategory') || {}).value || 'jewellery';
+            var price = parseFloat((document.getElementById('newItemPrice') || {}).value) || 0;
+            var tailoring = (document.getElementById('newItemTailoring') || {}).value || 'Custom / Various';
+            var desc = (document.getElementById('newItemDesc') || {}).value || 'Custom boutique item.';
+            title = title.trim();
+            if (!title) { showToast('Please enter an item title', 'error'); return; }
+            var newItem = {
+                id: 'cms-' + Date.now(),
+                title: title, category: cat, price: price, tailoring: tailoring, desc: desc,
+                img: activeCroppedBase64 || 'https://images.unsplash.com/photo-1617627143750-d86bc21e42bb?q=80&w=600&auto=format&fit=crop',
+                inquire: price === 0
             };
-
-            catalogData.unshift(newItemObj);
-            localStorage.setItem('zari_catalog', JSON.stringify(catalogData));
-            
-            showToast("Garment ingested to showroom cache", "success");
-            playAtmosphericSound('success');
-            
-            document.getElementById('newItemTitle').value = "";
-            document.getElementById('newItemPrice').value = "";
-            document.getElementById('newItemTailoring').value = "";
-            document.getElementById('newItemDesc').value = "";
-            resetCmsCropper();
-
+            catalogData.push(newItem);
+            try { localStorage.setItem('zari_catalog', JSON.stringify(catalogData)); } catch(e) {}
             updateDashboardMetrics();
             renderGallery();
-        }
-
-        // --- TAX INVOICE SHOPPING BAG ---
-        function loadBagFromStorage() {
-            const saved = localStorage.getItem('zari_bag');
-            if (saved) {
-                shoppingBag = JSON.parse(saved);
-            }
-            updateBagDOM();
-        }
-
-        function addToCart(itemId) {
-            const item = catalogData.find(x => x.id === itemId);
-            if (!item) return;
-
-            const existing = shoppingBag.find(x => x.id === itemId);
-            if (existing) {
-                existing.qty += 1;
-            } else {
-                shoppingBag.push({ ...item, qty: 1 });
-            }
-
-            localStorage.setItem('zari_bag', JSON.stringify(shoppingBag));
-            showToast(`${item.title} added to invoice`, "success");
-            playAtmosphericSound('high');
-            updateBagDOM();
-        }
-
-        function changeCartQty(itemId, val) {
-            const existing = shoppingBag.find(x => x.id === itemId);
-            if (!existing) return;
-
-            existing.qty += val;
-            if (existing.qty <= 0) {
-                shoppingBag = shoppingBag.filter(x => x.id !== itemId);
-            }
-
-            localStorage.setItem('zari_bag', JSON.stringify(shoppingBag));
-            updateBagDOM();
-        }
-
-        function saveCustomerVat() {
-            const val = document.getElementById('customerVatInput').value;
-            localStorage.setItem('zari_customer_vat', val);
-        }
-
-        function updateBagDOM() {
-            const container = document.getElementById('shoppingCartItemsContainer');
-            const totalBadge = document.getElementById('globalBagBadge');
-            
-            const savedVat = localStorage.getItem('zari_customer_vat') || "";
-            const vatInput = document.getElementById('customerVatInput');
-            if (vatInput) vatInput.value = savedVat;
-
-            const totalQty = shoppingBag.reduce((acc, curr) => acc + curr.qty, 0);
-            totalBadge.textContent = totalQty;
-            if (totalQty > 0) {
-                totalBadge.classList.remove('scale-0');
-                totalBadge.classList.add('scale-100');
-            } else {
-                totalBadge.classList.add('scale-0');
-                totalBadge.classList.remove('scale-100');
-            }
-
-            container.innerHTML = "";
-
-            if (shoppingBag.length === 0) {
-                container.innerHTML = `
-                    <div class="py-12 text-center text-slate-400 space-y-2">
-                        <i class="fas fa-file-invoice text-3xl text-slate-300 block mb-1"></i>
-                        <p class="text-xs font-semibold">Your dynamic tax invoice is empty</p>
-                    </div>
-                `;
-                updateInvoiceTotals(0);
-                return;
-            }
-
-            shoppingBag.forEach(item => {
-                const row = document.createElement('div');
-                row.className = "flex items-center justify-between border-b border-slate-100 pb-3 gap-3";
-                row.innerHTML = `
-                    <div class="flex items-center space-x-3 flex-1 min-w-0">
-                        <img src="${item.img}" class="h-12 w-12 rounded-lg object-cover shrink-0 border border-slate-100" onerror="handleImageError(this)">
-                        <div class="min-w-0 flex-1">
-                            <h4 class="font-serif font-bold text-xs text-slate-900 truncate">${item.title}</h4>
-                            <p class="text-[9px] text-slate-400 font-mono">No. ${item.id} | ${formatZAR(item.price)}</p>
-                        </div>
-                    </div>
-                    <div class="flex items-center space-x-2 shrink-0">
-                        <button onclick="changeCartQty('${item.id}', -1)" class="h-6 w-6 rounded bg-slate-100 hover:bg-slate-200 text-slate-600 flex items-center justify-center text-xs font-bold transition">-</button>
-                        <span class="text-xs font-mono font-bold w-4 text-center">${item.qty}</span>
-                        <button onclick="changeCartQty('${item.id}', 1)" class="h-6 w-6 rounded bg-slate-100 hover:bg-slate-200 text-slate-600 flex items-center justify-center text-xs font-bold transition">+</button>
-                    </div>
-                    <div class="text-right shrink-0">
-                        <span class="text-xs font-mono font-extrabold text-slate-900 block">${formatZAR(item.price * item.qty)}</span>
-                    </div>
-                `;
-                container.appendChild(row);
-            });
-
-            const totalInvoiceSum = shoppingBag.reduce((acc, curr) => acc + (curr.price * curr.qty), 0);
-            updateInvoiceTotals(totalInvoiceSum);
-        }
-
-        function updateInvoiceTotals(totalSum) {
-            const subtotal = totalSum / 1.15;
-            const vatAmount = totalSum - subtotal;
-
-            document.getElementById('cartSummaryItemCount').textContent = `${shoppingBag.reduce((acc, curr) => acc + curr.qty, 0)} Units`;
-            document.getElementById('cartSummaryExclVat').textContent = formatZAR(subtotal);
-            document.getElementById('cartSummaryVatAmount').textContent = formatZAR(vatAmount);
-            document.getElementById('cartSummaryInclVat').textContent = formatZAR(totalSum);
-
-            const checkoutBtn = document.getElementById('cartCheckoutBtn');
-            if (totalSum > 0) {
-                checkoutBtn.disabled = false;
-            } else {
-                checkoutBtn.disabled = true;
-            }
-        }
-
-        function toggleBagDrawer() {
-            const backdrop = document.getElementById('shoppingBagBackdrop');
-            const drawer = document.getElementById('shoppingBagDrawer');
-
-            if (drawer.classList.contains('translate-x-full')) {
-                backdrop.classList.remove('hidden');
-                setTimeout(() => backdrop.classList.add('opacity-100'), 10);
-                drawer.classList.remove('translate-x-full');
-            } else {
-                backdrop.classList.remove('opacity-100');
-                backdrop.classList.add('hidden');
-                drawer.classList.add('translate-x-full');
-            }
-        }
-
-        // --- WHATSAPP DISPATCH CHECKOUT ---
-        function submitCartCheckoutWhatsApp() {
-            if (shoppingBag.length === 0) return;
-
-            const reference = document.getElementById('invoiceReferenceID').textContent;
-            const customerVat = document.getElementById('customerVatInput').value.trim() || "N/A (Standard)";
-            const totalSum = shoppingBag.reduce((acc, curr) => acc + (curr.price * curr.qty), 0);
-            const subtotal = totalSum / 1.15;
-            const vatAmount = totalSum - subtotal;
-
-            let text = `*ZARÌ ETHNICS TAX INVOICE DISPATCH*\n`;
-            text += `==============================\n`;
-            text += `*Draft Invoice:* ${reference}\n`;
-            text += `*SARS VAT No:* 4460265194\n`;
-            text += `*Client VAT Reg:* ${customerVat}\n`;
-            text += `==============================\n\n`;
-
-            shoppingBag.forEach((item, index) => {
-                text += `${index + 1}. *${item.title}* (No. ${item.id})\n`;
-                text += `   Qty: ${item.qty} | Price: ${formatZAR(item.price)} each\n`;
-                text += `   Craft/Size: ${item.tailoring}\n\n`;
-            });
-
-            text += `==============================\n`;
-            text += `*Subtotal (Excl. VAT):* ${formatZAR(subtotal)}\n`;
-            text += `*VAT Component (15%):* ${formatZAR(vatAmount)}\n`;
-            text += `*Total Due (VAT Incl):* ${formatZAR(totalSum)}\n`;
-            text += `==============================\n\n`;
-            text += `_Please review and confirm booking arrangements._`;
-
-            const encoded = encodeURIComponent(text);
-            const whatsappUrl = `https://api.whatsapp.com/send?phone=27812742028&text=${encoded}`;
-            
-            showToast("Generating Tax Invoice Dispatch...", "success");
+            document.getElementById('newItemTitle').value = '';
+            document.getElementById('newItemPrice').value = '';
+            document.getElementById('newItemTailoring').value = '';
+            document.getElementById('newItemDesc').value = '';
+            activeCroppedBase64 = null;
+            showToast(title + ' added to catalog!', 'success');
             playAtmosphericSound('success');
-            
-            setTimeout(() => {
-                window.open(whatsappUrl, '_blank');
-            }, 800);
         }
 
-        // --- WEAVE MAGNIFIER / STITCH INSPECTOR ENGINE ---
-        const WEAVE_DATA = {
-            silk: {
-                title: "Varanasi Pure Brocade (Zari Silk)",
-                desc: "An intricate weave of fine mulberry silk interwoven with genuine metallic flat gold wires. Features precise 120 needle-punches per square centimeter. Shows incredible floral and foliage (kalga) patterns.",
-                img: "https://images.unsplash.com/photo-1617627143750-d86bc21e42bb?q=80&w=800&auto=format&fit=crop"
-            },
-            velvet: {
-                title: "Royal Crimson Micro-Velvet",
-                desc: "Plush, heavy-pile micro-velvet woven from dual-spun combed cotton threads. Standard pile height: 2.2 millimeters, resulting in deep, rich crimson absorption. Highly robust and ideal for zardozi work.",
-                img: "https://images.unsplash.com/photo-1595777457583-95e059d581b8?q=80&w=800&auto=format&fit=crop"
-            },
-            brocade: {
-                title: "Metallic Pure Gold Brocade Weave",
-                desc: "Traditional South Asian metallic brocade consisting of gold gilded warp and weft. Features hand-knotted borders, textured loops, and heavy weight suitable for imperial ceremonial garments.",
-                img: "https://images.unsplash.com/photo-1610030469983-98e550d6193c?q=80&w=800&auto=format&fit=crop"
-            }
-        };
-
-        function selectFabricWeave(weaveType) {
-            ['silk', 'velvet', 'brocade'].forEach(w => {
-                const btn = document.getElementById(`fabric-${w}`);
-                if (btn) {
-                    btn.className = "px-4 py-2 bg-slate-100 text-slate-600 text-xs font-bold uppercase rounded-xl transition hover:bg-slate-200";
-                }
-            });
-            
-            const activeBtn = document.getElementById(`fabric-${weaveType}`);
-            if (activeBtn) {
-                activeBtn.className = "px-4 py-2 bg-zariGreen text-white text-xs font-bold uppercase rounded-xl transition";
-            }
-
-            const data = WEAVE_DATA[weaveType];
-            document.getElementById('fabricInspectorTitle').textContent = data.title;
-            document.getElementById('fabricInspectorDesc').textContent = data.desc;
-            
-            const baseImg = document.getElementById('inspectorBaseImage');
-            baseImg.src = data.img;
-
-            const magnifier = document.getElementById('inspectorMagnifierLoupe');
-            magnifier.style.backgroundImage = `url('${data.img}')`;
-            
-            playAtmosphericSound('low');
-        }
-
-        function initFabricInspector() {
-            const frame = document.getElementById('inspectorCanvasFrame');
-            const magnifier = document.getElementById('inspectorMagnifierLoupe');
-
-            frame.addEventListener('mousemove', (e) => {
-                const rect = frame.getBoundingClientRect();
-                const x = e.clientX - rect.left;
-                const y = e.clientY - rect.top;
-
-                magnifier.style.left = `${x - 70}px`;
-                magnifier.style.top = `${y - 70}px`;
-
-                const pctX = (x / rect.width) * 100;
-                const pctY = (y / rect.height) * 100;
-                magnifier.style.backgroundPosition = `${pctX}% ${pctY}%`;
-            });
-
-            frame.addEventListener('touchmove', (e) => {
-                if (e.touches.length === 0) return;
-                const touch = e.touches[0];
-                const rect = frame.getBoundingClientRect();
-                const x = touch.clientX - rect.left;
-                const y = touch.clientY - rect.top;
-
-                if (x >= 0 && x <= rect.width && y >= 0 && y <= rect.height) {
-                    magnifier.style.left = `${x - 70}px`;
-                    magnifier.style.top = `${y - 70}px`;
-
-                    const pctX = (x / rect.width) * 100;
-                    const pctY = (y / rect.height) * 100;
-                    magnifier.style.backgroundPosition = `${pctX}% ${pctY}%`;
-                }
-            });
-        }
-
-        // --- COMPLIANCE LEGAL MODALS ---
-        const COMPLIANCE_CONTENT = {
-            popia: {
-                title: "POPIA Privacy Shield Policy",
-                body: `
-                    <p><strong>1. Introduction</strong><br>We respect and are committed to protecting the privacy of our visitors in strict compliance with the Protection of Personal Information Act (POPIA), Act 4 of 2013 of South Africa.</p>
-                    <p><strong>2. Information Collection</strong><br>Any inquiry forms, local cache structures, or checkout metadata completed on this portal are handled with absolute confidentiality. We do not aggregate, sell, or distribute client contact particulars or measurement profiles to external agencies.</p>
-                    <p><strong>3. Security</strong><br>No digital processing of transaction credit data occurs on this client-side template. Safe WhatsApp connections secure bespoke orders directly with human showroom managers in Lenasia.</p>
-                `
-            },
-            returns: {
-                title: "Artisanal Refunds & Returns Standard",
-                body: `
-                    <p><strong>1. General Custom-Fit Exclusions</strong><br>Due to the fully customized, handcrafted nature of our high-luxury bridal lehengas and royal groom sherwanis, all custom-stitched commissions are final once patterns are authorized.</p>
-                    <p><strong>2. In-Store Showroom Stock</strong><br>Standard off-the-rack garments are eligible for boutique exchange or store credit vouchers within 7 business days from date of invoice. Garments must remain unworn, unaltered, and with original thread tags completely attached.</p>
-                    <p><strong>3. Minor Organic Variations</strong><br>Clients acknowledge that handmade gold-brocade silk threadwork naturally yields subtle organic variations in embroidery knots; these are traditional hallmarks of bespoke handloom art and do not constitute physical defects.</p>
-                `
-            },
-            disclaimers: {
-                title: "Artisanal & Model Disclaimers",
-                body: `
-                    <p><strong>1. Synthetic Model Representation</strong><br>In compliance with modern digital imaging standards, please be advised that showroom model portraits rendered on our website utilize advanced synthesized imagery. Any resemblance to real persons, living or deceased, is completely accidental.</p>
-                    <p><strong>2. Final Textile Colors</strong><br>Device display setups, contrast balances, and local ambient lighting affect digital color perception. Real physical garments should be viewed inside our natural daylight Trade Route Mall Lenasia showroom to verify gold hues prior to commission.</p>
-                `
-            },
-            mrkolapie: {
-                title: "Developer Shield & Licensed Intellectual Property",
-                body: `
-                    <p><strong>1. Intellectual Property Protection</strong><br>This dynamic layout engine, design token standard, and automated SARS tax invoice dispatch framework are copyright © 2026 MrKolapie Pty Ltd™. Unauthorized cloning of dynamic scripts or visual configurations is strictly prohibited.</p>
-                    <p><strong>2. Complete Developer Indemnity</strong><br>MrKolapie Pty Ltd™ operates solely as a digital solutions engineering agency. The agency is fully indemnified and holds no liability regarding boutique inventory stock levels, VAT reporting compliance, color changes, or offline client trade agreements.</p>
-                `
-            }
-        };
-
-        function openCompliance(type) {
-            const data = COMPLIANCE_CONTENT[type];
-            if (!data) return;
-
-            document.getElementById('complianceModalTitle').textContent = data.title;
-            document.getElementById('complianceModalBody').innerHTML = data.body;
-            document.getElementById('complianceLegalModal').classList.remove('hidden');
-            playAtmosphericSound('high');
-        }
-
-        function closeComplianceModal() {
-            document.getElementById('complianceLegalModal').classList.add('hidden');
-        }
-
+        /* ============================
+           HTML EXPORT
+        ============================ */
         function downloadCleanProductionHTML() {
-            const currentHTML = document.documentElement.outerHTML;
-            const blob = new Blob([currentHTML], { type: "text/html" });
-            const url = URL.createObjectURL(blob);
-            
-            const link = document.createElement("a");
-            link.href = url;
-            link.download = "zari_ethnics_boutique.html";
-            document.body.appendChild(link);
-            link.click();
-            document.body.removeChild(link);
-            
-            showToast("Exporting complete compiled code structure...", "success");
-            playAtmosphericSound('success');
+            showToast('Preparing HTML export…', 'success');
+            setTimeout(function() {
+                try {
+                    var html = '<!DOCTYPE html>\n' + document.documentElement.outerHTML;
+                    var blob = new Blob([html], { type: 'text/html;charset=utf-8' });
+                    var url = URL.createObjectURL(blob);
+                    var a = document.createElement('a');
+                    a.href = url; a.download = 'zari-ethnics-' + new Date().toISOString().split('T')[0] + '.html';
+                    document.body.appendChild(a); a.click();
+                    document.body.removeChild(a); URL.revokeObjectURL(url);
+                    showToast('Export complete!', 'success');
+                } catch(e) { showToast('Export failed – please copy source manually.', 'error'); }
+            }, 600);
         }
 
-        function showToast(message, type = "success") {
-            const container = document.getElementById('toastContainer');
-            const toast = document.createElement('div');
-            toast.className = `p-4 rounded-2xl shadow-xl border flex items-center space-x-3 pointer-events-auto transition duration-300 transform translate-y-2 opacity-0 text-xs font-bold max-w-sm ${
-                type === 'success' 
-                ? 'bg-zariMidnight text-white border-zariGold/30' 
-                : 'bg-rose-950 text-white border-rose-800'
-            }`;
-
-            const iconClass = type === 'success' ? 'fa-check-circle text-zariGold' : 'fa-exclamation-circle text-rose-500';
-            toast.innerHTML = `
-                <i class="fas ${iconClass} text-lg"></i>
-                <span>${message}</span>
-            `;
-
-            container.appendChild(toast);
-            
-            setTimeout(() => {
-                toast.classList.remove('translate-y-2', 'opacity-0');
-            }, 50);
-
-            setTimeout(() => {
-                toast.classList.add('translate-y-2', 'opacity-0');
-                setTimeout(() => toast.remove(), 300);
-            }, 3000);
-        }
-
-        // --- PAGE STARTUP & CONTEXT LOADER ---
-        window.onload = function() {
-            updateShowroomStatus();
-            setInterval(updateShowroomStatus, 15000);
-            
+        /* ============================
+           DOM READY INITIALIZATION
+        ============================ */
+        document.addEventListener('DOMContentLoaded', function() {
+            // Initialize catalog
             initCatalogDatabase();
-            loadBagFromStorage();
-            
+
+            // Trading hours
+            updateShowroomStatus();
+            setInterval(updateShowroomStatus, 60000);
+
+            // Restore saved bag
+            try {
+                var saved = localStorage.getItem('zari_bag');
+                if (saved) shoppingBag = JSON.parse(saved);
+            } catch(e) { shoppingBag = []; }
+            updateBagDOM();
+
+            // Restore customer VAT
+            try {
+                var savedVat = localStorage.getItem('zari_customer_vat');
+                var vatInp = document.getElementById('customerVatInput');
+                if (savedVat && vatInp) vatInp.value = savedVat;
+            } catch(e) {}
+
+            // Generate invoice reference
+            var invRef = document.getElementById('invoiceReferenceID');
+            if (invRef) {
+                var d = new Date();
+                var ds = d.getFullYear() + '' + String(d.getMonth()+1).padStart(2,'0') + String(d.getDate()).padStart(2,'0');
+                invRef.textContent = 'INV-' + ds + '-' + (Math.floor(1000 + Math.random() * 9000));
+            }
+
+            // Initialize fabric inspector
             initFabricInspector();
-            selectFabricWeave('silk');
-            
+
+            // Render gallery
             renderGallery();
-        };
+        });
     </script>
 </body>
 </html>
+
